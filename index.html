@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Image Slideshow</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;300&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: transparent;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding-bottom: 50px;
+      overflow: hidden;
+      border-radius: 20px;
+      background: transparent;
+    }
+
+    .slides {
+      display: flex;
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      flex: 0 0 auto;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .side-shadow {
+      position: absolute;
+      top: 0;
+      width: 120px;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 5;
+    }
+
+    .side-shadow.left {
+      left: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.4), transparent);
+      border-radius: 20px 0 0 20px;
+    }
+
+    .side-shadow.right {
+      right: 0;
+      background: linear-gradient(to left, rgba(0,0,0,0.4), transparent);
+      border-radius: 0 20px 20px 0;
+    }
+
+    .slideshow-container:hover .side-shadow { opacity: 1; }
+
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      color: white;
+      border: 0;
+      font-size: 30px;
+      padding: 10px 14px;
+      cursor: pointer;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 20px;
+      user-select: none;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .slideshow-container:hover .prev,
+    .slideshow-container:hover .next { opacity: 1; }
+
+    .dot-container {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      margin: 0 5px;
+      padding: 0;
+      border: 0;
+      background: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .dot.active { background: #444; }
+
+    .page-number {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18px;
+      color: white;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: 300;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .slideshow-container:hover .page-number { opacity: 1; }
+
+    .fullscreen-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.3);
+      color: white;
+      border: 0;
+      font-size: 20px;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 10px;
+      z-index: 20;
+      transition: background 0.3s ease;
+    }
+
+    .fullscreen-btn:hover { background: rgba(0,0,0,0.6); }
+
+    .slideshow-container:fullscreen {
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+      padding-bottom: 50px;
+      background: #111;
+    }
+
+    @media (max-width: 600px) {
+      .slideshow-container { border-radius: 10px; }
+      .slide img { border-radius: 10px; }
+      .prev, .next { opacity: 1; font-size: 24px; }
+      .page-number { opacity: 1; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slideshow-container" id="slideshow">
+    <div class="side-shadow left"></div>
+    <div class="side-shadow right"></div>
+
+    <div class="slides" id="slidesContainer">
+      <div class="slide"><img src="https://i.imgur.com/HLLpBMN.jpeg" alt="Slide 1"></div>
+      <div class="slide"><img src="https://i.imgur.com/wBHoWzq.jpeg" alt="Slide 2"></div>
+      <div class="slide"><img src="https://i.imgur.com/BkG99VM.jpeg" alt="Slide 3"></div>
+    </div>
+
+    <button class="prev" type="button" aria-label="Previous slide">&#10094;</button>
+    <button class="next" type="button" aria-label="Next slide">&#10095;</button>
+    <div class="page-number" id="pageNumber" aria-live="polite"></div>
+    <button class="fullscreen-btn" id="fullscreenBtn" type="button" aria-label="Toggle fullscreen">⛶</button>
+    <div class="dot-container" id="dotContainer" aria-label="Choose slide"></div>
+  </div>
+
+  <script>
+    (() => {
+      const slidesContainer = document.getElementById('slidesContainer');
+      const slides = Array.from(slidesContainer.querySelectorAll('.slide'));
+      const dotContainer = document.getElementById('dotContainer');
+      const pageNumber = document.getElementById('pageNumber');
+      const slideshow = document.getElementById('slideshow');
+      const fullscreenBtn = document.getElementById('fullscreenBtn');
+      const prevBtn = document.querySelector('.prev');
+      const nextBtn = document.querySelector('.next');
+      let currentIndex = 0;
+
+      function setSlideWidths() {
+        const percentPerSlide = 100 / slides.length;
+        slidesContainer.style.width = `${slides.length * 100}%`;
+        slides.forEach(slide => {
+          slide.style.width = `${percentPerSlide}%`;
+        });
+        showSlide(currentIndex, false);
+      }
+
+      slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'dot';
+        dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+        dot.addEventListener('click', () => showSlide(index));
+        dotContainer.appendChild(dot);
+      });
+
+      const dots = Array.from(dotContainer.querySelectorAll('.dot'));
+
+      function showSlide(index, animate = true) {
+        if (!slides.length) return;
+        currentIndex = (index + slides.length) % slides.length;
+        slidesContainer.style.transition = animate ? 'transform 0.5s ease' : 'none';
+        slidesContainer.style.transform = `translateX(-${currentIndex * (100 / slides.length)}%)`;
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle('active', dotIndex === currentIndex);
+          dot.setAttribute('aria-current', dotIndex === currentIndex ? 'true' : 'false');
+        });
+        pageNumber.textContent = `${currentIndex + 1} / ${slides.length}`;
+      }
+
+      prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
+      nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
+
+      fullscreenBtn.addEventListener('click', async () => {
+        try {
+          if (!document.fullscreenElement) {
+            await slideshow.requestFullscreen();
+          } else {
+            await document.exitFullscreen();
+          }
+        } catch (error) {
+          console.error('Fullscreen is unavailable in this embedded context:', error);
+          alert('Fullscreen is blocked by the embedding website or browser.');
+        }
+      });
+
+      setSlideWidths();
+      window.addEventListener('resize', setSlideWidths);
+    })();
+  </script>
+</body>
+</html>
