@@ -1,0 +1,216 @@
+{
+  "projectID": "P018",
+  "order": 18,
+  "url": "https://sites.google.com/view/hossam-alafandi/freelance/gf-stairs",
+  "status": "SCANNED",
+  "slideshows": [
+    {
+      "slideshowID": "P018-S01",
+      "frame": "389599694145eaeb_20",
+      "frameSize": {
+        "w": 1335,
+        "h": 1570,
+        "aspect": 0.85
+      },
+      "isSlideshow": true,
+      "docTitle": "Image Slideshow with Side Shadows on Hover",
+      "imgCount": 5,
+      "images": [
+        {
+          "n": 1,
+          "src": "https://i.imgur.com/z9YXzXw.jpeg",
+          "currentSrc": "https://i.imgur.com/z9YXzXw.jpeg",
+          "alt": "Slide 1",
+          "nw": 2700,
+          "nh": 3000,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 2,
+          "src": "https://i.imgur.com/ig0Tkos.jpeg",
+          "currentSrc": "https://i.imgur.com/ig0Tkos.jpeg",
+          "alt": "Slide 2",
+          "nw": 2700,
+          "nh": 3000,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 3,
+          "src": "https://i.imgur.com/n3u69g3.jpeg",
+          "currentSrc": "https://i.imgur.com/n3u69g3.jpeg",
+          "alt": "Slide 3",
+          "nw": 2700,
+          "nh": 3000,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 4,
+          "src": "https://i.imgur.com/fxcNJis.jpeg",
+          "currentSrc": "https://i.imgur.com/fxcNJis.jpeg",
+          "alt": "Slide 4",
+          "nw": 2700,
+          "nh": 3000,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 5,
+          "src": "https://i.imgur.com/t4moFeW.jpeg",
+          "currentSrc": "https://i.imgur.com/t4moFeW.jpeg",
+          "alt": "Slide 5",
+          "nw": 2700,
+          "nh": 3000,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "text": "❮",
+          "aria": "",
+          "cls": "prev",
+          "href": ""
+        },
+        {
+          "tag": "BUTTON",
+          "text": "❯",
+          "aria": "",
+          "cls": "next",
+          "href": ""
+        }
+      ],
+      "dots": 5,
+      "pageNumbers": [
+        "1 / 5"
+      ],
+      "libs": [],
+      "style": {
+        "bodyBg": "rgba(0, 0, 0, 0)",
+        "bodyFont": "Lexend, sans-serif",
+        "containerBg": "rgba(0, 0, 0, 0)",
+        "containerRadius": "20px",
+        "containerWidth": "1335px",
+        "containerHeight": "1570px",
+        "imgFit": "cover",
+        "imgRadius": "20px"
+      },
+      "viewport": {
+        "w": 1335,
+        "h": 1570
+      },
+      "bodyText": "❮\n❯\n1 / 5",
+      "screenshot": "01_AUDIT\\evidence\\P018-S01.png",
+      "status": "DETECTED",
+      "sourceLen": 6112,
+      "sourceFile": "02_SOURCE_BACKUP\\P018\\P018-gf-stairs-S01-renders.original.html"
+    },
+    {
+      "frame": "389599694145eaeb_32",
+      "frameSize": {
+        "w": 884,
+        "h": 127,
+        "aspect": 6.961
+      },
+      "isSlideshow": false,
+      "status": "NOT_SLIDESHOW",
+      "docTitle": "Software Logos with Equal Spacing",
+      "imgCount": 5,
+      "bodyText": ""
+    }
+  ],
+  "notes": [
+    "rawHref=/view/hossam-alafandi/freelance/gf-stairs"
+  ],
+  "pageTitle": "GF-STAIRS",
+  "slug": "gf-stairs",
+  "embeds": [
+    {
+      "index": 0,
+      "name": "389599694145eaeb_20",
+      "title": "Custom embed",
+      "w": 1335,
+      "h": 1570,
+      "top": 817,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    },
+    {
+      "index": 1,
+      "name": "389599694145eaeb_32",
+      "title": "Custom embed",
+      "w": 884,
+      "h": 127,
+      "top": 4089,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    }
+  ],
+  "mediaSummary": {
+    "sites_custom_embed": 2
+  },
+  "responses": [
+    {
+      "url": "https://i.imgur.com/a6DlmjJ.jpeg",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/auth_warmup",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/znQK1ti.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/STZTRZr.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/eusbdWx.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/X4WSOcP.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/6sW1ghq.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/z9YXzXw.jpeg",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/ig0Tkos.jpeg",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/n3u69g3.jpeg",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/fxcNJis.jpeg",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/t4moFeW.jpeg",
+      "status": 200
+    }
+  ],
+  "note": "1 slideshow(s) of 2 custom embed(s)"
+}

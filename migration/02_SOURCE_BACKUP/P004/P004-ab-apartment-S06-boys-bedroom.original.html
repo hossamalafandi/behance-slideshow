@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+      
+    
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image Slideshow with Side Shadows on Hover</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;300&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Lexend', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .slideshow-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      padding-bottom: 50px;
+      overflow: hidden;
+      border-radius: 20px;  /* Apply radius to all corners */
+      background-color: transparent;
+      box-sizing: border-box;
+    }
+
+    .slides {
+      display: flex;
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      width: 100vw;
+      height: 100%;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;  /* Ensure the image respects the container radius */
+    }
+
+    /* Side Shadows */
+    .side-shadow {
+      position: absolute;
+      top: 0;
+      width: 120px;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 5;
+      border-radius: 20px 0 0 20px;
+    }
+
+    .side-shadow.left {
+      left: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.4), transparent);
+    }
+
+    .side-shadow.right {
+      right: 0;
+      background: linear-gradient(to left, rgba(0,0,0,0.4), transparent);
+      border-radius: 0 20px 20px 0;
+    }
+
+    /* Show shadows on hover */
+    .slideshow-container:hover .side-shadow {
+      opacity: 1;
+    }
+
+    /* Navigation Buttons */
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      color: white;
+      border: none;
+      font-size: 30px;
+      padding: 10px 14px;
+      cursor: pointer;
+      z-index: 10; /* Make sure buttons are above everything */
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 20px;
+      user-select: none;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .slideshow-container:hover .prev, 
+    .slideshow-container:hover .next {
+      opacity: 1;
+    }
+
+    /* Dots */
+    .dot-container {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: #444; /* Darker color for active dot */
+    }
+
+    /* Page Number Indicator */
+    .page-number {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18px;
+      color: white;
+      z-index: 10;
+      background-color: rgba(0, 0, 0, 0.3); /* Less dark, more transparent background */
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: 300; /* Light font weight for Lexend-Light */
+      opacity: 0; /* Initially hidden */
+      transition: opacity 0.3s ease;
+    }
+
+    /* Show page number on hover */
+    .slideshow-container:hover .page-number {
+      opacity: 1;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+  <!-- Side Shadows -->
+  <div class="side-shadow left"></div>
+  <div class="side-shadow right"></div>
+
+  <div class="slides" id="slidesContainer" style="width: 400vw; transform: translateX(0vw);">
+    <div class="slide"><img src="https://i.imgur.com/g60Dod4.jpg" alt="Slide 1" loading="eager"></div>
+    <div class="slide"><img src="https://i.imgur.com/x2p8Hcs.jpg" alt="Slide 2" loading="eager"></div>
+    <div class="slide"><img src="https://i.imgur.com/Y7W7S83.jpg" alt="Slide 3" loading="eager"></div>
+    <div class="slide"><img src="https://i.imgur.com/JlwufVm.jpg" alt="Slide 4" loading="eager"></div>
+  </div>
+
+  <!-- Buttons -->
+  <button class="prev" onclick="moveSlide(-1)">❮</button>
+  <button class="next" onclick="moveSlide(1)">❯</button>
+
+  <!-- Page Number Indicator -->
+  <div class="page-number" id="pageNumber">1 / 4</div>
+</div>
+
+<div class="dot-container" id="dotContainer"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+
+<script>
+  const slidesContainer = document.getElementById('slidesContainer');
+  const slides = slidesContainer.querySelectorAll('.slide');
+  const dotContainer = document.getElementById('dotContainer');
+  const pageNumber = document.getElementById('pageNumber');
+  let currentIndex = 0;
+
+  // Set slidesContainer width dynamically based on slides count
+  slidesContainer.style.width = `${slides.length * 100}vw`;
+
+  // Create dots dynamically
+  slides.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    dot.addEventListener('click', () => showSlide(i));
+    dotContainer.appendChild(dot);
+  });
+
+  const dots = dotContainer.querySelectorAll('.dot');
+
+  function showSlide(index) {
+    if (index >= slides.length) index = 0;
+    if (index < 0) index = slides.length - 1;
+    currentIndex = index;
+    slidesContainer.style.transform = `translateX(-${currentIndex * 100}vw)`;
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentIndex].classList.add('active');
+    updatePageNumber();
+  }
+
+  function moveSlide(step) {
+    showSlide(currentIndex + step);
+  }
+
+  function updatePageNumber() {
+    pageNumber.textContent = `${currentIndex + 1} / ${slides.length}`;
+  }
+
+  // Initialize
+  showSlide(currentIndex);
+</script>
+
+
+
+      
+    </body></html>

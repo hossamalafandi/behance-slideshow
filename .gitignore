@@ -1,0 +1,12 @@
+# Local Apps Script binding (machine-specific script ID)
+migration/04_APPS_SCRIPT/.clasp.json
+
+# Local Node dependencies for validation tools
+migration/tools/node_modules/
+
+# Local test artifacts
+migration/tools/.cache/
+
+# Phase 1 page screenshots are local audit evidence only. No image file is
+# committed to the repository, in line with the image hosting policy.
+migration/01_AUDIT/evidence/*.png

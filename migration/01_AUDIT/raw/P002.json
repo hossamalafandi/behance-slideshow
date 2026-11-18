@@ -1,0 +1,418 @@
+{
+  "projectID": "P002",
+  "order": 2,
+  "url": "https://sites.google.com/view/hossam-alafandi/freelance/cellphone-store",
+  "status": "SCANNED",
+  "slideshows": [
+    {
+      "slideshowID": "P002-S01",
+      "frame": "735a4054af806e35_13",
+      "frameSize": {
+        "w": 659,
+        "h": 927,
+        "aspect": 0.711
+      },
+      "isSlideshow": true,
+      "docTitle": "Image Slideshow with Side Shadows on Hover",
+      "imgCount": 11,
+      "images": [
+        {
+          "n": 1,
+          "src": "https://i.imgur.com/C9xftbD.jpg",
+          "currentSrc": "",
+          "alt": "Slide 1",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 2,
+          "src": "https://i.imgur.com/TauRfiT.jpg",
+          "currentSrc": "",
+          "alt": "Slide 2",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 3,
+          "src": "https://i.imgur.com/SFKlaHV.jpg",
+          "currentSrc": "",
+          "alt": "Slide 3",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 4,
+          "src": "https://i.imgur.com/b1Ruxrm.jpg",
+          "currentSrc": "",
+          "alt": "Slide 4",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 5,
+          "src": "https://i.imgur.com/giTrAnr.jpg",
+          "currentSrc": "",
+          "alt": "Slide 5",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 6,
+          "src": "https://i.imgur.com/SWfGA67.jpg",
+          "currentSrc": "",
+          "alt": "Slide 6",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 7,
+          "src": "https://i.imgur.com/i756vHj.jpg",
+          "currentSrc": "",
+          "alt": "Slide 7",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 8,
+          "src": "https://i.imgur.com/xuPgtcD.jpg",
+          "currentSrc": "",
+          "alt": "Slide 8",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 9,
+          "src": "https://i.imgur.com/1PdJEKU.jpg",
+          "currentSrc": "",
+          "alt": "Slide 9",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 10,
+          "src": "https://i.imgur.com/jmLU6pQ.jpg",
+          "currentSrc": "",
+          "alt": "Slide 10",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 11,
+          "src": "https://i.imgur.com/GWoGGan.jpg",
+          "currentSrc": "",
+          "alt": "Slide 11",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "text": "❮",
+          "aria": "",
+          "cls": "prev",
+          "href": ""
+        },
+        {
+          "tag": "BUTTON",
+          "text": "❯",
+          "aria": "",
+          "cls": "next",
+          "href": ""
+        }
+      ],
+      "dots": 22,
+      "pageNumbers": [
+        "1 / 11"
+      ],
+      "libs": [],
+      "style": {
+        "bodyBg": "rgba(0, 0, 0, 0)",
+        "bodyFont": "Lexend, sans-serif",
+        "containerBg": "rgba(0, 0, 0, 0)",
+        "containerRadius": "20px",
+        "containerWidth": "659px",
+        "containerHeight": "927px",
+        "imgFit": "cover",
+        "imgRadius": "20px"
+      },
+      "viewport": {
+        "w": 659,
+        "h": 927
+      },
+      "bodyText": "❮\n❯\n1 / 11",
+      "screenshot": "01_AUDIT\\evidence\\P002-S01.png",
+      "status": "DETECTED",
+      "sourceLen": 7152,
+      "sourceFile": "02_SOURCE_BACKUP\\P002\\P002-cellphone-store-S01-renders.original.html"
+    },
+    {
+      "frame": "17ec7635804bfc5_80",
+      "frameSize": {
+        "w": 1335,
+        "h": 127,
+        "aspect": 10.512
+      },
+      "isSlideshow": false,
+      "status": "NOT_SLIDESHOW",
+      "docTitle": "Software Logos with Equal Spacing",
+      "imgCount": 4,
+      "bodyText": ""
+    }
+  ],
+  "notes": [
+    "rawHref=/view/hossam-alafandi/freelance/cellphone-store"
+  ],
+  "pageTitle": "Cellphone Store",
+  "slug": "cellphone-store",
+  "embeds": [
+    {
+      "index": 0,
+      "name": "",
+      "title": "",
+      "w": 546,
+      "h": 965,
+      "top": 1253,
+      "src": "",
+      "provider": "other"
+    },
+    {
+      "index": 1,
+      "name": "735a4054af806e35_13",
+      "title": "Custom embed",
+      "w": 659,
+      "h": 927,
+      "top": 2422,
+      "src": "",
+      "provider": "sites_custom_embed"
+    },
+    {
+      "index": 2,
+      "name": "",
+      "title": "",
+      "w": 546,
+      "h": 965,
+      "top": 3636,
+      "src": "",
+      "provider": "other"
+    },
+    {
+      "index": 3,
+      "name": "",
+      "title": "",
+      "w": 546,
+      "h": 965,
+      "top": 3636,
+      "src": "",
+      "provider": "other"
+    },
+    {
+      "index": 4,
+      "name": "",
+      "title": "",
+      "w": 546,
+      "h": 965,
+      "top": 4888,
+      "src": "",
+      "provider": "other"
+    },
+    {
+      "index": 5,
+      "name": "",
+      "title": "",
+      "w": 546,
+      "h": 965,
+      "top": 4888,
+      "src": "",
+      "provider": "other"
+    },
+    {
+      "index": 6,
+      "name": "",
+      "title": "",
+      "w": 546,
+      "h": 982,
+      "top": 6107,
+      "src": "",
+      "provider": "other"
+    },
+    {
+      "index": 7,
+      "name": "",
+      "title": "",
+      "w": 546,
+      "h": 982,
+      "top": 7375,
+      "src": "",
+      "provider": "other"
+    },
+    {
+      "index": 8,
+      "name": "",
+      "title": "",
+      "w": 546,
+      "h": 982,
+      "top": 8677,
+      "src": "",
+      "provider": "other"
+    },
+    {
+      "index": 9,
+      "name": "",
+      "title": "",
+      "w": 546,
+      "h": 982,
+      "top": 8677,
+      "src": "",
+      "provider": "other"
+    },
+    {
+      "index": 10,
+      "name": "",
+      "title": "",
+      "w": 1335,
+      "h": 488,
+      "top": 12320,
+      "src": "https://maps-api-ssl.google.com/maps?hl=en-US&ll=35.133634,36.752241&output=embed&q=35.133655,36.752207&z=21",
+      "provider": "google_maps"
+    },
+    {
+      "index": 11,
+      "name": "17ec7635804bfc5_80",
+      "title": "Custom embed",
+      "w": 1335,
+      "h": 127,
+      "top": 12938,
+      "src": "",
+      "provider": "sites_custom_embed"
+    }
+  ],
+  "mediaSummary": {
+    "other": 9,
+    "sites_custom_embed": 2,
+    "google_maps": 1
+  },
+  "responses": [
+    {
+      "url": "https://i.imgur.com/znQK1ti.png",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/auth_warmup",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/file/d/1ovL7XMngJpywJfE3WJvdEmFm46eRoqVt/preview",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/file/d/1Ph3LY74G6-fofN-rKxum-6blHs7teAs0/preview",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/file/d/1kfVNG-dYMaxSd7EfYHwDeGbbFiW2Qcg5/preview",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/file/d/1HXp6SsM9UnlQwGqEyULyv_wzT_pC5Kdf/preview",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/file/d/1CaUkaP6zcrVCAcYgwDFUY1yN5v1Ifvr6/preview",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/file/d/10_zQwyI_IFcAwQ9Tju1bi0I6K4QmYXZ1/preview",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/file/d/1nDNcTW3VtleX7lC65u9CsYBYCMq5hqgG/preview",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/file/d/1CxPkt2lWGuVKPRq9458KEBfJD6Vmd93r/preview",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/file/d/1pi_CeoxnsNaIzIxf1SJfKVRu0BwePtrz/preview",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/drive-viewer/AKGpihYNljgRj6jCRRpEQOwz2qsM0JPFZC9K64KXBgodXkP9U-3ltWyE4GxGiJcrdLEfG9Agxq2BcYKl9jSIMRDnnO0IcLfMTuGUpPo=s1600-rw-v1",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/znQK1ti.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/eusbdWx.png",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/drive-viewer/AKGpihYUAJMFl1n1bRQBuvYVYT1MCE6YsKOAHmIYF24JHHw6sQnyWUY8VzDJexPUT5sPvF6QBpXoKMWvDLXfz6rV-wBCM-iLhn8VTcI=s1600-rw-v1",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/drive-viewer/AKGpihac374qDzwmv8KuUO_3a7a12JYTxhelhJCG954BzWJ1y0Txc7-VxHnA_LMttQZvuGp7jziHunACh2qwGSZM3vK2DVtuWuvLiiM=s1600-rw-v1",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/drive-viewer/AKGpihZAKARrocqg8Ag8dbGc3CCVESA24XsdbljcTW5hhGrOXmPRymH2Te39kSvOsx27a3gCG-K9J8qQ6ScYcgKtn-JjZfWRt6oVIw=s1600-rw-v1",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/drive-viewer/AKGpihaf-L-y04aypgA3Krep9bKwKpfgKUGw18UG0iwXNTB_Fmj-6_Z7wpBPA84BZ8e89VDu4Vd9C7syke3ZMs9J-TGL1ie8x7T-TNI=s1600-rw-v1",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/drive-viewer/AKGpihaNEAZUCwJq8V5U16Kld8zXNr0ma_GI5hCXK3chMbbXhkzLYWumsCQwMLR09eKb5nIM-GGFzuKeTM7SnQWytbZp0_TLqOkv_zs=s1600-rw-v1",
+      "status": 200
+    }
+  ],
+  "note": "1 slideshow(s) of 2 custom embed(s)"
+}

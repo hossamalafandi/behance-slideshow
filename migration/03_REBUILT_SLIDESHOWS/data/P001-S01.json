@@ -1,0 +1,136 @@
+{
+  "slideshow_id": "P001-S01",
+  "project_id": "P001",
+  "project_title": "AL-RASHED PROJECT",
+  "section_label": "RENDERS",
+  "descriptor": "renders",
+  "source_url": "https://sites.google.com/view/hossam-alafandi/freelance/al-rashed-project",
+  "embed_width": 1335,
+  "embed_height": 805,
+  "aspect": 1.658,
+  "radius_px": "20px",
+  "object_fit": "cover",
+  "fullscreen_required": true,
+  "image_count": 17,
+  "images": [
+    {
+      "order": 1,
+      "src": "https://i.imgur.com/ywuUBKU.jpeg",
+      "w": 3840,
+      "h": 2160,
+      "alt": "Slide 1"
+    },
+    {
+      "order": 2,
+      "src": "https://i.imgur.com/Lw0l4UR.jpeg",
+      "w": 3840,
+      "h": 2160,
+      "alt": "Slide 2"
+    },
+    {
+      "order": 3,
+      "src": "https://i.imgur.com/xJzxFii.jpeg",
+      "w": 3840,
+      "h": 2160,
+      "alt": "Slide 3"
+    },
+    {
+      "order": 4,
+      "src": "https://i.imgur.com/RL8gZTj.jpeg",
+      "w": 3840,
+      "h": 2160,
+      "alt": "Slide 4"
+    },
+    {
+      "order": 5,
+      "src": "https://i.imgur.com/3RgRGON.jpeg",
+      "w": 3840,
+      "h": 2160,
+      "alt": "Slide 5"
+    },
+    {
+      "order": 6,
+      "src": "https://i.imgur.com/CI2Ej0t.jpeg",
+      "w": 3840,
+      "h": 2160,
+      "alt": "Slide 6"
+    },
+    {
+      "order": 7,
+      "src": "https://i.imgur.com/dei3yVA.jpeg",
+      "w": 3840,
+      "h": 2160,
+      "alt": "Slide 7"
+    },
+    {
+      "order": 8,
+      "src": "https://i.imgur.com/jHF9GCZ.jpeg",
+      "w": 3840,
+      "h": 2160,
+      "alt": "Slide 8"
+    },
+    {
+      "order": 9,
+      "src": "https://i.imgur.com/4TmXfzM.jpeg",
+      "w": 3840,
+      "h": 2160,
+      "alt": "Slide 9"
+    },
+    {
+      "order": 10,
+      "src": "https://i.imgur.com/h5R61ib.jpeg",
+      "w": 3840,
+      "h": 2160,
+      "alt": "Slide 10"
+    },
+    {
+      "order": 11,
+      "src": "https://i.imgur.com/L4ohWrb.jpeg",
+      "w": 3840,
+      "h": 2160,
+      "alt": "Slide 11"
+    },
+    {
+      "order": 12,
+      "src": "https://i.imgur.com/i0AkyTA.jpeg",
+      "w": 3840,
+      "h": 2160,
+      "alt": "Slide 12"
+    },
+    {
+      "order": 13,
+      "src": "https://i.imgur.com/wLaKx3a.jpeg",
+      "w": 3840,
+      "h": 2160,
+      "alt": "Slide 13"
+    },
+    {
+      "order": 14,
+      "src": "https://i.imgur.com/Sl4bfoI.jpeg",
+      "w": 3840,
+      "h": 2160,
+      "alt": "Slide 14"
+    },
+    {
+      "order": 15,
+      "src": "https://i.imgur.com/Gq92nle.jpeg",
+      "w": 3840,
+      "h": 2160,
+      "alt": "Slide 15"
+    },
+    {
+      "order": 16,
+      "src": "https://i.imgur.com/u1XPsAL.jpeg",
+      "w": 3072,
+      "h": 1728,
+      "alt": "Slide 16"
+    },
+    {
+      "order": 17,
+      "src": "https://i.imgur.com/qI1GMsI.jpeg",
+      "w": 2688,
+      "h": 1512,
+      "alt": "Slide 17"
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "pilot": "P001-S01",
+  "generatedAt": "2026-11-18T02:04:33.824Z",
+  "browser": "Chrome 157.0.8103.51",
+  "viewport": "1335 x 805",
+  "imageCount": 17,
+  "embedHeight": 805,
+  "checks": 37,
+  "passed": 37,
+  "failed": 0,
+  "failures": [],
+  "fullscreen": "native tested; denial and missing-API fallbacks tested",
+  "images": "no imgur request was made; browser image routes were aborted; the audited URLs were verified from the DOM and static files only",
+  "imageRequestsBlocked": 136,
+  "results": [
+    {
+      "name": "Router: canonical request returns HTTP 200 HTML",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: canonical response contains exactly the 17 audited image URLs in order",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: canonical response contains no other slideshow ID or image URL",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: canonical response contains no gallery, catalog, index, or links",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: rejects missing slide",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: rejects empty slide",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: rejects unknown slide",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: rejects repeated same slide",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: rejects repeated different slide",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: rejects comma-separated list",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: rejects wildcard value",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: rejects wrong parameter name",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: normalizes lowercase and padded IDs to the same slideshow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: decodes an encoded slide key and still requires exactly one",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: exposes no other route or file listing",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Server: repeated requests are byte-identical (stateless rendering)",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Server: concurrent valid and invalid requests do not interfere",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: renders 17 slides, 17 dots, counter 1 / 17, and exact URLs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: embed has no scrollbars at 1335 x 805",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: next advances one slide, dot, and transform",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: dots jump directly to a slide",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: previous and wrap-around navigation match the original behavior",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: hover reveals arrows, counter, and shadows",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: native fullscreen targets only this container and keeps dots inside",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: native fullscreen exit restores normal layout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: no uncaught JavaScript errors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fallback: denied native request activates theater mode locally",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fallback: second click exits theater mode and clears the state",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fallback: missing Fullscreen API activates theater mode without errors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Isolation: each iframe renders its own independent first slide",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Isolation: navigating one iframe does not change the other",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Isolation: hover state does not leak between iframes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Isolation: fullscreen in one iframe leaves the other unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Isolation: reloading one iframe does not reset the other",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Isolation: neither iframe writes navigation state to storage",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Isolation: no uncaught errors in the two-iframe page",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Isolation: two browser contexts keep independent slides simultaneously",
+      "passed": true,
+      "detail": null
+    }
+  ]
+}

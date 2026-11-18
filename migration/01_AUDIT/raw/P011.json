@@ -1,0 +1,378 @@
+{
+  "projectID": "P011",
+  "order": 11,
+  "url": "https://sites.google.com/view/hossam-alafandi/freelance/oa-ap-family-majlis",
+  "status": "SCANNED",
+  "slideshows": [
+    {
+      "slideshowID": "P011-S01",
+      "frame": "426e3550a9d0d12f_20",
+      "frameSize": {
+        "w": 1335,
+        "h": 1553,
+        "aspect": 0.86
+      },
+      "isSlideshow": true,
+      "docTitle": "Image Slideshow with Side Shadows on Hover",
+      "imgCount": 20,
+      "images": [
+        {
+          "n": 1,
+          "src": "https://i.imgur.com/5kKgJsG.jpeg",
+          "currentSrc": "https://i.imgur.com/5kKgJsG.jpeg",
+          "alt": "Slide 1",
+          "nw": 2700,
+          "nh": 3000,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 2,
+          "src": "https://i.imgur.com/XfzlMzu.jpeg",
+          "currentSrc": "https://i.imgur.com/XfzlMzu.jpeg",
+          "alt": "Slide 2",
+          "nw": 2700,
+          "nh": 3000,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 3,
+          "src": "https://i.imgur.com/T0yvRFF.jpeg",
+          "currentSrc": "https://i.imgur.com/T0yvRFF.jpeg",
+          "alt": "Slide 3",
+          "nw": 2700,
+          "nh": 3000,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 4,
+          "src": "https://i.imgur.com/wS3lCrZ.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 4",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 5,
+          "src": "https://i.imgur.com/5to86dE.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 5",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 6,
+          "src": "https://i.imgur.com/AktYEfe.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 6",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 7,
+          "src": "https://i.imgur.com/G7rEwzU.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 7",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 8,
+          "src": "https://i.imgur.com/pJl6cla.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 8",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 9,
+          "src": "https://i.imgur.com/QWlyMqU.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 9",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 10,
+          "src": "https://i.imgur.com/MJvGcqz.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 10",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 11,
+          "src": "https://i.imgur.com/INvrp97.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 11",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 12,
+          "src": "https://i.imgur.com/TqHaaOI.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 12",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 13,
+          "src": "https://i.imgur.com/D38KKhE.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 13",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 14,
+          "src": "https://i.imgur.com/nkKy7VF.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 14",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 15,
+          "src": "https://i.imgur.com/RrjvkMM.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 15",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 16,
+          "src": "https://i.imgur.com/MhjZ86O.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 16",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 17,
+          "src": "https://i.imgur.com/j7p4nMx.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 17",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 18,
+          "src": "https://i.imgur.com/v42FKlh.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 18",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 19,
+          "src": "https://i.imgur.com/KjfOaAd.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 19",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 20,
+          "src": "https://i.imgur.com/bd4q8ve.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 20",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "text": "❮",
+          "aria": "",
+          "cls": "prev",
+          "href": ""
+        },
+        {
+          "tag": "BUTTON",
+          "text": "❯",
+          "aria": "",
+          "cls": "next",
+          "href": ""
+        }
+      ],
+      "dots": 0,
+      "pageNumbers": [],
+      "libs": [],
+      "style": {
+        "bodyBg": "rgba(0, 0, 0, 0)",
+        "bodyFont": "Lexend, sans-serif",
+        "containerBg": "rgba(0, 0, 0, 0)",
+        "containerRadius": "20px",
+        "containerWidth": "1335px",
+        "containerHeight": "1553px",
+        "imgFit": "cover",
+        "imgRadius": "20px"
+      },
+      "viewport": {
+        "w": 1335,
+        "h": 1553
+      },
+      "bodyText": "❮\n❯",
+      "screenshot": "01_AUDIT\\evidence\\P011-S01.png",
+      "status": "DETECTED",
+      "sourceLen": 6195,
+      "sourceFile": "02_SOURCE_BACKUP\\P011\\P011-oa-ap-family-majlis-S01-renders.original.html"
+    },
+    {
+      "frame": "426e3550a9d0d12f_26",
+      "frameSize": {
+        "w": 1335,
+        "h": 127,
+        "aspect": 10.512
+      },
+      "isSlideshow": false,
+      "status": "NOT_SLIDESHOW",
+      "docTitle": "Software Logos with Equal Spacing",
+      "imgCount": 4,
+      "bodyText": ""
+    }
+  ],
+  "notes": [
+    "rawHref=/view/hossam-alafandi/freelance/oa-ap-family-majlis"
+  ],
+  "pageTitle": "OA-AP-FAMILY MAJLIS",
+  "slug": "oa-ap-family-majlis",
+  "embeds": [
+    {
+      "index": 0,
+      "name": "426e3550a9d0d12f_20",
+      "title": "Custom embed",
+      "w": 1335,
+      "h": 1553,
+      "top": 784,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    },
+    {
+      "index": 1,
+      "name": "426e3550a9d0d12f_26",
+      "title": "Custom embed",
+      "w": 1335,
+      "h": 127,
+      "top": 2450,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    }
+  ],
+  "mediaSummary": {
+    "sites_custom_embed": 2
+  },
+  "responses": [
+    {
+      "url": "https://drive.google.com/auth_warmup",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/znQK1ti.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/eusbdWx.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/X4WSOcP.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/6sW1ghq.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/XfzlMzu.jpeg",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/T0yvRFF.jpeg",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/5kKgJsG.jpeg",
+      "status": 200
+    }
+  ],
+  "note": "1 slideshow(s) of 2 custom embed(s)"
+}

@@ -1,0 +1,288 @@
+{
+  "projectID": "P021",
+  "order": 21,
+  "url": "https://sites.google.com/view/hossam-alafandi/freelance/villa-ground-floor-uae",
+  "status": "SCANNED",
+  "slideshows": [
+    {
+      "slideshowID": "P021-S01",
+      "frame": "6f7e2994cad3fc7d_166",
+      "frameSize": {
+        "w": 1335,
+        "h": 802,
+        "aspect": 1.665
+      },
+      "isSlideshow": true,
+      "docTitle": "Image Slideshow with Side Shadows on Hover",
+      "imgCount": 11,
+      "images": [
+        {
+          "n": 1,
+          "src": "https://i.imgur.com/T4raJfF.jpeg",
+          "currentSrc": "https://i.imgur.com/T4raJfF.jpeg",
+          "alt": "Slide 1",
+          "nw": 3120,
+          "nh": 1755,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 2,
+          "src": "https://i.imgur.com/Ur7kCjx.jpeg",
+          "currentSrc": "https://i.imgur.com/Ur7kCjx.jpeg",
+          "alt": "Slide 2",
+          "nw": 3120,
+          "nh": 1755,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 3,
+          "src": "https://i.imgur.com/Hk80bgw.jpeg",
+          "currentSrc": "https://i.imgur.com/Hk80bgw.jpeg",
+          "alt": "Slide 3",
+          "nw": 3120,
+          "nh": 1755,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 4,
+          "src": "https://i.imgur.com/r518MBP.jpeg",
+          "currentSrc": "https://i.imgur.com/r518MBP.jpeg",
+          "alt": "Slide 4",
+          "nw": 3120,
+          "nh": 1755,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 5,
+          "src": "https://i.imgur.com/KFaUid7.jpeg",
+          "currentSrc": "https://i.imgur.com/KFaUid7.jpeg",
+          "alt": "Slide 5",
+          "nw": 3120,
+          "nh": 1755,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 6,
+          "src": "https://i.imgur.com/y2gPmCf.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 6",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 7,
+          "src": "https://i.imgur.com/FVkUBlc.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 7",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 8,
+          "src": "https://i.imgur.com/PN0UcLK.jpeg",
+          "currentSrc": "https://i.imgur.com/PN0UcLK.jpeg",
+          "alt": "Slide 8",
+          "nw": 3120,
+          "nh": 1755,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 9,
+          "src": "https://i.imgur.com/WPG01iz.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 9",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 10,
+          "src": "https://i.imgur.com/fP32Y63.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 10",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 11,
+          "src": "https://i.imgur.com/LbQ260U.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 11",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "text": "❮",
+          "aria": "",
+          "cls": "prev",
+          "href": ""
+        },
+        {
+          "tag": "BUTTON",
+          "text": "❯",
+          "aria": "",
+          "cls": "next",
+          "href": ""
+        }
+      ],
+      "dots": 11,
+      "pageNumbers": [
+        "1 / 11"
+      ],
+      "libs": [],
+      "style": {
+        "bodyBg": "rgba(0, 0, 0, 0)",
+        "bodyFont": "Lexend, sans-serif",
+        "containerBg": "rgba(0, 0, 0, 0)",
+        "containerRadius": "20px",
+        "containerWidth": "1335px",
+        "containerHeight": "802px",
+        "imgFit": "cover",
+        "imgRadius": "20px"
+      },
+      "viewport": {
+        "w": 1335,
+        "h": 802
+      },
+      "bodyText": "❮\n❯\n1 / 11",
+      "screenshot": "01_AUDIT\\evidence\\P021-S01.png",
+      "status": "DETECTED",
+      "sourceLen": 6890,
+      "sourceFile": "02_SOURCE_BACKUP\\P021\\P021-villa-ground-floor-uae-S01-renders.original.html"
+    },
+    {
+      "frame": "6f7e2994cad3fc7d_172",
+      "frameSize": {
+        "w": 884,
+        "h": 127,
+        "aspect": 6.961
+      },
+      "isSlideshow": false,
+      "status": "NOT_SLIDESHOW",
+      "docTitle": "Software Logos with Equal Spacing",
+      "imgCount": 5,
+      "bodyText": ""
+    }
+  ],
+  "notes": [
+    "rawHref=/view/hossam-alafandi/freelance/villa-ground-floor-uae"
+  ],
+  "pageTitle": "VILLA GROUND FLOOR - UAE",
+  "slug": "villa-ground-floor-uae",
+  "embeds": [
+    {
+      "index": 0,
+      "name": "6f7e2994cad3fc7d_166",
+      "title": "Custom embed",
+      "w": 1335,
+      "h": 802,
+      "top": 883,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    },
+    {
+      "index": 1,
+      "name": "6f7e2994cad3fc7d_172",
+      "title": "Custom embed",
+      "w": 884,
+      "h": 127,
+      "top": 1798,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    }
+  ],
+  "mediaSummary": {
+    "sites_custom_embed": 2
+  },
+  "responses": [
+    {
+      "url": "https://drive.google.com/auth_warmup",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/znQK1ti.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/STZTRZr.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/eusbdWx.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/X4WSOcP.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/6sW1ghq.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/PN0UcLK.jpeg",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/T4raJfF.jpeg",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/Ur7kCjx.jpeg",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/r518MBP.jpeg",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/Hk80bgw.jpeg",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/KFaUid7.jpeg",
+      "status": 200
+    }
+  ],
+  "note": "1 slideshow(s) of 2 custom embed(s)"
+}

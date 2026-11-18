@@ -1,0 +1,247 @@
+{
+  "projectID": "P008",
+  "order": 8,
+  "url": "https://sites.google.com/view/hossam-alafandi/freelance/girl-bedroom",
+  "status": "SCANNED",
+  "slideshows": [
+    {
+      "slideshowID": "P008-S01",
+      "frame": "2212bee266d3458b_37",
+      "frameSize": {
+        "w": 1335,
+        "h": 1570,
+        "aspect": 0.85
+      },
+      "isSlideshow": true,
+      "docTitle": "Image Slideshow with Side Shadows on Hover",
+      "imgCount": 7,
+      "images": [
+        {
+          "n": 1,
+          "src": "https://i.imgur.com/SVKDIFQ.jpeg",
+          "currentSrc": "https://i.imgur.com/SVKDIFQ.jpeg",
+          "alt": "Slide 1",
+          "nw": 2700,
+          "nh": 3000,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 2,
+          "src": "https://i.imgur.com/UZeAuOJ.jpeg",
+          "currentSrc": "https://i.imgur.com/UZeAuOJ.jpeg",
+          "alt": "Slide 2",
+          "nw": 2700,
+          "nh": 3000,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 3,
+          "src": "https://i.imgur.com/QA5EtYG.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 3",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 4,
+          "src": "https://i.imgur.com/7Lsop5Z.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 4",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 5,
+          "src": "https://i.imgur.com/4a8yCGH.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 5",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 6,
+          "src": "https://i.imgur.com/FXO8p8A.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 5",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 7,
+          "src": "https://i.imgur.com/WdHjKwD.jpeg",
+          "currentSrc": "https://i.imgur.com/WdHjKwD.jpeg",
+          "alt": "Slide 5",
+          "nw": 2700,
+          "nh": 3000,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "text": "❮",
+          "aria": "",
+          "cls": "prev",
+          "href": ""
+        },
+        {
+          "tag": "BUTTON",
+          "text": "❯",
+          "aria": "",
+          "cls": "next",
+          "href": ""
+        }
+      ],
+      "dots": 7,
+      "pageNumbers": [
+        "1 / 7"
+      ],
+      "libs": [],
+      "style": {
+        "bodyBg": "rgba(0, 0, 0, 0)",
+        "bodyFont": "Lexend, sans-serif",
+        "containerBg": "rgba(0, 0, 0, 0)",
+        "containerRadius": "20px",
+        "containerWidth": "1335px",
+        "containerHeight": "1570px",
+        "imgFit": "cover",
+        "imgRadius": "20px"
+      },
+      "viewport": {
+        "w": 1335,
+        "h": 1570
+      },
+      "bodyText": "❮\n❯\n1 / 7",
+      "screenshot": "01_AUDIT\\evidence\\P008-S01.png",
+      "status": "DETECTED",
+      "sourceLen": 6370,
+      "sourceFile": "02_SOURCE_BACKUP\\P008\\P008-girl-bedroom-S01-renders.original.html"
+    },
+    {
+      "frame": "2212bee266d3458b_62",
+      "frameSize": {
+        "w": 884,
+        "h": 127,
+        "aspect": 6.961
+      },
+      "isSlideshow": false,
+      "status": "NOT_SLIDESHOW",
+      "docTitle": "Software Logos with Equal Spacing",
+      "imgCount": 5,
+      "bodyText": ""
+    }
+  ],
+  "notes": [
+    "rawHref=/view/hossam-alafandi/freelance/girl-bedroom"
+  ],
+  "pageTitle": "GIRL BEDROOM",
+  "slug": "girl-bedroom",
+  "embeds": [
+    {
+      "index": 0,
+      "name": "2212bee266d3458b_37",
+      "title": "Custom embed",
+      "w": 1335,
+      "h": 1570,
+      "top": 868,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    },
+    {
+      "index": 1,
+      "name": "",
+      "title": "",
+      "w": 1335,
+      "h": 763,
+      "top": 2563,
+      "src": "https://drive.google.com/file/d/1BlC_QMyfFV3s3ooPMNTRkkd8uJZWz4xv/preview",
+      "provider": "google_drive_file"
+    },
+    {
+      "index": 2,
+      "name": "2212bee266d3458b_62",
+      "title": "Custom embed",
+      "w": 884,
+      "h": 127,
+      "top": 5028,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    }
+  ],
+  "mediaSummary": {
+    "sites_custom_embed": 2,
+    "google_drive_file": 1
+  },
+  "responses": [
+    {
+      "url": "https://drive.google.com/auth_warmup",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/file/d/1BlC_QMyfFV3s3ooPMNTRkkd8uJZWz4xv/preview",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/znQK1ti.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/STZTRZr.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/eusbdWx.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/X4WSOcP.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/6sW1ghq.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/WdHjKwD.jpeg",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/drive-viewer/AKGpihbvgF_VrbVOVIYwhZFqV1j2N2qEfojpyVgOyPtFX5Mk0LXTXOLFbI9S1HHm6eRq5nGBqQ-RrVU0He7T1YB2T5DDocS5wJwyIQ=s1600-rw-v1",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/UZeAuOJ.jpeg",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/SVKDIFQ.jpeg",
+      "status": 200
+    }
+  ],
+  "note": "1 slideshow(s) of 2 custom embed(s)"
+}

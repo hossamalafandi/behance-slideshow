@@ -1,0 +1,328 @@
+{
+  "projectID": "P029",
+  "order": 29,
+  "url": "https://sites.google.com/view/hossam-alafandi/freelance/guests-room-om-asel",
+  "status": "SCANNED",
+  "slideshows": [
+    {
+      "slideshowID": "P029-S01",
+      "frame": "41d4ef4504f5aab3_20",
+      "frameSize": {
+        "w": 659,
+        "h": 707,
+        "aspect": 0.932
+      },
+      "isSlideshow": true,
+      "docTitle": "Image Slideshow with Side Shadows on Hover",
+      "imgCount": 5,
+      "images": [
+        {
+          "n": 1,
+          "src": "https://i.imgur.com/3zi6kUa.jpeg",
+          "currentSrc": "https://i.imgur.com/3zi6kUa.jpeg",
+          "alt": "Slide 1",
+          "nw": 1030,
+          "nh": 1030,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 2,
+          "src": "https://i.imgur.com/9d8MVIc.jpeg",
+          "currentSrc": "https://i.imgur.com/9d8MVIc.jpeg",
+          "alt": "Slide 2",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 3,
+          "src": "https://i.imgur.com/GptsJnM.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 3",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 4,
+          "src": "https://i.imgur.com/kxNFIoV.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 4",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 5,
+          "src": "https://i.imgur.com/8VggTUB.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 5",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "text": "❮",
+          "aria": "",
+          "cls": "prev",
+          "href": ""
+        },
+        {
+          "tag": "BUTTON",
+          "text": "❯",
+          "aria": "",
+          "cls": "next",
+          "href": ""
+        }
+      ],
+      "dots": 5,
+      "pageNumbers": [
+        "1 / 5"
+      ],
+      "libs": [],
+      "style": {
+        "bodyBg": "rgba(0, 0, 0, 0)",
+        "bodyFont": "Lexend, sans-serif",
+        "containerBg": "rgba(0, 0, 0, 0)",
+        "containerRadius": "20px",
+        "containerWidth": "659px",
+        "containerHeight": "707px",
+        "imgFit": "cover",
+        "imgRadius": "20px"
+      },
+      "viewport": {
+        "w": 659,
+        "h": 707
+      },
+      "bodyText": "❮\n❯\n1 / 5",
+      "screenshot": "01_AUDIT\\evidence\\P029-S01.png",
+      "status": "DETECTED",
+      "sourceLen": 6112,
+      "sourceFile": "02_SOURCE_BACKUP\\P029\\P029-guests-room-om-asel-S01-renders-a.original.html"
+    },
+    {
+      "slideshowID": "P029-S02",
+      "frame": "41d4ef4504f5aab3_32",
+      "frameSize": {
+        "w": 659,
+        "h": 707,
+        "aspect": 0.932
+      },
+      "isSlideshow": true,
+      "docTitle": "Image Slideshow with Side Shadows on Hover",
+      "imgCount": 5,
+      "images": [
+        {
+          "n": 1,
+          "src": "https://i.imgur.com/nTVs7BE.jpeg",
+          "currentSrc": "https://i.imgur.com/nTVs7BE.jpeg",
+          "alt": "Slide 1",
+          "nw": 1030,
+          "nh": 1030,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 2,
+          "src": "https://i.imgur.com/8vqQhK9.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 2",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 3,
+          "src": "https://i.imgur.com/wkglmZB.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 3",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 4,
+          "src": "https://i.imgur.com/fHX7FAY.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 4",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 5,
+          "src": "https://i.imgur.com/C1f4GXz.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 5",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "text": "❮",
+          "aria": "",
+          "cls": "prev",
+          "href": ""
+        },
+        {
+          "tag": "BUTTON",
+          "text": "❯",
+          "aria": "",
+          "cls": "next",
+          "href": ""
+        }
+      ],
+      "dots": 5,
+      "pageNumbers": [
+        "1 / 5"
+      ],
+      "libs": [],
+      "style": {
+        "bodyBg": "rgba(0, 0, 0, 0)",
+        "bodyFont": "Lexend, sans-serif",
+        "containerBg": "rgba(0, 0, 0, 0)",
+        "containerRadius": "20px",
+        "containerWidth": "659px",
+        "containerHeight": "707px",
+        "imgFit": "cover",
+        "imgRadius": "20px"
+      },
+      "viewport": {
+        "w": 659,
+        "h": 707
+      },
+      "bodyText": "❮\n❯\n1 / 5",
+      "screenshot": "01_AUDIT\\evidence\\P029-S02.png",
+      "status": "DETECTED",
+      "sourceLen": 6112,
+      "sourceFile": "02_SOURCE_BACKUP\\P029\\P029-guests-room-om-asel-S02-renders-b.original.html"
+    },
+    {
+      "frame": "41d4ef4504f5aab3_26",
+      "frameSize": {
+        "w": 884,
+        "h": 127,
+        "aspect": 6.961
+      },
+      "isSlideshow": false,
+      "status": "NOT_SLIDESHOW",
+      "docTitle": "Software Logos with Equal Spacing",
+      "imgCount": 5,
+      "bodyText": ""
+    }
+  ],
+  "notes": [
+    "rawHref=/view/hossam-alafandi/freelance/guests-room-om-asel"
+  ],
+  "pageTitle": "GUESTS ROOM - OM ASEL",
+  "slug": "guests-room-om-asel",
+  "embeds": [
+    {
+      "index": 0,
+      "name": "41d4ef4504f5aab3_20",
+      "title": "Custom embed",
+      "w": 659,
+      "h": 707,
+      "top": 854,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    },
+    {
+      "index": 1,
+      "name": "41d4ef4504f5aab3_32",
+      "title": "Custom embed",
+      "w": 659,
+      "h": 707,
+      "top": 851,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    },
+    {
+      "index": 2,
+      "name": "41d4ef4504f5aab3_26",
+      "title": "Custom embed",
+      "w": 884,
+      "h": 127,
+      "top": 1674,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    }
+  ],
+  "mediaSummary": {
+    "sites_custom_embed": 3
+  },
+  "responses": [
+    {
+      "url": "https://drive.google.com/auth_warmup",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/znQK1ti.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/STZTRZr.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/eusbdWx.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/X4WSOcP.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/6sW1ghq.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/3zi6kUa.jpeg",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/9d8MVIc.jpeg",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/nTVs7BE.jpeg",
+      "status": 200
+    }
+  ],
+  "note": "2 slideshow(s) of 3 custom embed(s)"
+}

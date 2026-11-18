@@ -1,0 +1,340 @@
+{
+  "projectID": "P023",
+  "order": 23,
+  "url": "https://sites.google.com/view/hossam-alafandi/freelance/men-majlis-eygpt",
+  "status": "SCANNED",
+  "slideshows": [
+    {
+      "slideshowID": "P023-S01",
+      "frame": "32ce3692aa102ea2_94",
+      "frameSize": {
+        "w": 997,
+        "h": 600,
+        "aspect": 1.662
+      },
+      "isSlideshow": true,
+      "docTitle": "Image Slideshow with Side Shadows on Hover",
+      "imgCount": 8,
+      "images": [
+        {
+          "n": 1,
+          "src": "https://i.imgur.com/v55fHkT.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 1",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 2,
+          "src": "https://i.imgur.com/N45xxYJ.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 2",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 3,
+          "src": "https://i.imgur.com/qNQL6so.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 3",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 4,
+          "src": "https://i.imgur.com/Zl4CRgQ.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 4",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 5,
+          "src": "https://i.imgur.com/XqfPn1u.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 5",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 6,
+          "src": "https://i.imgur.com/BZbVE4W.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 6",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 7,
+          "src": "https://i.imgur.com/R32xkDg.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 7",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 8,
+          "src": "https://i.imgur.com/iLLx5Kc.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 8",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "text": "❮",
+          "aria": "",
+          "cls": "prev",
+          "href": ""
+        },
+        {
+          "tag": "BUTTON",
+          "text": "❯",
+          "aria": "",
+          "cls": "next",
+          "href": ""
+        }
+      ],
+      "dots": 8,
+      "pageNumbers": [
+        "1 / 8"
+      ],
+      "libs": [],
+      "style": {
+        "bodyBg": "rgba(0, 0, 0, 0)",
+        "bodyFont": "Lexend, sans-serif",
+        "containerBg": "rgba(0, 0, 0, 0)",
+        "containerRadius": "20px",
+        "containerWidth": "997px",
+        "containerHeight": "600px",
+        "imgFit": "cover",
+        "imgRadius": "20px"
+      },
+      "viewport": {
+        "w": 997,
+        "h": 600
+      },
+      "bodyText": "❮\n❯\n1 / 8",
+      "screenshot": "01_AUDIT\\evidence\\P023-S01.png",
+      "status": "DETECTED",
+      "sourceLen": 6499,
+      "sourceFile": "02_SOURCE_BACKUP\\P023\\P023-men-majlis-eygpt-S01-renders-a.original.html"
+    },
+    {
+      "slideshowID": "P023-S02",
+      "frame": "32ce3692aa102ea2_112",
+      "frameSize": {
+        "w": 321,
+        "h": 597,
+        "aspect": 0.538
+      },
+      "isSlideshow": true,
+      "docTitle": "Image Slideshow with Side Shadows on Hover",
+      "imgCount": 4,
+      "images": [
+        {
+          "n": 1,
+          "src": "https://i.imgur.com/8pxKvom.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 1",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 2,
+          "src": "https://i.imgur.com/G10q0Ox.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 2",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 3,
+          "src": "https://i.imgur.com/ZjfGJE8.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 3",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 4,
+          "src": "https://i.imgur.com/86ft0JR.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 4",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "text": "❮",
+          "aria": "",
+          "cls": "prev",
+          "href": ""
+        },
+        {
+          "tag": "BUTTON",
+          "text": "❯",
+          "aria": "",
+          "cls": "next",
+          "href": ""
+        }
+      ],
+      "dots": 4,
+      "pageNumbers": [
+        "1 / 4"
+      ],
+      "libs": [],
+      "style": {
+        "bodyBg": "rgba(0, 0, 0, 0)",
+        "bodyFont": "Lexend, sans-serif",
+        "containerBg": "rgba(0, 0, 0, 0)",
+        "containerRadius": "20px",
+        "containerWidth": "321px",
+        "containerHeight": "597px",
+        "imgFit": "cover",
+        "imgRadius": "20px"
+      },
+      "viewport": {
+        "w": 321,
+        "h": 597
+      },
+      "bodyText": "❮\n❯\n1 / 4",
+      "screenshot": "01_AUDIT\\evidence\\P023-S02.png",
+      "status": "DETECTED",
+      "sourceLen": 5983,
+      "sourceFile": "02_SOURCE_BACKUP\\P023\\P023-men-majlis-eygpt-S02-renders-b.original.html"
+    },
+    {
+      "frame": "32ce3692aa102ea2_106",
+      "frameSize": {
+        "w": 884,
+        "h": 127,
+        "aspect": 6.961
+      },
+      "isSlideshow": false,
+      "status": "NOT_SLIDESHOW",
+      "docTitle": "Software Logos with Equal Spacing",
+      "imgCount": 5,
+      "bodyText": ""
+    }
+  ],
+  "notes": [
+    "rawHref=/view/hossam-alafandi/freelance/men-majlis-eygpt"
+  ],
+  "pageTitle": "MEN MAJLIS - EYGPT",
+  "slug": "men-majlis-eygpt",
+  "embeds": [
+    {
+      "index": 0,
+      "name": "32ce3692aa102ea2_94",
+      "title": "Custom embed",
+      "w": 997,
+      "h": 600,
+      "top": 883,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    },
+    {
+      "index": 1,
+      "name": "32ce3692aa102ea2_112",
+      "title": "Custom embed",
+      "w": 321,
+      "h": 597,
+      "top": 883,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    },
+    {
+      "index": 2,
+      "name": "32ce3692aa102ea2_106",
+      "title": "Custom embed",
+      "w": 884,
+      "h": 127,
+      "top": 1596,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    }
+  ],
+  "mediaSummary": {
+    "sites_custom_embed": 3
+  },
+  "responses": [
+    {
+      "url": "https://drive.google.com/auth_warmup",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/znQK1ti.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/STZTRZr.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/eusbdWx.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/X4WSOcP.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/6sW1ghq.png",
+      "status": 200
+    }
+  ],
+  "note": "2 slideshow(s) of 3 custom embed(s)"
+}

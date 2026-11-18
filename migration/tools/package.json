@@ -1,0 +1,14 @@
+{
+  "name": "behance-slideshow-migration-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local validation and pilot test tools. No runtime dependency for the deployed Apps Script.",
+  "scripts": {
+    "validate": "node validate.js",
+    "serve": "node serve.js",
+    "test:pilot": "node test-pilot.js"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.65.1"
+  }
+}

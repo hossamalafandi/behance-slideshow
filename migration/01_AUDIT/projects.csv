@@ -1,0 +1,39 @@
+project_id,order,title,slug,url,status,slideshow_count,custom_embeds,total_iframes,notes
+P001,1,AL-RASHED PROJECT,al-rashed-project,https://sites.google.com/view/hossam-alafandi/freelance/al-rashed-project,VERIFIED,1,2,3,
+P002,2,Cellphone Store,cellphone-store,https://sites.google.com/view/hossam-alafandi/freelance/cellphone-store,VERIFIED,1,2,12,"Slideshow extracted; the 9 Drive iframes are MOV video previews (HTTP 200) that stayed blank in headless embedded capture, not slideshows."
+P003,3,DK-Apartment,dk-apartment,https://sites.google.com/view/hossam-alafandi/freelance/dk-apartment,VERIFIED,1,2,3,
+P004,4,AB-Apartment,ab-apartment,https://sites.google.com/view/hossam-alafandi/freelance/ab-apartment,VERIFIED,7,8,8,
+P005,5,GF-KIDS BEDROOM,gf-kids-bedroom,https://sites.google.com/view/hossam-alafandi/freelance/gf-kids-bedroom,VERIFIED,1,2,2,
+P006,6,AP-GF-RECIPTION,ap-gf-reciption,https://sites.google.com/view/hossam-alafandi/freelance/ap-gf-reciption,VERIFIED,1,2,2,
+P007,7,AP-GF-FAMILY MAJLIS,ap-gf-family-majlis,https://sites.google.com/view/hossam-alafandi/freelance/ap-gf-family-majlis,VERIFIED,1,2,2,
+P008,8,GIRL BEDROOM,girl-bedroom,https://sites.google.com/view/hossam-alafandi/freelance/girl-bedroom,VERIFIED,1,2,3,
+P009,9,MASTER BEDROOM,master-bedroom,https://sites.google.com/view/hossam-alafandi/freelance/master-bedroom,VERIFIED,1,2,2,
+P010,10,BOY BEDROOM,boy-bedroom,https://sites.google.com/view/hossam-alafandi/freelance/boy-bedroom,VERIFIED,1,2,2,
+P011,11,OA-AP-FAMILY MAJLIS,oa-ap-family-majlis,https://sites.google.com/view/hossam-alafandi/freelance/oa-ap-family-majlis,PARTIAL,1,2,2,See NEEDS_REVIEW slideshow(s): P011-S01.
+P012,12,GF-DINNING ROOM,gf-dinning-room,https://sites.google.com/view/hossam-alafandi/freelance/gf-dinning-room,VERIFIED,1,2,2,
+P013,13,OA-AP-BOYS BEDROOM,oa-ap-boys-bedroom,https://sites.google.com/view/hossam-alafandi/freelance/oa-ap-boys-bedroom,VERIFIED,1,2,2,
+P014,14,AP-FF-RECIPTION,ap-ff-reciption,https://sites.google.com/view/hossam-alafandi/freelance/ap-ff-reciption,VERIFIED,1,2,2,
+P015,15,OA_MASTER_BEDROOM,oa_master_bedroom,https://sites.google.com/view/hossam-alafandi/freelance/oa_master_bedroom,VERIFIED,1,2,2,
+P016,16,AP-GF-LANDSCAPE,ap-gf-landscape,https://sites.google.com/view/hossam-alafandi/freelance/ap-gf-landscape,VERIFIED,1,2,2,
+P017,17,VILLA LOBBY - EYGPT,villa-lobby-eygpt,https://sites.google.com/view/hossam-alafandi/freelance/villa-lobby-eygpt,VERIFIED,1,2,2,
+P018,18,GF-STAIRS,gf-stairs,https://sites.google.com/view/hossam-alafandi/freelance/gf-stairs,VERIFIED,1,2,2,
+P019,19,GF-GIRL BEDROOM,gf-girl-bedroom,https://sites.google.com/view/hossam-alafandi/freelance/gf-girl-bedroom,VERIFIED,1,2,2,
+P020,20,AV_3rd_Floor_Family_Majlis,av_3rd_floor_family_majlis,https://sites.google.com/view/hossam-alafandi/freelance/av_3rd_floor_family_majlis,VERIFIED,1,2,2,
+P021,21,VILLA GROUND FLOOR - UAE,villa-ground-floor-uae,https://sites.google.com/view/hossam-alafandi/freelance/villa-ground-floor-uae,VERIFIED,1,2,2,
+P022,22,OA-AP-GIRL BEDROOM,oa-ap-girl-bedroom,https://sites.google.com/view/hossam-alafandi/freelance/oa-ap-girl-bedroom,VERIFIED,1,2,2,
+P023,23,MEN MAJLIS - EYGPT,men-majlis-eygpt,https://sites.google.com/view/hossam-alafandi/freelance/men-majlis-eygpt,VERIFIED,2,3,3,
+P024,24,,,http://www.google.com/url?q=http%3A%2F%2Fww&sa=D&sntz=1&usg=AOvVaw3htc4VAJDj21PIClImVl5y,BLOCKED,0,0,0,Link on Freelance page is a malformed Google redirect (http://ww); page unreachable.
+P025,25,VILLA ENTRANCE - EYGPT,villa-entrance-eygpt,https://sites.google.com/view/hossam-alafandi/freelance/villa-entrance-eygpt,VERIFIED,1,2,2,
+P026,26,KITCHEN,kitchen,https://sites.google.com/view/hossam-alafandi/freelance/kitchen,VERIFIED,2,3,3,"P026-S02 confirmed as an intentional side-by-side companion slideshow; preserve both independently."
+P027,27,FAMILY NIGHT MAJLIS - EYGPT,family-night-majlis-eygpt,https://sites.google.com/view/hossam-alafandi/freelance/family-night-majlis-eygpt,VERIFIED,2,3,3,
+P028,28,AP-FF-MASTER BEDROOM,ap-ff-master-bedroom,https://sites.google.com/view/hossam-alafandi/freelance/ap-ff-master-bedroom,VERIFIED,1,2,2,
+P029,29,GUESTS ROOM - OM ASEL,guests-room-om-asel,https://sites.google.com/view/hossam-alafandi/freelance/guests-room-om-asel,VERIFIED,2,3,3,
+P030,30,AV_SF_Family_Majlis_Render,av_sf_family_majlis_render,https://sites.google.com/view/hossam-alafandi/freelance/av_sf_family_majlis_render,VERIFIED,1,2,2,
+P031,31,ARABIC MAJLIS,arabic-majlis,https://sites.google.com/view/hossam-alafandi/freelance/arabic-majlis,VERIFIED,1,2,2,
+P032,32,FAMILY LIVING ROOM GF- VRAY,family-living-room-gf-vray,https://sites.google.com/view/hossam-alafandi/freelance/family-living-room-gf-vray,VERIFIED,1,2,2,"P032-S01 repeated URL at positions 2 and 3 preserved; 3 source slots and 3 dots, no evidence of accidental duplication."
+P033,33,AV-SF-BOY-BEDROOM,av-sf-boy-bedroom,https://sites.google.com/view/hossam-alafandi/freelance/av-sf-boy-bedroom,VERIFIED,1,2,2,
+P034,34,AV_SF_Girl Bedroom,av_sf_girl-bedroom,https://sites.google.com/view/hossam-alafandi/freelance/av_sf_girl-bedroom,VERIFIED,2,3,3,
+P035,35,GUEST MAJLIS- VRAY,guest-majlis-vray,https://sites.google.com/view/hossam-alafandi/freelance/guest-majlis-vray,VERIFIED,1,2,2,
+P036,36,MASTER-BEDROOM-VRAY,master-bedroom-vray,https://sites.google.com/view/hossam-alafandi/freelance/master-bedroom-vray,NO_SLIDESHOW,0,1,1,No interactive slideshow: RENDERS uses ordinary static images; the only custom embed is the software-logo strip.
+P037,37,FAMILY MAJLIS GF - VRAY,family-majlis-gf-vray,https://sites.google.com/view/hossam-alafandi/freelance/family-majlis-gf-vray,VERIFIED,1,2,2,
+P038,38,Dental Clinic,dental-clinic,https://sites.google.com/view/hossam-alafandi/freelance/dental-clinic,VERIFIED,1,2,2,

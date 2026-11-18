@@ -1,0 +1,328 @@
+{
+  "projectID": "P001",
+  "order": 1,
+  "url": "https://sites.google.com/view/hossam-alafandi/freelance/al-rashed-project",
+  "status": "SCANNED",
+  "slideshows": [
+    {
+      "slideshowID": "P001-S01",
+      "frame": "118a9cced9ce08e9_128",
+      "frameSize": {
+        "w": 1335,
+        "h": 805,
+        "aspect": 1.658
+      },
+      "isSlideshow": true,
+      "docTitle": "Image Slideshow with Side Shadows on Hover",
+      "imgCount": 17,
+      "images": [
+        {
+          "n": 1,
+          "src": "https://i.imgur.com/ywuUBKU.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 1",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 2,
+          "src": "https://i.imgur.com/Lw0l4UR.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 2",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 3,
+          "src": "https://i.imgur.com/xJzxFii.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 3",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 4,
+          "src": "https://i.imgur.com/RL8gZTj.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 4",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 5,
+          "src": "https://i.imgur.com/3RgRGON.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 5",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 6,
+          "src": "https://i.imgur.com/CI2Ej0t.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 6",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 7,
+          "src": "https://i.imgur.com/dei3yVA.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 7",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 8,
+          "src": "https://i.imgur.com/jHF9GCZ.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 8",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 9,
+          "src": "https://i.imgur.com/4TmXfzM.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 9",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 10,
+          "src": "https://i.imgur.com/h5R61ib.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 10",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 11,
+          "src": "https://i.imgur.com/L4ohWrb.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 11",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 12,
+          "src": "https://i.imgur.com/i0AkyTA.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 12",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 13,
+          "src": "https://i.imgur.com/wLaKx3a.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 13",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 14,
+          "src": "https://i.imgur.com/Sl4bfoI.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 14",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 15,
+          "src": "https://i.imgur.com/Gq92nle.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 15",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 16,
+          "src": "https://i.imgur.com/u1XPsAL.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 16",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 17,
+          "src": "https://i.imgur.com/qI1GMsI.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 17",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "text": "❮",
+          "aria": "",
+          "cls": "prev",
+          "href": ""
+        },
+        {
+          "tag": "BUTTON",
+          "text": "❯",
+          "aria": "",
+          "cls": "next",
+          "href": ""
+        }
+      ],
+      "dots": 17,
+      "pageNumbers": [
+        "1 / 17"
+      ],
+      "libs": [],
+      "style": {
+        "bodyBg": "rgba(0, 0, 0, 0)",
+        "bodyFont": "Lexend, sans-serif",
+        "containerBg": "rgba(0, 0, 0, 0)",
+        "containerRadius": "20px",
+        "containerWidth": "1335px",
+        "containerHeight": "805px",
+        "imgFit": "cover",
+        "imgRadius": "20px"
+      },
+      "viewport": {
+        "w": 1335,
+        "h": 805
+      },
+      "bodyText": "❮\n❯",
+      "screenshot": "01_AUDIT\\evidence\\P001-S01.png",
+      "status": "DETECTED",
+      "sourceLen": 7165,
+      "sourceFile": "02_SOURCE_BACKUP\\P001\\P001-al-rashed-project-S01-renders.original.html",
+      "extractionNote": "Dots/page counter were empty in the automated capture because it sampled before DOMContentLoaded JS ran; re-verified live: moveSlide() is a function, 17 dots, counter 1 / 17, clicking next advances to 2 / 17."
+    },
+    {
+      "frame": "118a9cced9ce08e9_133",
+      "frameSize": {
+        "w": 1335,
+        "h": 127,
+        "aspect": 10.512
+      },
+      "isSlideshow": false,
+      "status": "NOT_SLIDESHOW",
+      "docTitle": "Software Logos with Equal Spacing",
+      "imgCount": 5,
+      "bodyText": ""
+    }
+  ],
+  "notes": [
+    "rawHref=/view/hossam-alafandi/freelance/al-rashed-project"
+  ],
+  "pageTitle": "AL-RASHED PROJECT",
+  "slug": "al-rashed-project",
+  "embeds": [
+    {
+      "index": 0,
+      "name": "118a9cced9ce08e9_128",
+      "title": "Custom embed",
+      "w": 1335,
+      "h": 805,
+      "top": 801,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    },
+    {
+      "index": 1,
+      "name": "",
+      "title": "",
+      "w": 1335,
+      "h": 488,
+      "top": 2526,
+      "src": "https://maps-api-ssl.google.com/maps?hl=en-US&ll=24.687677,46.763814&output=embed&z=19",
+      "provider": "google_maps"
+    },
+    {
+      "index": 2,
+      "name": "118a9cced9ce08e9_133",
+      "title": "Custom embed",
+      "w": 1335,
+      "h": 127,
+      "top": 3144,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    }
+  ],
+  "mediaSummary": {
+    "sites_custom_embed": 2,
+    "google_maps": 1
+  },
+  "responses": [
+    {
+      "url": "https://drive.google.com/auth_warmup",
+      "status": 200
+    }
+  ],
+  "note": "1 slideshow(s) of 2 custom embed(s)"
+}

@@ -1,0 +1,180 @@
+{
+  "projectID": "P030",
+  "order": 30,
+  "url": "https://sites.google.com/view/hossam-alafandi/freelance/av_sf_family_majlis_render",
+  "status": "SCANNED",
+  "slideshows": [
+    {
+      "slideshowID": "P030-S01",
+      "frame": "684a81519815f806_20",
+      "frameSize": {
+        "w": 1335,
+        "h": 1107,
+        "aspect": 1.206
+      },
+      "isSlideshow": true,
+      "docTitle": "Image Slideshow with Side Shadows on Hover",
+      "imgCount": 4,
+      "images": [
+        {
+          "n": 1,
+          "src": "https://i.imgur.com/dreLaoI.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 1",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 2,
+          "src": "https://i.imgur.com/UKgOr45.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 2",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 3,
+          "src": "https://i.imgur.com/tdxhRiJ.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 3",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 4,
+          "src": "https://i.imgur.com/MYjUa3n.jpeg",
+          "currentSrc": "",
+          "alt": "Slide 4",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "text": "❮",
+          "aria": "",
+          "cls": "prev",
+          "href": ""
+        },
+        {
+          "tag": "BUTTON",
+          "text": "❯",
+          "aria": "",
+          "cls": "next",
+          "href": ""
+        }
+      ],
+      "dots": 4,
+      "pageNumbers": [
+        "1 / 4"
+      ],
+      "libs": [],
+      "style": {
+        "bodyBg": "rgba(0, 0, 0, 0)",
+        "bodyFont": "Lexend, sans-serif",
+        "containerBg": "rgba(0, 0, 0, 0)",
+        "containerRadius": "20px",
+        "containerWidth": "1335px",
+        "containerHeight": "1107px",
+        "imgFit": "cover",
+        "imgRadius": "20px"
+      },
+      "viewport": {
+        "w": 1335,
+        "h": 1107
+      },
+      "bodyText": "❮\n❯\n1 / 4",
+      "screenshot": "01_AUDIT\\evidence\\P030-S01.png",
+      "status": "DETECTED",
+      "sourceLen": 5983,
+      "sourceFile": "02_SOURCE_BACKUP\\P030\\P030-av-sf-family-majlis-render-S01-renders.original.html"
+    },
+    {
+      "frame": "684a81519815f806_33",
+      "frameSize": {
+        "w": 1335,
+        "h": 127,
+        "aspect": 10.512
+      },
+      "isSlideshow": false,
+      "status": "NOT_SLIDESHOW",
+      "docTitle": "Software Logos with Equal Spacing",
+      "imgCount": 4,
+      "bodyText": ""
+    }
+  ],
+  "notes": [
+    "rawHref=/view/hossam-alafandi/freelance/av_sf_family_majlis_render"
+  ],
+  "pageTitle": "AV_SF_Family_Majlis_Render",
+  "slug": "av_sf_family_majlis_render",
+  "embeds": [
+    {
+      "index": 0,
+      "name": "684a81519815f806_20",
+      "title": "Custom embed",
+      "w": 1335,
+      "h": 1107,
+      "top": 868,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    },
+    {
+      "index": 1,
+      "name": "684a81519815f806_33",
+      "title": "Custom embed",
+      "w": 1335,
+      "h": 127,
+      "top": 3682,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    }
+  ],
+  "mediaSummary": {
+    "sites_custom_embed": 2
+  },
+  "responses": [
+    {
+      "url": "https://drive.google.com/auth_warmup",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/znQK1ti.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/eusbdWx.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/6sW1ghq.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/BRtEuwD.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/dreLaoI.jpeg",
+      "status": 200
+    }
+  ],
+  "note": "1 slideshow(s) of 2 custom embed(s)"
+}

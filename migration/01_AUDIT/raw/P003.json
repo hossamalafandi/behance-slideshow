@@ -1,0 +1,611 @@
+{
+  "projectID": "P003",
+  "order": 3,
+  "url": "https://sites.google.com/view/hossam-alafandi/freelance/dk-apartment",
+  "status": "SCANNED",
+  "slideshows": [
+    {
+      "slideshowID": "P003-S01",
+      "frame": "138b365ea11873f4_20",
+      "frameSize": {
+        "w": 1335,
+        "h": 993,
+        "aspect": 1.344
+      },
+      "isSlideshow": true,
+      "docTitle": "Image Slideshow with Side Shadows on Hover",
+      "imgCount": 38,
+      "images": [
+        {
+          "n": 1,
+          "src": "https://i.imgur.com/PE64JPS.jpg",
+          "currentSrc": "",
+          "alt": "Slide 1",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 2,
+          "src": "https://i.imgur.com/UguOsh7.jpg",
+          "currentSrc": "",
+          "alt": "Slide 2",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 3,
+          "src": "https://i.imgur.com/rZuFFsF.jpg",
+          "currentSrc": "",
+          "alt": "Slide 3",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 4,
+          "src": "https://i.imgur.com/DgRW7Ud.jpg",
+          "currentSrc": "",
+          "alt": "Slide 4",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 5,
+          "src": "https://i.imgur.com/ZdxERME.jpg",
+          "currentSrc": "",
+          "alt": "Slide 5",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 6,
+          "src": "https://i.imgur.com/PzAxrI1.jpg",
+          "currentSrc": "",
+          "alt": "Slide 6",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 7,
+          "src": "https://i.imgur.com/Q5YIWr7.jpg",
+          "currentSrc": "",
+          "alt": "Slide 7",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 8,
+          "src": "https://i.imgur.com/lYAraEp.jpg",
+          "currentSrc": "",
+          "alt": "Slide 8",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 9,
+          "src": "https://i.imgur.com/TzQqwvD.jpg",
+          "currentSrc": "",
+          "alt": "Slide 9",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 10,
+          "src": "https://i.imgur.com/ubTjwCd.jpg",
+          "currentSrc": "",
+          "alt": "Slide 10",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 11,
+          "src": "https://i.imgur.com/GDyxMRo.jpg",
+          "currentSrc": "",
+          "alt": "Slide 11",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 12,
+          "src": "https://i.imgur.com/cmWXlSL.jpg",
+          "currentSrc": "",
+          "alt": "Slide 12",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 13,
+          "src": "https://i.imgur.com/2Nvavbw.jpg",
+          "currentSrc": "",
+          "alt": "Slide 13",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 14,
+          "src": "https://i.imgur.com/ojMreDQ.jpg",
+          "currentSrc": "",
+          "alt": "Slide 14",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 15,
+          "src": "https://i.imgur.com/zdH9f9X.jpg",
+          "currentSrc": "",
+          "alt": "Slide 15",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 16,
+          "src": "https://i.imgur.com/PtGtb8x.jpg",
+          "currentSrc": "",
+          "alt": "Slide 16",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 17,
+          "src": "https://i.imgur.com/zrKlCcu.jpg",
+          "currentSrc": "",
+          "alt": "Slide 17",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 18,
+          "src": "https://i.imgur.com/X42daE7.jpg",
+          "currentSrc": "",
+          "alt": "Slide 18",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 19,
+          "src": "https://i.imgur.com/qwCnuaQ.jpg",
+          "currentSrc": "",
+          "alt": "Slide 19",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 20,
+          "src": "https://i.imgur.com/uufpmxx.jpg",
+          "currentSrc": "",
+          "alt": "Slide 20",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 21,
+          "src": "https://i.imgur.com/r1WXD2y.jpg",
+          "currentSrc": "",
+          "alt": "Slide 21",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 22,
+          "src": "https://i.imgur.com/p91pIbR.jpg",
+          "currentSrc": "",
+          "alt": "Slide 22",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 23,
+          "src": "https://i.imgur.com/hu4tSIB.jpg",
+          "currentSrc": "",
+          "alt": "Slide 23",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 24,
+          "src": "https://i.imgur.com/GDF3zGw.jpg",
+          "currentSrc": "",
+          "alt": "Slide 24",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 25,
+          "src": "https://i.imgur.com/48bAxEG.jpg",
+          "currentSrc": "",
+          "alt": "Slide 25",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 26,
+          "src": "https://i.imgur.com/PcvNdEE.jpg",
+          "currentSrc": "",
+          "alt": "Slide 26",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 27,
+          "src": "https://i.imgur.com/8Mj7KQW.jpg",
+          "currentSrc": "",
+          "alt": "Slide 27",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 28,
+          "src": "https://i.imgur.com/I2rvmJv.jpg",
+          "currentSrc": "",
+          "alt": "Slide 28",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 29,
+          "src": "https://i.imgur.com/zwG0A1p.jpg",
+          "currentSrc": "",
+          "alt": "Slide 29",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 30,
+          "src": "https://i.imgur.com/i1JdvmJ.jpg",
+          "currentSrc": "",
+          "alt": "Slide 30",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 31,
+          "src": "https://i.imgur.com/p9q0cqs.jpg",
+          "currentSrc": "",
+          "alt": "Slide 31",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 32,
+          "src": "https://i.imgur.com/rI67398.jpg",
+          "currentSrc": "",
+          "alt": "Slide 32",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 33,
+          "src": "https://i.imgur.com/9TVeN6b.jpg",
+          "currentSrc": "",
+          "alt": "Slide 33",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 34,
+          "src": "https://i.imgur.com/twGESWa.jpg",
+          "currentSrc": "",
+          "alt": "Slide 34",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 35,
+          "src": "https://i.imgur.com/3V6en9l.jpg",
+          "currentSrc": "",
+          "alt": "Slide 35",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 36,
+          "src": "https://i.imgur.com/Xud5gCu.jpg",
+          "currentSrc": "",
+          "alt": "Slide 36",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 37,
+          "src": "https://i.imgur.com/O47TEam.jpg",
+          "currentSrc": "",
+          "alt": "Slide 37",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 38,
+          "src": "https://i.imgur.com/kwGqXJs.jpg",
+          "currentSrc": "",
+          "alt": "Slide 38",
+          "nw": 0,
+          "nh": 0,
+          "complete": false,
+          "loading": "eager",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "text": "❮",
+          "aria": "",
+          "cls": "prev",
+          "href": ""
+        },
+        {
+          "tag": "BUTTON",
+          "text": "❯",
+          "aria": "",
+          "cls": "next",
+          "href": ""
+        }
+      ],
+      "dots": 38,
+      "pageNumbers": [
+        "1 / 38"
+      ],
+      "libs": [],
+      "style": {
+        "bodyBg": "rgba(0, 0, 0, 0)",
+        "bodyFont": "Lexend, sans-serif",
+        "containerBg": "rgba(0, 0, 0, 0)",
+        "containerRadius": "20px",
+        "containerWidth": "1335px",
+        "containerHeight": "993px",
+        "imgFit": "cover",
+        "imgRadius": "20px"
+      },
+      "viewport": {
+        "w": 1335,
+        "h": 993
+      },
+      "bodyText": "❮\n❯\n1 / 38",
+      "screenshot": "01_AUDIT\\evidence\\P003-S01.png",
+      "status": "DETECTED",
+      "sourceLen": 10362,
+      "sourceFile": "02_SOURCE_BACKUP\\P003\\P003-dk-apartment-S01-presentation.original.html"
+    },
+    {
+      "frame": "138b365ea11873f4_26",
+      "frameSize": {
+        "w": 1335,
+        "h": 127,
+        "aspect": 10.512
+      },
+      "isSlideshow": false,
+      "status": "NOT_SLIDESHOW",
+      "docTitle": "Software Logos with Equal Spacing",
+      "imgCount": 4,
+      "bodyText": ""
+    }
+  ],
+  "notes": [
+    "rawHref=/view/hossam-alafandi/freelance/dk-apartment"
+  ],
+  "pageTitle": "DK-Apartment",
+  "slug": "dk-apartment",
+  "embeds": [
+    {
+      "index": 0,
+      "name": "138b365ea11873f4_20",
+      "title": "Custom embed",
+      "w": 1335,
+      "h": 993,
+      "top": 817,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    },
+    {
+      "index": 1,
+      "name": "",
+      "title": "",
+      "w": 659,
+      "h": 1000,
+      "top": 1953,
+      "src": "https://drive.google.com/file/d/1nWEs5nJF4yOH9VW6aITcsRQLVT1G7-LB/preview",
+      "provider": "google_drive_file"
+    },
+    {
+      "index": 2,
+      "name": "138b365ea11873f4_26",
+      "title": "Custom embed",
+      "w": 1335,
+      "h": 127,
+      "top": 3119,
+      "src": "https://www.gstatic.com/atari/embeds/7688ba9b59f5a8d43ece826f5920d868/intermediate-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.smUXTMp7CeY.O%2Fd%3D1%2Frs%3DAHpOoo_-UMASGI-dbLvJPxfO6N46l3",
+      "provider": "sites_custom_embed"
+    }
+  ],
+  "mediaSummary": {
+    "sites_custom_embed": 2,
+    "google_drive_file": 1
+  },
+  "responses": [
+    {
+      "url": "https://drive.google.com/drive-viewer/AKGpihbr0voIJzN3hTllTHXttoYkg5-PrxW4ia4O8ZvhuiELudyneK1-_sN8kiVyg8BAvD7x-qlrQfH6fYpbcQuY4mdPO6yO9oA-b5M=s1600-rw-v1",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/6sW1ghq.png",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/thumbnail?id=1_YKN22ymGohMeZw-5A72IwEpZqrxhkdk&sz=w339-h551-p-k-nu",
+      "status": 302
+    },
+    {
+      "url": "https://drive.google.com/auth_warmup",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/file/d/1nWEs5nJF4yOH9VW6aITcsRQLVT1G7-LB/preview",
+      "status": 200
+    },
+    {
+      "url": "https://drive.google.com/drive-viewer/AKGpihYWuzl4c9hsmTPdD03cOHYq5HOeApCYU9U_0RAmo_L4xvrzACEmp8PLKlfvyr-aBQbTWLDgLIqthVoqm9PB6EB_tisgbmX3KA=s1600-rw-v1",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/eusbdWx.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/znQK1ti.png",
+      "status": 200
+    },
+    {
+      "url": "https://i.imgur.com/X4WSOcP.png",
+      "status": 200
+    }
+  ],
+  "note": "1 slideshow(s) of 2 custom embed(s)"
+}
