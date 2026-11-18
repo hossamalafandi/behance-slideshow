@@ -22,7 +22,7 @@ from items resolved by evidence or owner decision.
 | U09 | Behance iframe height / portrait layout | Design decision | Medium | Yes, before rollout | **Approved — per-slide height; Behance verification pending** |
 | U10 | GitHub push and Apps Script access | Access | High | Yes, before deployment | **Resolved — GitHub pushed; new Apps Script project deployed** |
 | U11 | Descriptive naming choices | Naming confirmation | Low | No | **Confirmed** |
-| U12 | Google warning bar on anonymous Apps Script Web Apps | Visual regression | High | Pilot only | **Open — host decision required** |
+| U12 | Google warning bar on anonymous Apps Script Web Apps | Visual regression | High | Pilot only | **Resolved — suppressed in iframe; top-level visits only** |
 
 ## U01 — P024 project link is malformed
 
@@ -266,35 +266,32 @@ repository-owner account `hossamalafandi` and a **new** standalone Apps Script
 project/deployment. Authentication must be completed interactively by the owner;
 the existing production deployment must not be modified.
 
-**Status.** Resolved. GitHub is authenticated as `hossamalafandi`, and commits
-`0a33cf5`, `3426077`, and later status commits are pushed to `main`. Google is
-signed in as `afandihussam@gmail.com`; the Google Apps Script API was enabled;
-the new standalone project “Behance Slideshow Renderer” was created and
-deployed. No credential is stored in the repository, and the existing production
-deployment is untouched.
+**Status.** Resolved. GitHub is authenticated as `hossamalafandi`, and the
+commits are pushed to `main`. Google is signed in as `afandihussam@gmail.com`;
+the Google Apps Script API was enabled; the new standalone project “Behance
+Slideshow Renderer” was created and deployed. No credential is stored in the
+repository, and the existing production deployment is untouched.
 
 ## U12 — Google warning bar on anonymous Apps Script Web Apps
 
-**What was found.** Every anonymous `/exec` response includes a Google-generated
-45 px warning bar: “This application was created by a Google Apps Script user”,
-with “Report abuse”, “More information”, and a dismiss `X`. The bar is part of
-the outer `script.google.com` page, outside the sandboxed slideshow HTML. The
-slideshow cannot hide, restyle, or overlay it.
+**What was found.** A **top-level** visit to an anonymous `/exec` response shows
+a Google-generated 45 px warning bar: “This application was created by a Google
+Apps Script user”, with “Report abuse”, “More information”, and a dismiss `X`.
+The bar is part of the outer `script.google.com` page, outside the sandboxed
+slideshow HTML.
 
-**Impact.** At an 805 px iframe height the slideshow content receives only
-760 px. Every new Behance visitor sees a Google bar above the artwork. This is a
-visual regression against the original Google Sites embeds and blocks the pilot.
+**Critical distinction.** When the same `/exec` URL is loaded inside an iframe —
+the Behance embedding context — Google collapses the warning node to 0 px and
+the `sandboxFrame` receives the full iframe height. A 1335 × 805 iframe test
+measured a 0 px banner and an 805 px slideshow viewport. This matches the
+owner's previously working Apps Script/Behance method.
 
-**Options.**
+**Impact.** None in the intended embed. The bar is visible only if someone
+opens the raw `/exec` URL as a standalone page. Do not use the raw URL as a
+public page.
 
-1. **Recommended:** serve the same static HTML from GitHub Pages, which has no
-   wrapper or banner and keeps the exact 805 px height. The repository already
-   hosts the source; one file per slideshow preserves one request/one slideshow.
-2. Keep Apps Script and accept the bar, increasing the embed height to 850 px so
-   the slideshow area remains 805 px. Visitors still see the bar.
-
-**Status.** Open — owner host decision required before the real Behance test.
-No other slideshow was processed.
+**Status.** Resolved by reproducing the exact iframe context. No host change.
+The real Behance test remains the release gate.
 
 ## U11 — Naming confirmations
 

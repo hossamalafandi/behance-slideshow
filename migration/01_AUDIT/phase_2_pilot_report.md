@@ -1,8 +1,8 @@
 # Phase 2 Pilot Report — P001-S01 (Local Only)
 
-Status: **local pilot passes; the live Apps Script deployment works but Google
-injects a 45 px warning banner, so the host decision is required before the real
-Behance test.** Phase 2 is in progress; the other 46 slideshows remain
+Status: **local pilot passes; the live Apps Script deployment renders correctly
+inside an iframe with no visible Google banner. The real Behance test is the
+remaining gate.** Phase 2 is in progress; the other 46 slideshows remain
 unprocessed.
 Date: 2026-11-18
 Pilot ID: `P001-S01` (`AL-RASHED PROJECT`, section `RENDERS`)
@@ -112,37 +112,49 @@ Image fidelity is checked without image bytes:
 Visual comparison is intentionally deferred to the real Behance release test and
 owner review. The local pilot does not claim pixel-level image verification.
 
-## 5.1 Live Apps Script deployment — Google warning banner blocks fidelity
+## 5.1 Live Apps Script deployment — iframe embedding matches the reference
 
 The new standalone project was created, pushed, and deployed at:
 
 `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
 
-Anonymous access works without a Google session. The canonical request returns
-the 17 audited slides, 17 dots, the `1 / 17` counter, working navigation, and
-native fullscreen. The router rejects missing, unknown, and repeated IDs with
-the neutral page. `tools/test-deployment.js` ran against the live URL with every
-imgur request blocked; no image bytes were fetched.
+The owner's previously working method is the reference: a Google Apps Script
+Web App (`HtmlService`, `XFrameOptionsMode.ALLOWALL`) loaded through its `/exec`
+URL inside a Behance iframe. The new deployment reproduces that method.
 
-However, every anonymous `/exec` response includes a Google-generated 45 px
-warning bar that reads (in the visitor's language) *“This application was
-created by a Google Apps Script user”*, with “Report abuse” and “More
-information” links and a dismiss `X`. The bar is part of the outer
-`script.google.com` page, outside the sandboxed slideshow document. The
-slideshow cannot hide, restyle, or overlay it.
+The initial top-level check showed Google's 45 px “created by a Google Apps
+Script user” bar. That check used the wrong context. Repeating the test inside
+an iframe, which is how Behance loads it, gives a different result:
 
-Consequences:
+- the outer `script.google.com` document contains the `#warning` node, but it is
+  collapsed to **0 px** and its text is empty;
+- the `sandboxFrame` receives the **full 805 px** iframe height;
+- the slideshow document is 1335 × 805, with 17 slides, 17 dots, `1 / 17`, and
+  working navigation;
+- there is no visible third-party bar above the artwork.
 
-- at an 805 px outer iframe height, the slideshow receives only 760 px;
-- every new Behance visitor sees the Google bar above the slideshow;
-- the bar is a visual regression against the original Google Sites embeds.
+The banner is therefore a top-level-visit behavior, not an embedded behavior.
+No host change is needed, and no GitHub Pages/Firebase/Cloudflare alternative is
+being pursued.
 
-The bar has a dismiss control, but dismissal is per visitor and does not solve
-the first impression. This finding needs an owner decision:
+`tools/test-deployment.js` reproduces the iframe context: a 1335 × 805 parent
+iframe with `allowfullscreen` and `allow="fullscreen"`, the live `/exec` URL as
+its `src`, and every imgur request blocked. It passes **20 / 20** checks:
 
-1. move the static hosting to GitHub Pages (no Google wrapper, exact height), or
-2. accept the bar and increase the embed height to 850 px so the slideshow area
-   remains 805 px.
+- iframe and slideshow viewport are both 1335 × 805;
+- the warning banner measures **0 px** and the sandbox frame is **805 px**;
+- 17 slides and 17 dots, `1 / 17`, eager remote URLs;
+- next/active-dot/transform navigation;
+- native fullscreen targets `#slideshow` and the button exits it;
+- missing, unknown, and repeated IDs return the neutral page;
+- no uncaught errors and 17 blocked imgur requests.
+
+The reference `doGet` used `createHtmlOutputFromFile('index')`. The new router
+uses `createTemplateFromFile('Slideshow').evaluate()` only to inject the one
+requested slideshow's image markup and title. The embedding configuration —
+`XFrameOptionsMode.ALLOWALL`, anonymous `/exec` URL, parent iframe with
+`allowfullscreen` + `allow="fullscreen"` — is the same, and the iframe test
+confirms the same banner-free result.
 
 No other slideshow was processed.
 
@@ -161,7 +173,6 @@ No other slideshow was processed.
 
 ## 7. Not yet proven
 
-- A host without Google's anonymous-Web-App warning bar has not been chosen.
 - A real published Behance project has not loaded the iframe, so the survival
   of `allowfullscreen` / `allow="fullscreen"` is unconfirmed.
 - Native fullscreen + theater fallback in the real Behance parent is the
@@ -189,7 +200,6 @@ deployment test prints its results to the console.
 
 The P001-S01 **local** pilot passes its static, router, navigation, fullscreen,
 and independence checks with no image access. The live Apps Script deployment
-also runs correctly, but Google's 45 px anonymous warning bar is a visual
-regression that must be resolved before the real Behance test. Phase 2 must not
-process the other 46 slideshows until the host decision and the real Behance
-fullscreen test pass.
+matches the owner's previously working iframe method: no visible Google bar, the
+full 805 px height, working navigation, and native fullscreen. Phase 2 must not
+process the other 46 slideshows until the real Behance fullscreen test passes.

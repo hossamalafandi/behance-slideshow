@@ -1,7 +1,7 @@
 # Behance Slideshow Migration — Phase 2
 
-Status: **Phase 2 approved. P001-S01 local pilot passes; deployment and the real
-Behance release test are pending.**
+Status: **Phase 2 approved. The P001-S01 local pilot and the live Apps Script
+iframe test pass; the real Behance test is pending.**
 Audit date: 2026-11-18
 Scope: the **Freelance** page of <https://sites.google.com/view/hossam-alafandi/>
 and its 38 project pages.
@@ -204,9 +204,10 @@ and waits until the P001-S01 pilot passes its real Behance test.
 - No deletion or overwrite of existing repository files.
 - No Git commit or push of the audit and pilot files until they were reviewed;
   both commits are now on `main` (`0a33cf5`, `3426077`).
-- No change to the existing Apps Script project or its deployment.
+- No change to the existing production Apps Script project or its deployment.
+  A **new standalone** project and deployment were created for the pilot.
 - No bulk reconstruction, deployment, publishing, or migration of the other 46
-  slideshows. Only the P001-S01 pilot was generated locally.
+  slideshows. Only the P001-S01 pilot was generated and deployed.
 
 ## 11. Exception summary
 
@@ -221,14 +222,14 @@ and waits until the P001-S01 pilot passes its real Behance test.
 
 ## 12. Next step
 
-The P001-S01 local pilot is complete and pushed. Next:
+The P001-S01 local pilot and live iframe test are complete and pushed. Next:
 
 1. ~~Authenticate the repository-owner GitHub account and push the reviewed
-   migration files.~~ Done: `main` is at `3426077`.
-2. Finish the Apps Script sign-in (the owner must enable the **Google Apps
-   Script API**), create the **new** standalone project, and deploy the Web App
-   with anonymous access.
-3. Replace the deployment placeholder in `05_BEHANCE_OUTPUT/P001.md`.
+   migration files.~~ Done: `main` is pushed.
+2. ~~Create the new standalone Apps Script project and deploy the Web App with
+   anonymous access.~~ Done: deployment
+   `AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA`.
+3. ~~Replace the deployment placeholder in `05_BEHANCE_OUTPUT/P001.md`.~~ Done.
 4. Publish one temporary Behance test project containing only the P001-S01
    snippet and run the mandatory real fullscreen/independence gate.
 5. Only after that gate passes, begin the approved P011-S01 repair and the next
