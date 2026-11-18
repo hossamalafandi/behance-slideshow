@@ -276,8 +276,8 @@ function main() {
       '# ' + projectId + ' — ' + first.project_title,
       '',
       'Pilot embed. Every snippet below loads exactly one slideshow and must be',
-      'placed in its own Behance project section. The placeholder deployment URL',
-      'is replaced after the new Web App is created.',
+      'placed in its own Behance project section. The URL points at the new',
+      'standalone Web App deployment; the production deployment is untouched.',
       ''
     ];
     for (const slide of slides) {
