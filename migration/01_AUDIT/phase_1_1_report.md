@@ -1,8 +1,8 @@
 # Phase 1.1 Report — Audit Refinement and Migration Readiness
 
 Status: **Phase 1.1 complete. Owner approved Phase 2 and all listed decisions on
-2026-11-18; the P001-S01 local pilot is complete. No deployment, publish, commit,
-or push has occurred.**
+2026-11-18. The P001-S01 local pilot is complete, committed, and pushed. No
+deployment or publish has occurred.**
 Date: 2026-11-18
 Scope: the 38 Freelance projects at
 <https://sites.google.com/view/hossam-alafandi/freelance>.
@@ -290,8 +290,8 @@ Mandatory gates before deployment:
 |---|---|---|
 | G1 | Owner approves this report and the Phase 2 plan | **Approved** |
 | G2 | Owner decides the `P011-S01` repair | **Approved — repair with standard JavaScript** |
-| G3 | GitHub push access for the publishing account | **Authorized — interactive authentication pending** |
-| G4 | A **new** Apps Script project under the owner's account | **Authorized — creation pending authentication** |
+| G3 | GitHub push access for the publishing account | **Authenticated as `hossamalafandi`; commits pushed** |
+| G4 | A **new** Apps Script project under the owner's account | **Google login complete; API enablement pending** |
 | G5 | Approval to create a Web App deployment with “Anyone” access | **Approved** |
 | G6 | Approval for one temporary published-Behance fullscreen test | **Approved — test pending** |
 | G7 | Approval of each rollout batch | **Open per batch** |

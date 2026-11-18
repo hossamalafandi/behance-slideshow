@@ -20,7 +20,7 @@ from items resolved by evidence or owner decision.
 | U07 | All images are hotlinked from imgur | Hosting risk | High | No | **Accepted by owner policy** |
 | U08 | Fullscreen inside Behance + Apps Script | Platform feasibility | Medium | Pilot only | **Approved — real Behance gate pending** |
 | U09 | Behance iframe height / portrait layout | Design decision | Medium | Yes, before rollout | **Approved — per-slide height; Behance verification pending** |
-| U10 | GitHub push and Apps Script access | Access | High | Yes, before deployment | **Open — owner authorization required** |
+| U10 | GitHub push and Apps Script access | Access | High | Yes, before deployment | **GitHub authenticated and pushed; Google login complete; Apps Script API toggle pending** |
 | U11 | Descriptive naming choices | Naming confirmation | Low | No | **Confirmed** |
 
 ## U01 — P024 project link is malformed
@@ -265,8 +265,12 @@ repository-owner account `hossamalafandi` and a **new** standalone Apps Script
 project/deployment. Authentication must be completed interactively by the owner;
 the existing production deployment must not be modified.
 
-**Status.** Open — awaiting interactive owner authentication for GitHub and Apps
-Script. No credential is stored in the repository.
+**Status.** GitHub is authenticated as `hossamalafandi`, and commits `0a33cf5`
+and `3426077` are pushed to `main`. Google is signed in as
+`afandihussam@gmail.com` for `clasp`. The owner still needs to enable the Google
+Apps Script API at <https://script.google.com/home/usersettings>; until then
+`clasp create` is rejected. No credential is stored in the repository, and the
+existing production deployment is untouched.
 
 ## U11 — Naming confirmations
 

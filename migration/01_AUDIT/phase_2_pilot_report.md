@@ -50,7 +50,8 @@ other ID.
 | `tools/test-pilot.js` | 37 browser and HTTP behavior checks |
 | `01_AUDIT/evidence/phase2-pilot/pilot-test-results.json` | Machine-readable test report |
 
-No deployment, publish, commit, or push has occurred. The iframe snippet still
+The audit and pilot files are committed and pushed to `main` (commits `0a33cf5`
+and `3426077`). No deployment or publish has occurred. The iframe snippet still
 contains `<NEW_DEPLOYMENT_ID>`.
 
 ## 3. Frozen-data validation

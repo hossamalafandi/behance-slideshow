@@ -6,11 +6,11 @@ Audit date: 2026-11-18
 Scope: the **Freelance** page of <https://sites.google.com/view/hossam-alafandi/>
 and its 38 project pages.
 
-This folder is the local migration workspace. It was created without changing,
+This folder is the migration workspace. It was created without changing,
 deleting, renaming, or redeploying anything in the live portfolio, the existing
-Apps Script project, or the existing `index.html` prototype. No deployment,
-publish, commit, or push has been made. See `01_AUDIT/phase_2_pilot_report.md`
-for the current pilot state.
+Apps Script project, or the existing `index.html` prototype. The audit and pilot
+commits are pushed to `main`; no deployment or publish has been made. See
+`01_AUDIT/phase_2_pilot_report.md` for the current pilot state.
 
 Phase 1.1 adds two mandatory requirements: **no image downloading/rehosting**
 and **one consistent fullscreen button on all 47 slideshows**. The owner also
@@ -202,7 +202,8 @@ and waits until the P001-S01 pilot passes its real Behance test.
   block every image request and do not inspect image content.
 - No edits to the Google Sites portfolio.
 - No deletion or overwrite of existing repository files.
-- No Git commit or push.
+- No Git commit or push of the audit and pilot files until they were reviewed;
+  both commits are now on `main` (`0a33cf5`, `3426077`).
 - No change to the existing Apps Script project or its deployment.
 - No bulk reconstruction, deployment, publishing, or migration of the other 46
   slideshows. Only the P001-S01 pilot was generated locally.
@@ -220,12 +221,13 @@ and waits until the P001-S01 pilot passes its real Behance test.
 
 ## 12. Next step
 
-The P001-S01 local pilot is complete. Next:
+The P001-S01 local pilot is complete and pushed. Next:
 
-1. Authenticate the repository-owner GitHub account and push the reviewed
-   migration files.
-2. Authenticate Apps Script, create the **new** standalone project, and deploy
-   the Web App with anonymous access.
+1. ~~Authenticate the repository-owner GitHub account and push the reviewed
+   migration files.~~ Done: `main` is at `3426077`.
+2. Finish the Apps Script sign-in (the owner must enable the **Google Apps
+   Script API**), create the **new** standalone project, and deploy the Web App
+   with anonymous access.
 3. Replace the deployment placeholder in `05_BEHANCE_OUTPUT/P001.md`.
 4. Publish one temporary Behance test project containing only the P001-S01
    snippet and run the mandatory real fullscreen/independence gate.
