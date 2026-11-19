@@ -1,21 +1,36 @@
 /**
  * Live Apps Script deployment smoke test in the Behance embedding context.
  *
- * Usage: node test-deployment.js <deployment-url> [--headful]
+ * Usage: node test-deployment.js <deployment-url> [--slide P001-S01]
+ *        [--width 1335] [--height 805] [--count 17] [--headful]
  *
- * The deployment is loaded inside a 1335 x 805 iframe with the same
- * allowfullscreen / allow="fullscreen" attributes used by the Behance snippet.
- * This is the context in which Google suppresses its top-level warning bar.
+ * The deployment is loaded inside an iframe with the same allowfullscreen /
+ * allow="fullscreen" attributes used by the Behance snippet. This is the
+ * context in which Google suppresses its top-level warning bar.
  *
  * No image bytes are requested. Every i.imgur.com request is aborted.
  */
 const { chromium } = require('playwright-core');
 
+function option(name, fallback) {
+  const index = process.argv.indexOf('--' + name);
+  return index !== -1 && process.argv[index + 1] ? process.argv[index + 1] : fallback;
+}
+
 const url = process.argv[2];
 const headful = process.argv.includes('--headful');
+const slideId = option('slide', 'P001-S01').toUpperCase();
+const frameWidth = Number(option('width', '1335'));
+const frameHeight = Number(option('height', '805'));
+const expectedCount = Number(option('count', '17'));
 
 if (!url || !/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(url)) {
-  console.error('Usage: node test-deployment.js <https://script.google.com/macros/s/.../exec> [--headful]');
+  console.error('Usage: node test-deployment.js <https://script.google.com/macros/s/.../exec> ' +
+    '[--slide P001-S01] [--width 1335] [--height 805] [--count 17] [--headful]');
+  process.exit(2);
+}
+if (![frameWidth, frameHeight, expectedCount].every(value => Number.isInteger(value) && value > 0)) {
+  console.error('Width, height, and count must be positive integers.');
   process.exit(2);
 }
 
@@ -88,7 +103,8 @@ async function routerCheck(query) {
 
   const html = [
     '<!DOCTYPE html><html><body style="margin:0;background:#222">',
-    '<iframe id="embed" src="' + url + '?slide=P001-S01" width="1335" height="805"',
+    '<iframe id="embed" src="' + url + '?slide=' + slideId + '" width="' + frameWidth +
+      '" height="' + frameHeight + '"',
     ' style="border:0;border-radius:20px;overflow:hidden"',
     ' allowfullscreen allow="fullscreen"></iframe>',
     '</body></html>'
@@ -105,17 +121,17 @@ async function routerCheck(query) {
     process.exit(1);
   }
 
-  await frame.waitForFunction(() => {
-    return document.querySelectorAll('.slide').length === 17 &&
-      document.querySelectorAll('.dot').length === 17;
-  }, null, { timeout: 30000 });
+  await frame.waitForFunction(expected => {
+    return document.querySelectorAll('.slide').length === expected &&
+      document.querySelectorAll('.dot').length === expected;
+  }, expectedCount, { timeout: 30000, polling: 100 });
 
   const embedRect = await page.evaluate(() => {
     const rect = document.getElementById('embed').getBoundingClientRect();
     return { width: rect.width, height: rect.height };
   });
-  record('Embed iframe is exactly 1335 x 805',
-    embedRect.width === 1335 && embedRect.height === 805,
+  record('Embed iframe is exactly ' + frameWidth + ' x ' + frameHeight,
+    embedRect.width === frameWidth && embedRect.height === frameHeight,
     embedRect.width + ' x ' + embedRect.height);
 
   const wrapperState = wrapper ? await wrapper.evaluate(() => {
@@ -130,8 +146,8 @@ async function routerCheck(query) {
   record('No visible Google warning banner in the iframe',
     Boolean(wrapperState) && wrapperState.bannerHeight === 0,
     wrapperState ? wrapperState.bannerHeight + ' px' : 'wrapper not found');
-  record('Apps Script sandbox receives the full 805 px height',
-    Boolean(wrapperState) && wrapperState.sandboxHeight === 805,
+  record('Apps Script sandbox receives the full ' + frameHeight + ' px height',
+    Boolean(wrapperState) && wrapperState.sandboxHeight === frameHeight,
     wrapperState ? wrapperState.sandboxHeight + ' px' : 'wrapper not found');
 
   const initial = await frame.evaluate(() => {
@@ -153,28 +169,33 @@ async function routerCheck(query) {
     };
   });
 
-  record('17 slides and 17 dots render', initial.slides === 17 && initial.dots === 17,
+  record(expectedCount + ' slides and ' + expectedCount + ' dots render',
+    initial.slides === expectedCount && initial.dots === expectedCount,
     initial.slides + ' slides, ' + initial.dots + ' dots');
-  record('Counter starts at 1 / 17', initial.counter === '1 / 17', initial.counter);
+  record('Counter starts at 1 / ' + expectedCount,
+    initial.counter === '1 / ' + expectedCount, initial.counter);
   record('All images are eager and remote imgur URLs',
     initial.eager && initial.srcs.every(src => src.startsWith('https://i.imgur.com/')),
     initial.srcs.length + ' remote URLs');
-  record('Slideshow viewport is 1335 x 805',
-    initial.innerWidth === 1335 && initial.innerHeight === 805,
+  record('Slideshow viewport is ' + frameWidth + ' x ' + frameHeight,
+    initial.innerWidth === frameWidth && initial.innerHeight === frameHeight,
     initial.innerWidth + ' x ' + initial.innerHeight);
-  record('No scrollbars at 1335 x 805',
+  record('No scrollbars at ' + frameWidth + ' x ' + frameHeight,
     initial.scrollWidth === initial.clientWidth && initial.scrollHeight === initial.clientHeight,
     initial.scrollWidth + ' x ' + initial.scrollHeight);
   record('Fullscreen button exists', initial.fullscreenButton);
 
   await frame.click('.next');
-  await frame.waitForFunction(() => document.getElementById('pageNumber').textContent === '2 / 17');
+  await frame.waitForFunction(expected => {
+    return document.getElementById('pageNumber').textContent === '2 / ' + expected;
+  }, expectedCount, { timeout: 10000, polling: 100 });
   const afterNext = await frame.evaluate(() => ({
     counter: document.getElementById('pageNumber').textContent,
     active: Array.from(document.querySelectorAll('.dot')).findIndex(dot => dot.classList.contains('active')),
     transform: document.getElementById('slidesContainer').style.transform
   }));
-  record('Next advances to 2 / 17', afterNext.counter === '2 / 17', afterNext.counter);
+  record('Next advances to 2 / ' + expectedCount,
+    afterNext.counter === '2 / ' + expectedCount, afterNext.counter);
   record('Active dot follows navigation', afterNext.active === 1, 'dot ' + (afterNext.active + 1));
   record('Transform advances one viewport', afterNext.transform === 'translateX(-100vw)', afterNext.transform);
 
@@ -205,7 +226,7 @@ async function routerCheck(query) {
     record('Second click leaves theater mode', exited);
   }
 
-  for (const query of ['', '?slide=NOPE-S99', '?slide=P001-S01&slide=P001-S01']) {
+  for (const query of ['', '?slide=NOPE-S99', '?slide=' + slideId + '&slide=' + slideId]) {
     const check = await routerCheck(query);
     record('Router rejects ' + (query || '(missing slide)'),
       check.status === 200 && check.unavailable,
@@ -219,7 +240,8 @@ async function routerCheck(query) {
   const failed = results.filter(result => !result.passed);
   console.log(JSON.stringify({
     url,
-    context: '1335 x 805 iframe with allowfullscreen and allow="fullscreen"',
+    slide: slideId,
+    context: frameWidth + ' x ' + frameHeight + ' iframe with allowfullscreen and allow="fullscreen"',
     checks: results.length,
     passed: results.length - failed.length,
     failed: failed.length,

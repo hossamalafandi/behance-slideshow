@@ -1,0 +1,158 @@
+{
+  "slideshow_id": "P011-S01",
+  "project_id": "P011",
+  "project_title": "OA-AP-FAMILY MAJLIS",
+  "section_label": "RENDERS",
+  "descriptor": "renders",
+  "source_url": "https://sites.google.com/view/hossam-alafandi/freelance/oa-ap-family-majlis",
+  "embed_width": 1335,
+  "embed_height": 1553,
+  "aspect": 0.86,
+  "radius_px": "20px",
+  "object_fit": "cover",
+  "fullscreen_required": true,
+  "repair_note": "Original source had no JavaScript. Rebuilt with the shared standard JavaScript so the arrows, generated dots, and n / 20 counter work. All 20 images, their order, the 1553 px frame, CSS, and visuals are preserved.",
+  "image_count": 20,
+  "images": [
+    {
+      "order": 1,
+      "src": "https://i.imgur.com/5kKgJsG.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 1"
+    },
+    {
+      "order": 2,
+      "src": "https://i.imgur.com/XfzlMzu.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 2"
+    },
+    {
+      "order": 3,
+      "src": "https://i.imgur.com/T0yvRFF.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 3"
+    },
+    {
+      "order": 4,
+      "src": "https://i.imgur.com/wS3lCrZ.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 4"
+    },
+    {
+      "order": 5,
+      "src": "https://i.imgur.com/5to86dE.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 5"
+    },
+    {
+      "order": 6,
+      "src": "https://i.imgur.com/AktYEfe.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 6"
+    },
+    {
+      "order": 7,
+      "src": "https://i.imgur.com/G7rEwzU.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 7"
+    },
+    {
+      "order": 8,
+      "src": "https://i.imgur.com/pJl6cla.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 8"
+    },
+    {
+      "order": 9,
+      "src": "https://i.imgur.com/QWlyMqU.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 9"
+    },
+    {
+      "order": 10,
+      "src": "https://i.imgur.com/MJvGcqz.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 10"
+    },
+    {
+      "order": 11,
+      "src": "https://i.imgur.com/INvrp97.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 11"
+    },
+    {
+      "order": 12,
+      "src": "https://i.imgur.com/TqHaaOI.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 12"
+    },
+    {
+      "order": 13,
+      "src": "https://i.imgur.com/D38KKhE.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 13"
+    },
+    {
+      "order": 14,
+      "src": "https://i.imgur.com/nkKy7VF.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 14"
+    },
+    {
+      "order": 15,
+      "src": "https://i.imgur.com/RrjvkMM.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 15"
+    },
+    {
+      "order": 16,
+      "src": "https://i.imgur.com/MhjZ86O.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 16"
+    },
+    {
+      "order": 17,
+      "src": "https://i.imgur.com/j7p4nMx.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 17"
+    },
+    {
+      "order": 18,
+      "src": "https://i.imgur.com/v42FKlh.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 18"
+    },
+    {
+      "order": 19,
+      "src": "https://i.imgur.com/KjfOaAd.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 19"
+    },
+    {
+      "order": 20,
+      "src": "https://i.imgur.com/bd4q8ve.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 20"
+    }
+  ]
+}

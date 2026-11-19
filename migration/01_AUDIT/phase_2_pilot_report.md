@@ -2,7 +2,7 @@
 
 Status: **pilot complete — local, live-deployment, and real published-Behance
 gates all pass.** The real Behance gate passed 18/18 on 2026-11-19. Phase 2 may
-now proceed to the approved P011-S01 repair and batch rollout; the other 46
+now proceed to the approved P011-S01 repair and batch rollout; the other 45
 slideshows remain unprocessed until their batch is approved.
 Date: 2026-11-19
 Pilot ID: `P001-S01` (`AL-RASHED PROJECT`, section `RENDERS`)
@@ -216,8 +216,9 @@ node migration/tools/test-behance.js https://www.behance.net/gallery/258648021/y
 
 - Owner visual review of the real page is still recommended; the automated gate
   confirms layout metrics, not aesthetic fidelity.
-- The other 46 slideshows have not been generated or tested. They require the
-  approved batch rollout and their own test reports.
+- The other 45 slideshows have not been generated or tested. They require the
+  approved batch rollout and their own test reports. P011-S01 was repaired and
+  verified separately; see `phase_2_repair_report.md`.
 - Portrait slideshows (for example P011-S01 at 1553 px) need their own live
   height check when their batch is deployed.
 
@@ -244,6 +245,7 @@ published-Behance gate (18/18). The real page preserves the 805 px height, shows
 no Google banner, renders all 17 slides and dots, navigates independently, and
 enters native fullscreen from inside Behance with all image requests blocked.
 
-The mandatory release gate is therefore satisfied. Phase 2 may proceed to the
-approved P011-S01 repair and to batch rollout under G7; no other slideshow has
-been generated or deployed yet.
+The mandatory release gate is therefore satisfied. Phase 2 proceeded to the
+approved P011-S01 repair, which now passes 21/21 locally and 20/20 live; see
+`phase_2_repair_report.md`. The other 45 slideshows await batch rollout under
+G7.

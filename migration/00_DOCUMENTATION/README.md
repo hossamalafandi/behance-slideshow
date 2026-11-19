@@ -191,13 +191,14 @@ Slideshows: `DETECTED`, `EXTRACTED`, `NEEDS_REVIEW`, `BLOCKED`.
 
 Current totals after Phase 1.1 evidence review:
 
-- Projects: 35 `VERIFIED`, 1 `PARTIAL` (P011), 1 `BLOCKED` (P024),
-  1 `NO_SLIDESHOW` (P036).
-- Slideshows: 46 `EXTRACTED`, 1 `NEEDS_REVIEW` (P011-S01), 0 `BLOCKED`.
+- Projects: 36 `VERIFIED`, 1 `BLOCKED` (P024), 1 `NO_SLIDESHOW` (P036).
+- Slideshows: 47 `EXTRACTED`, 0 `NEEDS_REVIEW`, 0 `BLOCKED`.
 
-P026-S02 and P032-S01 were resolved by evidence and are no longer
-`NEEDS_REVIEW`; see `01_AUDIT/unresolved_items.md`. P011-S01's repair is approved
-and waits until the P001-S01 pilot passes its real Behance test.
+P026-S02 and P032-S01 were resolved by evidence; see
+`01_AUDIT/unresolved_items.md`. P011-S01 was repaired on 2026-11-19 with the
+shared standard JavaScript after the P001-S01 real Behance gate passed. All 20
+images and the original order were preserved; local 21/21 and live 20/20 tests
+pass.
 
 ## 10. What was deliberately not done
 
@@ -217,7 +218,7 @@ and waits until the P001-S01 pilot passes its real Behance test.
 | Item | Phase 1.1 outcome |
 |---|---|
 | P024 malformed link | Still `BLOCKED`; card 24 is a distinct "MASTER BEDROOM" card, not the P009 card; no page or hidden link found |
-| P011-S01 missing JavaScript | Intended behavior identified from the identical standard template; repair with the shared script requires approval |
+| P011-S01 missing JavaScript | Repaired 2026-11-19 with the shared standard script after the pilot gate passed; 20 images and original order preserved; local 21/21 and live 20/20 |
 | P026-S02 duplicate subset | Confirmed intentional side-by-side companion slideshow; preserve independently |
 | P032-S01 repeated image | Source has 3 slots/3 dots; no evidence of accident; preserve exactly |
 | P002 Drive previews | Nine Google Drive **video** previews (MOV), HTTP 200, blank in headless embedded capture; not slideshows and not a migration blocker |

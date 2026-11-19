@@ -1,0 +1,121 @@
+{
+  "slideshow": "P011-S01",
+  "repair": "Original source had no JavaScript. Rebuilt with the shared standard JavaScript so the arrows, generated dots, and n / 20 counter work. All 20 images, their order, the 1553 px frame, CSS, and visuals are preserved.",
+  "browser": "Chrome 157.0.8103.79",
+  "frame": {
+    "width": 1335,
+    "height": 1553
+  },
+  "checks": 21,
+  "passed": 21,
+  "failed": 0,
+  "blockedImageRequests": 57,
+  "failures": [],
+  "results": [
+    {
+      "name": "Router: P011-S01 returns HTTP 200 HTML",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: response contains exactly the 20 audited URLs in order",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: response contains no other slideshow ID or URL",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: response contains no gallery, catalog, index, or links",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: P011 rejects missing, repeated, and unknown IDs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Router: P011 and P001 responses are different documents",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Repair: original source had no JavaScript; generated page has it",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: renders 20 slides, 20 dots, counter 1 / 20, and exact URLs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: no scrollbars at 1335 x 1553",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: next advances one slide, dot, and transform",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: dots jump directly to a slide",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: previous and wrap-around navigation work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: hover reveals arrows, counter, and shadows",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: native fullscreen targets only this container and keeps dots inside",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: native fullscreen exit restores the portrait layout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Browser: no uncaught JavaScript errors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Independence: P011 and P001 keep their own sequences and dimensions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Independence: navigating one slideshow does not change the other",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Independence: fullscreen in one slideshow leaves the other unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Independence: no cross-iframe errors or shared storage",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Images: every request was blocked and none was downloaded",
+      "passed": true,
+      "detail": null
+    }
+  ]
+}

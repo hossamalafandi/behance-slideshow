@@ -12,7 +12,7 @@ from items resolved by evidence or owner decision.
 | ID | Item | Type | Severity | Blocks Phase 2? | Status |
 |---|---|---|---|---|---|
 | U01 | P024 link is malformed; project page unknown | Blocker | High | P024 only | **Blocked — ID reserved, proceed without P024** |
-| U02 | P011-S01 has no JavaScript; arrows inert | Defect | High | P011 only | **Resolved — repair approved** |
+| U02 | P011-S01 has no JavaScript; arrows inert | Defect | High | P011 only | **Resolved — repaired 2026-11-19** |
 | U03 | P026-S02 repeats 3 images from P026-S01 | Duplicate content | Medium | No | **Resolved — intentional companion** |
 | U04 | P032-S01 repeats the same image URL twice | Authoring ambiguity | Medium | No | **Resolved — preserve repeat** |
 | U05 | P002 has 9 empty Drive preview iframes | Capture limitation | Low | No | **Resolved — Drive video previews** |
@@ -89,10 +89,16 @@ visible repair and must be an explicit decision.
 JavaScript, preserving all 20 images, their order, the aspect ratio, CSS, and
 all other visuals. Record the repair in the provenance note. Implement it only
 after the P001-S01 pilot passes its real Behance test.
-3. Exclude P011-S01 from migration.
 
-Until this is approved, `P011-S01` stays `NEEDS_REVIEW` and `P011` stays
-`PARTIAL`.
+**Implemented (2026-11-19).** The P001-S01 real Behance gate passed 18/18, so
+P011-S01 was rebuilt with the shared standard JavaScript. All 20 original URLs
+remain in the original order; the 1335 × 1553 frame, 20 px radius, `cover`
+object fit, hover arrows, shadows, and transparent background are unchanged.
+The generated page has the standard script; the archived original had none.
+Verification: static 117/117, P011 local browser suite 21/21, live Apps Script
+suite 20/20, with every image request blocked. `P011-S01` is now `EXTRACTED`
+and `P011` is `VERIFIED`. The repair note is also in
+`05_BEHANCE_OUTPUT/P011.md`.
 
 ## U03 — P026-S02 duplicates part of P026-S01
 

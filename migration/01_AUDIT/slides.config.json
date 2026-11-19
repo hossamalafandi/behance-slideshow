@@ -1714,8 +1714,9 @@
       "object_fit": "cover",
       "background": "rgba(0, 0, 0, 0)",
       "source_file": "02_SOURCE_BACKUP/P011/P011-oa-ap-family-majlis-S01-renders.original.html",
-      "status": "NEEDS_REVIEW",
-      "notes": "No JavaScript in source: moveSlide() undefined, arrows inert, no dots, empty page counter.",
+      "status": "EXTRACTED",
+      "notes": "Repaired 2026-11-19: original source had no JavaScript; rebuilt with the shared standard JavaScript. All 20 images, order, 1553 px frame, CSS, and visuals preserved. Local 21/21 and live 20/20 tests pass.",
+      "repair_note": "Original source had no JavaScript. Rebuilt with the shared standard JavaScript so the arrows, generated dots, and n / 20 counter work. All 20 images, their order, the 1553 px frame, CSS, and visuals are preserved.",
       "images": [
         {
           "order": 1,

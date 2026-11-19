@@ -11,6 +11,7 @@
   "radius_px": "20px",
   "object_fit": "cover",
   "fullscreen_required": true,
+  "repair_note": null,
   "image_count": 17,
   "images": [
     {
