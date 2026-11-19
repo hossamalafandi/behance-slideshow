@@ -63,7 +63,7 @@ migration/
 │   ├── unresolved_items.md              blockers, defects and decisions needed
 │   ├── phase_1_1_report.md              Phase 1.1 findings and approval checklist
 │   ├── raw/                             raw crawl output (per project, context, image metadata, log)
-│   └── evidence/                        local screenshots (gitignored) and the pilot test report
+│   └── evidence/                        pilot and bulk test reports (screenshots gitignored)
 ├── 02_SOURCE_BACKUP/                    untouched original slideshow HTML, one folder per project
 ├── 03_REBUILT_SLIDESHOWS/               generated data and previews for all 47 slideshows
 ├── 04_APPS_SCRIPT/                      shared Apps Script project (47-slide server map, version 3)
