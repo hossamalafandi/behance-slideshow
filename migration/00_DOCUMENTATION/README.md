@@ -1,10 +1,11 @@
 # Behance Slideshow Migration — Phase 2
 
-Status: **Phase 2 bulk rollout generated and deployed. All 47 slideshows pass
-static (3092/3092), local browser (340/340), and live Apps Script (332/332)
-validation. P001-S01 still passes the real published-Behance gate (18/18);
-real Behance verification of the other 45 slideshows is pending owner review
-and publication. P024 remains blocked.**
+Status: **Phase 2 bulk rollout complete. All 47 slideshows are reconstructed,
+deployed, and exported as 47 independent Behance embed codes. The complete
+copy/paste set is in `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and
+`05_BEHANCE_OUTPUT/ALL_EMBEDS.csv`. Per owner instruction, no further Behance
+test embeds or validation cycles are being run; P001-S01 remains the only
+real-Behance-verified embed. P024 remains blocked.**
 Audit date: 2026-11-18
 Bulk rollout date: 2026-11-20
 Scope: the **Freelance** page of <https://sites.google.com/view/hossam-alafandi/>
@@ -67,7 +68,7 @@ migration/
 ├── 02_SOURCE_BACKUP/                    untouched original slideshow HTML, one folder per project
 ├── 03_REBUILT_SLIDESHOWS/               generated data and previews for all 47 slideshows
 ├── 04_APPS_SCRIPT/                      shared Apps Script project (47-slide server map, version 3)
-└── 05_BEHANCE_OUTPUT/                   36 generated project embed snippets
+└── 05_BEHANCE_OUTPUT/                   all 47 embed codes: ALL_EMBEDS.md, ALL_EMBEDS.csv, 36 project files
 ```
 
 `02_SOURCE_BACKUP` contains one `*.original.html` per slideshow. These files are
@@ -208,9 +209,10 @@ On 2026-11-20 the bulk generator produced all 47 slideshows and 36 project
 snippets, and the expanded server map was deployed as version 3 with the same
 deployment ID. Static validation passes 3092/3092, the local browser suite
 340/340, and the live Apps Script suite 332/332. P001-S01 still passes the real
-published-Behance gate 18/18. The other 45 slideshows have not yet been tested
-inside a real published Behance page; owner review and publication are required
-before that gate can run. P024 remains blocked.
+published-Behance gate 18/18. The owner then stopped further Behance testing;
+the finished deliverable is the complete 47-code copy/paste set in
+`05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and `ALL_EMBEDS.csv`. P001-S01 remains the only
+real-Behance-verified embed. P024 remains blocked.
 
 ## 10. What was deliberately not done
 
@@ -223,10 +225,10 @@ before that gate can run. P024 remains blocked.
 - No change to the existing production Apps Script project or its deployment.
   A **new standalone** project and deployment host the migration.
 - No publishing or replacement of the live Behance portfolio. All 47 slideshows
-  and 36 project snippets are generated, but only the P001-S01 test embed has
-  been published; the other embeds await owner review.
-- No real Behance verification of the other 45 slideshows yet. That gate cannot
-  run until the owner publishes representative test embeds.
+  and 47 embed codes are generated; only the P001-S01 test embed has been
+  published. The owner will paste the remaining codes manually.
+- No real Behance verification of the other 45 slideshows. The owner closed
+  further testing; those codes are delivered ready for manual use.
 
 ## 11. Exception summary
 
@@ -239,9 +241,10 @@ before that gate can run. P024 remains blocked.
 | P002 Drive previews | Nine Google Drive **video** previews (MOV), HTTP 200, blank in headless embedded capture; not slideshows and not a migration blocker |
 | Fullscreen feasibility | Verified in the real published Behance page: `allowfullscreen` survives Behance's sandbox, native fullscreen targets `#slideshow`, and exit works. The gate passes 18/18. |
 
-## 12. Next step
+## 12. Finished output
 
-The bulk rollout is generated, validated, and deployed. Next:
+The bulk rollout is generated, validated, deployed, and exported. No further
+test embeds or validation cycles are being run.
 
 1. ~~Authenticate the repository-owner GitHub account and push the reviewed
    migration files.~~ Done: `main` is pushed.
@@ -259,16 +262,18 @@ The bulk rollout is generated, validated, and deployed. Next:
 6. ~~Generate all 47 slideshows, 36 project snippets, and the complete server
    map; deploy as version 3.~~ Done: static 3092/3092, local 340/340, live
    332/332, P001 real gate 18/18.
-7. **Owner review:** publish the representative embeds P002-S01, P004-S01,
-   P005-S01, P023-S02, and P038-S01, or all 36 project snippets.
-8. **Real Behance gate:** run
-   `node migration/tools/test-behance.js <url> --slide <ID> [--width <px>]`
-   on each published embed. Resolve any width/height mismatch found in the real
-   wrapper, especially the tall 1570 px embeds.
-9. Obtain owner approval before replacing any live Behance embed. P024 stays
-   blocked until a valid URL is supplied.
+7. ~~Export all 47 embed codes in one Markdown document and one CSV.~~ Done:
+   `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and
+   `05_BEHANCE_OUTPUT/ALL_EMBEDS.csv`.
 
-Read `01_AUDIT/phase_2_bulk_report.md`, `01_AUDIT/phase_2_pilot_report.md`,
-`01_AUDIT/unresolved_items.md`,
+**Owner action:** open `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` (or the per-project
+file) and copy each iframe code into its matching Behance project section. Use
+the permanent ID and dimensions shown with each code. Do not combine slideshows
+in one embed.
+
+P024 stays blocked until a valid URL is supplied. P036 has no slideshow.
+
+Read `05_BEHANCE_OUTPUT/README.md`, `01_AUDIT/phase_2_bulk_report.md`,
+`01_AUDIT/phase_2_pilot_report.md`, `01_AUDIT/unresolved_items.md`,
 `00_DOCUMENTATION/INDEPENDENT_EMBED_STANDARD.md`, and
-`00_DOCUMENTATION/PHASE_2_IMPLEMENTATION_PLAN.md` before those steps.
+`00_DOCUMENTATION/PHASE_2_IMPLEMENTATION_PLAN.md` for the full record.

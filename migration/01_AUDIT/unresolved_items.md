@@ -2,10 +2,11 @@
 
 Audit date: 2026-11-18
 Phase 1.1 refinement: 2026-11-18
-Status: **Phase 2 approved 2026-11-18.** P024 remains the only blocked project;
-the P011-S01 repair is approved; the P001-S01 local pilot passes. GitHub and
-Apps Script authorization remain open. This register separates true blockers
-from items resolved by evidence or owner decision.
+Status: **Phase 2 bulk rollout complete 2026-11-20.** P024 remains the only
+blocked project. P011-S01 repair is complete. All 47 slideshows and 47 embed
+codes are delivered; GitHub push and the new Apps Script deployment are done.
+Per owner instruction, no further Behance testing is being run. This register
+separates true blockers from items resolved by evidence or owner decision.
 
 ## 1. Summary
 
@@ -18,8 +19,8 @@ from items resolved by evidence or owner decision.
 | U05 | P002 has 9 empty Drive preview iframes | Capture limitation | Low | No | **Resolved — Drive video previews** |
 | U06 | P036 contains static images, no slideshow | Confirmation | Low | No | **Confirmed** |
 | U07 | All images are hotlinked from imgur | Hosting risk | High | No | **Accepted by owner policy** |
-| U08 | Fullscreen inside Behance + Apps Script | Platform feasibility | Medium | Pilot only | **Approved — real Behance gate pending** |
-| U09 | Behance iframe height / portrait layout | Design decision | Medium | Yes, before rollout | **Approved — per-slide height; Behance verification pending** |
+| U08 | Fullscreen inside Behance + Apps Script | Platform feasibility | Medium | Pilot only | **Resolved — P001 real Behance gate 18/18; further testing closed by owner** |
+| U09 | Behance iframe height / portrait layout | Design decision | Medium | No | **Resolved — per-slide heights; 47 codes delivered; further testing closed by owner** |
 | U10 | GitHub push and Apps Script access | Access | High | Yes, before deployment | **Resolved — GitHub pushed; new Apps Script project deployed** |
 | U11 | Descriptive naming choices | Naming confirmation | Low | No | **Confirmed** |
 | U12 | Google warning bar on anonymous Apps Script Web Apps | Visual regression | High | Pilot only | **Resolved — suppressed in iframe; top-level visits only** |

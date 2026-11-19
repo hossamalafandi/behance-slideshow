@@ -1,10 +1,11 @@
 # Phase 2 Implementation Plan
 
-Status: **approved 2026-11-18; bulk rollout generated and deployed 2026-11-20.
-All 47 slideshows pass static (3092/3092), local browser (340/340), and live
-Apps Script (332/332) validation. P001-S01 passes the real published-Behance
-gate (18/18); real verification of the other 45 slideshows is pending owner
-review and publication. P024 remains blocked.**
+Status: **approved 2026-11-18; bulk rollout complete 2026-11-20. All 47
+slideshows are reconstructed, deployed as version 3, and exported as 47
+independent embed codes. Static validation 3092/3092, local browser 340/340,
+live Apps Script 332/332, P001-S01 real Behance gate 18/18. Per owner
+instruction, further Behance testing is closed; the codes are ready for manual
+copy/paste. P024 remains blocked.**
 Prepared: 2026-11-18 after the Phase 1.1 audit refinement.
 No image download is authorized by this document. Deployment and publishing
 require the gates below.
@@ -76,13 +77,19 @@ migration/
 │   ├── appsscript.json                  manifest
 │   └── .clasp.json.example              no machine-specific ID committed
 ├── 05_BEHANCE_OUTPUT/
-│   ├── P001.md … P038.md                per-project standalone snippets in page order
-│   └── generated-checklist.md           rollout checklist, not a web page
+│   ├── ALL_EMBEDS.md                    all 47 codes, grouped by project (primary copy/paste source)
+│   ├── ALL_EMBEDS.csv                   one row per slideshow with dimensions and a single-line embed code
+│   ├── README.md                        how to use the output files
+│   └── P001.md … P038.md                per-project standalone snippets in page order
 └── tools/
     ├── generate.js                      data → preview, SlidesData.gs, snippets
+    ├── export-embeds.js                 data → ALL_EMBEDS.md and ALL_EMBEDS.csv
     ├── validate.js                      URL/order/template/independence checks
     ├── serve.js                         local single-slideshow router emulator
-    └── test-pilot.js                    Playwright DOM/behavior checks with image requests blocked
+    ├── test-all.js                      all-slideshow local browser/router suite
+    ├── test-live-all.js                 all-slideshow live Apps Script suite
+    ├── test-behance.js                  real published-Behance gate (generalized)
+    └── test-pilot.js                    P001 DOM/behavior checks with image requests blocked
 ```
 
 `03_REBUILT_SLIDESHOWS/assets/` is not created. No image binaries are written.
@@ -342,7 +349,9 @@ decision.
 
 The real Behance test is a **release gate**, not an optional check. It must use a
 new temporary project, not an existing published project, and must be approved
-under G6.
+under G6. The P001-S01 test passed 18/18. On 2026-11-20 the owner closed further
+Behance testing and requested the finished 47-code deliverable; the remaining
+codes are delivered for manual use without additional sample embeds.
 
 ### 10.5 Independence and concurrency
 
@@ -409,8 +418,9 @@ until the pilot report is approved.
 and 36 project snippets in one pass, and the complete server map was deployed
 as version 3 with the existing deployment ID. Static validation passes
 3092/3092, the local browser suite 340/340, and the live Apps Script suite
-332/332. The real published-Behance gate passes P001-S01 18/18; the other 45
-slideshows await owner review and publication before the same gate can run.
+332/332. The real published-Behance gate passes P001-S01 18/18. The owner then
+closed further Behance testing; all 47 codes are exported in
+`05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and `ALL_EMBEDS.csv` for manual copy/paste.
 P024 remains blocked. See `01_AUDIT/phase_2_bulk_report.md`.
 
 No batch is auto-published. Snippets are generated for the owner to paste or for

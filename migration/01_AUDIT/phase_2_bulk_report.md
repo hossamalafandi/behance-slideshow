@@ -1,8 +1,12 @@
 # Phase 2 Bulk Rollout Report — All 47 Slideshows
 
-Status: **generated, deployed as version 3, and passing static, local, and live
-Apps Script validation. Real published-Behance verification of the 45 newly
-generated slideshows is pending owner review and publication.**
+Status: **all 47 slideshows are reconstructed, deployed as version 3, and
+exported as 47 independent embed codes. The finished copy/paste set is in
+`05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and `05_BEHANCE_OUTPUT/ALL_EMBEDS.csv`.
+Static validation 3092/3092, local browser 340/340, live Apps Script 332/332,
+and the P001-S01 real published-Behance gate 18/18. Per owner instruction,
+further Behance testing is closed; the codes are ready for manual use. P024
+remains blocked.**
 Date: 2026-11-20
 Deployment: `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
 Deployment version: **3** (same deployment ID; no host change)
@@ -122,7 +126,8 @@ selector. It can validate any published slideshow, not only P001-S01.
 No test requested, downloaded, opened, or inspected an image. Every browser
 route to `https://i.imgur.com/**` was aborted before the request left the
 browser. Image fidelity is verified through exact `src` strings and DOM order
-only. Visual fidelity is deferred to real Behance review by the owner.
+only. Visual fidelity is checked by the owner when the finished codes are
+pasted into Behance.
 
 ## 6. Preserved exceptions
 
@@ -135,52 +140,41 @@ only. Visual fidelity is deferred to real Behance review by the owner.
 | P038-S01 | Fullscreen-style reference; one button, no duplicate |
 | P036 | Confirmed no slideshow; no snippet generated |
 
-## 7. Real Behance verification pending
+## 7. Behance testing status
 
-Only P001-S01 has been tested inside a real published Behance project. The
-current test project does not contain the new narrow, portrait, or tall embeds,
-and no Behance API credentials or module-creation route are available to add
-them automatically.
+P001-S01 is the only slideshow tested inside a real published Behance project;
+it passes 18/18 with the 805 px embed, zero banner, exact URL order, navigation,
+and native fullscreen. The owner has closed further Behance testing and asked
+for the finished deliverable without additional sample embeds or validation
+rounds. The other 45 codes are therefore delivered for manual copy/paste. They
+have passed static, local browser, and live Apps Script validation, but not a
+real Behance wrapper test.
 
-Owner review is required before publishing. Recommended representative set:
-
-| Slideshow | Audited size | Why |
-|---|---|---|
-| P002-S01 | 659 × 927 | Fixed-width portrait |
-| P004-S01 | 546 × 771 | Narrow fixed-width |
-| P005-S01 | 1335 × 1570 | Full-width tall |
-| P023-S02 | 321 × 597 | Very narrow companion |
-| P038-S01 | 1335 × 831 | Fullscreen reference |
-
-The key open question is whether Behance honors declared heights above 1200 px
-in its fixed-height wrapper. P005-S01 (1570 px) will answer that directly. If
-Behance caps the height, the affected embeds must be re-measured and the height
-strategy adjusted before rollout; no change is made speculatively.
-
-After the owner publishes each test, run:
-
-```text
-node migration/tools/test-behance.js <published-url> --slide <ID> [--width <px>]
-```
-
-The script derives the expected image count, height, and exact URLs from
-`03_REBUILT_SLIDESHOWS/data/<ID>.json`.
+One real-wrapper behavior to watch during manual use: Behance may cap declared
+heights above 1200 px. The tallest embeds are the 1570 px slideshows, including
+P005-S01. The generated code uses the audited height as required; if Behance
+visibly caps it, the height can be adjusted in Behance without changing the
+slideshow or its images.
 
 ## 8. Evidence
 
 | File | Contents |
 |---|---|
+| `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` | All 47 codes, grouped by project, with IDs and dimensions |
+| `05_BEHANCE_OUTPUT/ALL_EMBEDS.csv` | One row per slideshow with a single-line embed code |
+| `05_BEHANCE_OUTPUT/README.md` | How to use the output files |
 | `01_AUDIT/evidence/phase2-bulk/bulk-local-test-results.json` | 340-check local browser suite, all 47 slideshows |
 | `01_AUDIT/evidence/phase2-bulk/bulk-live-test-results.json` | 332-check live Apps Script suite, retry record, blocked-image count |
 | `01_AUDIT/phase_2_pilot_report.md` | P001-S01 pilot and real Behance gate |
 | `01_AUDIT/unresolved_items.md` | P024 and other exceptions |
 
-## 9. Next step
+## 9. Finished deliverable
 
-1. Owner reviews and publishes the representative embeds above, or all 36
-   project snippets.
-2. Run the generalized real Behance gate on each published embed.
-3. Resolve any height or width mismatch found in the real wrapper.
-4. Obtain owner approval before replacing any live Behance embed.
+All 47 independent embed codes are ready in
+`05_BEHANCE_OUTPUT/ALL_EMBEDS.md` (primary copy/paste source) and
+`05_BEHANCE_OUTPUT/ALL_EMBEDS.csv` (spreadsheet). The 36 per-project files
+remain available for project-by-project work. The owner copies each code into
+its matching Behance project section.
 
-No Behance embed was published by this rollout.
+No further automated work is required. P024 remains blocked with its ID
+reserved, and P036 has no slideshow.
