@@ -1,7 +1,8 @@
 # Phase 2 Implementation Plan
 
-Status: **approved 2026-11-18; Phase 2 in progress. The P001-S01 local pilot
-passes; deployment and the real Behance test are pending.**
+Status: **approved 2026-11-18; Phase 2 in progress. The P001-S01 pilot is
+complete: local, live Apps Script, and real published-Behance gates all pass
+(18/18). P011-S01 repair and batch rollout are next.**
 Prepared: 2026-11-18 after the Phase 1.1 audit refinement.
 No deployment, publishing, bulk reconstruction, or image download is authorized
 by this document. Phase 2 tests make no image request at all.

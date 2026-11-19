@@ -1,16 +1,19 @@
 # Behance Slideshow Migration — Phase 2
 
-Status: **Phase 2 approved. The P001-S01 local pilot and the live Apps Script
-iframe test pass; the real Behance test is pending.**
+Status: **Phase 2 approved. The P001-S01 pilot is complete: local, live Apps
+Script, and real published-Behance gates all pass (18/18). P011-S01 repair and
+batch rollout are next.**
 Audit date: 2026-11-18
 Scope: the **Freelance** page of <https://sites.google.com/view/hossam-alafandi/>
 and its 38 project pages.
 
 This folder is the migration workspace. It was created without changing,
 deleting, renaming, or redeploying anything in the live portfolio, the existing
-Apps Script project, or the existing `index.html` prototype. The audit and pilot
-commits are pushed to `main`; no deployment or publish has been made. See
-`01_AUDIT/phase_2_pilot_report.md` for the current pilot state.
+production Apps Script project, or the existing `index.html` prototype. A **new
+standalone** Apps Script project was deployed for the pilot, and one temporary
+Behance test project was published. The audit and pilot commits are pushed to
+`main`. See `01_AUDIT/phase_2_pilot_report.md` for the pilot state and the real
+Behance gate result.
 
 Phase 1.1 adds two mandatory requirements: **no image downloading/rehosting**
 and **one consistent fullscreen button on all 47 slideshows**. The owner also
@@ -218,7 +221,7 @@ and waits until the P001-S01 pilot passes its real Behance test.
 | P026-S02 duplicate subset | Confirmed intentional side-by-side companion slideshow; preserve independently |
 | P032-S01 repeated image | Source has 3 slots/3 dots; no evidence of accident; preserve exactly |
 | P002 Drive previews | Nine Google Drive **video** previews (MOV), HTTP 200, blank in headless embedded capture; not slideshows and not a migration blocker |
-| Fullscreen feasibility | Native fullscreen is granted in Chromium when the outer iframe has `allowfullscreen` + `allow="fullscreen"`; real Behance verification remains a Phase 2 gate |
+| Fullscreen feasibility | Verified in the real published Behance page: `allowfullscreen` survives Behance's sandbox, native fullscreen targets `#slideshow`, and exit works. The gate passes 18/18. |
 
 ## 12. Next step
 
@@ -230,10 +233,15 @@ The P001-S01 local pilot and live iframe test are complete and pushed. Next:
    anonymous access.~~ Done: deployment
    `AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA`.
 3. ~~Replace the deployment placeholder in `05_BEHANCE_OUTPUT/P001.md`.~~ Done.
-4. Publish one temporary Behance test project containing only the P001-S01
-   snippet and run the mandatory real fullscreen/independence gate.
-5. Only after that gate passes, begin the approved P011-S01 repair and the next
-   rollout batch.
+4. ~~Publish one temporary Behance test project and run the mandatory real
+   fullscreen/independence gate.~~ Done: the published project
+   <https://www.behance.net/gallery/258648021/yty> passes **18/18** checks with
+   the 805 px pilot embed, zero banner, working navigation, and native
+   fullscreen.
+5. Implement the approved P011-S01 repair (shared standard JavaScript; all 20
+   images, order, aspect ratio, CSS, and visuals preserved).
+6. Generate and validate the next approved rollout batch; each batch still
+   needs its own report and G7 approval before publishing.
 
 Read `01_AUDIT/phase_2_pilot_report.md`, `01_AUDIT/unresolved_items.md`,
 `00_DOCUMENTATION/INDEPENDENT_EMBED_STANDARD.md`, and

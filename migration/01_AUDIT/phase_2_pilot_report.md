@@ -1,10 +1,10 @@
 # Phase 2 Pilot Report — P001-S01 (Local Only)
 
-Status: **local pilot passes; the live Apps Script deployment renders correctly
-inside an iframe with no visible Google banner. The real Behance test is the
-remaining gate.** Phase 2 is in progress; the other 46 slideshows remain
-unprocessed.
-Date: 2026-11-18
+Status: **pilot complete — local, live-deployment, and real published-Behance
+gates all pass.** The real Behance gate passed 18/18 on 2026-11-19. Phase 2 may
+now proceed to the approved P011-S01 repair and batch rollout; the other 46
+slideshows remain unprocessed until their batch is approved.
+Date: 2026-11-19
 Pilot ID: `P001-S01` (`AL-RASHED PROJECT`, section `RENDERS`)
 Reference: `PHASE_2_IMPLEMENTATION_PLAN.md`, `INDEPENDENT_EMBED_STANDARD.md`,
 `FULLSCREEN_STANDARD.md`, `IMAGE_HOSTING_POLICY.md`.
@@ -158,6 +158,47 @@ confirms the same banner-free result.
 
 No other slideshow was processed.
 
+## 5.2 Real published Behance gate — 18/18 pass
+
+The mandatory release gate ran against the owner's public test project:
+
+`https://www.behance.net/gallery/258648021/yty`
+
+Behance's cold-request bot challenge was handled by solving its
+`js_challenge_value` cookie before navigation. The test then loaded the real
+page, selected the iframe whose `src` contains the pilot deployment ID, and
+blocked every image request (22 blocked). Result: **18 / 18 checks pass**.
+
+Verified in the real Behance DOM:
+
+- the pilot iframe `src` is exactly
+  `.../AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec?slide=P001-S01`;
+- exactly one iframe requests the pilot slideshow;
+- Behance keeps `allowfullscreen` and its sandbox tokens
+  `allow-same-origin allow-scripts allow-pointer-lock allow-forms`; those tokens
+  permit the slideshow scripts and native fullscreen;
+- rendered size is **987 × 805** — the audited 805 px height is preserved;
+- the Google warning bar is **0 px** and the sandbox frame receives the full
+  **805 px**;
+- 17 slides and 17 dots render, the counter starts at `1 / 17`, all image `src`
+  values are eager remote imgur URLs, and the fullscreen button is present;
+- next advances to `2 / 17` with dot 2 active;
+- native fullscreen targets `#slideshow` from inside the real Behance parent
+  and exits cleanly;
+- no slideshow error was raised; the only page error came from Adobe's privacy
+  stylesheet on Behance itself and was excluded.
+
+The test project also contains an older first embed that uses the previous
+deployment and has no `?slide=` parameter. The gate deliberately ignores it and
+targets the new 805 px pilot embed. The old module should not be used for the
+migration.
+
+The reusable gate is `tools/test-behance.js`:
+
+```powershell
+node migration/tools/test-behance.js https://www.behance.net/gallery/258648021/yty
+```
+
 ## 6. Fidelity decisions recorded by the pilot
 
 1. **All slide images keep `loading="eager"`.** All 47 archived originals use
@@ -173,13 +214,12 @@ No other slideshow was processed.
 
 ## 7. Not yet proven
 
-- A real published Behance project has not loaded the iframe, so the survival
-  of `allowfullscreen` / `allow="fullscreen"` is unconfirmed.
-- Native fullscreen + theater fallback in the real Behance parent is the
-  mandatory release gate and is still pending.
-- The exact Behance column width and the final 805 px height need visual
-  confirmation by the owner.
-- The other 46 slideshows have not been generated or tested.
+- Owner visual review of the real page is still recommended; the automated gate
+  confirms layout metrics, not aesthetic fidelity.
+- The other 46 slideshows have not been generated or tested. They require the
+  approved batch rollout and their own test reports.
+- Portrait slideshows (for example P011-S01 at 1553 px) need their own live
+  height check when their batch is deployed.
 
 ## 8. Reproduce locally
 
@@ -198,8 +238,12 @@ deployment test prints its results to the console.
 
 ## 9. Verdict
 
-The P001-S01 **local** pilot passes its static, router, navigation, fullscreen,
-and independence checks with no image access. The live Apps Script deployment
-matches the owner's previously working iframe method: no visible Google bar, the
-full 805 px height, working navigation, and native fullscreen. Phase 2 must not
-process the other 46 slideshows until the real Behance fullscreen test passes.
+The P001-S01 pilot is **complete**. It passes static validation (69/69), the
+local browser suite (37/37), the live iframe suite (20/20), and the real
+published-Behance gate (18/18). The real page preserves the 805 px height, shows
+no Google banner, renders all 17 slides and dots, navigates independently, and
+enters native fullscreen from inside Behance with all image requests blocked.
+
+The mandatory release gate is therefore satisfied. Phase 2 may proceed to the
+approved P011-S01 repair and to batch rollout under G7; no other slideshow has
+been generated or deployed yet.
