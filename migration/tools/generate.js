@@ -2,12 +2,20 @@
 'use strict';
 
 /**
- * Phase 2 generator — approved IDs only.
+ * Phase 2 generator — full approved build.
  *
- * The P001-S01 pilot passed its real Behance gate on 2026-11-19. The approved
- * set now also includes the P011-S01 repair. Running with no --slide argument
- * is still an error, so this tool cannot accidentally process all 47
- * slideshows.
+ * Generates one data file and one preview per selected slideshow, and always
+ * writes the complete 47-slideshow server-side lookup. Behance snippets are
+ * regenerated for every project so the width rule is applied consistently.
+ *
+ * Behance keeps only the iframe width and height attributes and builds its own
+ * fixed-height wrapper. Frames at or above 1200 px (Behance's maximum embed
+ * width) use width="100%"; narrower frames keep their audited pixel width so
+ * side-by-side companions are not stretched and cropped.
+ *
+ * Usage:
+ *   node generate.js --all --deployment-id <id>
+ *   node generate.js --slide P001-S01 --deployment-id <id>
  */
 
 const fs = require('fs');
@@ -23,22 +31,24 @@ const PREVIEW_DIR = path.join(ROOT, '03_REBUILT_SLIDESHOWS', 'preview');
 const APPS_DIR = path.join(ROOT, '04_APPS_SCRIPT');
 const BEHANCE_DIR = path.join(ROOT, '05_BEHANCE_OUTPUT');
 
-const APPROVED_IDS = new Set(['P001-S01', 'P011-S01']);
-const REQUIRED_COMPANION = { 'P011-S01': 'P001-S01' };
+const BEHANCE_MAX_WIDTH = 1200;
 const EXPECTED_GLOBAL_HASH = '882a952d07cc442466cb2d7a3e3369ecb44a9a9e20fd299ca5f6f9e52ae001d0';
 const EXPECTED_SLIDESHOWS = 47;
 const EXPECTED_IMAGE_SLOTS = 335;
 const EXPECTED_UNIQUE_URLS = 331;
+const EXPECTED_PROJECTS = 36;
 
 function fail(message) {
   throw new Error(message);
 }
 
 function parseArgs(argv) {
-  const options = { slides: [], deploymentId: null };
+  const options = { slides: [], all: false, deploymentId: null };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    if (arg === '--slide') {
+    if (arg === '--all') {
+      options.all = true;
+    } else if (arg === '--slide') {
       if (!argv[i + 1]) fail('--slide needs an ID');
       options.slides.push(argv[++i]);
     } else if (arg.startsWith('--slide=')) {
@@ -53,22 +63,11 @@ function parseArgs(argv) {
     }
   }
   options.slides = Array.from(new Set(options.slides.map(id => id.trim().toUpperCase())));
-  if (options.slides.length === 0) {
-    fail('Refusing to generate without --slide. Approved IDs: ' + Array.from(APPROVED_IDS).join(', '));
+  if (options.all && options.slides.length) {
+    fail('Use either --all or --slide, not both');
   }
-  for (const id of options.slides) {
-    if (!APPROVED_IDS.has(id)) {
-      fail('Refusing to generate ' + id + '. Only the approved IDs are enabled: ' +
-        Array.from(APPROVED_IDS).join(', '));
-    }
-  }
-  // The generated SlidesData.gs replaces the previous map. Keep the already
-  // deployed pilot in the same build whenever the repair is generated.
-  for (const id of options.slides) {
-    const companion = REQUIRED_COMPANION[id];
-    if (companion && !options.slides.includes(companion)) {
-      options.slides.unshift(companion);
-    }
+  if (!options.all && options.slides.length === 0) {
+    fail('Use --all for the complete build, or --slide <ID> for a preview-only rebuild');
   }
   if (options.deploymentId && !/^[A-Za-z0-9_-]+$/.test(options.deploymentId)) {
     fail('Invalid deployment ID format');
@@ -140,7 +139,7 @@ function renderImages(images) {
   }).join('\n');
 }
 
-function buildPilotSlide(source, csvRows) {
+function buildSlide(source, csvRows) {
   if (!source) fail('Missing slideshow in slides.config.json');
   const images = source.images.map((image, index) => {
     if (!image.src || !/^https?:\/\//.test(image.src)) {
@@ -171,15 +170,22 @@ function buildPilotSlide(source, csvRows) {
       fail(source.slideshow_id + ' image ' + (index + 1) + ' differs from images.csv');
     }
   });
+  if (source.image_count !== images.length) {
+    fail(source.slideshow_id + ' image_count does not match its image list');
+  }
 
+  const embedWidth = Number(source.frame_w);
   // Prefer the audited frame height: the stored aspect is rounded to two
   // decimals, which can shift a tall portrait frame by one pixel.
   const embedHeight = Number.isFinite(source.frame_h) && source.frame_h > 0
     ? source.frame_h
     : Math.round(source.frame_w / source.aspect);
-  if (!Number.isFinite(embedHeight) || embedHeight <= 0) {
-    fail(source.slideshow_id + ' has an invalid frame height or aspect ratio');
+  if (!Number.isFinite(embedWidth) || embedWidth <= 0 ||
+      !Number.isFinite(embedHeight) || embedHeight <= 0) {
+    fail(source.slideshow_id + ' has an invalid frame width, height, or aspect ratio');
   }
+
+  const snippetWidth = embedWidth >= BEHANCE_MAX_WIDTH ? '100%' : String(embedWidth);
 
   return {
     slideshow_id: source.slideshow_id,
@@ -188,8 +194,9 @@ function buildPilotSlide(source, csvRows) {
     section_label: source.section_label,
     descriptor: source.descriptor,
     source_url: source.project_url,
-    embed_width: source.frame_w,
+    embed_width: embedWidth,
     embed_height: embedHeight,
+    snippet_width: snippetWidth,
     aspect: source.aspect,
     radius_px: source.radius_px,
     object_fit: source.object_fit,
@@ -218,7 +225,7 @@ function buildSnippet(slide, deploymentId) {
   return [
     '<iframe',
     '  src="' + base + '?slide=' + slide.slideshow_id + '"',
-    '  width="100%"',
+    '  width="' + slide.snippet_width + '"',
     '  height="' + slide.embed_height + '"',
     '  style="border:0;border-radius:20px;overflow:hidden"',
     '  loading="lazy"',
@@ -253,14 +260,26 @@ function main() {
     fail('The global image URL hash changed; refusing to generate');
   }
 
-  const selected = options.slides.map(id => {
-    const source = config.slideshows.find(slide => slide.slideshow_id === id);
-    return buildPilotSlide(source, imagesCsv.rows);
-  });
+  const allSlides = config.slideshows.map(source => buildSlide(source, imagesCsv.rows));
+  const allIds = allSlides.map(slide => slide.slideshow_id);
+  if (new Set(allIds).size !== allIds.length) {
+    fail('Duplicate slideshow IDs in slides.config.json');
+  }
+  const knownIds = new Set(allIds);
+  for (const row of imagesCsv.rows) {
+    if (!knownIds.has(row.slideshow_id)) {
+      fail('images.csv contains an unknown slideshow: ' + row.slideshow_id);
+    }
+  }
 
-  const slideMap = {};
+  const selectedIds = options.all ? allIds : options.slides;
+  for (const id of selectedIds) {
+    if (!knownIds.has(id)) fail('Unknown slideshow: ' + id);
+  }
+  const selected = selectedIds.map(id => allSlides.find(slide => slide.slideshow_id === id));
+
+  // Write the selected data and preview artifacts.
   for (const slide of selected) {
-    slideMap[slide.slideshow_id] = slide;
     const dataFile = path.join(DATA_DIR, slide.slideshow_id + '.json');
     writeFile(dataFile, JSON.stringify(slide, null, 2) + '\n');
 
@@ -268,10 +287,17 @@ function main() {
     writeFile(previewFile, renderPreview(template, slide));
   }
 
+  // The server-side map is always complete. A preview-only rebuild can never
+  // drop another slideshow from the deployed lookup.
+  const slideMap = {};
+  for (const slide of allSlides) {
+    slideMap[slide.slideshow_id] = slide;
+  }
+
   const dataSource = [
     '/**',
     ' * Generated by tools/generate.js. Do not edit by hand.',
-    ' * Current build: approved set — P001-S01 and P011-S01.',
+    ' * Current build: all 47 audited slideshows.',
     ' * The SLIDES lookup is server-side and is never sent wholesale to a client.',
     ' */',
     'var SLIDES = ' + JSON.stringify(slideMap, null, 2) + ';',
@@ -279,10 +305,15 @@ function main() {
   ].join('\n');
   writeFile(path.join(APPS_DIR, 'SlidesData.gs'), dataSource);
 
+  // Rebuild every project snippet from the full set, so a preview-only rebuild
+  // cannot leave a stale width or height behind.
   const byProject = new Map();
-  for (const slide of selected) {
+  for (const slide of allSlides) {
     if (!byProject.has(slide.project_id)) byProject.set(slide.project_id, []);
     byProject.get(slide.project_id).push(slide);
+  }
+  if (byProject.size !== EXPECTED_PROJECTS) {
+    fail('Expected ' + EXPECTED_PROJECTS + ' projects with slideshows, found ' + byProject.size);
   }
 
   for (const [projectId, slides] of byProject) {
@@ -290,16 +321,23 @@ function main() {
     const lines = [
       '# ' + projectId + ' — ' + first.project_title,
       '',
-      'Generated embed. Every snippet below loads exactly one slideshow and must',
-      'be placed in its own Behance project section. The URL points at the new',
+      'Generated embeds. Every snippet below loads exactly one slideshow and must',
+      'be placed in its own Behance project section. The URL points at the shared',
       'standalone Web App deployment; the production deployment is untouched.',
+      '',
+      'Behance keeps only the iframe width and height and adds its own fixed-height',
+      'wrapper. Frames at or above ' + BEHANCE_MAX_WIDTH + ' px use `width="100%"`;',
+      'narrower frames keep their audited pixel width so they are not stretched.',
       ''
     ];
     for (const slide of slides) {
       lines.push(
         '## ' + slide.slideshow_id + ' — ' + slide.section_label,
         '',
-        'Height: ' + slide.embed_height + ' px (from the audited frame height).',
+        'Width: ' + (slide.snippet_width === '100%'
+          ? '100% (audited frame ' + slide.embed_width + ' px)'
+          : slide.snippet_width + ' px (audited frame width)') + '.',
+        'Height: ' + slide.embed_height + ' px (audited frame height).',
         ''
       );
       if (slide.repair_note) {
@@ -319,10 +357,13 @@ function main() {
     generated: selected.map(slide => ({
       slideshow_id: slide.slideshow_id,
       images: slide.image_count,
-      embed_height: slide.embed_height
+      width: slide.snippet_width,
+      height: slide.embed_height
     })),
+    serverMap: allSlides.length,
+    projects: byProject.size,
     deployment: options.deploymentId || '<NEW_DEPLOYMENT_ID>',
-    note: 'Approved-ID allowlist enforced; no other slideshow was processed.'
+    note: 'Complete server map and all project snippets rebuilt.'
   }, null, 2));
 }
 

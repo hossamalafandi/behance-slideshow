@@ -1,0 +1,54 @@
+{
+  "slideshow_id": "P029-S01",
+  "project_id": "P029",
+  "project_title": "GUESTS ROOM - OM ASEL",
+  "section_label": "RENDERS",
+  "descriptor": "renders-a",
+  "source_url": "https://sites.google.com/view/hossam-alafandi/freelance/guests-room-om-asel",
+  "embed_width": 659,
+  "embed_height": 707,
+  "snippet_width": "659",
+  "aspect": 0.932,
+  "radius_px": "20px",
+  "object_fit": "cover",
+  "fullscreen_required": true,
+  "repair_note": null,
+  "image_count": 5,
+  "images": [
+    {
+      "order": 1,
+      "src": "https://i.imgur.com/3zi6kUa.jpeg",
+      "w": 1030,
+      "h": 1030,
+      "alt": "Slide 1"
+    },
+    {
+      "order": 2,
+      "src": "https://i.imgur.com/9d8MVIc.jpeg",
+      "w": 1030,
+      "h": 1030,
+      "alt": "Slide 2"
+    },
+    {
+      "order": 3,
+      "src": "https://i.imgur.com/GptsJnM.jpeg",
+      "w": 1030,
+      "h": 1030,
+      "alt": "Slide 3"
+    },
+    {
+      "order": 4,
+      "src": "https://i.imgur.com/kxNFIoV.jpeg",
+      "w": 1030,
+      "h": 1030,
+      "alt": "Slide 4"
+    },
+    {
+      "order": 5,
+      "src": "https://i.imgur.com/8VggTUB.jpeg",
+      "w": 1030,
+      "h": 1030,
+      "alt": "Slide 5"
+    }
+  ]
+}

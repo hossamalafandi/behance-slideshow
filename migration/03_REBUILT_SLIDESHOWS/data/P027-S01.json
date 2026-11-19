@@ -1,0 +1,47 @@
+{
+  "slideshow_id": "P027-S01",
+  "project_id": "P027",
+  "project_title": "FAMILY NIGHT MAJLIS - EYGPT",
+  "section_label": "RENDERS",
+  "descriptor": "renders-a",
+  "source_url": "https://sites.google.com/view/hossam-alafandi/freelance/family-night-majlis-eygpt",
+  "embed_width": 997,
+  "embed_height": 624,
+  "snippet_width": "997",
+  "aspect": 1.598,
+  "radius_px": "20px",
+  "object_fit": "cover",
+  "fullscreen_required": true,
+  "repair_note": null,
+  "image_count": 4,
+  "images": [
+    {
+      "order": 1,
+      "src": "https://i.imgur.com/fNde3Yd.jpeg",
+      "w": 1831,
+      "h": 1030,
+      "alt": "Slide 1"
+    },
+    {
+      "order": 2,
+      "src": "https://i.imgur.com/9Z4lNDm.jpeg",
+      "w": 1831,
+      "h": 1030,
+      "alt": "Slide 2"
+    },
+    {
+      "order": 3,
+      "src": "https://i.imgur.com/sVzgq3R.jpeg",
+      "w": 1831,
+      "h": 1030,
+      "alt": "Slide 3"
+    },
+    {
+      "order": 4,
+      "src": "https://i.imgur.com/fS32BFP.jpeg",
+      "w": 1831,
+      "h": 1030,
+      "alt": "Slide 4"
+    }
+  ]
+}

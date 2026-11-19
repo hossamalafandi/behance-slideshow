@@ -1,11 +1,13 @@
 # Phase 2 Implementation Plan
 
-Status: **approved 2026-11-18; Phase 2 in progress. The P001-S01 pilot is
-complete: local, live Apps Script, and real published-Behance gates all pass
-(18/18). P011-S01 repair and batch rollout are next.**
+Status: **approved 2026-11-18; bulk rollout generated and deployed 2026-11-20.
+All 47 slideshows pass static (3092/3092), local browser (340/340), and live
+Apps Script (332/332) validation. P001-S01 passes the real published-Behance
+gate (18/18); real verification of the other 45 slideshows is pending owner
+review and publication. P024 remains blocked.**
 Prepared: 2026-11-18 after the Phase 1.1 audit refinement.
-No deployment, publishing, bulk reconstruction, or image download is authorized
-by this document. Phase 2 tests make no image request at all.
+No image download is authorized by this document. Deployment and publishing
+require the gates below.
 
 ## 1. Goal
 
@@ -403,6 +405,14 @@ until the pilot report is approved.
 - After each batch: run data checks, DOM/behavior spot checks, interaction
   tests, and a fullscreen smoke test; deliver a short report; wait for approval.
 
+**Current state (2026-11-20):** the bulk generator produced all 47 slideshows
+and 36 project snippets in one pass, and the complete server map was deployed
+as version 3 with the existing deployment ID. Static validation passes
+3092/3092, the local browser suite 340/340, and the live Apps Script suite
+332/332. The real published-Behance gate passes P001-S01 18/18; the other 45
+slideshows await owner review and publication before the same gate can run.
+P024 remains blocked. See `01_AUDIT/phase_2_bulk_report.md`.
+
 No batch is auto-published. Snippets are generated for the owner to paste or for
 an approved automated update.
 
@@ -445,9 +455,9 @@ Phase 2 is complete only when:
 | P024 destination unknown | Open | Keep `BLOCKED`; migrate only after owner supplies a URL |
 | Cross-embed state leakage | Prevented by design | Stateless router, per-request HTML, no shared storage/messaging; independence tests required |
 | Gallery/index scope creep | Prohibited | One `slide` ID per iframe; error page has no catalog; review each generated snippet |
-| P011 repair behavior | Awaiting G2 | Rebuild with standard JS only if approved |
-| Behance sanitizes iframe permissions | Unknown | Real test; fallback documented |
-| Fixed iframe height | Open | Per-slide height from audited aspect; test scrollbars |
+| P011 repair behavior | Done | Rebuilt with standard JS on 2026-11-19; 20 images and order preserved; local 21/21, live 20/20 |
+| Behance sanitizes iframe permissions | Verified for P001-S01 | `allowfullscreen` survives; native fullscreen targets `#slideshow`; representative embeds still need the real gate |
+| Fixed iframe height | Locally/live verified | All 47 pass at their audited heights; real Behance wrapper still must be checked for heights above 1200 px, especially P005-S01 (1570 px) |
 | Apps Script / GitHub access | Open | G3/G4; stop before deployment if unavailable |
 | Imgur hotlink failure | Accepted | Monitor; record failures; never rehost |
 | Safari/Firefox fullscreen differences | Unknown | Test matrix; fallback must work |

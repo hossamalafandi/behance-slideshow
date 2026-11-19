@@ -1,0 +1,40 @@
+{
+  "slideshow_id": "P037-S01",
+  "project_id": "P037",
+  "project_title": "FAMILY MAJLIS GF - VRAY",
+  "section_label": "RENDERS",
+  "descriptor": "renders",
+  "source_url": "https://sites.google.com/view/hossam-alafandi/freelance/family-majlis-gf-vray",
+  "embed_width": 1335,
+  "embed_height": 1052,
+  "snippet_width": "100%",
+  "aspect": 1.269,
+  "radius_px": "20px",
+  "object_fit": "cover",
+  "fullscreen_required": true,
+  "repair_note": null,
+  "image_count": 3,
+  "images": [
+    {
+      "order": 1,
+      "src": "https://i.imgur.com/6vwkn3x.jpeg",
+      "w": 2560,
+      "h": 1440,
+      "alt": "Slide 1"
+    },
+    {
+      "order": 2,
+      "src": "https://i.imgur.com/Lsc8YBS.jpeg",
+      "w": 2560,
+      "h": 1440,
+      "alt": "Slide 2"
+    },
+    {
+      "order": 3,
+      "src": "https://i.imgur.com/avQNJF5.jpeg",
+      "w": 2560,
+      "h": 1440,
+      "alt": "Slide 3"
+    }
+  ]
+}

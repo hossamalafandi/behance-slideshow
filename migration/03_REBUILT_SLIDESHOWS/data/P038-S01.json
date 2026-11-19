@@ -1,0 +1,40 @@
+{
+  "slideshow_id": "P038-S01",
+  "project_id": "P038",
+  "project_title": "Dental Clinic",
+  "section_label": "RENDERS",
+  "descriptor": "renders",
+  "source_url": "https://sites.google.com/view/hossam-alafandi/freelance/dental-clinic",
+  "embed_width": 1335,
+  "embed_height": 831,
+  "snippet_width": "100%",
+  "aspect": 1.606,
+  "radius_px": "20px",
+  "object_fit": "cover",
+  "fullscreen_required": true,
+  "repair_note": null,
+  "image_count": 3,
+  "images": [
+    {
+      "order": 1,
+      "src": "https://i.imgur.com/HLLpBMN.jpeg",
+      "w": 2560,
+      "h": 1440,
+      "alt": "Slide 1"
+    },
+    {
+      "order": 2,
+      "src": "https://i.imgur.com/wBHoWzq.jpeg",
+      "w": 1920,
+      "h": 1080,
+      "alt": "Slide 2"
+    },
+    {
+      "order": 3,
+      "src": "https://i.imgur.com/BkG99VM.jpeg",
+      "w": 1506,
+      "h": 1068,
+      "alt": "Slide 3"
+    }
+  ]
+}

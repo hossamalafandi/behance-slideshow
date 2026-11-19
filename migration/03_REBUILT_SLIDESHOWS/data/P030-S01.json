@@ -1,0 +1,47 @@
+{
+  "slideshow_id": "P030-S01",
+  "project_id": "P030",
+  "project_title": "AV_SF_Family_Majlis_Render",
+  "section_label": "RENDERS",
+  "descriptor": "renders",
+  "source_url": "https://sites.google.com/view/hossam-alafandi/freelance/av_sf_family_majlis_render",
+  "embed_width": 1335,
+  "embed_height": 1107,
+  "snippet_width": "100%",
+  "aspect": 1.206,
+  "radius_px": "20px",
+  "object_fit": "cover",
+  "fullscreen_required": true,
+  "repair_note": null,
+  "image_count": 4,
+  "images": [
+    {
+      "order": 1,
+      "src": "https://i.imgur.com/dreLaoI.jpeg",
+      "w": 2560,
+      "h": 1440,
+      "alt": "Slide 1"
+    },
+    {
+      "order": 2,
+      "src": "https://i.imgur.com/UKgOr45.jpeg",
+      "w": 2560,
+      "h": 1440,
+      "alt": "Slide 2"
+    },
+    {
+      "order": 3,
+      "src": "https://i.imgur.com/tdxhRiJ.jpeg",
+      "w": 2560,
+      "h": 1440,
+      "alt": "Slide 3"
+    },
+    {
+      "order": 4,
+      "src": "https://i.imgur.com/MYjUa3n.jpeg",
+      "w": 2560,
+      "h": 1440,
+      "alt": "Slide 4"
+    }
+  ]
+}

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AB-Apartment — RECIPTION</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;300&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Lexend', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .slideshow-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      padding-bottom: 50px;
+      overflow: hidden;
+      border-radius: 20px;
+      background-color: transparent;
+      box-sizing: border-box;
+    }
+
+    .slides {
+      display: flex;
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      width: 100vw;
+      height: 100%;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    /* Side Shadows */
+    .side-shadow {
+      position: absolute;
+      top: 0;
+      width: 120px;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 5;
+      border-radius: 20px 0 0 20px;
+    }
+
+    .side-shadow.left {
+      left: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.4), transparent);
+    }
+
+    .side-shadow.right {
+      right: 0;
+      background: linear-gradient(to left, rgba(0,0,0,0.4), transparent);
+      border-radius: 0 20px 20px 0;
+    }
+
+    /* Show shadows on hover */
+    .slideshow-container:hover .side-shadow {
+      opacity: 1;
+    }
+
+    /* Navigation Buttons */
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      color: white;
+      border: none;
+      font-size: 30px;
+      padding: 10px 14px;
+      cursor: pointer;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 20px;
+      user-select: none;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .slideshow-container:hover .prev,
+    .slideshow-container:hover .next {
+      opacity: 1;
+    }
+
+    /* Dots */
+    .dot-container {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: #444;
+    }
+
+    /* Page Number Indicator */
+    .page-number {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18px;
+      color: white;
+      z-index: 10;
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: 300;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Show page number on hover */
+    .slideshow-container:hover .page-number {
+      opacity: 1;
+    }
+
+    /* Fullscreen button */
+    .fullscreen-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.3);
+      color: white;
+      border: none;
+      font-size: 20px;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 10px;
+      z-index: 20;
+      transition: background 0.3s ease;
+    }
+
+    .fullscreen-btn:hover {
+      background: rgba(0,0,0,0.6);
+    }
+
+    /* Fullscreen fallback note and in-iframe theater mode */
+    .fullscreen-note {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 21;
+      max-width: calc(100% - 140px);
+      padding: 6px 12px;
+      border-radius: 10px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      font-size: 13px;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .fullscreen-note.is-visible {
+      opacity: 1;
+    }
+
+    .slideshow-container.theater-mode {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      padding-bottom: 50px;
+      border-radius: 0;
+      background: #000;
+      z-index: 2147483647;
+    }
+
+    body.theater-open {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slideshow-container" id="slideshow">
+  <!-- Side Shadows -->
+  <div class="side-shadow left"></div>
+  <div class="side-shadow right"></div>
+
+  <div class="slides" id="slidesContainer">
+    <div class="slide"><img src="https://i.imgur.com/2tTqhfy.jpg" alt="Slide 1" loading="eager"></div>
+    <div class="slide"><img src="https://i.imgur.com/6Du1ZL1.jpg" alt="Slide 2" loading="eager"></div>
+    <div class="slide"><img src="https://i.imgur.com/jumQndl.jpg" alt="Slide 3" loading="eager"></div>
+    <div class="slide"><img src="https://i.imgur.com/HMfS7mA.jpg" alt="Slide 4" loading="eager"></div>
+    <div class="slide"><img src="https://i.imgur.com/ULmDHaE.jpg" alt="Slide 5" loading="eager"></div>
+    <div class="slide"><img src="https://i.imgur.com/Zj0JAWd.jpg" alt="Slide 6" loading="eager"></div>
+  </div>
+
+  <!-- Buttons -->
+  <button class="prev" onclick="moveSlide(-1)">❮</button>
+  <button class="next" onclick="moveSlide(1)">❯</button>
+
+  <!-- Page Number Indicator -->
+  <div class="page-number" id="pageNumber"></div>
+
+  <!-- Fullscreen Button -->
+  <button class="fullscreen-btn" id="fullscreenBtn" type="button"
+          aria-label="Enter fullscreen" title="Fullscreen">⛶</button>
+
+  <!-- Dots stay inside the fullscreen element -->
+  <div class="dot-container" id="dotContainer"></div>
+</div>
+
+<script>
+  const slidesContainer = document.getElementById('slidesContainer');
+  const slides = slidesContainer.querySelectorAll('.slide');
+  const dotContainer = document.getElementById('dotContainer');
+  const pageNumber = document.getElementById('pageNumber');
+  let currentIndex = 0;
+
+  // Set slidesContainer width dynamically based on slides count
+  slidesContainer.style.width = `${slides.length * 100}vw`;
+
+  // Create dots dynamically
+  slides.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    dot.addEventListener('click', () => showSlide(i));
+    dotContainer.appendChild(dot);
+  });
+
+  const dots = dotContainer.querySelectorAll('.dot');
+
+  function showSlide(index) {
+    if (index >= slides.length) index = 0;
+    if (index < 0) index = slides.length - 1;
+    currentIndex = index;
+    slidesContainer.style.transform = `translateX(-${currentIndex * 100}vw)`;
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentIndex].classList.add('active');
+    updatePageNumber();
+  }
+
+  function moveSlide(step) {
+    showSlide(currentIndex + step);
+  }
+
+  function updatePageNumber() {
+    pageNumber.textContent = `${currentIndex + 1} / ${slides.length}`;
+  }
+
+  // Initialize
+  showSlide(currentIndex);
+
+  // Fullscreen handling: native first, visible theater-mode fallback second.
+  (function () {
+    const container = document.getElementById('slideshow');
+    const button = document.getElementById('fullscreenBtn');
+    if (!container || !button) return;
+
+    let note = null;
+    let noteTimer = null;
+    let fallbackActive = false;
+
+    function setButtonState(active) {
+      button.setAttribute('aria-label', active ? 'Exit fullscreen' : 'Enter fullscreen');
+      button.setAttribute('title', active ? 'Exit fullscreen' : 'Fullscreen');
+    }
+
+    function showNote(text) {
+      if (!note) {
+        note = document.createElement('div');
+        note.className = 'fullscreen-note';
+        note.setAttribute('role', 'status');
+        note.setAttribute('aria-live', 'polite');
+        container.appendChild(note);
+      }
+      note.textContent = text;
+      note.classList.add('is-visible');
+      clearTimeout(noteTimer);
+      noteTimer = setTimeout(function () {
+        note.classList.remove('is-visible');
+      }, 3500);
+    }
+
+    function enterFallback() {
+      if (fallbackActive) return;
+      if (document.fullscreenElement || document.webkitFullscreenElement) return;
+      fallbackActive = true;
+      container.classList.add('theater-mode');
+      document.body.classList.add('theater-open');
+      setButtonState(true);
+      showNote('Native fullscreen is unavailable here — using theater mode.');
+    }
+
+    function exitFallback() {
+      if (!fallbackActive) return;
+      fallbackActive = false;
+      container.classList.remove('theater-mode');
+      document.body.classList.remove('theater-open');
+      setButtonState(false);
+    }
+
+    function requestNative() {
+      const request = container.requestFullscreen ||
+        container.webkitRequestFullscreen ||
+        container.msRequestFullscreen;
+      if (!request || document.fullscreenEnabled === false) {
+        enterFallback();
+        return;
+      }
+      try {
+        const result = request.call(container);
+        if (result && typeof result.then === 'function') {
+          result.catch(enterFallback);
+        }
+      } catch (error) {
+        enterFallback();
+      }
+    }
+
+    function exitNative() {
+      const exit = document.exitFullscreen ||
+        document.webkitExitFullscreen ||
+        document.msExitFullscreen;
+      if (!exit) {
+        exitFallback();
+        return;
+      }
+      try {
+        const result = exit.call(document);
+        if (result && typeof result.then === 'function') {
+          result.catch(function () {});
+        }
+      } catch (error) {
+        // Stay in the current state; the button remains usable.
+      }
+    }
+
+    function onFullscreenChange() {
+      const active = (document.fullscreenElement || document.webkitFullscreenElement) === container;
+      if (active) exitFallback();
+      setButtonState(active || fallbackActive);
+    }
+
+    button.addEventListener('click', function () {
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        exitNative();
+        return;
+      }
+      if (fallbackActive) {
+        exitFallback();
+        return;
+      }
+      requestNative();
+    });
+
+    document.addEventListener('fullscreenchange', onFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+    document.addEventListener('fullscreenerror', enterFallback);
+    document.addEventListener('webkitfullscreenerror', enterFallback);
+
+    setButtonState(false);
+  })();
+</script>
+</body></html>

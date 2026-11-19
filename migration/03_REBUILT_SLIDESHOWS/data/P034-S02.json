@@ -1,0 +1,40 @@
+{
+  "slideshow_id": "P034-S02",
+  "project_id": "P034",
+  "project_title": "AV_SF_Girl Bedroom",
+  "section_label": "BATHROOM",
+  "descriptor": "bathroom",
+  "source_url": "https://sites.google.com/view/hossam-alafandi/freelance/av_sf_girl-bedroom",
+  "embed_width": 321,
+  "embed_height": 743,
+  "snippet_width": "321",
+  "aspect": 0.432,
+  "radius_px": "20px",
+  "object_fit": "cover",
+  "fullscreen_required": true,
+  "repair_note": null,
+  "image_count": 3,
+  "images": [
+    {
+      "order": 1,
+      "src": "https://i.imgur.com/ronKmU2.jpeg",
+      "w": 1440,
+      "h": 2560,
+      "alt": "Slide 1"
+    },
+    {
+      "order": 2,
+      "src": "https://i.imgur.com/BJIVLz1.jpeg",
+      "w": 1440,
+      "h": 2560,
+      "alt": "Slide 2"
+    },
+    {
+      "order": 3,
+      "src": "https://i.imgur.com/Ye1mEW1.jpeg",
+      "w": 1440,
+      "h": 2560,
+      "alt": "Slide 3"
+    }
+  ]
+}

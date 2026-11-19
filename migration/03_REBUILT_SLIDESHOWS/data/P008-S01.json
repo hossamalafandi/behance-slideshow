@@ -1,0 +1,68 @@
+{
+  "slideshow_id": "P008-S01",
+  "project_id": "P008",
+  "project_title": "GIRL BEDROOM",
+  "section_label": "RENDERS",
+  "descriptor": "renders",
+  "source_url": "https://sites.google.com/view/hossam-alafandi/freelance/girl-bedroom",
+  "embed_width": 1335,
+  "embed_height": 1570,
+  "snippet_width": "100%",
+  "aspect": 0.85,
+  "radius_px": "20px",
+  "object_fit": "cover",
+  "fullscreen_required": true,
+  "repair_note": null,
+  "image_count": 7,
+  "images": [
+    {
+      "order": 1,
+      "src": "https://i.imgur.com/SVKDIFQ.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 1"
+    },
+    {
+      "order": 2,
+      "src": "https://i.imgur.com/UZeAuOJ.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 2"
+    },
+    {
+      "order": 3,
+      "src": "https://i.imgur.com/QA5EtYG.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 3"
+    },
+    {
+      "order": 4,
+      "src": "https://i.imgur.com/7Lsop5Z.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 4"
+    },
+    {
+      "order": 5,
+      "src": "https://i.imgur.com/4a8yCGH.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 5"
+    },
+    {
+      "order": 6,
+      "src": "https://i.imgur.com/FXO8p8A.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 5"
+    },
+    {
+      "order": 7,
+      "src": "https://i.imgur.com/WdHjKwD.jpeg",
+      "w": 2700,
+      "h": 3000,
+      "alt": "Slide 5"
+    }
+  ]
+}

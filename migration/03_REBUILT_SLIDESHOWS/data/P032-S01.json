@@ -1,0 +1,40 @@
+{
+  "slideshow_id": "P032-S01",
+  "project_id": "P032",
+  "project_title": "FAMILY LIVING ROOM GF- VRAY",
+  "section_label": "RENDERS",
+  "descriptor": "renders",
+  "source_url": "https://sites.google.com/view/hossam-alafandi/freelance/family-living-room-gf-vray",
+  "embed_width": 1335,
+  "embed_height": 803,
+  "snippet_width": "100%",
+  "aspect": 1.663,
+  "radius_px": "20px",
+  "object_fit": "cover",
+  "fullscreen_required": true,
+  "repair_note": null,
+  "image_count": 3,
+  "images": [
+    {
+      "order": 1,
+      "src": "https://i.imgur.com/gZXL8KZ.jpeg",
+      "w": 2560,
+      "h": 1440,
+      "alt": "Slide 1"
+    },
+    {
+      "order": 2,
+      "src": "https://i.imgur.com/1MWxYk7.jpeg",
+      "w": 2560,
+      "h": 1440,
+      "alt": "Slide 2"
+    },
+    {
+      "order": 3,
+      "src": "https://i.imgur.com/1MWxYk7.jpeg",
+      "w": 2560,
+      "h": 1440,
+      "alt": "Slide 3"
+    }
+  ]
+}

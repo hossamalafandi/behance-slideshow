@@ -1,0 +1,96 @@
+{
+  "slideshow_id": "P021-S01",
+  "project_id": "P021",
+  "project_title": "VILLA GROUND FLOOR - UAE",
+  "section_label": "RENDERS",
+  "descriptor": "renders",
+  "source_url": "https://sites.google.com/view/hossam-alafandi/freelance/villa-ground-floor-uae",
+  "embed_width": 1335,
+  "embed_height": 802,
+  "snippet_width": "100%",
+  "aspect": 1.665,
+  "radius_px": "20px",
+  "object_fit": "cover",
+  "fullscreen_required": true,
+  "repair_note": null,
+  "image_count": 11,
+  "images": [
+    {
+      "order": 1,
+      "src": "https://i.imgur.com/T4raJfF.jpeg",
+      "w": 3120,
+      "h": 1755,
+      "alt": "Slide 1"
+    },
+    {
+      "order": 2,
+      "src": "https://i.imgur.com/Ur7kCjx.jpeg",
+      "w": 3120,
+      "h": 1755,
+      "alt": "Slide 2"
+    },
+    {
+      "order": 3,
+      "src": "https://i.imgur.com/Hk80bgw.jpeg",
+      "w": 3120,
+      "h": 1755,
+      "alt": "Slide 3"
+    },
+    {
+      "order": 4,
+      "src": "https://i.imgur.com/r518MBP.jpeg",
+      "w": 3120,
+      "h": 1755,
+      "alt": "Slide 4"
+    },
+    {
+      "order": 5,
+      "src": "https://i.imgur.com/KFaUid7.jpeg",
+      "w": 3120,
+      "h": 1755,
+      "alt": "Slide 5"
+    },
+    {
+      "order": 6,
+      "src": "https://i.imgur.com/y2gPmCf.jpeg",
+      "w": 3120,
+      "h": 1755,
+      "alt": "Slide 6"
+    },
+    {
+      "order": 7,
+      "src": "https://i.imgur.com/FVkUBlc.jpeg",
+      "w": 3120,
+      "h": 1755,
+      "alt": "Slide 7"
+    },
+    {
+      "order": 8,
+      "src": "https://i.imgur.com/PN0UcLK.jpeg",
+      "w": 3120,
+      "h": 1755,
+      "alt": "Slide 8"
+    },
+    {
+      "order": 9,
+      "src": "https://i.imgur.com/WPG01iz.jpeg",
+      "w": 3120,
+      "h": 1755,
+      "alt": "Slide 9"
+    },
+    {
+      "order": 10,
+      "src": "https://i.imgur.com/fP32Y63.jpeg",
+      "w": 3120,
+      "h": 1755,
+      "alt": "Slide 10"
+    },
+    {
+      "order": 11,
+      "src": "https://i.imgur.com/LbQ260U.jpeg",
+      "w": 3120,
+      "h": 1755,
+      "alt": "Slide 11"
+    }
+  ]
+}

@@ -1,22 +1,53 @@
 /**
  * Real published-Behance gate.
  *
- * Usage: node test-behance.js <published-behance-project-url> [--headful]
+ * Usage: node test-behance.js <published-behance-project-url> [--slide P001-S01]
+ *        [--count 17] [--height 805] [--width 987] [--headful]
  *
- * Loads the real Behance page, locates the P001-S01 Apps Script iframe, verifies
- * its embedding attributes, and exercises navigation and fullscreen from inside
- * the iframe. Every image request on the page is aborted: Behance's own images
- * and the slideshow's imgur images are never downloaded or viewed.
+ * Loads the real Behance page, locates the Apps Script iframe for the requested
+ * slideshow, verifies its embedding attributes, and exercises navigation and
+ * fullscreen from inside the iframe. The generated data file supplies the
+ * expected image count, height, and exact URL order when available. Every image
+ * request on the page is aborted: Behance's own images and the slideshow's
+ * imgur images are never downloaded or viewed.
  */
+const fs = require('fs');
+const path = require('path');
 const { chromium } = require('playwright-core');
 
+function option(name, fallback) {
+  const index = process.argv.indexOf('--' + name);
+  return index !== -1 && process.argv[index + 1] ? process.argv[index + 1] : fallback;
+}
+
+const ROOT = path.resolve(__dirname, '..');
 const url = process.argv[2];
 const headful = process.argv.includes('--headful');
+const slideId = option('slide', 'P001-S01').toUpperCase();
 const deploymentId = process.env.SLIDESHOW_DEPLOYMENT_ID ||
   'AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA';
+const dataFile = path.join(ROOT, '03_REBUILT_SLIDESHOWS', 'data', slideId + '.json');
+const slideData = fs.existsSync(dataFile)
+  ? JSON.parse(fs.readFileSync(dataFile, 'utf8'))
+  : null;
+const expectedCount = Number(option('count', slideData ? slideData.images.length : 0));
+const expectedHeight = Number(option('height', slideData ? slideData.embed_height : 0));
+const expectedWidth = option('width', '') === '' ? null : Number(option('width', ''));
+const expectedUrls = slideData ? slideData.images.map(image => image.src) : [];
 
 if (!url || !/^https:\/\/(www\.)?behance\.net\//.test(url)) {
-  console.error('Usage: node test-behance.js <https://www.behance.net/gallery/...> [--headful]');
+  console.error('Usage: node test-behance.js <https://www.behance.net/gallery/...> ' +
+    '[--slide P001-S01] [--count 17] [--height 805] [--width 987] [--headful]');
+  process.exit(2);
+}
+if (!/^P\d{3}-S\d{2}$/.test(slideId)) {
+  console.error('Invalid slide ID: ' + slideId);
+  process.exit(2);
+}
+if (!Number.isInteger(expectedCount) || expectedCount <= 0 ||
+    !Number.isInteger(expectedHeight) || expectedHeight <= 0 ||
+    (expectedWidth !== null && (!Number.isInteger(expectedWidth) || expectedWidth <= 0))) {
+  console.error('The slideshow data file was not found; pass --count, --height, and optionally --width.');
   process.exit(2);
 }
 
@@ -85,11 +116,12 @@ function descendantFrames(frame) {
   return found;
 }
 
-async function findEmbed(page, timeout, deploymentId) {
-  const selector = 'iframe[src*="' + deploymentId + '"]';
+const embedSelector = 'iframe[src*="' + deploymentId + '"][src*="slide=' + slideId + '"]';
+
+async function findEmbed(page, timeout) {
   const deadline = Date.now() + timeout;
   while (Date.now() < deadline) {
-    const handle = await page.$(selector);
+    const handle = await page.$(embedSelector);
     if (handle) return handle;
     await page.mouse.wheel(0, 900);
     await wait(500);
@@ -155,8 +187,9 @@ async function findSlideshowFrame(wrapper, timeout) {
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90000 });
   await wait(2500);
 
-  const embed = await findEmbed(page, 45000, deploymentId);
-  record('Published Behance page contains the pilot Apps Script iframe', Boolean(embed));
+  const embed = await findEmbed(page, 45000);
+  record('Published Behance page contains the ' + slideId + ' Apps Script iframe',
+    Boolean(embed), embed ? embedSelector : 'not found');
   if (!embed) {
     console.log(JSON.stringify({ results, blockedImages }, null, 2));
     await browser.close();
@@ -184,8 +217,9 @@ async function findSlideshowFrame(wrapper, timeout) {
     };
   });
 
-  record('Iframe src requests exactly P001-S01',
-    attributes.src.includes(deploymentId) && /\/exec\?slide=P001-S01$/.test(attributes.src),
+  const expectedSrc = 'https://script.google.com/macros/s/' + deploymentId + '/exec?slide=' + slideId;
+  record('Iframe src requests exactly ' + slideId,
+    attributes.src === expectedSrc,
     attributes.src.replace(/^.*\/s\//, '…/s/'));
   record('Iframe can enter fullscreen (allowfullscreen or allow=fullscreen)',
     attributes.allowFullscreen || /\bfullscreen\b/.test(attributes.allow || ''),
@@ -194,14 +228,19 @@ async function findSlideshowFrame(wrapper, timeout) {
   record('Behance sandbox still permits the slideshow scripts and fullscreen',
     !attributes.sandbox || (sandboxTokens.includes('allow-scripts') && sandboxTokens.includes('allow-same-origin')),
     attributes.sandbox || 'none');
-  const pilotEmbedCount = await page.$$eval('iframe[src*="' + deploymentId + '"]', elements => elements.length);
-  record('Exactly one iframe requests the pilot slideshow', pilotEmbedCount === 1, pilotEmbedCount + ' iframe(s)');
+  const slideEmbedCount = await page.$$eval(embedSelector, elements => elements.length);
+  record('Exactly one iframe requests ' + slideId, slideEmbedCount === 1, slideEmbedCount + ' iframe(s)');
   record('Iframe has a non-zero rendered size',
     attributes.rect.width > 300 && attributes.rect.height > 400,
     Math.round(attributes.rect.width) + ' x ' + Math.round(attributes.rect.height));
-  record('Iframe height is 805 px in the published page',
-    Math.abs(attributes.rect.height - 805) <= 10,
+  record('Iframe height is ' + expectedHeight + ' px in the published page',
+    Math.abs(attributes.rect.height - expectedHeight) <= 10,
     attributes.rect.height + ' px; declared ' + attributes.height);
+  if (expectedWidth !== null) {
+    record('Iframe width is ' + expectedWidth + ' px in the published page',
+      Math.abs(attributes.rect.width - expectedWidth) <= 10,
+      attributes.rect.width + ' px; declared ' + attributes.width);
+  }
 
   const wrapper = await findWrapperFrame(embed, 30000);
   const wrapperState = wrapper ? await wrapper.evaluate(() => {
@@ -225,10 +264,10 @@ async function findSlideshowFrame(wrapper, timeout) {
     process.exit(1);
   }
 
-  await frame.waitForFunction(() => {
-    return document.querySelectorAll('.slide').length === 17 &&
-      document.querySelectorAll('.dot').length === 17;
-  }, null, { timeout: 30000 });
+  await frame.waitForFunction(expected => {
+    return document.querySelectorAll('.slide').length === expected &&
+      document.querySelectorAll('.dot').length === expected;
+  }, expectedCount, { timeout: 30000 });
 
   const initial = await frame.evaluate(() => {
     const images = Array.from(document.querySelectorAll('.slide img'));
@@ -243,21 +282,28 @@ async function findSlideshowFrame(wrapper, timeout) {
       innerHeight
     };
   });
-  record('17 slides and 17 dots render in Behance', initial.slides === 17 && initial.dots === 17,
+  const urlsMatch = expectedUrls.length === initial.srcs.length &&
+    initial.srcs.every((src, index) => src === expectedUrls[index]);
+  record(expectedCount + ' slides and ' + expectedCount + ' dots render in Behance',
+    initial.slides === expectedCount && initial.dots === expectedCount,
     initial.slides + ' slides, ' + initial.dots + ' dots');
-  record('Counter starts at 1 / 17', initial.counter === '1 / 17', initial.counter);
-  record('All images are eager remote imgur URLs',
-    initial.eager && initial.srcs.every(src => src.startsWith('https://i.imgur.com/')),
-    initial.srcs.length + ' remote URLs');
+  record('Counter starts at 1 / ' + expectedCount, initial.counter === '1 / ' + expectedCount,
+    initial.counter);
+  record('All ' + expectedCount + ' images are eager and match the audited URLs in order',
+    initial.eager && urlsMatch && initial.srcs.every(src => src.startsWith('https://i.imgur.com/')),
+    initial.srcs.length + ' remote URLs' + (urlsMatch ? ', exact order' : ', URL MISMATCH'));
   record('Fullscreen button is present', initial.fullscreenButton);
 
   await frame.click('.next');
-  await frame.waitForFunction(() => document.getElementById('pageNumber').textContent === '2 / 17');
+  await frame.waitForFunction(expected => {
+    return document.getElementById('pageNumber').textContent === '2 / ' + expected;
+  }, expectedCount, { timeout: 30000 });
   const afterNext = await frame.evaluate(() => ({
     counter: document.getElementById('pageNumber').textContent,
     active: Array.from(document.querySelectorAll('.dot')).findIndex(dot => dot.classList.contains('active'))
   }));
-  record('Navigation works inside Behance', afterNext.counter === '2 / 17' && afterNext.active === 1,
+  record('Navigation works inside Behance',
+    afterNext.counter === '2 / ' + expectedCount && afterNext.active === 1,
     afterNext.counter + ', dot ' + (afterNext.active + 1));
 
   await frame.click('#fullscreenBtn');

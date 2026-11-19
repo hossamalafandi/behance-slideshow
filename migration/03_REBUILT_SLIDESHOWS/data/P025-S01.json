@@ -1,0 +1,47 @@
+{
+  "slideshow_id": "P025-S01",
+  "project_id": "P025",
+  "project_title": "VILLA ENTRANCE - EYGPT",
+  "section_label": "RENDERS",
+  "descriptor": "renders",
+  "source_url": "https://sites.google.com/view/hossam-alafandi/freelance/villa-entrance-eygpt",
+  "embed_width": 1335,
+  "embed_height": 836,
+  "snippet_width": "100%",
+  "aspect": 1.597,
+  "radius_px": "20px",
+  "object_fit": "cover",
+  "fullscreen_required": true,
+  "repair_note": null,
+  "image_count": 4,
+  "images": [
+    {
+      "order": 1,
+      "src": "https://i.imgur.com/dh5OUOr.jpeg",
+      "w": 1831,
+      "h": 1030,
+      "alt": "Slide 1"
+    },
+    {
+      "order": 2,
+      "src": "https://i.imgur.com/GhjPixR.jpeg",
+      "w": 1831,
+      "h": 1030,
+      "alt": "Slide 2"
+    },
+    {
+      "order": 3,
+      "src": "https://i.imgur.com/p8pIPpO.jpeg",
+      "w": 1831,
+      "h": 1030,
+      "alt": "Slide 3"
+    },
+    {
+      "order": 4,
+      "src": "https://i.imgur.com/VCdLVTs.jpeg",
+      "w": 1831,
+      "h": 1030,
+      "alt": "Slide 4"
+    }
+  ]
+}

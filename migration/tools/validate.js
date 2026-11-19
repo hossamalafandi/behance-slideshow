@@ -2,11 +2,12 @@
 'use strict';
 
 /**
- * Phase 2 static validation — pilot-safe.
+ * Phase 2 static validation — all 47 slideshows.
  *
- * Verifies the frozen audit data, the generated P001-S01 artifacts, the
- * generated Behance snippet, and the static independent-embed rules. No
- * network requests and no image downloads are performed.
+ * Verifies the frozen audit data, every generated data file and preview, every
+ * project snippet, the complete server-side lookup, and the static
+ * independent-embed rules. No network requests and no image downloads are
+ * performed.
  */
 
 const fs = require('fs');
@@ -21,20 +22,15 @@ const DATA_DIR = path.join(ROOT, '03_REBUILT_SLIDESHOWS', 'data');
 const APPS_DIR = path.join(ROOT, '04_APPS_SCRIPT');
 const BEHANCE_DIR = path.join(ROOT, '05_BEHANCE_OUTPUT');
 
-const PILOT_ID = 'P001-S01';
-const PILOT_PROJECT = 'P001';
-const REPAIR_ID = 'P011-S01';
-const REPAIR_PROJECT = 'P011';
-const APPROVED_IDS = [PILOT_ID, REPAIR_ID];
-const APPROVED_PROJECTS = [PILOT_PROJECT, REPAIR_PROJECT];
+const EXPECTED_DEPLOYMENT_ID =
+  'AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA';
 const EXPECTED_GLOBAL_HASH = '882a952d07cc442466cb2d7a3e3369ecb44a9a9e20fd299ca5f6f9e52ae001d0';
 const EXPECTED_SLIDESHOWS = 47;
+const EXPECTED_PROJECTS = 36;
 const EXPECTED_IMAGE_SLOTS = 335;
 const EXPECTED_UNIQUE_URLS = 331;
-const EXPECTED_PILOT_IMAGES = 17;
-const EXPECTED_PILOT_HEIGHT = 805;
-const EXPECTED_REPAIR_IMAGES = 20;
-const EXPECTED_REPAIR_HEIGHT = 1553;
+const BEHANCE_MAX_WIDTH = 1200;
+const REPAIR_ID = 'P011-S01';
 
 const failures = [];
 const checks = [];
@@ -92,6 +88,16 @@ function sha256(values) {
   return crypto.createHash('sha256').update(values.join('\n')).digest('hex');
 }
 
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  })[character]);
+}
+
 function extractSlides(mapSource) {
   const match = /var SLIDES = ([\s\S]*?);\s*$/.exec(mapSource);
   if (!match) throw new Error('SlidesData.gs has no `var SLIDES = ...;` block');
@@ -124,250 +130,254 @@ function main() {
   check('frozen ordered URL hash is unchanged',
     globalHash === EXPECTED_GLOBAL_HASH, globalHash);
 
-  const configRows = config.slideshows.filter(slide => slide.slideshow_id === PILOT_ID);
-  check('P001-S01 exists exactly once in config', configRows.length === 1,
-    'found ' + configRows.length);
-  const source = configRows[0];
+  const sources = config.slideshows;
+  const ids = sources.map(source => source.slideshow_id);
+  const projectIds = Array.from(new Set(sources.map(source => source.project_id)));
 
-  const csvRows = csv.rows
-    .filter(row => row.slideshow_id === PILOT_ID)
-    .sort((a, b) => Number(a.order) - Number(b.order));
-  const expectedUrls = csvRows.map(row => row.original_url);
+  check('slideshow IDs are unique', new Set(ids).size === ids.length);
+  check('36 projects have slideshows', projectIds.length === EXPECTED_PROJECTS,
+    'found ' + projectIds.length);
+  check('P024 has no invented slideshow', !ids.some(id => id.startsWith('P024-')));
+  check('P036 remains without a slideshow', !ids.some(id => id.startsWith('P036-')));
 
-  check('P001-S01 has 17 audited image slots',
-    csvRows.length === EXPECTED_PILOT_IMAGES, 'found ' + csvRows.length);
-  check('P001-S01 CSV order is contiguous',
-    csvRows.every((row, index) => Number(row.order) === index + 1));
-  check('P001-S01 CSV URLs are remote https',
-    expectedUrls.every(url => /^https:\/\//.test(url)));
+  const byId = new Map();
+  for (const source of sources) {
+    const rows = csv.rows
+      .filter(row => row.slideshow_id === source.slideshow_id)
+      .sort((a, b) => Number(a.order) - Number(b.order));
+    const expectedUrls = rows.map(row => row.original_url);
+    byId.set(source.slideshow_id, { source, rows, expectedUrls });
 
-  // ------------------------------------------------------------------ data file
-  const dataFile = path.join(DATA_DIR, PILOT_ID + '.json');
-  check('P001-S01 data file exists', fs.existsSync(dataFile));
-  const data = JSON.parse(read(dataFile));
-
-  check('data file contains only P001-S01 data', data.slideshow_id === PILOT_ID);
-  check('data file has 17 images', data.images.length === EXPECTED_PILOT_IMAGES,
-    'found ' + data.images.length);
-  check('data image order is contiguous',
-    data.images.every((image, index) => image.order === index + 1));
-  check('data URLs match images.csv exactly in order',
-    data.images.length === expectedUrls.length &&
-      data.images.every((image, index) => image.src === expectedUrls[index]));
-  check('data URLs are used verbatim (no local, data, or proxy paths)',
-    data.images.every(image => /^https:\/\/i\.imgur\.com\//.test(image.src) ===
-      /^https:\/\/i\.imgur\.com\//.test(expectedUrls[image.order - 1])));
-  check('data embed height is 805 px', data.embed_height === EXPECTED_PILOT_HEIGHT,
-    'found ' + data.embed_height);
-  check('data derives height from the audited aspect ratio',
-    data.embed_height === Math.round(source.frame_w / source.aspect));
-  check('data requires fullscreen', data.fullscreen_required === true);
-
-  // ------------------------------------------------- P011-S01 approved repair
-  const repairConfigRows = config.slideshows.filter(slide => slide.slideshow_id === REPAIR_ID);
-  check('P011-S01 exists exactly once in config', repairConfigRows.length === 1,
-    'found ' + repairConfigRows.length);
-  const repairSource = repairConfigRows[0];
-
-  const repairCsvRows = csv.rows
-    .filter(row => row.slideshow_id === REPAIR_ID)
-    .sort((a, b) => Number(a.order) - Number(b.order));
-  const repairUrls = repairCsvRows.map(row => row.original_url);
-
-  check('P011-S01 has 20 audited image slots',
-    repairCsvRows.length === EXPECTED_REPAIR_IMAGES, 'found ' + repairCsvRows.length);
-  check('P011-S01 CSV order is contiguous',
-    repairCsvRows.every((row, index) => Number(row.order) === index + 1));
-  check('P011-S01 CSV URLs are remote https',
-    repairUrls.every(url => /^https:\/\//.test(url)));
-
-  const repairDataFile = path.join(DATA_DIR, REPAIR_ID + '.json');
-  check('P011-S01 data file exists', fs.existsSync(repairDataFile));
-  const repairData = JSON.parse(read(repairDataFile));
-
-  check('P011-S01 data file contains only P011-S01 data',
-    repairData.slideshow_id === REPAIR_ID);
-  check('P011-S01 data file has 20 images',
-    repairData.images.length === EXPECTED_REPAIR_IMAGES, 'found ' + repairData.images.length);
-  check('P011-S01 data image order is contiguous',
-    repairData.images.every((image, index) => image.order === index + 1));
-  check('P011-S01 data URLs match images.csv exactly in order',
-    repairData.images.length === repairUrls.length &&
-      repairData.images.every((image, index) => image.src === repairUrls[index]));
-  check('P011-S01 data embed height is 1553 px',
-    repairData.embed_height === EXPECTED_REPAIR_HEIGHT, 'found ' + repairData.embed_height);
-  check('P011-S01 data records the approved repair',
-    Boolean(repairData.repair_note) && /no JavaScript/i.test(repairData.repair_note));
-  check('P011-S01 data requires fullscreen', repairData.fullscreen_required === true);
-
-  // -------------------------------------------------------------------- preview
-  const previewFile = path.join(PREVIEW_DIR, PILOT_ID + '.html');
-  check('P001-S01 preview exists', fs.existsSync(previewFile));
-  const preview = read(previewFile);
-  const previewImages = Array.from(preview.matchAll(/<img\s+src="([^"]+)"[^>]*>/g))
-    .map(match => match[1]);
-
-  check('preview has exactly 17 images', previewImages.length === EXPECTED_PILOT_IMAGES,
-    'found ' + previewImages.length);
-  check('preview image URLs match images.csv exactly in order',
-    previewImages.length === expectedUrls.length &&
-      previewImages.every((url, index) => url === expectedUrls[index]));
-  check('preview matches the archived eager loading on every image',
-    (preview.match(/loading="eager"/g) || []).length === EXPECTED_PILOT_IMAGES &&
-      !/loading="lazy"/.test(preview));
-  check('preview has no unreplaced Apps Script directives', !/<\?/.test(preview));
-  check('preview has no data: or file: URLs', !/["'](?:data:|file:)/i.test(preview));
-  check('preview has no other slideshow IDs',
-    Array.from(new Set(preview.match(/P\d{3}-S\d{2}/g) || [])).every(id => id === PILOT_ID));
-  check('preview has no URL from another slideshow',
-    previewImages.every(url => expectedUrls.includes(url)));
-
-  check('preview has exactly one fullscreen button',
-    (preview.match(/id="fullscreenBtn"/g) || []).length === 1);
-  check('preview has exactly one slideshow container',
-    (preview.match(/class="slideshow-container"/g) || []).length === 1 &&
-      (preview.match(/id="slideshow"/g) || []).length === 1);
-  check('preview has exactly one dot container',
-    (preview.match(/class="dot-container"/g) || []).length === 1);
-  check('dots are inside the fullscreen container',
-    /id="dotContainer"[^>]*><\/div>\s*<\/div>\s*<script>/.test(
-      preview.replace(/\s+/g, ' ').replace(/<!--[\s\S]*?-->/g, '')) ||
-    (preview.indexOf('id="dotContainer"') < preview.indexOf('</div>\n\n<script>') &&
-      preview.indexOf('id="dotContainer"') > preview.indexOf('class="slideshow-container"')));
-  check('preview has no nested iframe or embed of another slideshow',
-    !/<iframe|<embed|<object/i.test(preview));
-
-  check('preview uses native fullscreen first', /requestFullscreen/.test(preview));
-  check('preview handles fullscreenerror', /fullscreenerror/.test(preview));
-  check('preview handles fullscreenchange', /fullscreenchange/.test(preview));
-  check('preview has theater-mode fallback', /theater-mode/.test(preview));
-  check('preview has a non-blocking fallback note', /fullscreen-note/.test(preview));
-  check('preview does not call alert()', !/\balert\s*\(/.test(preview));
-
-  check('preview does not use localStorage', !/localStorage/.test(preview));
-  check('preview does not use sessionStorage', !/sessionStorage/.test(preview));
-  check('preview does not use IndexedDB', !/indexedDB/i.test(preview));
-  check('preview does not use document.cookie', !/document\.cookie/.test(preview));
-  check('preview does not use postMessage', !/postMessage/.test(preview));
-  check('preview does not use BroadcastChannel', !/BroadcastChannel/.test(preview));
-
-  // ------------------------------------------------- P011-S01 repair preview
-  const repairPreviewFile = path.join(PREVIEW_DIR, REPAIR_ID + '.html');
-  check('P011-S01 preview exists', fs.existsSync(repairPreviewFile));
-  const repairPreview = read(repairPreviewFile);
-  const repairPreviewImages = Array.from(repairPreview.matchAll(/<img\s+src="([^"]+)"[^>]*>/g))
-    .map(match => match[1]);
-
-  check('P011-S01 preview has exactly 20 images',
-    repairPreviewImages.length === EXPECTED_REPAIR_IMAGES, 'found ' + repairPreviewImages.length);
-  check('P011-S01 preview image URLs match images.csv exactly in order',
-    repairPreviewImages.length === repairUrls.length &&
-      repairPreviewImages.every((url, index) => url === repairUrls[index]));
-  check('P011-S01 preview keeps eager loading on every image',
-    (repairPreview.match(/loading="eager"/g) || []).length === EXPECTED_REPAIR_IMAGES &&
-      !/loading="lazy"/.test(repairPreview));
-  check('P011-S01 preview has no unreplaced Apps Script directives', !/<\?/.test(repairPreview));
-  check('P011-S01 preview has no data: or file: URLs', !/["'](?:data:|file:)/i.test(repairPreview));
-  check('P011-S01 preview has no other slideshow IDs',
-    Array.from(new Set(repairPreview.match(/P\d{3}-S\d{2}/g) || [])).every(id => id === REPAIR_ID));
-  check('P011-S01 preview has no URL from another slideshow',
-    repairPreviewImages.every(url => repairUrls.includes(url)));
-
-  check('P011-S01 preview restores the standard JavaScript',
-    /<script>/.test(repairPreview) && /moveSlide/.test(repairPreview));
-  const repairSourceFile = path.join(ROOT, repairSource.source_file);
-  check('P011-S01 original source is archived', fs.existsSync(repairSourceFile));
-  if (fs.existsSync(repairSourceFile)) {
-    check('P011-S01 original source had no JavaScript',
-      !/<script\b/i.test(read(repairSourceFile)));
+    check(source.slideshow_id + ': has ' + source.image_count + ' audited image slots',
+      rows.length === source.image_count, 'found ' + rows.length);
+    check(source.slideshow_id + ': CSV order is contiguous',
+      rows.every((row, index) => Number(row.order) === index + 1));
+    check(source.slideshow_id + ': CSV URLs are remote https',
+      expectedUrls.every(url => /^https:\/\//.test(url)));
+    check(source.slideshow_id + ': CSV unique count matches the audit',
+      new Set(expectedUrls).size === Number(source.unique_images),
+      new Set(expectedUrls).size + ' vs ' + source.unique_images);
+    check(source.slideshow_id + ': frame dimensions are positive',
+      Number(source.frame_w) > 0 && Number(source.frame_h) > 0,
+      source.frame_w + ' x ' + source.frame_h);
   }
 
-  check('P011-S01 preview has exactly one fullscreen button',
-    (repairPreview.match(/id="fullscreenBtn"/g) || []).length === 1);
-  check('P011-S01 preview has exactly one slideshow container',
-    (repairPreview.match(/class="slideshow-container"/g) || []).length === 1 &&
-      (repairPreview.match(/id="slideshow"/g) || []).length === 1);
-  check('P011-S01 preview has exactly one dot container',
-    (repairPreview.match(/class="dot-container"/g) || []).length === 1);
-  check('P011-S01 dots are inside the fullscreen container',
-    /id="dotContainer"[^>]*><\/div>\s*<\/div>\s*<script>/.test(
-      repairPreview.replace(/\s+/g, ' ').replace(/<!--[\s\S]*?-->/g, '')) ||
-    (repairPreview.indexOf('id="dotContainer"') < repairPreview.indexOf('</div>\n\n<script>') &&
-      repairPreview.indexOf('id="dotContainer"') > repairPreview.indexOf('class="slideshow-container"')));
-  check('P011-S01 preview has no nested iframe or embed of another slideshow',
-    !/<iframe|<embed|<object/i.test(repairPreview));
-
-  check('P011-S01 preview uses native fullscreen first', /requestFullscreen/.test(repairPreview));
-  check('P011-S01 preview handles fullscreenerror', /fullscreenerror/.test(repairPreview));
-  check('P011-S01 preview handles fullscreenchange', /fullscreenchange/.test(repairPreview));
-  check('P011-S01 preview has theater-mode fallback', /theater-mode/.test(repairPreview));
-  check('P011-S01 preview has a non-blocking fallback note', /fullscreen-note/.test(repairPreview));
-  check('P011-S01 preview does not call alert()', !/\balert\s*\(/.test(repairPreview));
-  check('P011-S01 preview does not use navigation storage or messaging',
-    !/localStorage|sessionStorage|indexedDB|document\.cookie|postMessage|BroadcastChannel/i.test(repairPreview));
+  check('every images.csv row belongs to a configured slideshow',
+    csv.rows.every(row => byId.has(row.slideshow_id)));
+  const p032 = byId.get('P032-S01');
+  check('P032-S01 preserves the repeated image at positions 2 and 3',
+    Boolean(p032) && p032.expectedUrls[1] === p032.expectedUrls[2] &&
+      p032.expectedUrls[1] === 'https://i.imgur.com/1MWxYk7.jpeg');
+  const p026s02 = byId.get('P026-S02');
+  check('P026-S02 remains a 3-image companion',
+    Boolean(p026s02) && p026s02.expectedUrls.length === 3);
+  const p011 = byId.get('P011-S01');
+  check('P011-S01 records the approved repair',
+    Boolean(p011) && Boolean(p011.source.repair_note) &&
+      /no JavaScript/i.test(p011.source.repair_note));
 
   // ---------------------------------------------------------------- SlidesData
   const dataSource = read(path.join(APPS_DIR, 'SlidesData.gs'));
   const slideMap = extractSlides(dataSource);
   const mapKeys = Object.keys(slideMap);
-  check('SlidesData.gs contains exactly the approved slideshows',
-    mapKeys.length === APPROVED_IDS.length &&
-      APPROVED_IDS.every(id => mapKeys.includes(id)), mapKeys.join(', '));
-  check('SlidesData.gs P001-S01 has 17 images',
-    Boolean(slideMap[PILOT_ID]) && slideMap[PILOT_ID].images.length === EXPECTED_PILOT_IMAGES);
-  check('SlidesData.gs P001-S01 URLs match images.csv exactly',
-    Boolean(slideMap[PILOT_ID]) &&
-      slideMap[PILOT_ID].images.every((image, index) => image.src === expectedUrls[index]));
-  check('SlidesData.gs P011-S01 has 20 images',
-    Boolean(slideMap[REPAIR_ID]) && slideMap[REPAIR_ID].images.length === EXPECTED_REPAIR_IMAGES);
-  check('SlidesData.gs P011-S01 URLs match images.csv exactly',
-    Boolean(slideMap[REPAIR_ID]) &&
-      slideMap[REPAIR_ID].images.every((image, index) => image.src === repairUrls[index]));
-  const approvedUrls = new Set([...expectedUrls, ...repairUrls]);
-  check('SlidesData.gs contains no other audited image URLs',
-    (dataSource.match(/https:\/\/i\.imgur\.com\/[^"']+/g) || [])
-      .every(url => approvedUrls.has(url)));
+  check('SlidesData.gs contains all 47 slideshows',
+    mapKeys.length === EXPECTED_SLIDESHOWS && ids.every(id => mapKeys.includes(id)),
+    mapKeys.length + ' keys');
+  check('SlidesData.gs preserves the audited order',
+    mapKeys.join(',') === ids.join(','));
+  check('SlidesData.gs has no P024 or P036 entries',
+    !mapKeys.some(id => id.startsWith('P024-') || id.startsWith('P036-')));
+  const mapUrls = dataSource.match(/https:\/\/i\.imgur\.com\/[^"']+/g) || [];
+  check('SlidesData.gs contains exactly 335 image URL occurrences',
+    mapUrls.length === EXPECTED_IMAGE_SLOTS, 'found ' + mapUrls.length);
+  check('SlidesData.gs contains no URL outside the frozen audit',
+    mapUrls.every(url => uniqueUrls.has(url)));
+
+  // ------------------------------------------------------- per-slide artifacts
+  const dataById = new Map();
+  const previewById = new Map();
+
+  for (const id of ids) {
+    const { source, expectedUrls } = byId.get(id);
+    const expectedSnippetWidth = source.frame_w >= BEHANCE_MAX_WIDTH
+      ? '100%'
+      : String(source.frame_w);
+
+    // ------------------------------------------------------------- data file
+    const dataFile = path.join(DATA_DIR, id + '.json');
+    check(id + ': data file exists', fs.existsSync(dataFile));
+    const data = JSON.parse(read(dataFile));
+    dataById.set(id, data);
+
+    check(id + ': data ID matches', data.slideshow_id === id);
+    check(id + ': data project matches', data.project_id === source.project_id);
+    check(id + ': data title matches', data.project_title === source.project_title);
+    check(id + ': data section matches', data.section_label === source.section_label);
+    check(id + ': data source URL matches', data.source_url === source.project_url);
+    check(id + ': data frame width matches the audit',
+      data.embed_width === source.frame_w, data.embed_width + ' vs ' + source.frame_w);
+    check(id + ': data frame height matches the audit',
+      data.embed_height === source.frame_h, data.embed_height + ' vs ' + source.frame_h);
+    check(id + ': data snippet width follows the Behance rule',
+      data.snippet_width === expectedSnippetWidth,
+      data.snippet_width + ' vs ' + expectedSnippetWidth);
+    check(id + ': data aspect matches the audit', data.aspect === source.aspect);
+    check(id + ': data radius is 20px', data.radius_px === '20px');
+    check(id + ': data object fit is cover', data.object_fit === 'cover');
+    check(id + ': data requires fullscreen', data.fullscreen_required === true);
+    check(id + ': data image count matches the audit',
+      data.image_count === expectedUrls.length, data.image_count + ' vs ' + expectedUrls.length);
+    check(id + ': data has the audited images', data.images.length === expectedUrls.length);
+    check(id + ': data image order is contiguous',
+      data.images.every((image, index) => image.order === index + 1));
+    check(id + ': data URLs match images.csv exactly in order',
+      data.images.length === expectedUrls.length &&
+        data.images.every((image, index) => image.src === expectedUrls[index]));
+    check(id + ': data URLs are remote https',
+      data.images.every(image => /^https:\/\//.test(image.src)));
+    check(id + ': data repair note is correct',
+      id === REPAIR_ID
+        ? Boolean(data.repair_note) && /no JavaScript/i.test(data.repair_note)
+        : data.repair_note === null);
+    check(id + ': SlidesData entry matches the data file',
+      JSON.stringify(slideMap[id]) === JSON.stringify(data));
+
+    // --------------------------------------------------------------- preview
+    const previewFile = path.join(PREVIEW_DIR, id + '.html');
+    check(id + ': preview exists', fs.existsSync(previewFile));
+    const preview = read(previewFile);
+    previewById.set(id, preview);
+    const previewImages = Array.from(preview.matchAll(/<img\s+src="([^"]+)"[^>]*>/g))
+      .map(match => match[1]);
+
+    check(id + ': preview has the audited image count',
+      previewImages.length === expectedUrls.length,
+      previewImages.length + ' vs ' + expectedUrls.length);
+    check(id + ': preview has the audited slide count',
+      (preview.match(/<div class="slide">/g) || []).length === expectedUrls.length);
+    check(id + ': preview URLs match images.csv exactly in order',
+      previewImages.length === expectedUrls.length &&
+        previewImages.every((url, index) => url === expectedUrls[index]));
+    check(id + ': preview keeps eager loading on every image',
+      (preview.match(/loading="eager"/g) || []).length === expectedUrls.length &&
+        !/loading="lazy"/.test(preview));
+    check(id + ': preview has no unreplaced Apps Script directives', !/<\?/.test(preview));
+    check(id + ': preview has no data or file URLs', !/["'](?:data:|file:)/i.test(preview));
+    check(id + ': preview has no other slideshow IDs',
+      Array.from(new Set(preview.match(/P\d{3}-S\d{2}/g) || []))
+        .every(found => found === id));
+    check(id + ': preview has no URL from another slideshow',
+      previewImages.every(url => expectedUrls.includes(url)));
+
+    check(id + ': preview has exactly one fullscreen button',
+      (preview.match(/id="fullscreenBtn"/g) || []).length === 1);
+    check(id + ': preview has exactly one slideshow container',
+      (preview.match(/class="slideshow-container"/g) || []).length === 1 &&
+        (preview.match(/id="slideshow"/g) || []).length === 1);
+    check(id + ': preview has exactly one dot container',
+      (preview.match(/class="dot-container"/g) || []).length === 1);
+    const dotIndex = preview.indexOf('id="dotContainer"');
+    const scriptIndex = preview.indexOf('<script>');
+    const betweenDotsAndScript = preview.slice(dotIndex, scriptIndex);
+    check(id + ': dots are inside the fullscreen container',
+      dotIndex > preview.indexOf('id="slideshow"') &&
+        /<\/div>\s*<\/div>\s*$/.test(betweenDotsAndScript));
+    check(id + ': preview has no nested iframe or embed',
+      !/<iframe|<embed|<object/i.test(preview));
+
+    check(id + ': preview uses native fullscreen first', /requestFullscreen/.test(preview));
+    check(id + ': preview handles fullscreenerror', /fullscreenerror/.test(preview));
+    check(id + ': preview handles fullscreenchange', /fullscreenchange/.test(preview));
+    check(id + ': preview has theater-mode fallback', /theater-mode/.test(preview));
+    check(id + ': preview has a non-blocking fallback note', /fullscreen-note/.test(preview));
+    check(id + ': preview does not call alert()', !/\balert\s*\(/.test(preview));
+    check(id + ': preview does not use storage or messaging',
+      !/localStorage|sessionStorage|indexedDB|document\.cookie|postMessage|BroadcastChannel/i
+        .test(preview));
+
+    check(id + ': preview uses a 20px radius',
+      (preview.match(/border-radius:\s*20px/g) || []).length >= 2);
+    check(id + ': preview uses cover object fit', /object-fit:\s*cover/.test(preview));
+    check(id + ': preview keeps a transparent background',
+      /background-color:\s*transparent/.test(preview));
+    check(id + ': preview reveals arrows on hover',
+      /\.slideshow-container:hover \.prev/.test(preview) &&
+        /\.slideshow-container:hover \.next/.test(preview));
+    check(id + ': preview reveals shadows on hover',
+      /\.slideshow-container:hover \.side-shadow/.test(preview));
+    check(id + ': preview fills the iframe',
+      /width:\s*100vw/.test(preview) && /height:\s*100vh/.test(preview));
+    check(id + ': preview title matches the project',
+      preview.includes('<title>' +
+        escapeHtml(source.project_title + ' — ' + source.section_label) + '</title>'));
+
+    if (id === REPAIR_ID) {
+      check(id + ': preview restores the standard JavaScript',
+        /<script>/.test(preview) && /moveSlide/.test(preview));
+      const sourceFile = path.join(ROOT, source.source_file);
+      check(id + ': original source is archived', fs.existsSync(sourceFile));
+      if (fs.existsSync(sourceFile)) {
+        check(id + ': original source had no JavaScript',
+          !/<script\b/i.test(read(sourceFile)));
+      }
+    }
+  }
 
   // -------------------------------------------------------------------- snippet
-  const snippetFile = path.join(BEHANCE_DIR, PILOT_PROJECT + '.md');
-  check('P001.md snippet file exists', fs.existsSync(snippetFile));
-  const snippet = read(snippetFile);
-  check('snippet has exactly one iframe', (snippet.match(/<iframe/g) || []).length === 1);
-  check('snippet has exactly one slide identifier',
-    (snippet.match(/\?slide=/g) || []).length === 1 &&
-      /[?&]slide=P001-S01(?:["&]|$)/.test(snippet));
-  check('snippet contains no other slideshow ID',
-    (snippet.match(/P\d{3}-S\d{2}/g) || []).every(id => id === PILOT_ID));
-  check('snippet height is 805', /\bheight="805"/.test(snippet));
-  check('snippet width is 100%', /\bwidth="100%"/.test(snippet));
-  check('snippet grants fullscreen (legacy attribute)', /\ballowfullscreen\b/.test(snippet));
-  check('snippet grants fullscreen (Permissions Policy)', /allow="fullscreen"/.test(snippet));
-  check('snippet has no sandbox attribute', !/\bsandbox\b/i.test(snippet));
-  check('snippet has no gallery, list, or extra viewer markup',
-    !/<a\s|<button|<script|grid|gallery/i.test(snippet));
+  let totalIframes = 0;
+  for (const projectId of projectIds) {
+    const projectSlides = sources.filter(source => source.project_id === projectId);
+    const snippetFile = path.join(BEHANCE_DIR, projectId + '.md');
+    check(projectId + ': snippet file exists', fs.existsSync(snippetFile));
+    const snippet = read(snippetFile);
+    const blocks = Array.from(snippet.matchAll(/<iframe\b[\s\S]*?<\/iframe>/g))
+      .map(match => match[0]);
 
-  // ------------------------------------------------- P011-S01 repair snippet
-  const repairSnippetFile = path.join(BEHANCE_DIR, REPAIR_PROJECT + '.md');
-  check('P011.md snippet file exists', fs.existsSync(repairSnippetFile));
-  const repairSnippet = read(repairSnippetFile);
-  check('P011 snippet has exactly one iframe',
-    (repairSnippet.match(/<iframe/g) || []).length === 1);
-  check('P011 snippet has exactly one slide identifier',
-    (repairSnippet.match(/\?slide=/g) || []).length === 1 &&
-      /[?&]slide=P011-S01(?:["&]|$)/.test(repairSnippet));
-  check('P011 snippet contains no other slideshow ID',
-    (repairSnippet.match(/P\d{3}-S\d{2}/g) || []).every(id => id === REPAIR_ID));
-  check('P011 snippet height is 1553', /\bheight="1553"/.test(repairSnippet));
-  check('P011 snippet width is 100%', /\bwidth="100%"/.test(repairSnippet));
-  check('P011 snippet grants fullscreen (legacy attribute)',
-    /\ballowfullscreen\b/.test(repairSnippet));
-  check('P011 snippet grants fullscreen (Permissions Policy)',
-    /allow="fullscreen"/.test(repairSnippet));
-  check('P011 snippet has no sandbox attribute', !/\bsandbox\b/i.test(repairSnippet));
-  check('P011 snippet records the repair',
-    /\*\*Repair:\*\*/.test(repairSnippet) && /no JavaScript/i.test(repairSnippet));
-  check('P011 snippet has no gallery, list, or extra viewer markup',
-    !/<a\s|<button|<script|grid|gallery/i.test(repairSnippet));
+    check(projectId + ': has one iframe per slideshow',
+      blocks.length === projectSlides.length,
+      blocks.length + ' vs ' + projectSlides.length);
+    totalIframes += blocks.length;
+
+    projectSlides.forEach((source, index) => {
+      const data = dataById.get(source.slideshow_id);
+      const block = blocks[index] || '';
+      const src = /\bsrc="([^"]+)"/.exec(block);
+      const width = /\bwidth="([^"]+)"/.exec(block);
+      const height = /\bheight="([^"]+)"/.exec(block);
+      const srcValue = src ? src[1] : '';
+
+      check(source.slideshow_id + ': snippet src targets exactly this slideshow',
+        Boolean(src) && srcValue.includes(EXPECTED_DEPLOYMENT_ID) &&
+          new RegExp('[?&]slide=' + source.slideshow_id + '(?:["&]|$)').test(srcValue),
+        srcValue);
+      check(source.slideshow_id + ': snippet has exactly one slide parameter',
+        (block.match(/\?slide=/g) || []).length === 1);
+      check(source.slideshow_id + ': snippet width follows the Behance rule',
+        Boolean(width) && width[1] === data.snippet_width,
+        width ? width[1] + ' vs ' + data.snippet_width : 'missing');
+      check(source.slideshow_id + ': snippet height matches the audit',
+        Boolean(height) && Number(height[1]) === data.embed_height,
+        height ? height[1] + ' vs ' + data.embed_height : 'missing');
+      check(source.slideshow_id + ': snippet grants fullscreen (legacy)',
+        /\ballowfullscreen\b/.test(block));
+      check(source.slideshow_id + ': snippet grants fullscreen (policy)',
+        /allow="fullscreen"/.test(block));
+      check(source.slideshow_id + ': snippet has no sandbox',
+        !/\bsandbox\b/i.test(block));
+      check(source.slideshow_id + ': snippet has the 20px radius style',
+        /border-radius:\s*20px/.test(block));
+      check(source.slideshow_id + ': snippet contains no other slideshow ID',
+        Array.from(new Set(block.match(/P\d{3}-S\d{2}/g) || []))
+          .every(found => found === source.slideshow_id));
+    });
+
+    check(projectId + ': snippet file has no placeholder deployment',
+      !/<NEW_DEPLOYMENT_ID>/.test(snippet));
+    check(projectId + ': snippet file has no gallery or viewer markup',
+      !/<a\s|<button|<script|gallery/i.test(snippet));
+  }
+  check('all 47 slideshows have exactly one snippet',
+    totalIframes === EXPECTED_SLIDESHOWS, 'found ' + totalIframes);
 
   // ---------------------------------------------------------- router (static)
   const router = read(path.join(APPS_DIR, 'Code.gs'));
@@ -386,65 +396,69 @@ function main() {
   const errorBody = /function notFoundResponse_\(\) \{([\s\S]*?)\n\}/.exec(router);
   check('error page contains no links or catalog',
     Boolean(errorBody) && !/<a\s|https?:\/\/|P\d{3}-S\d{2}/i.test(errorBody[1]));
-  check('router has only one HTML response path per request', !/createHtmlOutput\([\s\S]*SLIDES/.test(router));
+  check('router has only one HTML response path per request',
+    !/createHtmlOutput\([\s\S]*SLIDES/.test(router));
 
   // -------------------------------------------------------------------- hygiene
-  const previewFiles = listFiles(PREVIEW_DIR).map(file => path.relative(ROOT, file))
-    .filter(file => !file.endsWith('.gitkeep'));
-  const dataFiles = listFiles(DATA_DIR).map(file => path.relative(ROOT, file))
-    .filter(file => !file.endsWith('.gitkeep'));
-  const behanceFiles = listFiles(BEHANCE_DIR).map(file => path.relative(ROOT, file))
-    .filter(file => !file.endsWith('.gitkeep'));
+  const previewFiles = listFiles(PREVIEW_DIR).filter(file => !file.endsWith('.gitkeep'));
+  const dataFiles = listFiles(DATA_DIR).filter(file => !file.endsWith('.gitkeep'));
+  const behanceFiles = listFiles(BEHANCE_DIR).filter(file => !file.endsWith('.gitkeep'));
   const previewNames = previewFiles.map(file => path.basename(file)).sort();
   const dataNames = dataFiles.map(file => path.basename(file)).sort();
   const behanceNames = behanceFiles.map(file => path.basename(file)).sort();
-  check('preview output contains only the approved slideshows',
-    previewNames.length === APPROVED_IDS.length &&
-      previewNames.every((name, index) => name === APPROVED_IDS.slice().sort()[index] + '.html'),
+  const expectedPreviewNames = ids.map(id => id + '.html').sort();
+  const expectedDataNames = ids.map(id => id + '.json').sort();
+  const expectedBehanceNames = projectIds.map(id => id + '.md').sort();
+
+  check('preview output contains exactly the 47 audited slideshows',
+    JSON.stringify(previewNames) === JSON.stringify(expectedPreviewNames),
     previewNames.join(', '));
-  check('data output contains only the approved slideshows',
-    dataNames.length === APPROVED_IDS.length &&
-      dataNames.every((name, index) => name === APPROVED_IDS.slice().sort()[index] + '.json'),
+  check('data output contains exactly the 47 audited slideshows',
+    JSON.stringify(dataNames) === JSON.stringify(expectedDataNames),
     dataNames.join(', '));
-  check('Behance output contains only the approved projects',
-    behanceNames.length === APPROVED_PROJECTS.length &&
-      behanceNames.every((name, index) => name === APPROVED_PROJECTS.slice().sort()[index] + '.md'),
+  check('Behance output contains exactly the 36 projects',
+    JSON.stringify(behanceNames) === JSON.stringify(expectedBehanceNames),
     behanceNames.join(', '));
   check('no image binaries were generated',
-    ![...previewFiles, ...dataFiles].some(file => /\.(png|jpe?g|gif|webp|avif|svg)$/i.test(file)));
+    ![...previewFiles, ...dataFiles, ...behanceFiles]
+      .some(file => /\.(png|jpe?g|gif|webp|avif|svg)$/i.test(file)));
 
   const failed = checks.filter(item => !item.passed);
   const result = {
-    approved: APPROVED_IDS,
-    checks: checks.length,
-    passed: checks.length - failed.length,
-    failed: failed.length,
-    failures: failed.map(item => item.name + (item.detail ? ' (' + item.detail + ')' : '')),
-    frozen: {
-      slideshows: config.slideshows.length,
+    scope: {
+      slideshows: sources.length,
+      projects: projectIds.length,
       imageSlots: csv.rows.length,
       uniqueUrls: uniqueUrls.size,
       orderedUrlHash: globalHash
     },
+    checks: checks.length,
+    passed: checks.length - failed.length,
+    failed: failed.length,
+    failures: failed.map(item => item.name + (item.detail ? ' (' + item.detail + ')' : '')),
+    widths: {
+      fluid: sources.filter(source => source.frame_w >= BEHANCE_MAX_WIDTH).length,
+      fixed: sources.filter(source => source.frame_w < BEHANCE_MAX_WIDTH).length
+    },
     generated: {
-      slideshows: APPROVED_IDS.map(id => ({
-        id,
-        images: slideMap[id].images.length,
-        embedHeight: slideMap[id].embed_height
+      slideshows: sources.map(source => ({
+        id: source.slideshow_id,
+        images: byId.get(source.slideshow_id).expectedUrls.length,
+        width: dataById.get(source.slideshow_id).snippet_width,
+        height: dataById.get(source.slideshow_id).embed_height
       })),
-      deployment: /<NEW_DEPLOYMENT_ID>/.test(snippet) ? '<NEW_DEPLOYMENT_ID>' : 'set'
+      projects: projectIds.length,
+      deployment: EXPECTED_DEPLOYMENT_ID
     }
   };
 
   console.log(JSON.stringify(result, null, 2));
-  if (failures.length) {
-    process.exit(1);
-  }
+  if (failures.length) process.exit(1);
 }
 
 try {
   main();
 } catch (error) {
-  console.error('ERROR: ' + error.message);
+  console.error('ERROR: ' + error.stack);
   process.exit(1);
 }

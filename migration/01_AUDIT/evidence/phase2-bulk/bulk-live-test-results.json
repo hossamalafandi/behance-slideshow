@@ -1,0 +1,1825 @@
+{
+  "url": "https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec",
+  "scope": {
+    "slideshows": 47,
+    "projects": 36,
+    "imageSlots": 335,
+    "behanceColumn": 987
+  },
+  "browser": "Chrome 157.0.8103.79",
+  "checks": 332,
+  "passed": 332,
+  "failed": 0,
+  "slideshowsPassed": 47,
+  "slideshowsFailed": 0,
+  "retriedSlides": [
+    "P011-S01"
+  ],
+  "blockedImages": 335,
+  "failures": [],
+  "routerChecks": [
+    {
+      "name": "live router rejects (missing slide)",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "name": "live router rejects ?slide=NOPE-S99",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "name": "live router rejects ?slide=P001-S01&slide=P001-S01",
+      "passed": true,
+      "detail": "HTTP 200"
+    }
+  ],
+  "results": [
+    {
+      "id": "P001-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P001-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P001-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P001-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P001-S01: sandbox receives the full 805 px",
+          "passed": true,
+          "detail": "805 px"
+        },
+        {
+          "name": "P001-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P001-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P001-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P002-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P002-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P002-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P002-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P002-S01: sandbox receives the full 927 px",
+          "passed": true,
+          "detail": "927 px"
+        },
+        {
+          "name": "P002-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P002-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P002-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P003-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P003-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P003-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P003-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P003-S01: sandbox receives the full 993 px",
+          "passed": true,
+          "detail": "993 px"
+        },
+        {
+          "name": "P003-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P003-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P003-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P004-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P004-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P004-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P004-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P004-S01: sandbox receives the full 771 px",
+          "passed": true,
+          "detail": "771 px"
+        },
+        {
+          "name": "P004-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P004-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P004-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P004-S02",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P004-S02: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P004-S02: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P004-S02: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P004-S02: sandbox receives the full 769 px",
+          "passed": true,
+          "detail": "769 px"
+        },
+        {
+          "name": "P004-S02: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P004-S02: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P004-S02: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P004-S03",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P004-S03: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P004-S03: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P004-S03: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P004-S03: sandbox receives the full 768 px",
+          "passed": true,
+          "detail": "768 px"
+        },
+        {
+          "name": "P004-S03: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P004-S03: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P004-S03: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P004-S04",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P004-S04: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P004-S04: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P004-S04: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P004-S04: sandbox receives the full 764 px",
+          "passed": true,
+          "detail": "764 px"
+        },
+        {
+          "name": "P004-S04: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P004-S04: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P004-S04: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P004-S05",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P004-S05: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P004-S05: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P004-S05: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P004-S05: sandbox receives the full 443 px",
+          "passed": true,
+          "detail": "443 px"
+        },
+        {
+          "name": "P004-S05: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P004-S05: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P004-S05: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P004-S06",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P004-S06: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P004-S06: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P004-S06: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P004-S06: sandbox receives the full 647 px",
+          "passed": true,
+          "detail": "647 px"
+        },
+        {
+          "name": "P004-S06: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P004-S06: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P004-S06: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P004-S07",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P004-S07: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P004-S07: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P004-S07: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P004-S07: sandbox receives the full 636 px",
+          "passed": true,
+          "detail": "636 px"
+        },
+        {
+          "name": "P004-S07: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P004-S07: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P004-S07: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P005-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P005-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P005-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P005-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P005-S01: sandbox receives the full 1570 px",
+          "passed": true,
+          "detail": "1570 px"
+        },
+        {
+          "name": "P005-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P005-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P005-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P006-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P006-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P006-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P006-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P006-S01: sandbox receives the full 1570 px",
+          "passed": true,
+          "detail": "1570 px"
+        },
+        {
+          "name": "P006-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P006-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P006-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P007-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P007-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P007-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P007-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P007-S01: sandbox receives the full 1553 px",
+          "passed": true,
+          "detail": "1553 px"
+        },
+        {
+          "name": "P007-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P007-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P007-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P008-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P008-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P008-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P008-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P008-S01: sandbox receives the full 1570 px",
+          "passed": true,
+          "detail": "1570 px"
+        },
+        {
+          "name": "P008-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P008-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P008-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P009-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P009-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P009-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P009-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P009-S01: sandbox receives the full 1570 px",
+          "passed": true,
+          "detail": "1570 px"
+        },
+        {
+          "name": "P009-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P009-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P009-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P010-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P010-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P010-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P010-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P010-S01: sandbox receives the full 1570 px",
+          "passed": true,
+          "detail": "1570 px"
+        },
+        {
+          "name": "P010-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P010-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P010-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P011-S01",
+      "passed": true,
+      "attempts": 2,
+      "checks": [
+        {
+          "name": "P011-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P011-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P011-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P011-S01: sandbox receives the full 1553 px",
+          "passed": true,
+          "detail": "1553 px"
+        },
+        {
+          "name": "P011-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P011-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P011-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P012-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P012-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P012-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P012-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P012-S01: sandbox receives the full 1570 px",
+          "passed": true,
+          "detail": "1570 px"
+        },
+        {
+          "name": "P012-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P012-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P012-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P013-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P013-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P013-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P013-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P013-S01: sandbox receives the full 1570 px",
+          "passed": true,
+          "detail": "1570 px"
+        },
+        {
+          "name": "P013-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P013-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P013-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P014-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P014-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P014-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P014-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P014-S01: sandbox receives the full 1570 px",
+          "passed": true,
+          "detail": "1570 px"
+        },
+        {
+          "name": "P014-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P014-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P014-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P015-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P015-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P015-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P015-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P015-S01: sandbox receives the full 1553 px",
+          "passed": true,
+          "detail": "1553 px"
+        },
+        {
+          "name": "P015-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P015-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P015-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P016-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P016-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P016-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P016-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P016-S01: sandbox receives the full 1570 px",
+          "passed": true,
+          "detail": "1570 px"
+        },
+        {
+          "name": "P016-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P016-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P016-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P017-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P017-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P017-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P017-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P017-S01: sandbox receives the full 836 px",
+          "passed": true,
+          "detail": "836 px"
+        },
+        {
+          "name": "P017-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P017-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P017-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P018-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P018-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P018-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P018-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P018-S01: sandbox receives the full 1570 px",
+          "passed": true,
+          "detail": "1570 px"
+        },
+        {
+          "name": "P018-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P018-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P018-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P019-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P019-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P019-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P019-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P019-S01: sandbox receives the full 1570 px",
+          "passed": true,
+          "detail": "1570 px"
+        },
+        {
+          "name": "P019-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P019-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P019-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P020-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P020-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P020-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P020-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P020-S01: sandbox receives the full 1052 px",
+          "passed": true,
+          "detail": "1052 px"
+        },
+        {
+          "name": "P020-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P020-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P020-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P021-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P021-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P021-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P021-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P021-S01: sandbox receives the full 802 px",
+          "passed": true,
+          "detail": "802 px"
+        },
+        {
+          "name": "P021-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P021-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P021-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P022-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P022-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P022-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P022-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P022-S01: sandbox receives the full 1570 px",
+          "passed": true,
+          "detail": "1570 px"
+        },
+        {
+          "name": "P022-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P022-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P022-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P023-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P023-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P023-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P023-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P023-S01: sandbox receives the full 600 px",
+          "passed": true,
+          "detail": "600 px"
+        },
+        {
+          "name": "P023-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P023-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P023-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P023-S02",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P023-S02: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P023-S02: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P023-S02: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P023-S02: sandbox receives the full 597 px",
+          "passed": true,
+          "detail": "597 px"
+        },
+        {
+          "name": "P023-S02: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P023-S02: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P023-S02: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P025-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P025-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P025-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P025-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P025-S01: sandbox receives the full 836 px",
+          "passed": true,
+          "detail": "836 px"
+        },
+        {
+          "name": "P025-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P025-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P025-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P026-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P026-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P026-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P026-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P026-S01: sandbox receives the full 1131 px",
+          "passed": true,
+          "detail": "1131 px"
+        },
+        {
+          "name": "P026-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P026-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P026-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P026-S02",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P026-S02: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P026-S02: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P026-S02: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P026-S02: sandbox receives the full 1126 px",
+          "passed": true,
+          "detail": "1126 px"
+        },
+        {
+          "name": "P026-S02: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P026-S02: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P026-S02: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P027-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P027-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P027-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P027-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P027-S01: sandbox receives the full 624 px",
+          "passed": true,
+          "detail": "624 px"
+        },
+        {
+          "name": "P027-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P027-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P027-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P027-S02",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P027-S02: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P027-S02: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P027-S02: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P027-S02: sandbox receives the full 628 px",
+          "passed": true,
+          "detail": "628 px"
+        },
+        {
+          "name": "P027-S02: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P027-S02: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P027-S02: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P028-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P028-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P028-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P028-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P028-S01: sandbox receives the full 1570 px",
+          "passed": true,
+          "detail": "1570 px"
+        },
+        {
+          "name": "P028-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P028-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P028-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P029-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P029-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P029-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P029-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P029-S01: sandbox receives the full 707 px",
+          "passed": true,
+          "detail": "707 px"
+        },
+        {
+          "name": "P029-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P029-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P029-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P029-S02",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P029-S02: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P029-S02: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P029-S02: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P029-S02: sandbox receives the full 707 px",
+          "passed": true,
+          "detail": "707 px"
+        },
+        {
+          "name": "P029-S02: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P029-S02: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P029-S02: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P030-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P030-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P030-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P030-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P030-S01: sandbox receives the full 1107 px",
+          "passed": true,
+          "detail": "1107 px"
+        },
+        {
+          "name": "P030-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P030-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P030-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P031-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P031-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P031-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P031-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P031-S01: sandbox receives the full 1393 px",
+          "passed": true,
+          "detail": "1393 px"
+        },
+        {
+          "name": "P031-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P031-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P031-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P032-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P032-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P032-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P032-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P032-S01: sandbox receives the full 803 px",
+          "passed": true,
+          "detail": "803 px"
+        },
+        {
+          "name": "P032-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P032-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P032-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P033-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P033-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P033-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P033-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P033-S01: sandbox receives the full 1052 px",
+          "passed": true,
+          "detail": "1052 px"
+        },
+        {
+          "name": "P033-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P033-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P033-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P034-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P034-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P034-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P034-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P034-S01: sandbox receives the full 801 px",
+          "passed": true,
+          "detail": "801 px"
+        },
+        {
+          "name": "P034-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P034-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P034-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P034-S02",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P034-S02: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P034-S02: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P034-S02: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P034-S02: sandbox receives the full 743 px",
+          "passed": true,
+          "detail": "743 px"
+        },
+        {
+          "name": "P034-S02: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P034-S02: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P034-S02: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P035-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P035-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P035-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P035-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P035-S01: sandbox receives the full 1052 px",
+          "passed": true,
+          "detail": "1052 px"
+        },
+        {
+          "name": "P035-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P035-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P035-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P037-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P037-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P037-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P037-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P037-S01: sandbox receives the full 1052 px",
+          "passed": true,
+          "detail": "1052 px"
+        },
+        {
+          "name": "P037-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P037-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P037-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P038-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P038-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P038-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P038-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P038-S01: sandbox receives the full 831 px",
+          "passed": true,
+          "detail": "831 px"
+        },
+        {
+          "name": "P038-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P038-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P038-S01: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

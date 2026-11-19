@@ -1,19 +1,23 @@
 # Behance Slideshow Migration — Phase 2
 
-Status: **Phase 2 approved. The P001-S01 pilot is complete: local, live Apps
-Script, and real published-Behance gates all pass (18/18). P011-S01 repair and
-batch rollout are next.**
+Status: **Phase 2 bulk rollout generated and deployed. All 47 slideshows pass
+static (3092/3092), local browser (340/340), and live Apps Script (332/332)
+validation. P001-S01 still passes the real published-Behance gate (18/18);
+real Behance verification of the other 45 slideshows is pending owner review
+and publication. P024 remains blocked.**
 Audit date: 2026-11-18
+Bulk rollout date: 2026-11-20
 Scope: the **Freelance** page of <https://sites.google.com/view/hossam-alafandi/>
 and its 38 project pages.
 
 This folder is the migration workspace. It was created without changing,
 deleting, renaming, or redeploying anything in the live portfolio, the existing
 production Apps Script project, or the existing `index.html` prototype. A **new
-standalone** Apps Script project was deployed for the pilot, and one temporary
-Behance test project was published. The audit and pilot commits are pushed to
-`main`. See `01_AUDIT/phase_2_pilot_report.md` for the pilot state and the real
-Behance gate result.
+standalone** Apps Script project hosts all 47 slideshows and is deployed as
+version 3. One temporary Behance test project was published. The audit, pilot,
+and bulk rollout commits are pushed to `main`. See
+`01_AUDIT/phase_2_pilot_report.md` and `01_AUDIT/phase_2_bulk_report.md` for the
+test results and the pending real-Behance review.
 
 Phase 1.1 adds two mandatory requirements: **no image downloading/rehosting**
 and **one consistent fullscreen button on all 47 slideshows**. The owner also
@@ -61,9 +65,9 @@ migration/
 │   ├── raw/                             raw crawl output (per project, context, image metadata, log)
 │   └── evidence/                        local screenshots (gitignored) and the pilot test report
 ├── 02_SOURCE_BACKUP/                    untouched original slideshow HTML, one folder per project
-├── 03_REBUILT_SLIDESHOWS/               generated P001-S01 data and preview
-├── 04_APPS_SCRIPT/                      new Apps Script project files (P001-S01 only)
-└── 05_BEHANCE_OUTPUT/                   generated P001-S01 embed snippet (deployment pending)
+├── 03_REBUILT_SLIDESHOWS/               generated data and previews for all 47 slideshows
+├── 04_APPS_SCRIPT/                      shared Apps Script project (47-slide server map, version 3)
+└── 05_BEHANCE_OUTPUT/                   36 generated project embed snippets
 ```
 
 `02_SOURCE_BACKUP` contains one `*.original.html` per slideshow. These files are
@@ -200,6 +204,14 @@ shared standard JavaScript after the P001-S01 real Behance gate passed. All 20
 images and the original order were preserved; local 21/21 and live 20/20 tests
 pass.
 
+On 2026-11-20 the bulk generator produced all 47 slideshows and 36 project
+snippets, and the expanded server map was deployed as version 3 with the same
+deployment ID. Static validation passes 3092/3092, the local browser suite
+340/340, and the live Apps Script suite 332/332. P001-S01 still passes the real
+published-Behance gate 18/18. The other 45 slideshows have not yet been tested
+inside a real published Behance page; owner review and publication are required
+before that gate can run. P024 remains blocked.
+
 ## 10. What was deliberately not done
 
 - No image downloads, copies, mirrors, rehosting, or uploads. Phase 2 tests
@@ -209,9 +221,12 @@ pass.
 - No Git commit or push of the audit and pilot files until they were reviewed;
   both commits are now on `main` (`0a33cf5`, `3426077`).
 - No change to the existing production Apps Script project or its deployment.
-  A **new standalone** project and deployment were created for the pilot.
-- No bulk reconstruction, deployment, publishing, or migration of the other 46
-  slideshows. Only the P001-S01 pilot was generated and deployed.
+  A **new standalone** project and deployment host the migration.
+- No publishing or replacement of the live Behance portfolio. All 47 slideshows
+  and 36 project snippets are generated, but only the P001-S01 test embed has
+  been published; the other embeds await owner review.
+- No real Behance verification of the other 45 slideshows yet. That gate cannot
+  run until the owner publishes representative test embeds.
 
 ## 11. Exception summary
 
@@ -226,24 +241,34 @@ pass.
 
 ## 12. Next step
 
-The P001-S01 local pilot and live iframe test are complete and pushed. Next:
+The bulk rollout is generated, validated, and deployed. Next:
 
 1. ~~Authenticate the repository-owner GitHub account and push the reviewed
    migration files.~~ Done: `main` is pushed.
 2. ~~Create the new standalone Apps Script project and deploy the Web App with
    anonymous access.~~ Done: deployment
    `AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA`.
-3. ~~Replace the deployment placeholder in `05_BEHANCE_OUTPUT/P001.md`.~~ Done.
+3. ~~Replace the deployment placeholder in the generated snippets.~~ Done.
 4. ~~Publish one temporary Behance test project and run the mandatory real
    fullscreen/independence gate.~~ Done: the published project
    <https://www.behance.net/gallery/258648021/yty> passes **18/18** checks with
    the 805 px pilot embed, zero banner, working navigation, and native
    fullscreen.
-5. Implement the approved P011-S01 repair (shared standard JavaScript; all 20
-   images, order, aspect ratio, CSS, and visuals preserved).
-6. Generate and validate the next approved rollout batch; each batch still
-   needs its own report and G7 approval before publishing.
+5. ~~Implement the approved P011-S01 repair.~~ Done: all 20 images, order,
+   aspect ratio, CSS, and visuals preserved; local 21/21 and live 20/20.
+6. ~~Generate all 47 slideshows, 36 project snippets, and the complete server
+   map; deploy as version 3.~~ Done: static 3092/3092, local 340/340, live
+   332/332, P001 real gate 18/18.
+7. **Owner review:** publish the representative embeds P002-S01, P004-S01,
+   P005-S01, P023-S02, and P038-S01, or all 36 project snippets.
+8. **Real Behance gate:** run
+   `node migration/tools/test-behance.js <url> --slide <ID> [--width <px>]`
+   on each published embed. Resolve any width/height mismatch found in the real
+   wrapper, especially the tall 1570 px embeds.
+9. Obtain owner approval before replacing any live Behance embed. P024 stays
+   blocked until a valid URL is supplied.
 
-Read `01_AUDIT/phase_2_pilot_report.md`, `01_AUDIT/unresolved_items.md`,
+Read `01_AUDIT/phase_2_bulk_report.md`, `01_AUDIT/phase_2_pilot_report.md`,
+`01_AUDIT/unresolved_items.md`,
 `00_DOCUMENTATION/INDEPENDENT_EMBED_STANDARD.md`, and
 `00_DOCUMENTATION/PHASE_2_IMPLEMENTATION_PLAN.md` before those steps.

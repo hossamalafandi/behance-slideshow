@@ -1,0 +1,722 @@
+{
+  "scope": {
+    "slideshows": 47,
+    "projects": 36,
+    "imageSlots": 335
+  },
+  "browser": "Chrome 157.0.8103.79",
+  "checks": 340,
+  "passed": 340,
+  "failed": 0,
+  "slideshowsPassed": 47,
+  "slideshowsFailed": 0,
+  "blockedImageRequests": 334,
+  "failures": [],
+  "results": [
+    {
+      "id": "P001-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P001-S01: renders 17 slides and dots",
+          "passed": true,
+          "detail": "17 slides, 17 dots"
+        },
+        {
+          "name": "P001-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P002-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P002-S01: renders 11 slides and dots",
+          "passed": true,
+          "detail": "11 slides, 11 dots"
+        },
+        {
+          "name": "P002-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P003-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P003-S01: renders 38 slides and dots",
+          "passed": true,
+          "detail": "38 slides, 38 dots"
+        },
+        {
+          "name": "P003-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P004-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P004-S01: renders 7 slides and dots",
+          "passed": true,
+          "detail": "7 slides, 7 dots"
+        },
+        {
+          "name": "P004-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P004-S02",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P004-S02: renders 6 slides and dots",
+          "passed": true,
+          "detail": "6 slides, 6 dots"
+        },
+        {
+          "name": "P004-S02: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P004-S03",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P004-S03: renders 5 slides and dots",
+          "passed": true,
+          "detail": "5 slides, 5 dots"
+        },
+        {
+          "name": "P004-S03: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P004-S04",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P004-S04: renders 5 slides and dots",
+          "passed": true,
+          "detail": "5 slides, 5 dots"
+        },
+        {
+          "name": "P004-S04: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P004-S05",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P004-S05: renders 5 slides and dots",
+          "passed": true,
+          "detail": "5 slides, 5 dots"
+        },
+        {
+          "name": "P004-S05: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P004-S06",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P004-S06: renders 4 slides and dots",
+          "passed": true,
+          "detail": "4 slides, 4 dots"
+        },
+        {
+          "name": "P004-S06: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P004-S07",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P004-S07: renders 5 slides and dots",
+          "passed": true,
+          "detail": "5 slides, 5 dots"
+        },
+        {
+          "name": "P004-S07: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P005-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P005-S01: renders 8 slides and dots",
+          "passed": true,
+          "detail": "8 slides, 8 dots"
+        },
+        {
+          "name": "P005-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P006-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P006-S01: renders 7 slides and dots",
+          "passed": true,
+          "detail": "7 slides, 7 dots"
+        },
+        {
+          "name": "P006-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P007-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P007-S01: renders 18 slides and dots",
+          "passed": true,
+          "detail": "18 slides, 18 dots"
+        },
+        {
+          "name": "P007-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P008-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P008-S01: renders 7 slides and dots",
+          "passed": true,
+          "detail": "7 slides, 7 dots"
+        },
+        {
+          "name": "P008-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P009-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P009-S01: renders 9 slides and dots",
+          "passed": true,
+          "detail": "9 slides, 9 dots"
+        },
+        {
+          "name": "P009-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P010-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P010-S01: renders 6 slides and dots",
+          "passed": true,
+          "detail": "6 slides, 6 dots"
+        },
+        {
+          "name": "P010-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P011-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P011-S01: renders 20 slides and dots",
+          "passed": true,
+          "detail": "20 slides, 20 dots"
+        },
+        {
+          "name": "P011-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P012-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P012-S01: renders 5 slides and dots",
+          "passed": true,
+          "detail": "5 slides, 5 dots"
+        },
+        {
+          "name": "P012-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P013-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P013-S01: renders 6 slides and dots",
+          "passed": true,
+          "detail": "6 slides, 6 dots"
+        },
+        {
+          "name": "P013-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P014-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P014-S01: renders 5 slides and dots",
+          "passed": true,
+          "detail": "5 slides, 5 dots"
+        },
+        {
+          "name": "P014-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P015-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P015-S01: renders 8 slides and dots",
+          "passed": true,
+          "detail": "8 slides, 8 dots"
+        },
+        {
+          "name": "P015-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P016-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P016-S01: renders 8 slides and dots",
+          "passed": true,
+          "detail": "8 slides, 8 dots"
+        },
+        {
+          "name": "P016-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P017-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P017-S01: renders 9 slides and dots",
+          "passed": true,
+          "detail": "9 slides, 9 dots"
+        },
+        {
+          "name": "P017-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P018-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P018-S01: renders 5 slides and dots",
+          "passed": true,
+          "detail": "5 slides, 5 dots"
+        },
+        {
+          "name": "P018-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P019-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P019-S01: renders 6 slides and dots",
+          "passed": true,
+          "detail": "6 slides, 6 dots"
+        },
+        {
+          "name": "P019-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P020-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P020-S01: renders 4 slides and dots",
+          "passed": true,
+          "detail": "4 slides, 4 dots"
+        },
+        {
+          "name": "P020-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P021-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P021-S01: renders 11 slides and dots",
+          "passed": true,
+          "detail": "11 slides, 11 dots"
+        },
+        {
+          "name": "P021-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P022-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P022-S01: renders 5 slides and dots",
+          "passed": true,
+          "detail": "5 slides, 5 dots"
+        },
+        {
+          "name": "P022-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P023-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P023-S01: renders 8 slides and dots",
+          "passed": true,
+          "detail": "8 slides, 8 dots"
+        },
+        {
+          "name": "P023-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P023-S02",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P023-S02: renders 4 slides and dots",
+          "passed": true,
+          "detail": "4 slides, 4 dots"
+        },
+        {
+          "name": "P023-S02: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P025-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P025-S01: renders 4 slides and dots",
+          "passed": true,
+          "detail": "4 slides, 4 dots"
+        },
+        {
+          "name": "P025-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P026-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P026-S01: renders 6 slides and dots",
+          "passed": true,
+          "detail": "6 slides, 6 dots"
+        },
+        {
+          "name": "P026-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P026-S02",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P026-S02: renders 3 slides and dots",
+          "passed": true,
+          "detail": "3 slides, 3 dots"
+        },
+        {
+          "name": "P026-S02: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P027-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P027-S01: renders 4 slides and dots",
+          "passed": true,
+          "detail": "4 slides, 4 dots"
+        },
+        {
+          "name": "P027-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P027-S02",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P027-S02: renders 4 slides and dots",
+          "passed": true,
+          "detail": "4 slides, 4 dots"
+        },
+        {
+          "name": "P027-S02: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P028-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P028-S01: renders 5 slides and dots",
+          "passed": true,
+          "detail": "5 slides, 5 dots"
+        },
+        {
+          "name": "P028-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P029-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P029-S01: renders 5 slides and dots",
+          "passed": true,
+          "detail": "5 slides, 5 dots"
+        },
+        {
+          "name": "P029-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P029-S02",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P029-S02: renders 5 slides and dots",
+          "passed": true,
+          "detail": "5 slides, 5 dots"
+        },
+        {
+          "name": "P029-S02: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P030-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P030-S01: renders 4 slides and dots",
+          "passed": true,
+          "detail": "4 slides, 4 dots"
+        },
+        {
+          "name": "P030-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P031-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P031-S01: renders 6 slides and dots",
+          "passed": true,
+          "detail": "6 slides, 6 dots"
+        },
+        {
+          "name": "P031-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P032-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P032-S01: renders 3 slides and dots",
+          "passed": true,
+          "detail": "3 slides, 3 dots"
+        },
+        {
+          "name": "P032-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P033-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P033-S01: renders 4 slides and dots",
+          "passed": true,
+          "detail": "4 slides, 4 dots"
+        },
+        {
+          "name": "P033-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P034-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P034-S01: renders 5 slides and dots",
+          "passed": true,
+          "detail": "5 slides, 5 dots"
+        },
+        {
+          "name": "P034-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P034-S02",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P034-S02: renders 3 slides and dots",
+          "passed": true,
+          "detail": "3 slides, 3 dots"
+        },
+        {
+          "name": "P034-S02: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P035-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P035-S01: renders 6 slides and dots",
+          "passed": true,
+          "detail": "6 slides, 6 dots"
+        },
+        {
+          "name": "P035-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P037-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P037-S01: renders 3 slides and dots",
+          "passed": true,
+          "detail": "3 slides, 3 dots"
+        },
+        {
+          "name": "P037-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P038-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P038-S01: renders 3 slides and dots",
+          "passed": true,
+          "detail": "3 slides, 3 dots"
+        },
+        {
+          "name": "P038-S01: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "slideshow_id": "P004-S05",
+  "project_id": "P004",
+  "project_title": "AB-Apartment",
+  "section_label": "KITCHEN",
+  "descriptor": "kitchen",
+  "source_url": "https://sites.google.com/view/hossam-alafandi/freelance/ab-apartment",
+  "embed_width": 546,
+  "embed_height": 443,
+  "snippet_width": "546",
+  "aspect": 1.233,
+  "radius_px": "20px",
+  "object_fit": "cover",
+  "fullscreen_required": true,
+  "repair_note": null,
+  "image_count": 5,
+  "images": [
+    {
+      "order": 1,
+      "src": "https://i.imgur.com/6h3WOrm.jpg",
+      "w": 1440,
+      "h": 1080,
+      "alt": "Slide 1"
+    },
+    {
+      "order": 2,
+      "src": "https://i.imgur.com/edn9Ivr.jpg",
+      "w": 1440,
+      "h": 1080,
+      "alt": "Slide 2"
+    },
+    {
+      "order": 3,
+      "src": "https://i.imgur.com/e3Jdpz8.jpg",
+      "w": 1440,
+      "h": 1080,
+      "alt": "Slide 3"
+    },
+    {
+      "order": 4,
+      "src": "https://i.imgur.com/CEj3Gp7.jpg",
+      "w": 1440,
+      "h": 1080,
+      "alt": "Slide 4"
+    },
+    {
+      "order": 5,
+      "src": "https://i.imgur.com/fmXbsyU.jpg",
+      "w": 1440,
+      "h": 1080,
+      "alt": "Slide 5"
+    }
+  ]
+}

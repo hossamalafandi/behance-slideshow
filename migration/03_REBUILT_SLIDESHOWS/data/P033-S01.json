@@ -1,0 +1,47 @@
+{
+  "slideshow_id": "P033-S01",
+  "project_id": "P033",
+  "project_title": "AV-SF-BOY-BEDROOM",
+  "section_label": "RENDERS",
+  "descriptor": "renders",
+  "source_url": "https://sites.google.com/view/hossam-alafandi/freelance/av-sf-boy-bedroom",
+  "embed_width": 1335,
+  "embed_height": 1052,
+  "snippet_width": "100%",
+  "aspect": 1.269,
+  "radius_px": "20px",
+  "object_fit": "cover",
+  "fullscreen_required": true,
+  "repair_note": null,
+  "image_count": 4,
+  "images": [
+    {
+      "order": 1,
+      "src": "https://i.imgur.com/TyR8Xej.jpeg",
+      "w": 1921,
+      "h": 1440,
+      "alt": "Slide 1"
+    },
+    {
+      "order": 2,
+      "src": "https://i.imgur.com/7jU8BfV.jpeg",
+      "w": 1921,
+      "h": 1440,
+      "alt": "Slide 2"
+    },
+    {
+      "order": 3,
+      "src": "https://i.imgur.com/Akb54iU.jpeg",
+      "w": 1921,
+      "h": 1440,
+      "alt": "Slide 3"
+    },
+    {
+      "order": 4,
+      "src": "https://i.imgur.com/8oxy8Ze.jpeg",
+      "w": 1921,
+      "h": 1440,
+      "alt": "Slide 4"
+    }
+  ]
+}
