@@ -1,14 +1,14 @@
 # Phase 2 Bulk Rollout Report — All 47 Slideshows
 
-Status: **all 47 slideshows are reconstructed, deployed as version 3, and
+Status: **all 47 slideshows are reconstructed, deployed as version 4, and
 exported as 47 independent embed codes. All 37 TOOLS USED software-logo strips
-are also exported as raw HTML/CSS codes. The finished copy/paste set is in
-`05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and `05_BEHANCE_OUTPUT/ALL_EMBEDS.csv`, with
-the tools-only set in `TOOLS_USED_EMBEDS.md` and `TOOLS_USED_EMBEDS.csv`.
-Static validation 3092/3092, local browser 340/340, live Apps Script 332/332,
-and the P001-S01 real published-Behance gate 18/18. Per owner instruction,
-further Behance testing is closed; the codes are ready for manual use. P024
-remains blocked.**
+are also exported as iframe codes served by the same Apps Script host. The
+finished copy/paste set is in `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and
+`05_BEHANCE_OUTPUT/ALL_EMBEDS.csv`, with the tools-only set in
+`TOOLS_USED_EMBEDS.md` and `TOOLS_USED_EMBEDS.csv`. Static validation
+3092/3092, local browser 340/340, live Apps Script 332/332, and the P001-S01
+real published-Behance gate 18/18. Per owner instruction, further Behance
+testing is closed; the codes are ready for manual use. P024 remains blocked.**
 Date: 2026-11-20
 Deployment: `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
 Deployment version: **3** (same deployment ID; no host change)
@@ -57,8 +57,9 @@ dashboard, portfolio page, combined viewer, or multi-slideshow route.
 ## 3. Deployment
 
 The expanded `SlidesData.gs` was pushed to the existing standalone Apps Script
-project and deployed as **version 3** with the existing deployment ID. The
-production Apps Script project and `index.html` were not touched.
+project and deployed as **version 3** with the existing deployment ID. Version
+4 later added `ToolsData.gs` and the `?tools=Pxxx` route for the 37 TOOLS USED
+strips. The production Apps Script project and `index.html` were not touched.
 
 ## 4. Validation results
 
@@ -164,8 +165,8 @@ slideshow or its images.
 |---|---|
 | `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` | All 47 slideshow codes plus all 37 TOOLS USED codes, grouped by project, with IDs and dimensions |
 | `05_BEHANCE_OUTPUT/ALL_EMBEDS.csv` | One row per slideshow with a single-line embed code |
-| `05_BEHANCE_OUTPUT/TOOLS_USED_EMBEDS.md` | All 37 TOOLS USED HTML/CSS codes, grouped by project |
-| `05_BEHANCE_OUTPUT/TOOLS_USED_EMBEDS.csv` | One row per TOOLS USED strip with a single-line embed code |
+| `05_BEHANCE_OUTPUT/TOOLS_USED_EMBEDS.md` | All 37 TOOLS USED iframe codes, grouped by project |
+| `05_BEHANCE_OUTPUT/TOOLS_USED_EMBEDS.csv` | One row per TOOLS USED strip with a single-line iframe code |
 | `05_BEHANCE_OUTPUT/README.md` | How to use the output files |
 | `01_AUDIT/evidence/phase2-bulk/bulk-local-test-results.json` | 340-check local browser suite, all 47 slideshows |
 | `01_AUDIT/evidence/phase2-bulk/bulk-live-test-results.json` | 332-check live Apps Script suite, retry record, blocked-image count |
@@ -178,7 +179,8 @@ All 47 independent embed codes are ready in
 `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` (primary copy/paste source) and
 `05_BEHANCE_OUTPUT/ALL_EMBEDS.csv` (spreadsheet). All 37 TOOLS USED logo-strip
 codes are in the same Markdown file and in `TOOLS_USED_EMBEDS.md` /
-`TOOLS_USED_EMBEDS.csv`. The 36 per-project files remain available for
+`TOOLS_USED_EMBEDS.csv`; they are iframes served by the same deployment at
+`?tools=Pxxx`. The 36 per-project files remain available for
 project-by-slideshow work. The owner copies each code into its matching Behance
 project section.
 

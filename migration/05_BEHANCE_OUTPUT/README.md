@@ -17,10 +17,10 @@ manual copy/paste.
 
 `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
 
-Deployment version 3. Every slideshow code uses one `?slide=<ID>` value and
-loads exactly one slideshow. The production Apps Script deployment is
-untouched. TOOLS USED codes do not use the deployment; they are the original
-self-contained HTML/CSS logo strips.
+Deployment version 4. Every slideshow code uses one `?slide=<ID>` value and
+loads exactly one slideshow. Every TOOLS USED code uses one `?tools=<ID>`
+value and loads the original logo strip from the same host. The production
+Apps Script deployment is untouched.
 
 ## How to use
 
@@ -40,11 +40,11 @@ width. Heights are per slideshow and must not be changed.
 
 1. In `ALL_EMBEDS.md`, scroll to the matching project and find the
    `Pxxx-TOOLS — TOOLS USED software logos` heading.
-2. Copy the entire HTML code block.
+2. Copy the entire `<iframe>…</iframe>` code block.
 3. Paste it into the TOOLS USED embed on that Behance project.
 
-Each strip is 127 px high with 4–5 logos. The logo image URLs are the exact
-originals and must not be changed.
+Each strip is 127 px high with 4–5 logos. The iframe loads the exact
+original logo URLs and CSS; the images are not copied or rehosted.
 
 ## Not included
 

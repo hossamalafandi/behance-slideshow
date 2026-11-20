@@ -13,8 +13,8 @@
  * sources. The CSV files contain one row per embed with a single-line code for
  * spreadsheet use.
  *
- * The slideshow codes are iframes. The TOOLS USED codes are the original
- * self-contained HTML/CSS software-logo strips from Google Sites.
+ * The slideshow codes are iframes. The TOOLS USED codes are also iframes,
+ * served by the same host at `?tools=Pxxx`, so Behance accepts them.
  *
  * This script reads only the generated JSON data files and the extracted tools
  * JSON. It does not fetch, open, or inspect any image, and it does not deploy or
@@ -87,24 +87,31 @@ function iframeWidthLabel(slide) {
     : slide.snippet_width + ' px';
 }
 
-function buildToolsSnippet(tools) {
+function buildToolsUrl(deploymentId, projectId) {
+  return 'https://script.google.com/macros/s/' + deploymentId + '/exec?tools=' + projectId;
+}
+
+function toolsIframeWidth(tools) {
+  return tools.width >= 1200 ? '100%' : String(tools.width);
+}
+
+function buildToolsSnippet(deploymentId, tools) {
   return [
-    '<meta charset="UTF-8">',
-    '<meta name="viewport" content="width=device-width, initial-scale=1">',
-    '<title>' + tools.title + '</title>',
-    '<style>',
-    tools.style.trim(),
-    '</style>',
-    tools.row
+    '<iframe',
+    '  src="' + buildToolsUrl(deploymentId, tools.project_id) + '"',
+    '  width="' + toolsIframeWidth(tools) + '"',
+    '  height="' + tools.height + '"',
+    '  style="border:0;overflow:hidden"',
+    '  scrolling="no"',
+    '  loading="lazy">',
+    '</iframe>'
   ].join('\n');
 }
 
-function buildCompactToolsSnippet(tools) {
-  return '<meta charset="UTF-8">' +
-    '<meta name="viewport" content="width=device-width, initial-scale=1">' +
-    '<title>' + tools.title + '</title>' +
-    '<style>' + tools.style.trim().replace(/\s+/g, ' ') + '</style>' +
-    tools.row.replace(/\s+/g, ' ');
+function buildCompactToolsSnippet(deploymentId, tools) {
+  return '<iframe src="' + buildToolsUrl(deploymentId, tools.project_id) +
+    '" width="' + toolsIframeWidth(tools) + '" height="' + tools.height +
+    '" style="border:0;overflow:hidden" scrolling="no" loading="lazy"></iframe>';
 }
 
 function main() {
@@ -190,11 +197,12 @@ function main() {
     'This is the complete copy/paste source for every slideshow and every',
     'TOOLS USED strip. The sections are grouped by project in Behance page order.',
     'Each slideshow code loads exactly one slideshow through its permanent ID and',
-    'is independent of every other embed. Each TOOLS USED code is the original',
-    'self-contained HTML/CSS software-logo strip, not an iframe.',
+    'is independent of every other embed. Each TOOLS USED code is an iframe that',
+    'loads the original self-contained HTML/CSS software-logo strip from the same',
+    'Apps Script host.',
     '',
     '- **Deployment:** `' + deploymentId + '`',
-    '- **Deployment version:** 3',
+    '- **Deployment version:** 4',
     '- **Slideshows:** 47',
     '- **Slideshow projects:** 36',
     '- **TOOLS USED codes:** 37',
@@ -272,12 +280,14 @@ function main() {
         '',
         '- **Permanent ID:** `' + projectId + '-TOOLS`',
         '- **Strip dimensions:** ' + toolsEntry.width + ' × ' + toolsEntry.height + ' px',
+        '- **Iframe dimensions:** `width="' + toolsIframeWidth(toolsEntry) + '"` × ' +
+          '`height="' + toolsEntry.height + '"`',
         '- **Logos:** ' + toolsEntry.logos.length + ' (' +
           toolsEntry.logos.map(logo => logo.alt).join(', ') + ')',
         '- **Source:** ' + toolsEntry.url,
         '',
         '```html',
-        buildToolsSnippet(toolsEntry),
+        buildToolsSnippet(deploymentId, toolsEntry),
         '```',
         ''
       );
@@ -337,10 +347,14 @@ function main() {
   const toolsMarkdown = [
     '# All 37 TOOLS USED Embed Codes',
     '',
-    'These are the original self-contained HTML/CSS software-logo strips from the',
-    'matching Google Sites project pages. They are raw HTML blocks, not iframes.',
+    'These codes are iframe embeds served by the same Apps Script deployment as',
+    'the slideshows. Each iframe loads the original self-contained HTML/CSS',
+    'software-logo strip from the matching Google Sites project page.',
+    '',
     'Paste one code into the TOOLS USED section of the matching Behance project.',
     '',
+    '- **Deployment:** `' + deploymentId + '`',
+    '- **Deployment version:** 4',
     '- **Codes:** 37',
     '- **Strip height:** 127 px on every project',
     '- **Logos per strip:** 4–5',
@@ -371,12 +385,14 @@ function main() {
       '',
       '- **Embed ID:** `' + projectId + '-TOOLS`',
       '- **Strip dimensions:** ' + toolsEntry.width + ' × ' + toolsEntry.height + ' px',
+      '- **Iframe dimensions:** `width="' + toolsIframeWidth(toolsEntry) + '"` × ' +
+        '`height="' + toolsEntry.height + '"`',
       '- **Logos:** ' + toolsEntry.logos.length + ' (' +
         toolsEntry.logos.map(logo => logo.alt).join(', ') + ')',
       '- **Source:** ' + toolsEntry.url,
       '',
       '```html',
-      buildToolsSnippet(toolsEntry),
+      buildToolsSnippet(deploymentId, toolsEntry),
       '```',
       ''
     );
@@ -395,6 +411,8 @@ function main() {
     'embed_id',
     'strip_width_px',
     'strip_height_px',
+    'iframe_width',
+    'iframe_height_px',
     'logo_count',
     'logo_alts',
     'logo_urls',
@@ -412,11 +430,13 @@ function main() {
       projectId + '-TOOLS',
       toolsEntry.width,
       toolsEntry.height,
+      toolsIframeWidth(toolsEntry),
+      toolsEntry.height,
       toolsEntry.logos.length,
       toolsEntry.logos.map(logo => logo.alt).join(' | '),
       toolsEntry.logos.map(logo => logo.src).join(' | '),
       toolsEntry.url,
-      buildCompactToolsSnippet(toolsEntry)
+      buildCompactToolsSnippet(deploymentId, toolsEntry)
     ]);
   });
   const toolsCsv = [toolsCsvHeader, ...toolsCsvRows]
@@ -443,10 +463,10 @@ function main() {
     '',
     '`https://script.google.com/macros/s/' + deploymentId + '/exec`',
     '',
-    'Deployment version 3. Every slideshow code uses one `?slide=<ID>` value and',
-    'loads exactly one slideshow. The production Apps Script deployment is',
-    'untouched. TOOLS USED codes do not use the deployment; they are the original',
-    'self-contained HTML/CSS logo strips.',
+    'Deployment version 4. Every slideshow code uses one `?slide=<ID>` value and',
+    'loads exactly one slideshow. Every TOOLS USED code uses one `?tools=<ID>`',
+    'value and loads the original logo strip from the same host. The production',
+    'Apps Script deployment is untouched.',
     '',
     '## How to use',
     '',
@@ -466,11 +486,11 @@ function main() {
     '',
     '1. In `ALL_EMBEDS.md`, scroll to the matching project and find the',
     '   `Pxxx-TOOLS — TOOLS USED software logos` heading.',
-    '2. Copy the entire HTML code block.',
+    '2. Copy the entire `<iframe>…</iframe>` code block.',
     '3. Paste it into the TOOLS USED embed on that Behance project.',
     '',
-    'Each strip is 127 px high with 4–5 logos. The logo image URLs are the exact',
-    'originals and must not be changed.',
+    'Each strip is 127 px high with 4–5 logos. The iframe loads the exact',
+    'original logo URLs and CSS; the images are not copied or rehosted.',
     '',
     '## Not included',
     '',

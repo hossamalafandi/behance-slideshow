@@ -2,12 +2,13 @@
 
 Status: **Phase 2 bulk rollout complete. All 47 slideshows are reconstructed,
 deployed, and exported as 47 independent Behance embed codes, and all 37
-TOOLS USED software-logo strips are exported as raw HTML/CSS codes. The complete
-copy/paste set is in `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and
-`05_BEHANCE_OUTPUT/ALL_EMBEDS.csv`, with the tools-only set in
-`05_BEHANCE_OUTPUT/TOOLS_USED_EMBEDS.md` and `TOOLS_USED_EMBEDS.csv`. Per owner
-instruction, no further Behance test embeds or validation cycles are being run;
-P001-S01 remains the only real-Behance-verified embed. P024 remains blocked.**
+TOOLS USED software-logo strips are exported as iframe codes served by the same
+Apps Script host. The complete copy/paste set is in
+`05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and `05_BEHANCE_OUTPUT/ALL_EMBEDS.csv`, with
+the tools-only set in `05_BEHANCE_OUTPUT/TOOLS_USED_EMBEDS.md` and
+`TOOLS_USED_EMBEDS.csv`. Per owner instruction, no further Behance test embeds
+or validation cycles are being run; P001-S01 remains the only
+real-Behance-verified embed. P024 remains blocked.**
 Audit date: 2026-11-18
 Bulk rollout date: 2026-11-20
 Scope: the **Freelance** page of <https://sites.google.com/view/hossam-alafandi/>
@@ -16,9 +17,9 @@ and its 38 project pages.
 This folder is the migration workspace. It was created without changing,
 deleting, renaming, or redeploying anything in the live portfolio, the existing
 production Apps Script project, or the existing `index.html` prototype. A **new
-standalone** Apps Script project hosts all 47 slideshows and is deployed as
-version 3. One temporary Behance test project was published. The audit, pilot,
-and bulk rollout commits are pushed to `main`. See
+standalone** Apps Script project hosts all 47 slideshows and the 37 TOOLS USED
+strips; it is deployed as version 4. One temporary Behance test project was
+published. The audit, pilot, and bulk rollout commits are pushed to `main`. See
 `01_AUDIT/phase_2_pilot_report.md` and `01_AUDIT/phase_2_bulk_report.md` for the
 test results and the pending real-Behance review.
 
@@ -69,7 +70,7 @@ migration/
 │   └── evidence/                        pilot and bulk test reports (screenshots gitignored)
 ├── 02_SOURCE_BACKUP/                    untouched original slideshow HTML, one folder per project
 ├── 03_REBUILT_SLIDESHOWS/               generated data and previews for all 47 slideshows
-├── 04_APPS_SCRIPT/                      shared Apps Script project (47-slide server map, version 3)
+├── 04_APPS_SCRIPT/                      shared Apps Script project (47-slide map, 37-tool map, version 4)
 └── 05_BEHANCE_OUTPUT/                   all 47 embed codes plus 37 TOOLS USED codes: ALL_EMBEDS.md, ALL_EMBEDS.csv, TOOLS_USED_EMBEDS.md, TOOLS_USED_EMBEDS.csv, 36 project files
 ```
 
@@ -209,14 +210,15 @@ pass.
 
 On 2026-11-20 the bulk generator produced all 47 slideshows and 36 project
 snippets, and the expanded server map was deployed as version 3 with the same
-deployment ID. Static validation passes 3092/3092, the local browser suite
-340/340, and the live Apps Script suite 332/332. P001-S01 still passes the real
-published-Behance gate 18/18. The owner then stopped further Behance testing;
-the finished deliverable is the complete 47-code copy/paste set in
-`05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and `ALL_EMBEDS.csv`, plus all 37 TOOLS USED
-codes in the same Markdown file and in `TOOLS_USED_EMBEDS.md` /
-`TOOLS_USED_EMBEDS.csv`. P001-S01 remains the only real-Behance-verified embed.
-P024 remains blocked.
+deployment ID. Version 4 later added the 37 TOOLS USED strips at `?tools=Pxxx`
+so Behance can embed them as iframes. Static validation passes 3092/3092, the
+local browser suite 340/340, and the live Apps Script suite 332/332. P001-S01
+still passes the real published-Behance gate 18/18. The owner then stopped
+further Behance testing; the finished deliverable is the complete 47-code
+copy/paste set in `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and `ALL_EMBEDS.csv`, plus
+all 37 TOOLS USED iframe codes in the same Markdown file and in
+`TOOLS_USED_EMBEDS.md` / `TOOLS_USED_EMBEDS.csv`. P001-S01 remains the only
+real-Behance-verified embed. P024 remains blocked.
 
 ## 10. What was deliberately not done
 
@@ -272,10 +274,13 @@ test embeds or validation cycles are being run.
 8. ~~Export all 37 TOOLS USED logo-strip codes.~~ Done: included in
    `ALL_EMBEDS.md` and in `TOOLS_USED_EMBEDS.md` /
    `TOOLS_USED_EMBEDS.csv`.
+9. ~~Serve the TOOLS USED strips from the existing host so Behance accepts the
+   codes.~~ Done: deployed as version 4 with the same deployment ID; every
+   tools code is now an `?tools=Pxxx` iframe.
 
 **Owner action:** open `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` (or the per-project
 slideshow file) and copy each iframe code into its matching Behance project
-section. Then copy each project's `Pxxx-TOOLS` HTML block into that project's
+section. Then copy each project's `Pxxx-TOOLS` iframe block into that project's
 TOOLS USED embed. Use the permanent ID and dimensions shown with each code. Do
 not combine slideshows in one embed.
 

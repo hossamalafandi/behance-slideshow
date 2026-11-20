@@ -1,22 +1,31 @@
 /**
- * Shared stateless slideshow renderer.
+ * Shared stateless embed renderer.
  *
- * One request = one slideshow. This file intentionally has no index, gallery,
- * dashboard, or multi-slideshow route. Missing, repeated, array, list, or
- * unknown IDs return a neutral error page with no links.
+ * One request = one slideshow or one TOOLS USED strip. This file intentionally
+ * has no index, gallery, dashboard, or multi-item route. Missing, repeated,
+ * array, list, or unknown IDs return a neutral error page with no links.
  *
- * The SLIDES lookup is generated in SlidesData.gs and is never sent wholesale
- * to the browser.
+ * The SLIDES lookup is generated in SlidesData.gs and the TOOLS lookup in
+ * ToolsData.gs. Neither map is sent wholesale to the browser.
  */
 
 function doGet(e) {
-  // Require exactly one `slide` key in the query string. Checking the raw
-  // query string catches repeated parameters even if Apps Script collapses
-  // them to a single value in e.parameter.
-  if (countSlideParameters_(e && e.queryString) !== 1) {
-    return notFoundResponse_();
-  }
+  // Require exactly one known key. Checking the raw query string catches
+  // repeated parameters even if Apps Script collapses them to one value.
+  var queryString = e && e.queryString;
+  var slideCount = countQueryParameters_(queryString, 'slide');
+  var toolsCount = countQueryParameters_(queryString, 'tools');
 
+  if (slideCount === 1 && toolsCount === 0) {
+    return slideshowResponse_(e);
+  }
+  if (toolsCount === 1 && slideCount === 0) {
+    return toolsResponse_(e);
+  }
+  return notFoundResponse_();
+}
+
+function slideshowResponse_(e) {
   var raw = e.parameter.slide;
 
   // Require a single non-empty string. Arrays and other types are rejected
@@ -41,11 +50,41 @@ function doGet(e) {
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
+function toolsResponse_(e) {
+  var raw = e.parameter.tools;
+
+  if (typeof raw !== 'string' || raw.trim() === '') {
+    return notFoundResponse_();
+  }
+
+  var id = raw.trim().toUpperCase();
+  var tool = Object.prototype.hasOwnProperty.call(TOOLS, id) ? TOOLS[id] : null;
+  if (!tool) {
+    return notFoundResponse_();
+  }
+
+  var html = [
+    '<!DOCTYPE html>',
+    '<html lang="en"><head>',
+    '<meta charset="UTF-8">',
+    '<meta name="viewport" content="width=device-width, initial-scale=1">',
+    '<title>' + escapeHtml_(tool.title) + '</title>',
+    '<style>' + tool.style + '</style>',
+    '</head><body>',
+    tool.row,
+    '</body></html>'
+  ].join('\n');
+
+  return HtmlService.createHtmlOutput(html)
+    .setTitle(tool.title)
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+
 /**
- * Count exact `slide` query keys. Wildcards, lists, and repeated keys are
- * rejected by requiring the count to be exactly one.
+ * Count exact query keys. Wildcards, lists, and repeated keys are rejected by
+ * requiring the matching count to be exactly one.
  */
-function countSlideParameters_(queryString) {
+function countQueryParameters_(queryString, keyName) {
   if (!queryString) return 0;
   return queryString.split('&').reduce(function (count, pair) {
     var rawKey = pair.split('=')[0].replace(/\+/g, ' ');
@@ -55,7 +94,7 @@ function countSlideParameters_(queryString) {
     } catch (error) {
       key = rawKey;
     }
-    return key === 'slide' ? count + 1 : count;
+    return key === keyName ? count + 1 : count;
   }, 0);
 }
 
