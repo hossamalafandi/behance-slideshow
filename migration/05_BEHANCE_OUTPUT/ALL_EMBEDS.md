@@ -1,22 +1,25 @@
-# All 47 Behance Embed Codes
+# All Behance Embed Codes
 
-This is the complete copy/paste source for every slideshow. The codes are
-grouped by project in Behance page order. Each code block loads exactly one
-slideshow through its permanent ID and is independent of every other embed.
+This is the complete copy/paste source for every slideshow and every
+TOOLS USED strip. The sections are grouped by project in Behance page order.
+Each slideshow code loads exactly one slideshow through its permanent ID and
+is independent of every other embed. Each TOOLS USED code is the original
+self-contained HTML/CSS software-logo strip, not an iframe.
 
 - **Deployment:** `AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA`
 - **Deployment version:** 3
 - **Slideshows:** 47
-- **Projects:** 36
+- **Slideshow projects:** 36
+- **TOOLS USED codes:** 37
 - **Image slots:** 335 (exact remote URLs and order preserved)
 
-Use the project section below, or the quick-reference table, to find the
-slideshow you need. Copy the entire code block, including the `<iframe>` tags.
+Use the project sections below, or the slideshow quick-reference table, to
+find what you need. Copy the entire code block for each embed.
 
-> Do not paste more than one slideshow into a single embed. P024 is blocked
-> and P036 has no slideshow; both are listed at the end.
+> Do not paste more than one slideshow into a single embed. P024 is blocked;
+> P036 has no slideshow but its TOOLS USED code is included.
 
-## Quick reference
+## Slideshow quick reference
 
 | # | Project | Slideshow | Section | Frame | Iframe | Images |
 |---:|---|---|---|---|---|---:|
@@ -90,6 +93,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P001-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P001-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Photoshop Logo, Lumion Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/al-rashed-project
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+  <img src="https://i.imgur.com/8y2GzCS.png" alt="Lumion Logo">
+</div>
+```
+
 ## P002 — Cellphone Store
 
 ### P002-S01 — RENDERS
@@ -112,6 +191,71 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P002-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P002-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/cellphone-store
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 50vw; /* adjusted width since fewer logos */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0;
+  }
+
+  /* Grayscale all logos */
+  .logo-row img {
+    filter: grayscale(100%);
+  }
+
+  /* On hover, remove grayscale and add scale */
+  .logo-row img:hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P003 — DK-Apartment
 
 ### P003-S01 — PRESENTATION
@@ -132,6 +276,71 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
   allowfullscreen
   allow="fullscreen">
 </iframe>
+```
+
+### P003-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P003-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/dk-apartment
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 50vw; /* adjusted width since fewer logos */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0;
+  }
+
+  /* Grayscale all logos */
+  .logo-row img {
+    filter: grayscale(100%);
+  }
+
+  /* On hover, remove grayscale and add scale */
+  .logo-row img:hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
 ```
 
 ## P004 — AB-Apartment
@@ -276,6 +485,71 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P004-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P004-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/ab-apartment
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 50vw; /* adjusted width since fewer logos */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0;
+  }
+
+  /* Grayscale all logos */
+  .logo-row img {
+    filter: grayscale(100%);
+  }
+
+  /* On hover, remove grayscale and add scale */
+  .logo-row img:hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P005 — GF-KIDS BEDROOM
 
 ### P005-S01 — RENDERS
@@ -296,6 +570,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
   allowfullscreen
   allow="fullscreen">
 </iframe>
+```
+
+### P005-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P005-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/gf-kids-bedroom
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
 ```
 
 ## P006 — AP-GF-RECIPTION
@@ -320,6 +670,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P006-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P006-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/ap-gf-reciption
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P007 — AP-GF-FAMILY MAJLIS
 
 ### P007-S01 — RENDERS
@@ -340,6 +766,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
   allowfullscreen
   allow="fullscreen">
 </iframe>
+```
+
+### P007-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P007-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Unreal Engine Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/ap-gf-family-majlis
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 60vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/z0G51fu.png" alt="Unreal Engine Logo" class="unreal">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
 ```
 
 ## P008 — GIRL BEDROOM
@@ -364,6 +866,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P008-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P008-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/girl-bedroom
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P009 — MASTER BEDROOM
 
 ### P009-S01 — RENDERS
@@ -386,6 +964,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P009-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P009-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/master-bedroom
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P010 — BOY BEDROOM
 
 ### P010-S01 — RENDERS
@@ -406,6 +1060,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
   allowfullscreen
   allow="fullscreen">
 </iframe>
+```
+
+### P010-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P010-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/boy-bedroom
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
 ```
 
 ## P011 — OA-AP-FAMILY MAJLIS
@@ -432,6 +1162,71 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P011-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P011-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/oa-ap-family-majlis
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 50vw; /* adjusted width since fewer logos */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0;
+  }
+
+  /* Grayscale all logos */
+  .logo-row img {
+    filter: grayscale(100%);
+  }
+
+  /* On hover, remove grayscale and add scale */
+  .logo-row img:hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P012 — GF-DINNING ROOM
 
 ### P012-S01 — RENDERS
@@ -452,6 +1247,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
   allowfullscreen
   allow="fullscreen">
 </iframe>
+```
+
+### P012-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P012-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/gf-dinning-room
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
 ```
 
 ## P013 — OA-AP-BOYS BEDROOM
@@ -476,6 +1347,71 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P013-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P013-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/oa-ap-boys-bedroom
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 50vw; /* adjusted width since fewer logos */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0;
+  }
+
+  /* Grayscale all logos */
+  .logo-row img {
+    filter: grayscale(100%);
+  }
+
+  /* On hover, remove grayscale and add scale */
+  .logo-row img:hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P014 — AP-FF-RECIPTION
 
 ### P014-S01 — RENDERS
@@ -496,6 +1432,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
   allowfullscreen
   allow="fullscreen">
 </iframe>
+```
+
+### P014-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P014-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/ap-ff-reciption
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
 ```
 
 ## P015 — OA_MASTER_BEDROOM
@@ -520,6 +1532,71 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P015-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P015-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/oa_master_bedroom
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 50vw; /* adjusted width since fewer logos */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0;
+  }
+
+  /* Grayscale all logos */
+  .logo-row img {
+    filter: grayscale(100%);
+  }
+
+  /* On hover, remove grayscale and add scale */
+  .logo-row img:hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P016 — AP-GF-LANDSCAPE
 
 ### P016-S01 — RENDERS
@@ -540,6 +1617,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
   allowfullscreen
   allow="fullscreen">
 </iframe>
+```
+
+### P016-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P016-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/ap-gf-landscape
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
 ```
 
 ## P017 — VILLA LOBBY - EYGPT
@@ -564,6 +1717,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P017-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P017-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/villa-lobby-eygpt
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P018 — GF-STAIRS
 
 ### P018-S01 — RENDERS
@@ -584,6 +1813,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
   allowfullscreen
   allow="fullscreen">
 </iframe>
+```
+
+### P018-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P018-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/gf-stairs
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
 ```
 
 ## P019 — GF-GIRL BEDROOM
@@ -608,6 +1913,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P019-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P019-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/gf-girl-bedroom
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P020 — AV_3rd_Floor_Family_Majlis
 
 ### P020-S01 — RENDERS
@@ -628,6 +2009,71 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
   allowfullscreen
   allow="fullscreen">
 </iframe>
+```
+
+### P020-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P020-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, V-Ray Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/av_3rd_floor_family_majlis
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 50vw; /* adjusted width since fewer logos */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0;
+  }
+
+  /* Grayscale all logos */
+  .logo-row img {
+    filter: grayscale(100%);
+  }
+
+  /* On hover, remove grayscale and add scale */
+  .logo-row img:hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/BRtEuwD.png" alt="V-Ray Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
 ```
 
 ## P021 — VILLA GROUND FLOOR - UAE
@@ -652,6 +2098,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P021-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P021-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/villa-ground-floor-uae
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P022 — OA-AP-GIRL BEDROOM
 
 ### P022-S01 — RENDERS
@@ -672,6 +2194,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
   allowfullscreen
   allow="fullscreen">
 </iframe>
+```
+
+### P022-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P022-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/oa-ap-girl-bedroom
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
 ```
 
 ## P023 — MEN MAJLIS - EYGPT
@@ -716,6 +2314,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P023-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P023-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/men-majlis-eygpt
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P025 — VILLA ENTRANCE - EYGPT
 
 ### P025-S01 — RENDERS
@@ -736,6 +2410,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
   allowfullscreen
   allow="fullscreen">
 </iframe>
+```
+
+### P025-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P025-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/villa-entrance-eygpt
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
 ```
 
 ## P026 — KITCHEN
@@ -780,6 +2530,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P026-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P026-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/kitchen
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P027 — FAMILY NIGHT MAJLIS - EYGPT
 
 ### P027-S01 — RENDERS
@@ -822,6 +2648,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P027-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P027-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/family-night-majlis-eygpt
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P028 — AP-FF-MASTER BEDROOM
 
 ### P028-S01 — RENDERS
@@ -842,6 +2744,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
   allowfullscreen
   allow="fullscreen">
 </iframe>
+```
+
+### P028-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P028-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/ap-ff-master-bedroom
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
 ```
 
 ## P029 — GUESTS ROOM - OM ASEL
@@ -886,6 +2864,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P029-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P029-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/guests-room-om-asel
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P030 — AV_SF_Family_Majlis_Render
 
 ### P030-S01 — RENDERS
@@ -906,6 +2960,71 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
   allowfullscreen
   allow="fullscreen">
 </iframe>
+```
+
+### P030-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P030-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, V-Ray Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/av_sf_family_majlis_render
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 50vw; /* adjusted width since fewer logos */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0;
+  }
+
+  /* Grayscale all logos */
+  .logo-row img {
+    filter: grayscale(100%);
+  }
+
+  /* On hover, remove grayscale and add scale */
+  .logo-row img:hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/BRtEuwD.png" alt="V-Ray Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
 ```
 
 ## P031 — ARABIC MAJLIS
@@ -930,6 +3049,82 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P031-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P031-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 5 (3ds Max Logo, Revit Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/arabic-majlis
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P032 — FAMILY LIVING ROOM GF- VRAY
 
 ### P032-S01 — RENDERS
@@ -952,6 +3147,71 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P032-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P032-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, V-Ray Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/family-living-room-gf-vray
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 50vw; /* adjusted width since fewer logos */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0;
+  }
+
+  /* Grayscale all logos */
+  .logo-row img {
+    filter: grayscale(100%);
+  }
+
+  /* On hover, remove grayscale and add scale */
+  .logo-row img:hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/BRtEuwD.png" alt="V-Ray Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P033 — AV-SF-BOY-BEDROOM
 
 ### P033-S01 — RENDERS
@@ -972,6 +3232,71 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
   allowfullscreen
   allow="fullscreen">
 </iframe>
+```
+
+### P033-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P033-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, V-Ray Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/av-sf-boy-bedroom
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 50vw; /* adjusted width since fewer logos */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0;
+  }
+
+  /* Grayscale all logos */
+  .logo-row img {
+    filter: grayscale(100%);
+  }
+
+  /* On hover, remove grayscale and add scale */
+  .logo-row img:hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/BRtEuwD.png" alt="V-Ray Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
 ```
 
 ## P034 — AV_SF_Girl Bedroom
@@ -1016,6 +3341,71 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P034-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P034-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, V-Ray Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/av_sf_girl-bedroom
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 50vw; /* adjusted width since fewer logos */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0;
+  }
+
+  /* Grayscale all logos */
+  .logo-row img {
+    filter: grayscale(100%);
+  }
+
+  /* On hover, remove grayscale and add scale */
+  .logo-row img:hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/BRtEuwD.png" alt="V-Ray Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P035 — GUEST MAJLIS- VRAY
 
 ### P035-S01 — RENDERS
@@ -1036,6 +3426,141 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
   allowfullscreen
   allow="fullscreen">
 </iframe>
+```
+
+### P035-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P035-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, V-Ray Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/guest-majlis-vray
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 50vw; /* adjusted width since fewer logos */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0;
+  }
+
+  /* Grayscale all logos */
+  .logo-row img {
+    filter: grayscale(100%);
+  }
+
+  /* On hover, remove grayscale and add scale */
+  .logo-row img:hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/BRtEuwD.png" alt="V-Ray Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
+## P036 — MASTER-BEDROOM-VRAY
+
+> No interactive slideshow on this project. The TOOLS USED code below
+> is the only custom embed on the page.
+
+### P036-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P036-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, V-Ray Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/master-bedroom-vray
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 50vw; /* adjusted width since fewer logos */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0;
+  }
+
+  /* Grayscale all logos */
+  .logo-row img {
+    filter: grayscale(100%);
+  }
+
+  /* On hover, remove grayscale and add scale */
+  .logo-row img:hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/BRtEuwD.png" alt="V-Ray Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
 ```
 
 ## P037 — FAMILY MAJLIS GF - VRAY
@@ -1060,6 +3585,71 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P037-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P037-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, V-Ray Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/family-majlis-gf-vray
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 50vw; /* adjusted width since fewer logos */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0;
+  }
+
+  /* Grayscale all logos */
+  .logo-row img {
+    filter: grayscale(100%);
+  }
+
+  /* On hover, remove grayscale and add scale */
+  .logo-row img:hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/BRtEuwD.png" alt="V-Ray Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## P038 — Dental Clinic
 
 ### P038-S01 — RENDERS
@@ -1082,9 +3672,83 @@ slideshow you need. Copy the entire code block, including the `<iframe>` tags.
 </iframe>
 ```
 
+### P038-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P038-TOOLS`
+- **Strip dimensions:** 884 × 127 px
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, Corona Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/dental-clinic
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 90vw; /* container width */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0; /* remove margins */
+  }
+
+  /* Grayscale all except Unreal */
+  .logo-row img:not(.unreal) {
+    filter: grayscale(100%);
+  }
+
+  /* Unreal logo inverted always */
+  .logo-row img.unreal {
+    filter: invert(1);
+  }
+
+  /* On hover, remove grayscale from all except Unreal, add scale */
+  .logo-row img:not(.unreal):hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+
+  /* Unreal logo hover: scale, keep inverted */
+  .logo-row img.unreal:hover {
+    transform: scale(1.1);
+  }
+</style>
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+```
+
 ## Not included
 
 | Project | Status | Reason |
 |---|---|---|
-| P024 | BLOCKED | The audited source link truncates to `http://ww`; no valid slideshow URL exists. The ID is reserved and no code was invented. |
-| P036 | NO_SLIDESHOW | The project page contains static images only; there is no interactive slideshow to migrate. |
+| P024 | BLOCKED | The audited source link truncates to `http://ww`; no project page exists, so there is no slideshow or TOOLS USED code. The ID is reserved and no code was invented. |

@@ -1,8 +1,10 @@
 # Phase 2 Bulk Rollout Report — All 47 Slideshows
 
 Status: **all 47 slideshows are reconstructed, deployed as version 3, and
-exported as 47 independent embed codes. The finished copy/paste set is in
-`05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and `05_BEHANCE_OUTPUT/ALL_EMBEDS.csv`.
+exported as 47 independent embed codes. All 37 TOOLS USED software-logo strips
+are also exported as raw HTML/CSS codes. The finished copy/paste set is in
+`05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and `05_BEHANCE_OUTPUT/ALL_EMBEDS.csv`, with
+the tools-only set in `TOOLS_USED_EMBEDS.md` and `TOOLS_USED_EMBEDS.csv`.
 Static validation 3092/3092, local browser 340/340, live Apps Script 332/332,
 and the P001-S01 real published-Behance gate 18/18. Per owner instruction,
 further Behance testing is closed; the codes are ready for manual use. P024
@@ -160,8 +162,10 @@ slideshow or its images.
 
 | File | Contents |
 |---|---|
-| `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` | All 47 codes, grouped by project, with IDs and dimensions |
+| `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` | All 47 slideshow codes plus all 37 TOOLS USED codes, grouped by project, with IDs and dimensions |
 | `05_BEHANCE_OUTPUT/ALL_EMBEDS.csv` | One row per slideshow with a single-line embed code |
+| `05_BEHANCE_OUTPUT/TOOLS_USED_EMBEDS.md` | All 37 TOOLS USED HTML/CSS codes, grouped by project |
+| `05_BEHANCE_OUTPUT/TOOLS_USED_EMBEDS.csv` | One row per TOOLS USED strip with a single-line embed code |
 | `05_BEHANCE_OUTPUT/README.md` | How to use the output files |
 | `01_AUDIT/evidence/phase2-bulk/bulk-local-test-results.json` | 340-check local browser suite, all 47 slideshows |
 | `01_AUDIT/evidence/phase2-bulk/bulk-live-test-results.json` | 332-check live Apps Script suite, retry record, blocked-image count |
@@ -172,9 +176,11 @@ slideshow or its images.
 
 All 47 independent embed codes are ready in
 `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` (primary copy/paste source) and
-`05_BEHANCE_OUTPUT/ALL_EMBEDS.csv` (spreadsheet). The 36 per-project files
-remain available for project-by-project work. The owner copies each code into
-its matching Behance project section.
+`05_BEHANCE_OUTPUT/ALL_EMBEDS.csv` (spreadsheet). All 37 TOOLS USED logo-strip
+codes are in the same Markdown file and in `TOOLS_USED_EMBEDS.md` /
+`TOOLS_USED_EMBEDS.csv`. The 36 per-project files remain available for
+project-by-slideshow work. The owner copies each code into its matching Behance
+project section.
 
 No further automated work is required. P024 remains blocked with its ID
-reserved, and P036 has no slideshow.
+reserved. P036 has no slideshow, but its TOOLS USED code is included.

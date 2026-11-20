@@ -1,0 +1,1126 @@
+[
+  {
+    "project_id": "P001",
+    "project_title": "AL-RASHED PROJECT",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/al-rashed-project",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n  <img src=\"https://i.imgur.com/8y2GzCS.png\" alt=\"Lumion Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      },
+      {
+        "src": "https://i.imgur.com/8y2GzCS.png",
+        "alt": "Lumion Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P002",
+    "project_title": "Cellphone Store",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/cellphone-store",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 50vw; /* adjusted width since fewer logos */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0;\n  }\n\n  /* Grayscale all logos */\n  .logo-row img {\n    filter: grayscale(100%);\n  }\n\n  /* On hover, remove grayscale and add scale */\n  .logo-row img:hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P003",
+    "project_title": "DK-Apartment",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/dk-apartment",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 50vw; /* adjusted width since fewer logos */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0;\n  }\n\n  /* Grayscale all logos */\n  .logo-row img {\n    filter: grayscale(100%);\n  }\n\n  /* On hover, remove grayscale and add scale */\n  .logo-row img:hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P004",
+    "project_title": "AB-Apartment",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/ab-apartment",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 50vw; /* adjusted width since fewer logos */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0;\n  }\n\n  /* Grayscale all logos */\n  .logo-row img {\n    filter: grayscale(100%);\n  }\n\n  /* On hover, remove grayscale and add scale */\n  .logo-row img:hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P005",
+    "project_title": "GF-KIDS BEDROOM",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/gf-kids-bedroom",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P006",
+    "project_title": "AP-GF-RECIPTION",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/ap-gf-reciption",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P007",
+    "project_title": "AP-GF-FAMILY MAJLIS",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/ap-gf-family-majlis",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 60vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/z0G51fu.png\" alt=\"Unreal Engine Logo\" class=\"unreal\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/z0G51fu.png",
+        "alt": "Unreal Engine Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P008",
+    "project_title": "GIRL BEDROOM",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/girl-bedroom",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P009",
+    "project_title": "MASTER BEDROOM",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/master-bedroom",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P010",
+    "project_title": "BOY BEDROOM",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/boy-bedroom",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P011",
+    "project_title": "OA-AP-FAMILY MAJLIS",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/oa-ap-family-majlis",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 50vw; /* adjusted width since fewer logos */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0;\n  }\n\n  /* Grayscale all logos */\n  .logo-row img {\n    filter: grayscale(100%);\n  }\n\n  /* On hover, remove grayscale and add scale */\n  .logo-row img:hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P012",
+    "project_title": "GF-DINNING ROOM",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/gf-dinning-room",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P013",
+    "project_title": "OA-AP-BOYS BEDROOM",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/oa-ap-boys-bedroom",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 50vw; /* adjusted width since fewer logos */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0;\n  }\n\n  /* Grayscale all logos */\n  .logo-row img {\n    filter: grayscale(100%);\n  }\n\n  /* On hover, remove grayscale and add scale */\n  .logo-row img:hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P014",
+    "project_title": "AP-FF-RECIPTION",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/ap-ff-reciption",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P015",
+    "project_title": "OA_MASTER_BEDROOM",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/oa_master_bedroom",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 50vw; /* adjusted width since fewer logos */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0;\n  }\n\n  /* Grayscale all logos */\n  .logo-row img {\n    filter: grayscale(100%);\n  }\n\n  /* On hover, remove grayscale and add scale */\n  .logo-row img:hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P016",
+    "project_title": "AP-GF-LANDSCAPE",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/ap-gf-landscape",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P017",
+    "project_title": "VILLA LOBBY - EYGPT",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/villa-lobby-eygpt",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P018",
+    "project_title": "GF-STAIRS",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/gf-stairs",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P019",
+    "project_title": "GF-GIRL BEDROOM",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/gf-girl-bedroom",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P020",
+    "project_title": "AV_3rd_Floor_Family_Majlis",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/av_3rd_floor_family_majlis",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 50vw; /* adjusted width since fewer logos */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0;\n  }\n\n  /* Grayscale all logos */\n  .logo-row img {\n    filter: grayscale(100%);\n  }\n\n  /* On hover, remove grayscale and add scale */\n  .logo-row img:hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/BRtEuwD.png\" alt=\"V-Ray Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/BRtEuwD.png",
+        "alt": "V-Ray Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P021",
+    "project_title": "VILLA GROUND FLOOR - UAE",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/villa-ground-floor-uae",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P022",
+    "project_title": "OA-AP-GIRL BEDROOM",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/oa-ap-girl-bedroom",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P023",
+    "project_title": "MEN MAJLIS - EYGPT",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/men-majlis-eygpt",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P025",
+    "project_title": "VILLA ENTRANCE - EYGPT",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/villa-entrance-eygpt",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P026",
+    "project_title": "KITCHEN",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/kitchen",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P027",
+    "project_title": "FAMILY NIGHT MAJLIS - EYGPT",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/family-night-majlis-eygpt",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P028",
+    "project_title": "AP-FF-MASTER BEDROOM",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/ap-ff-master-bedroom",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P029",
+    "project_title": "GUESTS ROOM - OM ASEL",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/guests-room-om-asel",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P030",
+    "project_title": "AV_SF_Family_Majlis_Render",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/av_sf_family_majlis_render",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 50vw; /* adjusted width since fewer logos */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0;\n  }\n\n  /* Grayscale all logos */\n  .logo-row img {\n    filter: grayscale(100%);\n  }\n\n  /* On hover, remove grayscale and add scale */\n  .logo-row img:hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/BRtEuwD.png\" alt=\"V-Ray Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/BRtEuwD.png",
+        "alt": "V-Ray Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P031",
+    "project_title": "ARABIC MAJLIS",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/arabic-majlis",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/STZTRZr.png\" alt=\"Revit Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/STZTRZr.png",
+        "alt": "Revit Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P032",
+    "project_title": "FAMILY LIVING ROOM GF- VRAY",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/family-living-room-gf-vray",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 50vw; /* adjusted width since fewer logos */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0;\n  }\n\n  /* Grayscale all logos */\n  .logo-row img {\n    filter: grayscale(100%);\n  }\n\n  /* On hover, remove grayscale and add scale */\n  .logo-row img:hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/BRtEuwD.png\" alt=\"V-Ray Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/BRtEuwD.png",
+        "alt": "V-Ray Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P033",
+    "project_title": "AV-SF-BOY-BEDROOM",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/av-sf-boy-bedroom",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 50vw; /* adjusted width since fewer logos */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0;\n  }\n\n  /* Grayscale all logos */\n  .logo-row img {\n    filter: grayscale(100%);\n  }\n\n  /* On hover, remove grayscale and add scale */\n  .logo-row img:hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/BRtEuwD.png\" alt=\"V-Ray Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/BRtEuwD.png",
+        "alt": "V-Ray Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P034",
+    "project_title": "AV_SF_Girl Bedroom",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/av_sf_girl-bedroom",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 50vw; /* adjusted width since fewer logos */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0;\n  }\n\n  /* Grayscale all logos */\n  .logo-row img {\n    filter: grayscale(100%);\n  }\n\n  /* On hover, remove grayscale and add scale */\n  .logo-row img:hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/BRtEuwD.png\" alt=\"V-Ray Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/BRtEuwD.png",
+        "alt": "V-Ray Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P035",
+    "project_title": "GUEST MAJLIS- VRAY",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/guest-majlis-vray",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 50vw; /* adjusted width since fewer logos */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0;\n  }\n\n  /* Grayscale all logos */\n  .logo-row img {\n    filter: grayscale(100%);\n  }\n\n  /* On hover, remove grayscale and add scale */\n  .logo-row img:hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/BRtEuwD.png\" alt=\"V-Ray Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/BRtEuwD.png",
+        "alt": "V-Ray Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P036",
+    "project_title": "MASTER-BEDROOM-VRAY",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/master-bedroom-vray",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 50vw; /* adjusted width since fewer logos */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0;\n  }\n\n  /* Grayscale all logos */\n  .logo-row img {\n    filter: grayscale(100%);\n  }\n\n  /* On hover, remove grayscale and add scale */\n  .logo-row img:hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/BRtEuwD.png\" alt=\"V-Ray Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/BRtEuwD.png",
+        "alt": "V-Ray Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P037",
+    "project_title": "FAMILY MAJLIS GF - VRAY",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/family-majlis-gf-vray",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 50vw; /* adjusted width since fewer logos */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0;\n  }\n\n  /* Grayscale all logos */\n  .logo-row img {\n    filter: grayscale(100%);\n  }\n\n  /* On hover, remove grayscale and add scale */\n  .logo-row img:hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/BRtEuwD.png\" alt=\"V-Ray Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/BRtEuwD.png",
+        "alt": "V-Ray Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
+    "project_id": "P038",
+    "project_title": "Dental Clinic",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/dental-clinic",
+    "width": 884,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 90vw; /* container width */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0; /* remove margins */\n  }\n\n  /* Grayscale all except Unreal */\n  .logo-row img:not(.unreal) {\n    filter: grayscale(100%);\n  }\n\n  /* Unreal logo inverted always */\n  .logo-row img.unreal {\n    filter: invert(1);\n  }\n\n  /* On hover, remove grayscale from all except Unreal, add scale */\n  .logo-row img:not(.unreal):hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n\n  /* Unreal logo hover: scale, keep inverted */\n  .logo-row img.unreal:hover {\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/X4WSOcP.png\" alt=\"Corona Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/X4WSOcP.png",
+        "alt": "Corona Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  }
+]

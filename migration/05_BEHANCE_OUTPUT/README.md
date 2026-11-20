@@ -1,23 +1,30 @@
 # Behance Embed Output
 
-All 47 slideshows are generated, deployed, and ready for manual copy/paste.
+All 47 slideshows and all 37 TOOLS USED strips are generated and ready for
+manual copy/paste.
 
 ## Files
 
 | File | Use |
 |---|---|
-| `ALL_EMBEDS.md` | **Primary copy/paste source.** Every code block, grouped by project, with IDs and dimensions. |
-| `ALL_EMBEDS.csv` | Spreadsheet version: one row per slideshow with a single-line embed code. |
-| `P001.md` … `P038.md` | Per-project files, in Behance page order. Use these when working one project at a time. |
+| `ALL_EMBEDS.md` | **Primary copy/paste source.** Every slideshow and TOOLS USED code block, grouped by project, with IDs and dimensions. |
+| `ALL_EMBEDS.csv` | Spreadsheet version of the 47 slideshow codes, one row per slideshow. |
+| `TOOLS_USED_EMBEDS.md` | All 37 TOOLS USED codes on their own, grouped by project. |
+| `TOOLS_USED_EMBEDS.csv` | Spreadsheet version of the 37 TOOLS USED codes. |
+| `P001.md` … `P038.md` | Per-project slideshow files. These contain slideshows only; use `ALL_EMBEDS.md` or `TOOLS_USED_EMBEDS.md` for TOOLS USED codes. |
 
 ## Deployment
 
 `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
 
-Deployment version 3. Every code uses one `?slide=<ID>` value and loads
-exactly one slideshow. The production Apps Script deployment is untouched.
+Deployment version 3. Every slideshow code uses one `?slide=<ID>` value and
+loads exactly one slideshow. The production Apps Script deployment is
+untouched. TOOLS USED codes do not use the deployment; they are the original
+self-contained HTML/CSS logo strips.
 
 ## How to use
+
+### Slideshows
 
 1. Open `ALL_EMBEDS.md` (or the per-project file for the project you are editing).
 2. Find the permanent slideshow ID, for example `P001-S01`.
@@ -29,8 +36,20 @@ The declared width and height are the values Behance reads. Frames at or
 above 1200 px use `width="100%"`; narrower frames keep their audited pixel
 width. Heights are per slideshow and must not be changed.
 
+### TOOLS USED
+
+1. In `ALL_EMBEDS.md`, scroll to the matching project and find the
+   `Pxxx-TOOLS — TOOLS USED software logos` heading.
+2. Copy the entire HTML code block.
+3. Paste it into the TOOLS USED embed on that Behance project.
+
+Each strip is 127 px high with 4–5 logos. The logo image URLs are the exact
+originals and must not be changed.
+
 ## Not included
 
-- **P024** is blocked: its source link truncates to `http://ww`, so no URL
-  exists. The permanent ID is reserved; no code was invented.
-- **P036** has no slideshow: its project page contains static images only.
+- **P024** is blocked: its source link truncates to `http://ww`, so no project
+  page exists. The permanent ID is reserved; no slideshow or TOOLS USED code
+  was invented.
+- **P036** has no slideshow, but its TOOLS USED code is included in both
+  TOOLS USED files and in `ALL_EMBEDS.md`.
