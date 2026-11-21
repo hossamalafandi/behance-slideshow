@@ -2953,7 +2953,7 @@ var SLIDES = {
       },
       {
         "order": 3,
-        "src": "https://i.imgur.com/1MWxYk7.jpeg",
+        "src": "https://i.imgur.com/PjEUKuC.jpeg",
         "w": 2560,
         "h": 1440,
         "alt": "Slide 3"

@@ -27,7 +27,7 @@ downloaded, copied, resized, proxied, or rehosted.
 | Slideshows generated | 47 |
 | Projects with generated snippets | 36 |
 | Image slots | 335 |
-| Unique image URLs | 331 |
+| Unique image URLs | 332 (331 audited + 1 owner-supplied P032-S01 replacement) |
 | Ordered URL SHA-256 | `882a952d07cc442466cb2d7a3e3369ecb44a9a9e20fd299ca5f6f9e52ae001d0` |
 | Image files downloaded or committed | 0 |
 | Projects still blocked | 1 (P024) |
@@ -67,9 +67,11 @@ strips. The production Apps Script project and `index.html` were not touched.
 
 `node migration/tools/validate.js` passes every check:
 
-- 47 slideshows, 36 projects, 335 slots, 331 unique URLs, exact frozen hash;
+- 47 slideshows, 36 projects, 335 slots, 332 unique URLs (331 audited plus the
+  owner-supplied P032-S01 replacement), exact frozen hash;
 - exact URL string and order comparison for every slideshow;
-- P032-S01 keeps both occurrences of `https://i.imgur.com/1MWxYk7.jpeg`;
+- P032-S01 keeps `https://i.imgur.com/1MWxYk7.jpeg` at position 2; position 3
+  uses the owner-supplied replacement `https://i.imgur.com/PjEUKuC.jpeg`;
 - P026-S02 remains an independent 3-image companion;
 - P011-S01 keeps all 20 images and its repaired standard JavaScript;
 - 29 fluid and 18 fixed widths, with per-slideshow heights;
@@ -88,7 +90,8 @@ slideshows in Chrome 157:
 - each slideshow keeps its own state and dimensions;
 - the router returns the neutral error page for invalid requests;
 - 334 image requests were aborted; the browser deduplicated the repeated P032
-  URL, so 334 blocked attempts represent all 335 slots.
+  URL, so 334 blocked attempts represent all 335 slots. (This was before the
+  owner replaced position 3; the delivered slideshow now has 335 distinct URLs.)
 
 ### 4.3 Live Apps Script suite — 332 / 332
 
@@ -138,7 +141,7 @@ pasted into Behance.
 |---|---|
 | P024 malformed link | Still `BLOCKED`; ID reserved; no URL invented |
 | P026-S02 | Independent 3-image companion; preserved |
-| P032-S01 repeated image | Both positions preserved |
+| P032-S01 repeated image | Original positions 2 and 3 shared a URL; owner change 2026-11-21 replaced position 3 while keeping position 2 |
 | P011-S01 repair | 20 images, order, and styling preserved; local 21/21, live 20/20 |
 | P038-S01 | Fullscreen-style reference; one button, no duplicate |
 | P036 | Confirmed no slideshow; no snippet generated |

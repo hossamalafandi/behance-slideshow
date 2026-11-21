@@ -3614,7 +3614,7 @@
       "frame_h": 803,
       "aspect": 1.663,
       "image_count": 3,
-      "unique_images": 2,
+      "unique_images": 3,
       "arrows": "yes",
       "dots": "yes",
       "dot_count": 3,
@@ -3630,7 +3630,7 @@
       "background": "rgba(0, 0, 0, 0)",
       "source_file": "02_SOURCE_BACKUP/P032/P032-family-living-room-gf-vray-S01-renders.original.html",
       "status": "EXTRACTED",
-      "notes": "Images 2 and 3 are the same URL; source has exactly 3 slots and 3 dots and no evidence of accident. Preserve all three in order.",
+      "notes": "Original audit found images 2 and 3 sharing the same URL; source had exactly 3 slots and 3 dots. Owner-requested change 2026-11-21: position 3 now uses https://i.imgur.com/PjEUKuC.jpeg; position 2 keeps the original URL. Three slots preserved.",
       "images": [
         {
           "order": 1,
@@ -3648,7 +3648,7 @@
         },
         {
           "order": 3,
-          "src": "https://i.imgur.com/1MWxYk7.jpeg",
+          "src": "https://i.imgur.com/PjEUKuC.jpeg",
           "w": 2560,
           "h": 1440,
           "alt": "Slide 3"

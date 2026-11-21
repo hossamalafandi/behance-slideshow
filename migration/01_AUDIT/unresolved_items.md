@@ -15,7 +15,7 @@ separates true blockers from items resolved by evidence or owner decision.
 | U01 | P024 link is malformed; project page unknown | Blocker | High | P024 only | **Blocked — ID reserved, proceed without P024** |
 | U02 | P011-S01 has no JavaScript; arrows inert | Defect | High | P011 only | **Resolved — repaired 2026-11-19** |
 | U03 | P026-S02 repeats 3 images from P026-S01 | Duplicate content | Medium | No | **Resolved — intentional companion** |
-| U04 | P032-S01 repeats the same image URL twice | Authoring ambiguity | Medium | No | **Resolved — preserve repeat** |
+| U04 | P032-S01 repeats the same image URL twice | Authoring ambiguity | Medium | No | **Resolved — owner replaced position 3 on 2026-11-21** |
 | U05 | P002 has 9 empty Drive preview iframes | Capture limitation | Low | No | **Resolved — Drive video previews** |
 | U06 | P036 contains static images, no slideshow | Confirmation | Low | No | **Confirmed** |
 | U07 | All images are hotlinked from imgur | Hosting risk | High | No | **Accepted by owner policy** |
@@ -144,6 +144,11 @@ accidental. The owner's rule is to preserve repeated URLs where they occur.
 
 **If evidence later appears.** Removing the third slot would require explicit
 owner approval and a new provenance note; it must never be done silently.
+
+**Post-delivery owner change (2026-11-21).** The owner explicitly replaced the
+position 3 URL with `https://i.imgur.com/PjEUKuC.jpeg`. Position 2 keeps
+`https://i.imgur.com/1MWxYk7.jpeg`; all three slots remain. Deployment version 5
+serves the updated slideshow.
 
 ## U05 — P002 has nine Drive preview iframes
 
@@ -320,7 +325,7 @@ These are deliberate choices, not errors:
 | Item | Resolution |
 |---|---|
 | P026-S02 intentionality | Confirmed separate side-by-side companion; preserve independently; status `EXTRACTED`, P026 `VERIFIED` |
-| P032-S01 repeated image | Confirmed 3 slots / 3 dots; preserve exactly; status `EXTRACTED`, P032 `VERIFIED` |
+| P032-S01 repeated image | Confirmed 3 slots / 3 dots originally; owner replaced position 3 on 2026-11-21; status `EXTRACTED`, P032 `VERIFIED` |
 | P002 Drive previews | Confirmed 9 Google Drive video previews, HTTP 200, blank in headless embed; not slideshows |
 | P036 no slideshow | Confirmed static images only |
 | Image local-target plan | Removed; no downloads or rehosting; `images.csv` stores remote URLs only |

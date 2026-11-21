@@ -40,7 +40,7 @@ documents the audit exceptions as far as the public evidence allows.
 | Projects that could not be inspected | 1 (P024) |
 | Slideshows detected and archived | 47 |
 | Image slots in those slideshows | 335 |
-| Unique image URLs | 331 |
+| Unique image URLs | 332 (331 audited + 1 owner-supplied P032-S01 replacement) |
 | Image files downloaded or rehosted | 0 |
 | Original slideshow HTML files archived | 47 |
 | Slideshows with an existing fullscreen button | 1 (P038-S01) |
@@ -178,7 +178,7 @@ matrix.
 | `01_AUDIT/slides.config.json` | 47 | Nested config (slideshow → images) for code generation in Phase 2 |
 | `01_AUDIT/raw/P0xx.json` | 38 | Crawl record per project (37 full records + the P024 blocked attempt) |
 | `01_AUDIT/raw/context.json` | 37 | Section labels and embed positions in DOM order |
-| `01_AUDIT/raw/image_meta.json` | 331 | HTTP status, format and true dimensions per unique image |
+| `01_AUDIT/raw/image_meta.json` | 331 audited | HTTP status, format and true dimensions per unique image (the owner-supplied P032-S01 replacement was not downloaded) |
 | `01_AUDIT/evidence/*.png` | 48 | Local audit screenshots (gitignored; not committed) |
 
 Screenshots are supporting evidence only and stay on the local machine; no image
@@ -243,7 +243,7 @@ real-Behance-verified embed. P024 remains blocked.
 | P024 malformed link | Still `BLOCKED`; card 24 is a distinct "MASTER BEDROOM" card, not the P009 card; no page or hidden link found |
 | P011-S01 missing JavaScript | Repaired 2026-11-19 with the shared standard script after the pilot gate passed; 20 images and original order preserved; local 21/21 and live 20/20 |
 | P026-S02 duplicate subset | Confirmed intentional side-by-side companion slideshow; preserve independently |
-| P032-S01 repeated image | Source has 3 slots/3 dots; no evidence of accident; preserve exactly |
+| P032-S01 repeated image | Original audit found 3 slots/3 dots with positions 2 and 3 sharing a URL. Owner change 2026-11-21: position 3 now uses `https://i.imgur.com/PjEUKuC.jpeg`; position 2 keeps the original. |
 | P002 Drive previews | Nine Google Drive **video** previews (MOV), HTTP 200, blank in headless embedded capture; not slideshows and not a migration blocker |
 | Fullscreen feasibility | Verified in the real published Behance page: `allowfullscreen` survives Behance's sandbox, native fullscreen targets `#slideshow`, and exit works. The gate passes 18/18. |
 

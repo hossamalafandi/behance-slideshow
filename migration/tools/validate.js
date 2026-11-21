@@ -24,11 +24,11 @@ const BEHANCE_DIR = path.join(ROOT, '05_BEHANCE_OUTPUT');
 
 const EXPECTED_DEPLOYMENT_ID =
   'AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA';
-const EXPECTED_GLOBAL_HASH = '882a952d07cc442466cb2d7a3e3369ecb44a9a9e20fd299ca5f6f9e52ae001d0';
+const EXPECTED_GLOBAL_HASH = '38c2532cf82f6d87d673f0bad037de77cc378e8c4a4b8c505a4f533589b0b2e3';
 const EXPECTED_SLIDESHOWS = 47;
 const EXPECTED_PROJECTS = 36;
 const EXPECTED_IMAGE_SLOTS = 335;
-const EXPECTED_UNIQUE_URLS = 331;
+const EXPECTED_UNIQUE_URLS = 332;
 const BEHANCE_MAX_WIDTH = 1200;
 const REPAIR_ID = 'P011-S01';
 
@@ -125,7 +125,7 @@ function main() {
     'found ' + (config.slideshows ? config.slideshows.length : 'none'));
   check('images.csv has 335 image slots',
     csv.rows.length === EXPECTED_IMAGE_SLOTS, 'found ' + csv.rows.length);
-  check('images.csv has 331 unique URLs',
+  check('images.csv has 332 unique URLs',
     uniqueUrls.size === EXPECTED_UNIQUE_URLS, 'found ' + uniqueUrls.size);
   check('frozen ordered URL hash is unchanged',
     globalHash === EXPECTED_GLOBAL_HASH, globalHash);
@@ -165,9 +165,10 @@ function main() {
   check('every images.csv row belongs to a configured slideshow',
     csv.rows.every(row => byId.has(row.slideshow_id)));
   const p032 = byId.get('P032-S01');
-  check('P032-S01 preserves the repeated image at positions 2 and 3',
-    Boolean(p032) && p032.expectedUrls[1] === p032.expectedUrls[2] &&
-      p032.expectedUrls[1] === 'https://i.imgur.com/1MWxYk7.jpeg');
+  check('P032-S01 keeps the original image at position 2',
+    Boolean(p032) && p032.expectedUrls[1] === 'https://i.imgur.com/1MWxYk7.jpeg');
+  check('P032-S01 has the owner replacement at position 3',
+    Boolean(p032) && p032.expectedUrls[2] === 'https://i.imgur.com/PjEUKuC.jpeg');
   const p026s02 = byId.get('P026-S02');
   check('P026-S02 remains a 3-image companion',
     Boolean(p026s02) && p026s02.expectedUrls.length === 3);
@@ -381,8 +382,10 @@ function main() {
 
   // ---------------------------------------------------------- router (static)
   const router = read(path.join(APPS_DIR, 'Code.gs'));
-  check('router counts raw slide parameters', /function countSlideParameters_/.test(router) &&
-    /countSlideParameters_\(e && e\.queryString\) !== 1/.test(router));
+  check('router counts raw slide and tools parameters',
+    /function countQueryParameters_/.test(router) &&
+    /countQueryParameters_\(queryString, 'slide'\)/.test(router) &&
+    /countQueryParameters_\(queryString, 'tools'\)/.test(router));
   check('router requires a string parameter', /typeof raw !== 'string'/.test(router));
   check('router normalizes with trim and uppercase', /raw\.trim\(\)\.toUpperCase\(\)/.test(router));
   check('router uses an own-property lookup',
@@ -408,7 +411,14 @@ function main() {
   const behanceNames = behanceFiles.map(file => path.basename(file)).sort();
   const expectedPreviewNames = ids.map(id => id + '.html').sort();
   const expectedDataNames = ids.map(id => id + '.json').sort();
-  const expectedBehanceNames = projectIds.map(id => id + '.md').sort();
+  const expectedBehanceNames = [
+    ...projectIds.map(id => id + '.md'),
+    'ALL_EMBEDS.md',
+    'ALL_EMBEDS.csv',
+    'README.md',
+    'TOOLS_USED_EMBEDS.md',
+    'TOOLS_USED_EMBEDS.csv'
+  ].sort();
 
   check('preview output contains exactly the 47 audited slideshows',
     JSON.stringify(previewNames) === JSON.stringify(expectedPreviewNames),
@@ -416,7 +426,7 @@ function main() {
   check('data output contains exactly the 47 audited slideshows',
     JSON.stringify(dataNames) === JSON.stringify(expectedDataNames),
     dataNames.join(', '));
-  check('Behance output contains exactly the 36 projects',
+  check('Behance output contains exactly the expected files',
     JSON.stringify(behanceNames) === JSON.stringify(expectedBehanceNames),
     behanceNames.join(', '));
   check('no image binaries were generated',
