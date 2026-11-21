@@ -6,6 +6,11 @@ independent embed codes. Static validation 3092/3092, local browser 340/340,
 live Apps Script 332/332, P001-S01 real Behance gate 18/18. Per owner
 instruction, further Behance testing is closed; the codes are ready for manual
 copy/paste. P024 remains blocked.**
+
+> **Post-plan update (2026-11-21).** P024 was resolved and migrated. Current
+> build: 48 slideshows in 37 projects, 339 slots, 336 unique URLs, 38 TOOLS
+> USED strips, deployment version 6, static validation 3160/3160. The plan
+> below is retained as the approved 2026-11-18 implementation record.
 Prepared: 2026-11-18 after the Phase 1.1 audit refinement.
 No image download is authorized by this document. Deployment and publishing
 require the gates below.

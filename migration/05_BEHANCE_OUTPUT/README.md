@@ -1,6 +1,6 @@
 # Behance Embed Output
 
-All 47 slideshows and all 37 TOOLS USED strips are generated and ready for
+All 48 slideshows and all 38 TOOLS USED strips are generated and ready for
 manual copy/paste.
 
 ## Files
@@ -8,16 +8,16 @@ manual copy/paste.
 | File | Use |
 |---|---|
 | `ALL_EMBEDS.md` | **Primary copy/paste source.** Every slideshow and TOOLS USED code block, grouped by project, with IDs and dimensions. |
-| `ALL_EMBEDS.csv` | Spreadsheet version of the 47 slideshow codes, one row per slideshow. |
-| `TOOLS_USED_EMBEDS.md` | All 37 TOOLS USED codes on their own, grouped by project. |
-| `TOOLS_USED_EMBEDS.csv` | Spreadsheet version of the 37 TOOLS USED codes. |
+| `ALL_EMBEDS.csv` | Spreadsheet version of the 48 slideshow codes, one row per slideshow. |
+| `TOOLS_USED_EMBEDS.md` | All 38 TOOLS USED codes on their own, grouped by project. |
+| `TOOLS_USED_EMBEDS.csv` | Spreadsheet version of the 38 TOOLS USED codes. |
 | `P001.md` … `P038.md` | Per-project slideshow files. These contain slideshows only; use `ALL_EMBEDS.md` or `TOOLS_USED_EMBEDS.md` for TOOLS USED codes. |
 
 ## Deployment
 
 `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
 
-Deployment version 4. Every slideshow code uses one `?slide=<ID>` value and
+Deployment version 6. Every slideshow code uses one `?slide=<ID>` value and
 loads exactly one slideshow. Every TOOLS USED code uses one `?tools=<ID>`
 value and loads the original logo strip from the same host. The production
 Apps Script deployment is untouched.
@@ -48,8 +48,5 @@ original logo URLs and CSS; the images are not copied or rehosted.
 
 ## Not included
 
-- **P024** is blocked: its source link truncates to `http://ww`, so no project
-  page exists. The permanent ID is reserved; no slideshow or TOOLS USED code
-  was invented.
 - **P036** has no slideshow, but its TOOLS USED code is included in both
   TOOLS USED files and in `ALL_EMBEDS.md`.

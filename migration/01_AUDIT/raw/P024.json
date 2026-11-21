@@ -1,10 +1,264 @@
 {
   "projectID": "P024",
   "order": 24,
-  "url": "http://www.google.com/url?q=http%3A%2F%2Fww&sa=D&sntz=1&usg=AOvVaw3htc4VAJDj21PIClImVl5y",
-  "status": "BLOCKED",
-  "slideshows": [],
-  "notes": [
-    "Error: page.evaluate: Execution context was destroyed, most likely because of a navigation"
+  "url": "https://sites.google.com/view/hossam-alafandi/freelance/av_sf_master_bedroom",
+  "status": "SCANNED",
+  "pageTitle": "AV_SF_MASTER_BEDROOM",
+  "slug": "av_sf_master_bedroom",
+  "labels": [
+    {
+      "text": "Embedded Files",
+      "tag": "SPAN"
+    },
+    {
+      "text": "Skip to main content",
+      "tag": "SPAN"
+    },
+    {
+      "text": "Skip to navigation",
+      "tag": "SPAN"
+    },
+    {
+      "text": "MASTER BEDROOM",
+      "tag": "H1"
+    },
+    {
+      "text": "MASTER BEDROOM",
+      "tag": "SPAN"
+    },
+    {
+      "text": "SAUDI ARABIA",
+      "tag": "SPAN"
+    },
+    {
+      "text": "- 202",
+      "tag": "SPAN"
+    },
+    {
+      "text": "3",
+      "tag": "SPAN"
+    },
+    {
+      "text": "-",
+      "tag": "SPAN"
+    },
+    {
+      "text": "OVERVIEW",
+      "tag": "H1"
+    },
+    {
+      "text": "OVERVIEW",
+      "tag": "SPAN"
+    },
+    {
+      "text": "RENDERS",
+      "tag": "H1"
+    },
+    {
+      "text": "RENDERS",
+      "tag": "SPAN"
+    },
+    {
+      "text": "MOODBOARD",
+      "tag": "H1"
+    },
+    {
+      "text": "MOODBOARD",
+      "tag": "SPAN"
+    },
+    {
+      "text": "TOOLS USED",
+      "tag": "SPAN"
+    },
+    {
+      "text": "© 2025 HOSSAM ALAFANDI. All rights reserved.",
+      "tag": "SPAN"
+    },
+    {
+      "text": "Page updated",
+      "tag": "SPAN"
+    }
+  ],
+  "frames": [
+    {
+      "frame": null,
+      "title": "AV_SF_MASTER_BEDROOM",
+      "isSlideshow": false,
+      "imgCount": 0,
+      "logoCount": 0
+    },
+    {
+      "frame": {
+        "name": "389599694145eaeb_86",
+        "title": "Custom embed",
+        "width": 1335,
+        "height": 1052,
+        "x": 52,
+        "y": -475
+      },
+      "title": "",
+      "isSlideshow": false,
+      "imgCount": 0,
+      "logoCount": 0
+    },
+    {
+      "frame": {
+        "name": "389599694145eaeb_98",
+        "title": "Custom embed",
+        "width": 1335,
+        "height": 127,
+        "x": 52,
+        "y": 821
+      },
+      "title": "",
+      "isSlideshow": false,
+      "imgCount": 0,
+      "logoCount": 0
+    },
+    {
+      "frame": {
+        "name": "innerFrame",
+        "title": "",
+        "width": 1335,
+        "height": 1052,
+        "x": 0,
+        "y": 0
+      },
+      "title": "",
+      "isSlideshow": false,
+      "imgCount": 0,
+      "logoCount": 0
+    },
+    {
+      "frame": {
+        "name": "innerFrame",
+        "title": "",
+        "width": 1335,
+        "height": 127,
+        "x": 0,
+        "y": 0
+      },
+      "title": "",
+      "isSlideshow": false,
+      "imgCount": 0,
+      "logoCount": 0
+    },
+    {
+      "frame": {
+        "name": "",
+        "title": "",
+        "width": 1335,
+        "height": 1052,
+        "x": 0,
+        "y": 0
+      },
+      "title": "Image Slideshow with Side Shadows on Hover",
+      "isSlideshow": true,
+      "imgCount": 4,
+      "logoCount": 0
+    },
+    {
+      "frame": {
+        "name": "",
+        "title": "",
+        "width": 1335,
+        "height": 127,
+        "x": 0,
+        "y": 0
+      },
+      "title": "Software Logos with Equal Spacing",
+      "isSlideshow": false,
+      "imgCount": 0,
+      "logoCount": 4
+    }
+  ],
+  "slideshows": [
+    {
+      "slideshowID": "P024-S01",
+      "frame": "",
+      "frameSize": {
+        "w": 1335,
+        "h": 1052,
+        "aspect": 1.269
+      },
+      "isSlideshow": true,
+      "docTitle": "Image Slideshow with Side Shadows on Hover",
+      "imgCount": 4,
+      "images": [
+        {
+          "n": 1,
+          "src": "https://i.imgur.com/bvRTvZo.jpeg",
+          "currentSrc": "https://i.imgur.com/bvRTvZo.jpeg",
+          "alt": "Slide 1",
+          "loading": "auto",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 2,
+          "src": "https://i.imgur.com/YqKMfyA.jpeg",
+          "currentSrc": "https://i.imgur.com/YqKMfyA.jpeg",
+          "alt": "Slide 2",
+          "loading": "auto",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 3,
+          "src": "https://i.imgur.com/iYzCXGC.jpeg",
+          "currentSrc": "https://i.imgur.com/iYzCXGC.jpeg",
+          "alt": "Slide 3",
+          "loading": "auto",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        },
+        {
+          "n": 4,
+          "src": "https://i.imgur.com/5vPqYBR.jpeg",
+          "currentSrc": "https://i.imgur.com/5vPqYBR.jpeg",
+          "alt": "Slide 4",
+          "loading": "auto",
+          "objectFit": "cover",
+          "borderRadius": "20px"
+        }
+      ],
+      "dotCount": 4,
+      "arrows": true,
+      "pageCounter": true,
+      "fullscreen": false,
+      "bodyText": "❮\n❯\n1 / 4"
+    }
+  ],
+  "tools": [
+    {
+      "docTitle": "Software Logos with Equal Spacing",
+      "frameSize": {
+        "w": 1335,
+        "h": 127,
+        "aspect": 10.512
+      },
+      "imgCount": 4,
+      "logos": [
+        {
+          "src": "https://i.imgur.com/znQK1ti.png",
+          "alt": "3ds Max Logo"
+        },
+        {
+          "src": "https://i.imgur.com/eusbdWx.png",
+          "alt": "AutoCAD Logo"
+        },
+        {
+          "src": "https://i.imgur.com/BRtEuwD.png",
+          "alt": "V-Ray Logo"
+        },
+        {
+          "src": "https://i.imgur.com/6sW1ghq.png",
+          "alt": "Photoshop Logo"
+        }
+      ],
+      "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 50vw; /* adjusted width since fewer logos */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0;\n  }\n\n  /* Grayscale all logos */\n  .logo-row img {\n    filter: grayscale(100%);\n  }\n\n  /* On hover, remove grayscale and add scale */\n  .logo-row img:hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n",
+      "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/BRtEuwD.png\" alt=\"V-Ray Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+      "bodyText": ""
+    }
   ]
 }

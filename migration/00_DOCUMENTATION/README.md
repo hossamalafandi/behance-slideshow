@@ -1,30 +1,31 @@
 # Behance Slideshow Migration — Phase 2
 
-Status: **Phase 2 bulk rollout complete. All 47 slideshows are reconstructed,
-deployed, and exported as 47 independent Behance embed codes, and all 37
+Status: **Phase 2 bulk rollout complete. All 48 slideshows are reconstructed,
+deployed, and exported as 48 independent Behance embed codes, and all 38
 TOOLS USED software-logo strips are exported as iframe codes served by the same
 Apps Script host. The complete copy/paste set is in
 `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and `05_BEHANCE_OUTPUT/ALL_EMBEDS.csv`, with
 the tools-only set in `05_BEHANCE_OUTPUT/TOOLS_USED_EMBEDS.md` and
 `TOOLS_USED_EMBEDS.csv`. Per owner instruction, no further Behance test embeds
 or validation cycles are being run; P001-S01 remains the only
-real-Behance-verified embed. P024 remains blocked.**
+real-Behance-verified embed.**
 Audit date: 2026-11-18
 Bulk rollout date: 2026-11-20
+P024 completion date: 2026-11-21
 Scope: the **Freelance** page of <https://sites.google.com/view/hossam-alafandi/>
 and its 38 project pages.
 
 This folder is the migration workspace. It was created without changing,
 deleting, renaming, or redeploying anything in the live portfolio, the existing
 production Apps Script project, or the existing `index.html` prototype. A **new
-standalone** Apps Script project hosts all 47 slideshows and the 37 TOOLS USED
-strips; it is deployed as version 4. One temporary Behance test project was
+standalone** Apps Script project hosts all 48 slideshows and the 38 TOOLS USED
+strips; it is deployed as version 6. One temporary Behance test project was
 published. The audit, pilot, and bulk rollout commits are pushed to `main`. See
 `01_AUDIT/phase_2_pilot_report.md` and `01_AUDIT/phase_2_bulk_report.md` for the
 test results and the pending real-Behance review.
 
 Phase 1.1 adds two mandatory requirements: **no image downloading/rehosting**
-and **one consistent fullscreen button on all 47 slideshows**. The owner also
+and **one consistent fullscreen button on all 48 slideshows**. The owner also
 confirmed that every slideshow is an **independent Behance embed**; the shared
 deployment is hosting and rendering only, never a gallery. It also resolves or
 documents the audit exceptions as far as the public evidence allows.
@@ -34,17 +35,17 @@ documents the audit exceptions as far as the public evidence allows.
 | Metric | Result |
 |---|---:|
 | Projects discovered on the Freelance page | 38 |
-| Project pages inspected | 37 |
-| Projects with at least one interactive slideshow | 36 |
+| Project pages inspected | 38 |
+| Projects with at least one interactive slideshow | 37 |
 | Projects confirmed without a slideshow | 1 (P036) |
-| Projects that could not be inspected | 1 (P024) |
-| Slideshows detected and archived | 47 |
-| Image slots in those slideshows | 335 |
-| Unique image URLs | 332 (331 audited + 1 owner-supplied P032-S01 replacement) |
+| Projects that could not be inspected | 0 |
+| Slideshows detected and archived | 48 |
+| Image slots in those slideshows | 339 |
+| Unique image URLs | 336 (331 original audited + 1 owner-supplied P032-S01 replacement + 4 P024) |
 | Image files downloaded or rehosted | 0 |
-| Original slideshow HTML files archived | 47 |
+| Original slideshow HTML files archived | 48 |
 | Slideshows with an existing fullscreen button | 1 (P038-S01) |
-| Slideshows that must have one after migration | 47 |
+| Slideshows that must have one after migration | 48 |
 
 ## 2. Folder structure
 
@@ -60,8 +61,8 @@ migration/
 │   └── PHASE_2_IMPLEMENTATION_PLAN.md   detailed build, test and rollout plan
 ├── 01_AUDIT/
 │   ├── projects.csv                     38 projects: IDs, titles, URLs, status, counts
-│   ├── slideshows.csv                   47 slideshows: IDs, stems, sections, controls, status
-│   ├── images.csv                       335 remote image slots: order, exact URL, dimensions
+│   ├── slideshows.csv                   48 slideshows: IDs, stems, sections, controls, status
+│   ├── images.csv                       339 remote image slots: order, exact URL, dimensions
 │   ├── slides.config.json               machine-readable master for the rebuild phase
 │   ├── audit_summary.md                 method, inventory and findings
 │   ├── unresolved_items.md              blockers, defects and decisions needed
@@ -69,9 +70,9 @@ migration/
 │   ├── raw/                             raw crawl output (per project, context, image metadata, log)
 │   └── evidence/                        pilot and bulk test reports (screenshots gitignored)
 ├── 02_SOURCE_BACKUP/                    untouched original slideshow HTML, one folder per project
-├── 03_REBUILT_SLIDESHOWS/               generated data and previews for all 47 slideshows
-├── 04_APPS_SCRIPT/                      shared Apps Script project (47-slide map, 37-tool map, version 4)
-└── 05_BEHANCE_OUTPUT/                   all 47 embed codes plus 37 TOOLS USED codes: ALL_EMBEDS.md, ALL_EMBEDS.csv, TOOLS_USED_EMBEDS.md, TOOLS_USED_EMBEDS.csv, 36 project files
+├── 03_REBUILT_SLIDESHOWS/               generated data and previews for all 48 slideshows
+├── 04_APPS_SCRIPT/                      shared Apps Script project (48-slide map, 38-tool map, version 6)
+└── 05_BEHANCE_OUTPUT/                   all 48 embed codes plus 38 TOOLS USED codes: ALL_EMBEDS.md, ALL_EMBEDS.csv, TOOLS_USED_EMBEDS.md, TOOLS_USED_EMBEDS.csv, 37 project files
 ```
 
 `02_SOURCE_BACKUP` contains one `*.original.html` per slideshow. These files are
@@ -100,17 +101,21 @@ column was removed in Phase 1.1. There is no `assets/` directory in the rebuilt
 output. Full rules and verification steps are in
 `00_DOCUMENTATION/IMAGE_HOSTING_POLICY.md`.
 
-The ordered URL sequence SHA-256 at Phase 1.1 completion is:
+The current ordered URL sequence SHA-256 (2026-11-21, after the documented
+owner updates) is:
 
 ```
-882a952d07cc442466cb2d7a3e3369ecb44a9a9e20fd299ca5f6f9e52ae001d0
+4338768034a434082e6bc3e2ddffb3a4214e5498f097c1cfc0d3429d3eb93d85
 ```
 
-Any Phase 2 generation that changes this hash is a defect.
+This covers 339 slots and 336 unique URLs. The Phase 1.1 hash was
+`882a952d07cc442466cb2d7a3e3369ecb44a9a9e20fd299ca5f6f9e52ae001d0`; the only
+changes since then are the owner-approved P032-S01 replacement and the P024
+addition. Any other change is a defect.
 
 ## 5. Mandatory fullscreen rule
 
-Every one of the 47 slideshows must have exactly one fullscreen button. P038-S01
+Every one of the 48 slideshows must have exactly one fullscreen button. P038-S01
 already has one and must not receive a duplicate.
 
 The button must match P038's visual style and position, remain an overlay, and
@@ -161,7 +166,7 @@ matrix.
    (The `b` imgur thumbnail is a 160×160 square crop and was deliberately
    rejected as a dimension source.)
 6. Integrity checks compared every archived HTML file against its JSON record:
-   image count and order match in 47/47 cases.
+   image count and order match in 48/48 cases.
 7. Live interaction tests covered P001-S01 (normal slideshow), P011-S01 (inert,
    missing JavaScript), and P036 (static images only).
 8. Phase 1.1 added a cross-origin local harness for the fullscreen permission
@@ -172,13 +177,13 @@ matrix.
 
 | File | Rows | Purpose |
 |---|---:|---|
-| `01_AUDIT/projects.csv` | 38 | One row per project, including the blocked one and the no-slideshow one |
-| `01_AUDIT/slideshows.csv` | 47 | One row per slideshow with styling, controls and archived source path |
-| `01_AUDIT/images.csv` | 335 | One row per image slot; exact remote URL, dimensions, `duplicate_of` |
-| `01_AUDIT/slides.config.json` | 47 | Nested config (slideshow → images) for code generation in Phase 2 |
-| `01_AUDIT/raw/P0xx.json` | 38 | Crawl record per project (37 full records + the P024 blocked attempt) |
+| `01_AUDIT/projects.csv` | 38 | One row per project, including the no-slideshow one |
+| `01_AUDIT/slideshows.csv` | 48 | One row per slideshow with styling, controls and archived source path |
+| `01_AUDIT/images.csv` | 339 | One row per image slot; exact remote URL, dimensions, `duplicate_of` |
+| `01_AUDIT/slides.config.json` | 48 | Nested config (slideshow → images) for code generation in Phase 2 |
+| `01_AUDIT/raw/P0xx.json` | 38 | Crawl record per project (38 full records, including the 2026-11-21 P024 rescan) |
 | `01_AUDIT/raw/context.json` | 37 | Section labels and embed positions in DOM order |
-| `01_AUDIT/raw/image_meta.json` | 331 audited | HTTP status, format and true dimensions per unique image (the owner-supplied P032-S01 replacement was not downloaded) |
+| `01_AUDIT/raw/image_meta.json` | 336 | HTTP status, format and true dimensions per unique image (metadata only; no image binaries saved) |
 | `01_AUDIT/evidence/*.png` | 48 | Local audit screenshots (gitignored; not committed) |
 
 Screenshots are supporting evidence only and stay on the local machine; no image
@@ -187,7 +192,7 @@ slowly, so some automated captures show a slide still loading; the DOM records
 and archived HTML are the authoritative data.
 
 `slideshows.csv` column `fullscreen` records what the **original source** had
-(only P038-S01). It is not the migration target; all 47 are required to have the
+(only P038-S01). It is not the migration target; all 48 are required to have the
 button after rebuild.
 
 ## 9. Status vocabulary and current totals
@@ -197,10 +202,10 @@ Projects: `NOT_STARTED`, `SCANNED`, `NO_SLIDESHOW`, `VERIFIED`, `PARTIAL`,
 
 Slideshows: `DETECTED`, `EXTRACTED`, `NEEDS_REVIEW`, `BLOCKED`.
 
-Current totals after Phase 1.1 evidence review:
+Current totals after the P024 rescan:
 
-- Projects: 36 `VERIFIED`, 1 `BLOCKED` (P024), 1 `NO_SLIDESHOW` (P036).
-- Slideshows: 47 `EXTRACTED`, 0 `NEEDS_REVIEW`, 0 `BLOCKED`.
+- Projects: 37 `VERIFIED`, 0 `BLOCKED`, 1 `NO_SLIDESHOW` (P036).
+- Slideshows: 48 `EXTRACTED`, 0 `NEEDS_REVIEW`, 0 `BLOCKED`.
 
 P026-S02 and P032-S01 were resolved by evidence; see
 `01_AUDIT/unresolved_items.md`. P011-S01 was repaired on 2026-11-19 with the
@@ -214,11 +219,13 @@ deployment ID. Version 4 later added the 37 TOOLS USED strips at `?tools=Pxxx`
 so Behance can embed them as iframes. Static validation passes 3092/3092, the
 local browser suite 340/340, and the live Apps Script suite 332/332. P001-S01
 still passes the real published-Behance gate 18/18. The owner then stopped
-further Behance testing; the finished deliverable is the complete 47-code
+further Behance testing; the finished deliverable is the complete 48-code
 copy/paste set in `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and `ALL_EMBEDS.csv`, plus
-all 37 TOOLS USED iframe codes in the same Markdown file and in
+all 38 TOOLS USED iframe codes in the same Markdown file and in
 `TOOLS_USED_EMBEDS.md` / `TOOLS_USED_EMBEDS.csv`. P001-S01 remains the only
-real-Behance-verified embed. P024 remains blocked.
+real-Behance-verified embed. On 2026-11-21 the owner supplied the fixed P024
+page; it was audited, added as `P024-S01` + `P024-TOOLS`, and deployed as
+version 6 with the same deployment ID.
 
 ## 10. What was deliberately not done
 
@@ -230,17 +237,17 @@ real-Behance-verified embed. P024 remains blocked.
   both commits are now on `main` (`0a33cf5`, `3426077`).
 - No change to the existing production Apps Script project or its deployment.
   A **new standalone** project and deployment host the migration.
-- No publishing or replacement of the live Behance portfolio. All 47 slideshows
-  and 47 embed codes are generated; only the P001-S01 test embed has been
+- No publishing or replacement of the live Behance portfolio. All 48 slideshows
+  and 48 embed codes are generated; only the P001-S01 test embed has been
   published. The owner will paste the remaining codes manually.
-- No real Behance verification of the other 45 slideshows. The owner closed
+- No real Behance verification of the other 47 slideshows. The owner closed
   further testing; those codes are delivered ready for manual use.
 
 ## 11. Exception summary
 
 | Item | Phase 1.1 outcome |
 |---|---|
-| P024 malformed link | Still `BLOCKED`; card 24 is a distinct "MASTER BEDROOM" card, not the P009 card; no page or hidden link found |
+| P024 malformed link | Resolved 2026-11-21: owner supplied the fixed page; `P024-S01` (4 images, RENDERS) and `P024-TOOLS` (4 logos) are deployed |
 | P011-S01 missing JavaScript | Repaired 2026-11-19 with the shared standard script after the pilot gate passed; 20 images and original order preserved; local 21/21 and live 20/20 |
 | P026-S02 duplicate subset | Confirmed intentional side-by-side companion slideshow; preserve independently |
 | P032-S01 repeated image | Original audit found 3 slots/3 dots with positions 2 and 3 sharing a URL. Owner change 2026-11-21: position 3 now uses `https://i.imgur.com/PjEUKuC.jpeg`; position 2 keeps the original. |
@@ -267,11 +274,11 @@ test embeds or validation cycles are being run.
    aspect ratio, CSS, and visuals preserved; local 21/21 and live 20/20.
 6. ~~Generate all 47 slideshows, 36 project snippets, and the complete server
    map; deploy as version 3.~~ Done: static 3092/3092, local 340/340, live
-   332/332, P001 real gate 18/18.
-7. ~~Export all 47 embed codes in one Markdown document and one CSV.~~ Done:
+   332/332, P001 real gate 18/18. P024 was added later as the 48th slideshow.
+7. ~~Export all 48 embed codes in one Markdown document and one CSV.~~ Done:
    `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and
    `05_BEHANCE_OUTPUT/ALL_EMBEDS.csv`.
-8. ~~Export all 37 TOOLS USED logo-strip codes.~~ Done: included in
+8. ~~Export all 38 TOOLS USED logo-strip codes.~~ Done: included in
    `ALL_EMBEDS.md` and in `TOOLS_USED_EMBEDS.md` /
    `TOOLS_USED_EMBEDS.csv`.
 9. ~~Serve the TOOLS USED strips from the existing host so Behance accepts the
@@ -284,8 +291,8 @@ section. Then copy each project's `Pxxx-TOOLS` iframe block into that project's
 TOOLS USED embed. Use the permanent ID and dimensions shown with each code. Do
 not combine slideshows in one embed.
 
-P024 stays blocked until a valid URL is supplied. P036 has no slideshow, but its
-TOOLS USED code is included.
+P024 is now included with its slideshow and TOOLS USED code. P036 has no
+slideshow, but its TOOLS USED code is included.
 
 Read `05_BEHANCE_OUTPUT/README.md`, `01_AUDIT/phase_2_bulk_report.md`,
 `01_AUDIT/phase_2_pilot_report.md`, `01_AUDIT/unresolved_items.md`,

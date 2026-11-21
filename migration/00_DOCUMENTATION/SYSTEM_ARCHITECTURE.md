@@ -236,6 +236,7 @@ No snippet loads more than one slideshow or communicates with another snippet.
   `INDEPENDENT_EMBED_STANDARD.md`.
 - Confirm the exact Behance embed height that avoids inner scrollbars.
 - Confirm the owner's decision on P011-S01 (restore the standard JavaScript).
-- Confirm P024's intended destination or exclude it explicitly.
+- ~~Confirm P024's intended destination or exclude it explicitly.~~ Resolved
+  2026-11-21: P024 was migrated as `P024-S01` + `P024-TOOLS`.
 - Confirm the new Apps Script project's ownership and deployment access level
   ("Anyone").

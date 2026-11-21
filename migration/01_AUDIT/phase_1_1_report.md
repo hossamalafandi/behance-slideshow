@@ -88,7 +88,9 @@ The shared title is not proof that `P024` duplicates `P009`: the links and
 thumbnails differ, and no inspected page contains the `P024` image.
 
 **Result:** no title, URL, page, slideshow, or image was invented. `P024`
-remains `BLOCKED`. The owner must supply the intended URL or explicitly exclude
+remained `BLOCKED` until the owner supplied the fixed URL on 2026-11-21; it was
+then migrated as `P024-S01` + `P024-TOOLS`. The original note read: the owner
+must supply the intended URL or explicitly exclude
 the project while reserving the ID.
 
 ### 3.2 P011-S01 - missing JavaScript, repair approved

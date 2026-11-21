@@ -20,7 +20,7 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const SOURCE_PATH = path.join(ROOT, '01_AUDIT', 'tools-embeds.json');
 const OUTPUT_PATH = path.join(ROOT, '04_APPS_SCRIPT', 'ToolsData.gs');
-const EXPECTED_TOOLS = 37;
+const EXPECTED_TOOLS = 38;
 
 function fail(message) {
   throw new Error(message);

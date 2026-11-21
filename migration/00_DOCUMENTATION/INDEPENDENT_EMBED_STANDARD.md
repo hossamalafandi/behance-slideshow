@@ -113,7 +113,7 @@ Rules:
 
 - every snippet contains exactly one `slide` value;
 - every snippet has its own audited height;
-- do not generate a page that contains all 47 iframes as a viewer;
+- do not generate a page that contains all 48 iframes as a viewer;
 - do not add project navigation, a gallery grid, or an "open all" control;
 - a project Markdown file may contain that project's snippets in page order for
   copy/paste, but each snippet is independent.

@@ -1,6 +1,6 @@
 # Fullscreen Standard
 
-Status: **mandatory design standard, approved 2026-11-18**, for all 47 migrated
+Status: **mandatory design standard, approved 2026-11-18**, for all 48 migrated
 slideshows.
 Reference: `P038-S01` (`Image Slideshow with Fullscreen`).
 Phase 1.1 investigated the reference implementation and tested the nested-frame

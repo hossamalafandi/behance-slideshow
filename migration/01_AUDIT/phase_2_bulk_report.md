@@ -12,6 +12,13 @@ testing is closed; the codes are ready for manual use. P024 remains blocked.**
 Date: 2026-11-20
 Deployment: `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
 Deployment version: **3** (same deployment ID; no host change)
+
+> **Post-report update (2026-11-21).** The owner fixed P024. It was rescanned
+> and added as `P024-S01` (4 images, RENDERS) plus `P024-TOOLS` (4 logos). The
+> current build is **48 slideshows in 37 projects, 339 image slots, 336 unique
+> URLs, 38 TOOLS USED strips**, deployed as **version 6** under the same
+> deployment ID. Static validation passes **3160/3160**. The 2026-11-20 results
+> below remain the historical bulk-rollout record.
 Reference: `PHASE_2_IMPLEMENTATION_PLAN.md`, `INDEPENDENT_EMBED_STANDARD.md`,
 `FULLSCREEN_STANDARD.md`, `IMAGE_HOSTING_POLICY.md`.
 

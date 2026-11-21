@@ -2977,5 +2977,50 @@
     "height": 1068,
     "format": "jpeg",
     "via": "range"
+  },
+  "https://i.imgur.com/PjEUKuC.jpeg": {
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 1059284,
+    "width": 2560,
+    "height": 1440,
+    "format": "jpeg",
+    "via": "head"
+  },
+  "https://i.imgur.com/bvRTvZo.jpeg": {
+    "status": 206,
+    "contentType": "image/jpeg",
+    "bytes": 131072,
+    "width": 2732,
+    "height": 2048,
+    "format": "jpeg",
+    "via": "range"
+  },
+  "https://i.imgur.com/YqKMfyA.jpeg": {
+    "status": 206,
+    "contentType": "image/jpeg",
+    "bytes": 131072,
+    "width": 2732,
+    "height": 2048,
+    "format": "jpeg",
+    "via": "range"
+  },
+  "https://i.imgur.com/iYzCXGC.jpeg": {
+    "status": 206,
+    "contentType": "image/jpeg",
+    "bytes": 131072,
+    "width": 2732,
+    "height": 2048,
+    "format": "jpeg",
+    "via": "range"
+  },
+  "https://i.imgur.com/5vPqYBR.jpeg": {
+    "status": 206,
+    "contentType": "image/jpeg",
+    "bytes": 131072,
+    "width": 2732,
+    "height": 2048,
+    "format": "jpeg",
+    "via": "range"
   }
 }

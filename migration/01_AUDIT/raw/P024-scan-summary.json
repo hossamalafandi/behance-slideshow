@@ -1,0 +1,107 @@
+{
+  "pageTitle": "AV_SF_MASTER_BEDROOM",
+  "status": "SCANNED",
+  "slideshows": [
+    {
+      "id": "P024-S01",
+      "frame": {
+        "w": 1335,
+        "h": 1052,
+        "aspect": 1.269
+      },
+      "title": "Image Slideshow with Side Shadows on Hover",
+      "images": 4,
+      "dots": 4,
+      "arrows": true,
+      "fullscreen": false,
+      "first": "https://i.imgur.com/bvRTvZo.jpeg",
+      "last": "https://i.imgur.com/5vPqYBR.jpeg"
+    }
+  ],
+  "tools": [
+    {
+      "frame": {
+        "w": 1335,
+        "h": 127,
+        "aspect": 10.512
+      },
+      "logos": 4,
+      "title": "Software Logos with Equal Spacing",
+      "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/BRtEuwD.png\" alt=\"V-Ray Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>"
+    }
+  ],
+  "labels": [
+    {
+      "text": "Embedded Files",
+      "tag": "SPAN"
+    },
+    {
+      "text": "Skip to main content",
+      "tag": "SPAN"
+    },
+    {
+      "text": "Skip to navigation",
+      "tag": "SPAN"
+    },
+    {
+      "text": "MASTER BEDROOM",
+      "tag": "H1"
+    },
+    {
+      "text": "MASTER BEDROOM",
+      "tag": "SPAN"
+    },
+    {
+      "text": "SAUDI ARABIA",
+      "tag": "SPAN"
+    },
+    {
+      "text": "- 202",
+      "tag": "SPAN"
+    },
+    {
+      "text": "3",
+      "tag": "SPAN"
+    },
+    {
+      "text": "-",
+      "tag": "SPAN"
+    },
+    {
+      "text": "OVERVIEW",
+      "tag": "H1"
+    },
+    {
+      "text": "OVERVIEW",
+      "tag": "SPAN"
+    },
+    {
+      "text": "RENDERS",
+      "tag": "H1"
+    },
+    {
+      "text": "RENDERS",
+      "tag": "SPAN"
+    },
+    {
+      "text": "MOODBOARD",
+      "tag": "H1"
+    },
+    {
+      "text": "MOODBOARD",
+      "tag": "SPAN"
+    },
+    {
+      "text": "TOOLS USED",
+      "tag": "SPAN"
+    },
+    {
+      "text": "© 2025 HOSSAM ALAFANDI. All rights reserved.",
+      "tag": "SPAN"
+    },
+    {
+      "text": "Page updated",
+      "tag": "SPAN"
+    }
+  ]
+}

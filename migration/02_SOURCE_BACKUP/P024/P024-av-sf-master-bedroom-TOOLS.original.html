@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Logos with Equal Spacing</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-row {
+    display: flex;
+    justify-content: space-between; /* equal spacing between logos */
+    align-items: center;
+    width: 50vw; /* adjusted width since fewer logos */
+    background: transparent;
+  }
+
+  .logo-row img {
+    height: 60px;
+    width: auto;
+    background: transparent;
+    user-select: none;
+    pointer-events: auto;
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 
+      filter 0.3s ease, 
+      transform 0.3s ease;
+    margin: 0;
+  }
+
+  /* Grayscale all logos */
+  .logo-row img {
+    filter: grayscale(100%);
+  }
+
+  /* On hover, remove grayscale and add scale */
+  .logo-row img:hover {
+    filter: none;
+    transform: scale(1.1);
+  }
+</style>
+</head>
+<body>
+
+<div class="logo-row" aria-label="Software logos">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo">
+  <img src="https://i.imgur.com/BRtEuwD.png" alt="V-Ray Logo">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo">
+</div>
+</body>
+</html>

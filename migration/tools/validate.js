@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * Phase 2 static validation — all 47 slideshows.
+ * Phase 2 static validation — all 48 slideshows.
  *
  * Verifies the frozen audit data, every generated data file and preview, every
  * project snippet, the complete server-side lookup, and the static
@@ -24,11 +24,11 @@ const BEHANCE_DIR = path.join(ROOT, '05_BEHANCE_OUTPUT');
 
 const EXPECTED_DEPLOYMENT_ID =
   'AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA';
-const EXPECTED_GLOBAL_HASH = '38c2532cf82f6d87d673f0bad037de77cc378e8c4a4b8c505a4f533589b0b2e3';
-const EXPECTED_SLIDESHOWS = 47;
-const EXPECTED_PROJECTS = 36;
-const EXPECTED_IMAGE_SLOTS = 335;
-const EXPECTED_UNIQUE_URLS = 332;
+const EXPECTED_GLOBAL_HASH = '4338768034a434082e6bc3e2ddffb3a4214e5498f097c1cfc0d3429d3eb93d85';
+const EXPECTED_SLIDESHOWS = 48;
+const EXPECTED_PROJECTS = 37;
+const EXPECTED_IMAGE_SLOTS = 339;
+const EXPECTED_UNIQUE_URLS = 336;
 const BEHANCE_MAX_WIDTH = 1200;
 const REPAIR_ID = 'P011-S01';
 
@@ -120,12 +120,12 @@ function main() {
   const uniqueUrls = new Set(urls);
   const globalHash = sha256(urls);
 
-  check('slides.config.json has 47 slideshows',
+  check('slides.config.json has 48 slideshows',
     Array.isArray(config.slideshows) && config.slideshows.length === EXPECTED_SLIDESHOWS,
     'found ' + (config.slideshows ? config.slideshows.length : 'none'));
-  check('images.csv has 335 image slots',
+  check('images.csv has 339 image slots',
     csv.rows.length === EXPECTED_IMAGE_SLOTS, 'found ' + csv.rows.length);
-  check('images.csv has 332 unique URLs',
+  check('images.csv has 336 unique URLs',
     uniqueUrls.size === EXPECTED_UNIQUE_URLS, 'found ' + uniqueUrls.size);
   check('frozen ordered URL hash is unchanged',
     globalHash === EXPECTED_GLOBAL_HASH, globalHash);
@@ -135,9 +135,10 @@ function main() {
   const projectIds = Array.from(new Set(sources.map(source => source.project_id)));
 
   check('slideshow IDs are unique', new Set(ids).size === ids.length);
-  check('36 projects have slideshows', projectIds.length === EXPECTED_PROJECTS,
+  check('37 projects have slideshows', projectIds.length === EXPECTED_PROJECTS,
     'found ' + projectIds.length);
-  check('P024 has no invented slideshow', !ids.some(id => id.startsWith('P024-')));
+  check('P024 has its audited slideshow with four images',
+    sources.some(source => source.slideshow_id === 'P024-S01' && source.images.length === 4));
   check('P036 remains without a slideshow', !ids.some(id => id.startsWith('P036-')));
 
   const byId = new Map();
@@ -169,6 +170,10 @@ function main() {
     Boolean(p032) && p032.expectedUrls[1] === 'https://i.imgur.com/1MWxYk7.jpeg');
   check('P032-S01 has the owner replacement at position 3',
     Boolean(p032) && p032.expectedUrls[2] === 'https://i.imgur.com/PjEUKuC.jpeg');
+  const p024 = byId.get('P024-S01');
+  check('P024-S01 preserves the audited image order',
+    Boolean(p024) && p024.expectedUrls.join(',') ===
+      'https://i.imgur.com/bvRTvZo.jpeg,https://i.imgur.com/YqKMfyA.jpeg,https://i.imgur.com/iYzCXGC.jpeg,https://i.imgur.com/5vPqYBR.jpeg');
   const p026s02 = byId.get('P026-S02');
   check('P026-S02 remains a 3-image companion',
     Boolean(p026s02) && p026s02.expectedUrls.length === 3);
@@ -186,10 +191,10 @@ function main() {
     mapKeys.length + ' keys');
   check('SlidesData.gs preserves the audited order',
     mapKeys.join(',') === ids.join(','));
-  check('SlidesData.gs has no P024 or P036 entries',
-    !mapKeys.some(id => id.startsWith('P024-') || id.startsWith('P036-')));
+  check('SlidesData.gs has no P036 entry',
+    !mapKeys.some(id => id.startsWith('P036-')));
   const mapUrls = dataSource.match(/https:\/\/i\.imgur\.com\/[^"']+/g) || [];
-  check('SlidesData.gs contains exactly 335 image URL occurrences',
+  check('SlidesData.gs contains exactly 339 image URL occurrences',
     mapUrls.length === EXPECTED_IMAGE_SLOTS, 'found ' + mapUrls.length);
   check('SlidesData.gs contains no URL outside the frozen audit',
     mapUrls.every(url => uniqueUrls.has(url)));
@@ -377,7 +382,7 @@ function main() {
     check(projectId + ': snippet file has no gallery or viewer markup',
       !/<a\s|<button|<script|gallery/i.test(snippet));
   }
-  check('all 47 slideshows have exactly one snippet',
+  check('all 48 slideshows have exactly one snippet',
     totalIframes === EXPECTED_SLIDESHOWS, 'found ' + totalIframes);
 
   // ---------------------------------------------------------- router (static)
@@ -420,10 +425,10 @@ function main() {
     'TOOLS_USED_EMBEDS.csv'
   ].sort();
 
-  check('preview output contains exactly the 47 audited slideshows',
+  check('preview output contains exactly the 48 audited slideshows',
     JSON.stringify(previewNames) === JSON.stringify(expectedPreviewNames),
     previewNames.join(', '));
-  check('data output contains exactly the 47 audited slideshows',
+  check('data output contains exactly the 48 audited slideshows',
     JSON.stringify(dataNames) === JSON.stringify(expectedDataNames),
     dataNames.join(', '));
   check('Behance output contains exactly the expected files',

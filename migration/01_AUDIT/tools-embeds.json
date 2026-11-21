@@ -708,6 +708,34 @@
     ]
   },
   {
+    "project_id": "P024",
+    "project_title": "AV_SF_MASTER_BEDROOM",
+    "url": "https://sites.google.com/view/hossam-alafandi/freelance/av_sf_master_bedroom",
+    "width": 1335,
+    "height": 127,
+    "title": "Software Logos with Equal Spacing",
+    "style": "\n  html, body {\n    margin: 0;\n    padding: 0;\n    background: transparent;\n    height: 100vh;\n    width: 100vw;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n  .logo-row {\n    display: flex;\n    justify-content: space-between; /* equal spacing between logos */\n    align-items: center;\n    width: 50vw; /* adjusted width since fewer logos */\n    background: transparent;\n  }\n\n  .logo-row img {\n    height: 60px;\n    width: auto;\n    background: transparent;\n    user-select: none;\n    pointer-events: auto;\n    display: block;\n    flex-shrink: 0;\n    cursor: pointer;\n    transition: \n      filter 0.3s ease, \n      transform 0.3s ease;\n    margin: 0;\n  }\n\n  /* Grayscale all logos */\n  .logo-row img {\n    filter: grayscale(100%);\n  }\n\n  /* On hover, remove grayscale and add scale */\n  .logo-row img:hover {\n    filter: none;\n    transform: scale(1.1);\n  }\n",
+    "row": "<div class=\"logo-row\" aria-label=\"Software logos\">\n  <img src=\"https://i.imgur.com/znQK1ti.png\" alt=\"3ds Max Logo\">\n  <img src=\"https://i.imgur.com/eusbdWx.png\" alt=\"AutoCAD Logo\">\n  <img src=\"https://i.imgur.com/BRtEuwD.png\" alt=\"V-Ray Logo\">\n  <img src=\"https://i.imgur.com/6sW1ghq.png\" alt=\"Photoshop Logo\">\n</div>",
+    "logos": [
+      {
+        "src": "https://i.imgur.com/znQK1ti.png",
+        "alt": "3ds Max Logo"
+      },
+      {
+        "src": "https://i.imgur.com/eusbdWx.png",
+        "alt": "AutoCAD Logo"
+      },
+      {
+        "src": "https://i.imgur.com/BRtEuwD.png",
+        "alt": "V-Ray Logo"
+      },
+      {
+        "src": "https://i.imgur.com/6sW1ghq.png",
+        "alt": "Photoshop Logo"
+      }
+    ]
+  },
+  {
     "project_id": "P025",
     "project_title": "VILLA ENTRANCE - EYGPT",
     "url": "https://sites.google.com/view/hossam-alafandi/freelance/villa-entrance-eygpt",

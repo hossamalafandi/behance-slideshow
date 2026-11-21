@@ -5,6 +5,12 @@ Audit date: 2026-11-18
 Status: Phase 1.1 complete and approved; Phase 2 in progress. The P001-S01 local
 pilot passes; deployment and the real Behance test are pending.
 
+**Post-audit update (2026-11-21).** The owner supplied the fixed P024 page.
+It was rescanned and added as `P024-S01` (4 images, RENDERS) and `P024-TOOLS`
+(4 logos). Current totals: **48 slideshows in 37 projects, 339 image slots,
+336 unique URLs, 38 TOOLS USED strips**, deployed as version 6 with the same
+deployment ID. The Phase 1 tables below remain the 2026-11-18 audit snapshot.
+
 ## 1. Executive summary
 
 All 38 Freelance projects were discovered in their original page order and
@@ -45,10 +51,11 @@ static images and not slideshows. Their preview URLs return HTTP 200, but they
 render blank in headless embedded capture. This does not affect the slideshow
 migration.
 
-`P024` remains blocked. Card 24 is a distinct "MASTER BEDROOM" card with its own
-thumbnail (`https://i.imgur.com/4OFuMn0.jpeg`), not the P009 card
-(`GeYUbMn.jpeg`). No matching page or hidden link was found. The destination
-must come from the owner.
+`P024` was blocked during the original audit. Card 24 is a distinct
+"MASTER BEDROOM" card with its own thumbnail
+(`https://i.imgur.com/4OFuMn0.jpeg`), not the P009 card (`GeYUbMn.jpeg`). On
+2026-11-21 the owner supplied the fixed page
+(`.../freelance/av_sf_master_bedroom`); it was rescanned and migrated.
 
 ## 2. Coverage and status
 

@@ -8,17 +8,17 @@ loads the original self-contained HTML/CSS software-logo strip from the same
 Apps Script host.
 
 - **Deployment:** `AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA`
-- **Deployment version:** 4
-- **Slideshows:** 47
-- **Slideshow projects:** 36
-- **TOOLS USED codes:** 37
-- **Image slots:** 335 (exact remote URLs and order preserved)
+- **Deployment version:** 6
+- **Slideshows:** 48
+- **Slideshow projects:** 37
+- **TOOLS USED codes:** 38
+- **Image slots:** 339 (exact remote URLs and order preserved)
 
 Use the project sections below, or the slideshow quick-reference table, to
 find what you need. Copy the entire code block for each embed.
 
-> Do not paste more than one slideshow into a single embed. P024 is blocked;
-> P036 has no slideshow but its TOOLS USED code is included.
+> Do not paste more than one slideshow into a single embed. P036 has no
+> slideshow but its TOOLS USED code is included.
 
 ## Slideshow quick reference
 
@@ -54,23 +54,24 @@ find what you need. Copy the entire code block for each embed.
 | 28 | P022 — OA-AP-GIRL BEDROOM | `P022-S01` | RENDERS | 1335 × 1570 | 100% (audited frame 1335 px) × 1570 px | 5 |
 | 29 | P023 — MEN MAJLIS - EYGPT | `P023-S01` | RENDERS | 997 × 600 | 997 px × 600 px | 8 |
 | 30 | P023 — MEN MAJLIS - EYGPT | `P023-S02` | RENDERS | 321 × 597 | 321 px × 597 px | 4 |
-| 31 | P025 — VILLA ENTRANCE - EYGPT | `P025-S01` | RENDERS | 1335 × 836 | 100% (audited frame 1335 px) × 836 px | 4 |
-| 32 | P026 — KITCHEN | `P026-S01` | RENDERS | 772 × 1131 | 772 px × 1131 px | 6 |
-| 33 | P026 — KITCHEN | `P026-S02` | RENDERS | 546 × 1126 | 546 px × 1126 px | 3 |
-| 34 | P027 — FAMILY NIGHT MAJLIS - EYGPT | `P027-S01` | RENDERS | 997 × 624 | 997 px × 624 px | 4 |
-| 35 | P027 — FAMILY NIGHT MAJLIS - EYGPT | `P027-S02` | RENDERS | 321 × 628 | 321 px × 628 px | 4 |
-| 36 | P028 — AP-FF-MASTER BEDROOM | `P028-S01` | RENDERS | 1335 × 1570 | 100% (audited frame 1335 px) × 1570 px | 5 |
-| 37 | P029 — GUESTS ROOM - OM ASEL | `P029-S01` | RENDERS | 659 × 707 | 659 px × 707 px | 5 |
-| 38 | P029 — GUESTS ROOM - OM ASEL | `P029-S02` | RENDERS | 659 × 707 | 659 px × 707 px | 5 |
-| 39 | P030 — AV_SF_Family_Majlis_Render | `P030-S01` | RENDERS | 1335 × 1107 | 100% (audited frame 1335 px) × 1107 px | 4 |
-| 40 | P031 — ARABIC MAJLIS | `P031-S01` | RENDERS | 1335 × 1393 | 100% (audited frame 1335 px) × 1393 px | 6 |
-| 41 | P032 — FAMILY LIVING ROOM GF- VRAY | `P032-S01` | RENDERS | 1335 × 803 | 100% (audited frame 1335 px) × 803 px | 3 |
-| 42 | P033 — AV-SF-BOY-BEDROOM | `P033-S01` | RENDERS | 1335 × 1052 | 100% (audited frame 1335 px) × 1052 px | 4 |
-| 43 | P034 — AV_SF_Girl Bedroom | `P034-S01` | RENDERS | 997 × 801 | 997 px × 801 px | 5 |
-| 44 | P034 — AV_SF_Girl Bedroom | `P034-S02` | BATHROOM | 321 × 743 | 321 px × 743 px | 3 |
-| 45 | P035 — GUEST MAJLIS- VRAY | `P035-S01` | RENDERS | 1335 × 1052 | 100% (audited frame 1335 px) × 1052 px | 6 |
-| 46 | P037 — FAMILY MAJLIS GF - VRAY | `P037-S01` | RENDERS | 1335 × 1052 | 100% (audited frame 1335 px) × 1052 px | 3 |
-| 47 | P038 — Dental Clinic | `P038-S01` | RENDERS | 1335 × 831 | 100% (audited frame 1335 px) × 831 px | 3 |
+| 31 | P024 — AV_SF_MASTER_BEDROOM | `P024-S01` | RENDERS | 1335 × 1052 | 100% (audited frame 1335 px) × 1052 px | 4 |
+| 32 | P025 — VILLA ENTRANCE - EYGPT | `P025-S01` | RENDERS | 1335 × 836 | 100% (audited frame 1335 px) × 836 px | 4 |
+| 33 | P026 — KITCHEN | `P026-S01` | RENDERS | 772 × 1131 | 772 px × 1131 px | 6 |
+| 34 | P026 — KITCHEN | `P026-S02` | RENDERS | 546 × 1126 | 546 px × 1126 px | 3 |
+| 35 | P027 — FAMILY NIGHT MAJLIS - EYGPT | `P027-S01` | RENDERS | 997 × 624 | 997 px × 624 px | 4 |
+| 36 | P027 — FAMILY NIGHT MAJLIS - EYGPT | `P027-S02` | RENDERS | 321 × 628 | 321 px × 628 px | 4 |
+| 37 | P028 — AP-FF-MASTER BEDROOM | `P028-S01` | RENDERS | 1335 × 1570 | 100% (audited frame 1335 px) × 1570 px | 5 |
+| 38 | P029 — GUESTS ROOM - OM ASEL | `P029-S01` | RENDERS | 659 × 707 | 659 px × 707 px | 5 |
+| 39 | P029 — GUESTS ROOM - OM ASEL | `P029-S02` | RENDERS | 659 × 707 | 659 px × 707 px | 5 |
+| 40 | P030 — AV_SF_Family_Majlis_Render | `P030-S01` | RENDERS | 1335 × 1107 | 100% (audited frame 1335 px) × 1107 px | 4 |
+| 41 | P031 — ARABIC MAJLIS | `P031-S01` | RENDERS | 1335 × 1393 | 100% (audited frame 1335 px) × 1393 px | 6 |
+| 42 | P032 — FAMILY LIVING ROOM GF- VRAY | `P032-S01` | RENDERS | 1335 × 803 | 100% (audited frame 1335 px) × 803 px | 3 |
+| 43 | P033 — AV-SF-BOY-BEDROOM | `P033-S01` | RENDERS | 1335 × 1052 | 100% (audited frame 1335 px) × 1052 px | 4 |
+| 44 | P034 — AV_SF_Girl Bedroom | `P034-S01` | RENDERS | 997 × 801 | 997 px × 801 px | 5 |
+| 45 | P034 — AV_SF_Girl Bedroom | `P034-S02` | BATHROOM | 321 × 743 | 321 px × 743 px | 3 |
+| 46 | P035 — GUEST MAJLIS- VRAY | `P035-S01` | RENDERS | 1335 × 1052 | 100% (audited frame 1335 px) × 1052 px | 6 |
+| 47 | P037 — FAMILY MAJLIS GF - VRAY | `P037-S01` | RENDERS | 1335 × 1052 | 100% (audited frame 1335 px) × 1052 px | 3 |
+| 48 | P038 — Dental Clinic | `P038-S01` | RENDERS | 1335 × 831 | 100% (audited frame 1335 px) × 831 px | 3 |
 
 ## P001 — AL-RASHED PROJECT
 
@@ -1157,6 +1158,47 @@ find what you need. Copy the entire code block for each embed.
 </iframe>
 ```
 
+## P024 — AV_SF_MASTER_BEDROOM
+
+### P024-S01 — RENDERS
+
+- **Permanent ID:** `P024-S01`
+- **Audited frame:** 1335 × 1052 px
+- **Iframe dimensions:** `width="100%"` × `height="1052"`
+- **Images:** 4
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/av_sf_master_bedroom
+
+```html
+<iframe
+  src="https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec?slide=P024-S01"
+  width="100%"
+  height="1052"
+  style="border:0;border-radius:20px;overflow:hidden"
+  loading="lazy"
+  allowfullscreen
+  allow="fullscreen">
+</iframe>
+```
+
+### P024-TOOLS — TOOLS USED software logos
+
+- **Permanent ID:** `P024-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Iframe dimensions:** `width="100%"` × `height="127"`
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, V-Ray Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/av_sf_master_bedroom
+
+```html
+<iframe
+  src="https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec?tools=P024"
+  width="100%"
+  height="127"
+  style="border:0;overflow:hidden"
+  scrolling="no"
+  loading="lazy">
+</iframe>
+```
+
 ## P025 — VILLA ENTRANCE - EYGPT
 
 ### P025-S01 — RENDERS
@@ -1798,4 +1840,4 @@ find what you need. Copy the entire code block for each embed.
 
 | Project | Status | Reason |
 |---|---|---|
-| P024 | BLOCKED | The audited source link truncates to `http://ww`; no project page exists, so there is no slideshow or TOOLS USED code. The ID is reserved and no code was invented. |
+| P036 | NO_SLIDESHOW | No interactive slideshow exists; its TOOLS USED code is included in this file. |

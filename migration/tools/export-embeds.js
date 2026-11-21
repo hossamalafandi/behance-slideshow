@@ -34,9 +34,9 @@ const DATA_DIR = path.join(ROOT, '03_REBUILT_SLIDESHOWS', 'data');
 const OUTPUT_DIR = path.join(ROOT, '05_BEHANCE_OUTPUT');
 const DEFAULT_DEPLOYMENT_ID =
   'AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA';
-const EXPECTED_SLIDESHOWS = 47;
-const EXPECTED_PROJECTS = 36;
-const EXPECTED_TOOLS = 37;
+const EXPECTED_SLIDESHOWS = 48;
+const EXPECTED_PROJECTS = 37;
+const EXPECTED_TOOLS = 38;
 
 function fail(message) {
   throw new Error(message);
@@ -202,17 +202,17 @@ function main() {
     'Apps Script host.',
     '',
     '- **Deployment:** `' + deploymentId + '`',
-    '- **Deployment version:** 4',
-    '- **Slideshows:** 47',
-    '- **Slideshow projects:** 36',
-    '- **TOOLS USED codes:** 37',
-    '- **Image slots:** 335 (exact remote URLs and order preserved)',
+    '- **Deployment version:** 6',
+    '- **Slideshows:** 48',
+    '- **Slideshow projects:** 37',
+    '- **TOOLS USED codes:** 38',
+    '- **Image slots:** 339 (exact remote URLs and order preserved)',
     '',
     'Use the project sections below, or the slideshow quick-reference table, to',
     'find what you need. Copy the entire code block for each embed.',
     '',
-    '> Do not paste more than one slideshow into a single embed. P024 is blocked;',
-    '> P036 has no slideshow but its TOOLS USED code is included.',
+    '> Do not paste more than one slideshow into a single embed. P036 has no',
+    '> slideshow but its TOOLS USED code is included.',
     '',
     '## Slideshow quick reference',
     '',
@@ -299,7 +299,7 @@ function main() {
     '',
     '| Project | Status | Reason |',
     '|---|---|---|',
-    '| P024 | BLOCKED | The audited source link truncates to `http://ww`; no project page exists, so there is no slideshow or TOOLS USED code. The ID is reserved and no code was invented. |',
+    '| P036 | NO_SLIDESHOW | No interactive slideshow exists; its TOOLS USED code is included in this file. |',
     ''
   );
 
@@ -345,7 +345,7 @@ function main() {
     .join('\n') + '\n';
 
   const toolsMarkdown = [
-    '# All 37 TOOLS USED Embed Codes',
+    '# All 38 TOOLS USED Embed Codes',
     '',
     'These codes are iframe embeds served by the same Apps Script deployment as',
     'the slideshows. Each iframe loads the original self-contained HTML/CSS',
@@ -354,8 +354,8 @@ function main() {
     'Paste one code into the TOOLS USED section of the matching Behance project.',
     '',
     '- **Deployment:** `' + deploymentId + '`',
-    '- **Deployment version:** 4',
-    '- **Codes:** 37',
+    '- **Deployment version:** 6',
+    '- **Codes:** 38',
     '- **Strip height:** 127 px on every project',
     '- **Logos per strip:** 4–5',
     '- **Image URLs:** exact originals, unchanged',
@@ -400,7 +400,7 @@ function main() {
   toolsMarkdown.push(
     '## Not included',
     '',
-    'P024 has no audited project page, so it has no TOOLS USED code.',
+    'P036 has no slideshow, but its TOOLS USED code is included above.',
     ''
   );
 
@@ -446,7 +446,7 @@ function main() {
   const readme = [
     '# Behance Embed Output',
     '',
-    'All 47 slideshows and all 37 TOOLS USED strips are generated and ready for',
+    'All 48 slideshows and all 38 TOOLS USED strips are generated and ready for',
     'manual copy/paste.',
     '',
     '## Files',
@@ -454,16 +454,16 @@ function main() {
     '| File | Use |',
     '|---|---|',
     '| `ALL_EMBEDS.md` | **Primary copy/paste source.** Every slideshow and TOOLS USED code block, grouped by project, with IDs and dimensions. |',
-    '| `ALL_EMBEDS.csv` | Spreadsheet version of the 47 slideshow codes, one row per slideshow. |',
-    '| `TOOLS_USED_EMBEDS.md` | All 37 TOOLS USED codes on their own, grouped by project. |',
-    '| `TOOLS_USED_EMBEDS.csv` | Spreadsheet version of the 37 TOOLS USED codes. |',
+    '| `ALL_EMBEDS.csv` | Spreadsheet version of the 48 slideshow codes, one row per slideshow. |',
+    '| `TOOLS_USED_EMBEDS.md` | All 38 TOOLS USED codes on their own, grouped by project. |',
+    '| `TOOLS_USED_EMBEDS.csv` | Spreadsheet version of the 38 TOOLS USED codes. |',
     '| `P001.md` … `P038.md` | Per-project slideshow files. These contain slideshows only; use `ALL_EMBEDS.md` or `TOOLS_USED_EMBEDS.md` for TOOLS USED codes. |',
     '',
     '## Deployment',
     '',
     '`https://script.google.com/macros/s/' + deploymentId + '/exec`',
     '',
-    'Deployment version 4. Every slideshow code uses one `?slide=<ID>` value and',
+    'Deployment version 6. Every slideshow code uses one `?slide=<ID>` value and',
     'loads exactly one slideshow. Every TOOLS USED code uses one `?tools=<ID>`',
     'value and loads the original logo strip from the same host. The production',
     'Apps Script deployment is untouched.',
@@ -494,9 +494,6 @@ function main() {
     '',
     '## Not included',
     '',
-    '- **P024** is blocked: its source link truncates to `http://ww`, so no project',
-    '  page exists. The permanent ID is reserved; no slideshow or TOOLS USED code',
-    '  was invented.',
     '- **P036** has no slideshow, but its TOOLS USED code is included in both',
     '  TOOLS USED files and in `ALL_EMBEDS.md`.',
     ''

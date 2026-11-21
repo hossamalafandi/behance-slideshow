@@ -1,4 +1,4 @@
-# All 37 TOOLS USED Embed Codes
+# All 38 TOOLS USED Embed Codes
 
 These codes are iframe embeds served by the same Apps Script deployment as
 the slideshows. Each iframe loads the original self-contained HTML/CSS
@@ -7,8 +7,8 @@ software-logo strip from the matching Google Sites project page.
 Paste one code into the TOOLS USED section of the matching Behance project.
 
 - **Deployment:** `AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA`
-- **Deployment version:** 4
-- **Codes:** 37
+- **Deployment version:** 6
+- **Codes:** 38
 - **Strip height:** 127 px on every project
 - **Logos per strip:** 4–5
 - **Image URLs:** exact originals, unchanged
@@ -40,20 +40,21 @@ Paste one code into the TOOLS USED section of the matching Behance project.
 | 21 | P021 — VILLA GROUND FLOOR - UAE | `P021-TOOLS` | 884 × 127 | 5 |
 | 22 | P022 — OA-AP-GIRL BEDROOM | `P022-TOOLS` | 884 × 127 | 5 |
 | 23 | P023 — MEN MAJLIS - EYGPT | `P023-TOOLS` | 884 × 127 | 5 |
-| 24 | P025 — VILLA ENTRANCE - EYGPT | `P025-TOOLS` | 884 × 127 | 5 |
-| 25 | P026 — KITCHEN | `P026-TOOLS` | 884 × 127 | 5 |
-| 26 | P027 — FAMILY NIGHT MAJLIS - EYGPT | `P027-TOOLS` | 884 × 127 | 5 |
-| 27 | P028 — AP-FF-MASTER BEDROOM | `P028-TOOLS` | 884 × 127 | 5 |
-| 28 | P029 — GUESTS ROOM - OM ASEL | `P029-TOOLS` | 884 × 127 | 5 |
-| 29 | P030 — AV_SF_Family_Majlis_Render | `P030-TOOLS` | 1335 × 127 | 4 |
-| 30 | P031 — ARABIC MAJLIS | `P031-TOOLS` | 884 × 127 | 5 |
-| 31 | P032 — FAMILY LIVING ROOM GF- VRAY | `P032-TOOLS` | 1335 × 127 | 4 |
-| 32 | P033 — AV-SF-BOY-BEDROOM | `P033-TOOLS` | 1335 × 127 | 4 |
-| 33 | P034 — AV_SF_Girl Bedroom | `P034-TOOLS` | 1335 × 127 | 4 |
-| 34 | P035 — GUEST MAJLIS- VRAY | `P035-TOOLS` | 1335 × 127 | 4 |
-| 35 | P036 — MASTER-BEDROOM-VRAY | `P036-TOOLS` | 1335 × 127 | 4 |
-| 36 | P037 — FAMILY MAJLIS GF - VRAY | `P037-TOOLS` | 1335 × 127 | 4 |
-| 37 | P038 — Dental Clinic | `P038-TOOLS` | 884 × 127 | 4 |
+| 24 | P024 — AV_SF_MASTER_BEDROOM | `P024-TOOLS` | 1335 × 127 | 4 |
+| 25 | P025 — VILLA ENTRANCE - EYGPT | `P025-TOOLS` | 884 × 127 | 5 |
+| 26 | P026 — KITCHEN | `P026-TOOLS` | 884 × 127 | 5 |
+| 27 | P027 — FAMILY NIGHT MAJLIS - EYGPT | `P027-TOOLS` | 884 × 127 | 5 |
+| 28 | P028 — AP-FF-MASTER BEDROOM | `P028-TOOLS` | 884 × 127 | 5 |
+| 29 | P029 — GUESTS ROOM - OM ASEL | `P029-TOOLS` | 884 × 127 | 5 |
+| 30 | P030 — AV_SF_Family_Majlis_Render | `P030-TOOLS` | 1335 × 127 | 4 |
+| 31 | P031 — ARABIC MAJLIS | `P031-TOOLS` | 884 × 127 | 5 |
+| 32 | P032 — FAMILY LIVING ROOM GF- VRAY | `P032-TOOLS` | 1335 × 127 | 4 |
+| 33 | P033 — AV-SF-BOY-BEDROOM | `P033-TOOLS` | 1335 × 127 | 4 |
+| 34 | P034 — AV_SF_Girl Bedroom | `P034-TOOLS` | 1335 × 127 | 4 |
+| 35 | P035 — GUEST MAJLIS- VRAY | `P035-TOOLS` | 1335 × 127 | 4 |
+| 36 | P036 — MASTER-BEDROOM-VRAY | `P036-TOOLS` | 1335 × 127 | 4 |
+| 37 | P037 — FAMILY MAJLIS GF - VRAY | `P037-TOOLS` | 1335 × 127 | 4 |
+| 38 | P038 — Dental Clinic | `P038-TOOLS` | 884 × 127 | 4 |
 
 ## P001 — AL-RASHED PROJECT
 
@@ -492,6 +493,25 @@ Paste one code into the TOOLS USED section of the matching Behance project.
 </iframe>
 ```
 
+## P024 — AV_SF_MASTER_BEDROOM
+
+- **Embed ID:** `P024-TOOLS`
+- **Strip dimensions:** 1335 × 127 px
+- **Iframe dimensions:** `width="100%"` × `height="127"`
+- **Logos:** 4 (3ds Max Logo, AutoCAD Logo, V-Ray Logo, Photoshop Logo)
+- **Source:** https://sites.google.com/view/hossam-alafandi/freelance/av_sf_master_bedroom
+
+```html
+<iframe
+  src="https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec?tools=P024"
+  width="100%"
+  height="127"
+  style="border:0;overflow:hidden"
+  scrolling="no"
+  loading="lazy">
+</iframe>
+```
+
 ## P025 — VILLA ENTRANCE - EYGPT
 
 - **Embed ID:** `P025-TOOLS`
@@ -760,4 +780,4 @@ Paste one code into the TOOLS USED section of the matching Behance project.
 
 ## Not included
 
-P024 has no audited project page, so it has no TOOLS USED code.
+P036 has no slideshow, but its TOOLS USED code is included above.

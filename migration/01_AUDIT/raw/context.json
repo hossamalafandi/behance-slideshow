@@ -1630,8 +1630,54 @@
     ]
   },
   "P024": {
-    "error": "invalid url",
-    "href": "http://www.google.com/url?q=http%3A%2F%2Fww&sa=D&sntz=1&usg=AOvVaw3htc4VAJDj21PIClImVl5y"
+    "title": "AV_SF_MASTER_BEDROOM",
+    "events": [
+      {
+        "type": "label",
+        "text": "MASTER BEDROOM",
+        "tag": "SPAN"
+      },
+      {
+        "type": "label",
+        "text": "OVERVIEW",
+        "tag": "SPAN"
+      },
+      {
+        "type": "label",
+        "text": "RENDERS",
+        "tag": "SPAN"
+      },
+      {
+        "type": "iframe",
+        "title": "Custom embed",
+        "name": "389599694145eaeb_86",
+        "x": 52,
+        "y": 850,
+        "w": 1335,
+        "h": 1052,
+        "src": "https://www.gstatic.com/atari/embeds/928209f300890cc864ba5f6dbbfbf517/intermediate-frame-minified.html"
+      },
+      {
+        "type": "label",
+        "text": "MOODBOARD",
+        "tag": "SPAN"
+      },
+      {
+        "type": "label",
+        "text": "TOOLS USED",
+        "tag": "SPAN"
+      },
+      {
+        "type": "iframe",
+        "title": "Custom embed",
+        "name": "389599694145eaeb_98",
+        "x": 52,
+        "y": 2146,
+        "w": 1335,
+        "h": 127,
+        "src": "https://www.gstatic.com/atari/embeds/928209f300890cc864ba5f6dbbfbf517/intermediate-frame-minified.html"
+      }
+    ]
   },
   "P025": {
     "title": "VILLA ENTRANCE - EYGPT",

@@ -32,7 +32,7 @@ Inspection without saving the image binary is allowed:
 - screenshots of the rendered portfolio for audit evidence.
 
 Do not save the response body to disk. The Phase 1 audit already verified all
-331 unique URLs and read dimensions with range requests; no image binaries were
+336 unique URLs and read dimensions with range requests; no image binaries were
 stored.
 
 ## 3. URL fidelity

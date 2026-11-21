@@ -2,17 +2,17 @@
 
 Audit date: 2026-11-18
 Phase 1.1 refinement: 2026-11-18
-Status: **Phase 2 bulk rollout complete 2026-11-20.** P024 remains the only
-blocked project. P011-S01 repair is complete. All 47 slideshows and 47 embed
-codes are delivered; GitHub push and the new Apps Script deployment are done.
-Per owner instruction, no further Behance testing is being run. This register
+Status: **Phase 2 bulk rollout complete 2026-11-20; P024 resolved 2026-11-21.**
+No project remains blocked. P011-S01 repair is complete. All 48 slideshows, 48
+slideshow codes, and 38 TOOLS USED codes are delivered; GitHub push and the new
+Apps Script deployment (version 6) are done.
 separates true blockers from items resolved by evidence or owner decision.
 
 ## 1. Summary
 
 | ID | Item | Type | Severity | Blocks Phase 2? | Status |
 |---|---|---|---|---|---|
-| U01 | P024 link is malformed; project page unknown | Blocker | High | P024 only | **Blocked — ID reserved, proceed without P024** |
+| U01 | P024 link is malformed; project page unknown | Blocker | High | P024 only | **Resolved - owner supplied fixed URL; migrated 2026-11-21** |
 | U02 | P011-S01 has no JavaScript; arrows inert | Defect | High | P011 only | **Resolved — repaired 2026-11-19** |
 | U03 | P026-S02 repeats 3 images from P026-S01 | Duplicate content | Medium | No | **Resolved — intentional companion** |
 | U04 | P032-S01 repeats the same image URL twice | Authoring ambiguity | Medium | No | **Resolved — owner replaced position 3 on 2026-11-21** |
@@ -20,7 +20,7 @@ separates true blockers from items resolved by evidence or owner decision.
 | U06 | P036 contains static images, no slideshow | Confirmation | Low | No | **Confirmed** |
 | U07 | All images are hotlinked from imgur | Hosting risk | High | No | **Accepted by owner policy** |
 | U08 | Fullscreen inside Behance + Apps Script | Platform feasibility | Medium | Pilot only | **Resolved — P001 real Behance gate 18/18; further testing closed by owner** |
-| U09 | Behance iframe height / portrait layout | Design decision | Medium | No | **Resolved — per-slide heights; 47 codes delivered; further testing closed by owner** |
+| U09 | Behance iframe height / portrait layout | Design decision | Medium | No | **Resolved - per-slide heights; 48 codes delivered; further testing closed by owner** |
 | U10 | GitHub push and Apps Script access | Access | High | Yes, before deployment | **Resolved — GitHub pushed; new Apps Script project deployed** |
 | U11 | Descriptive naming choices | Naming confirmation | Low | No | **Confirmed** |
 | U12 | Google warning bar on anonymous Apps Script Web Apps | Visual regression | High | Pilot only | **Resolved — suppressed in iframe; top-level visits only** |
@@ -55,10 +55,11 @@ guessed.
 **Owner decision (2026-11-18).** Keep P024 blocked and reserve its permanent ID.
 Proceed with the remaining 37 projects and 47 slideshows. Do not invent a URL.
 
-**After a future resolution.** If the owner supplies the intended URL, inspect
-and archive the page, assign `P024-S01…` in page order, update the CSVs/config,
-then rebuild. Until then, remove or clearly mark the current malformed card in
-the live portfolio.
+**Resolution (2026-11-21).** The owner fixed the card and supplied
+`https://sites.google.com/view/hossam-alafandi/freelance/av_sf_master_bedroom`.
+The page was rescanned: one RENDERS slideshow with 4 images (`P024-S01`) and one
+4-logo TOOLS USED strip (`P024-TOOLS`). Both are included in the config, source
+backup, generated data, deployment, and outputs.
 
 ## U02 — P011-S01 has no JavaScript
 

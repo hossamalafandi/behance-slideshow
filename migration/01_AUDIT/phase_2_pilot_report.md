@@ -17,6 +17,7 @@ decisions:
 1. P011-S01 is repaired later with the standard JavaScript, preserving all 20
    images and the original styling.
 2. P024 stays blocked with its permanent ID reserved; no URL is invented.
+   (Resolved 2026-11-21: the owner supplied the fixed URL and P024 was added.)
 3. P026-S02 remains an independent companion.
 4. P032-S01 keeps its repeated image exactly.
 5. Native fullscreen is attempted first, with a theater-mode fallback; the real
