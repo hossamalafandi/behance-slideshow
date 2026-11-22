@@ -44,8 +44,9 @@ function slideshowResponse_(e) {
   var template = HtmlService.createTemplateFromFile('Slideshow');
   template.pageTitle = pageTitle;
   // Per-slideshow opt-in generated in SlidesData.gs. Classic slides get an
-  // empty attribute, so the fit CSS and backdrop script stay inert.
+  // empty attribute and no style, so the fit CSS stays inert.
   template.layoutMode = slide.layout === 'fit' ? 'fit' : '';
+  template.layoutStyle = layoutStyle_(slide);
   template.imagesHtml = renderImages_(slide.images);
 
   return template.evaluate()
@@ -105,6 +106,25 @@ function countQueryParameters_(queryString, keyName) {
  * Render only the requested slideshow's images, in audited order.
  * URLs are used verbatim; alt text is escaped.
  */
+/**
+ * Size the opt-in phone card to the first image's aspect ratio. The value is
+ * written as a CSS custom property on the slideshow container; classic slides
+ * return an empty string and keep the original full-frame layout.
+ */
+function layoutStyle_(slide) {
+  if (slide.layout !== 'fit' || !slide.images || !slide.images.length) {
+    return '';
+  }
+  var first = slide.images[0];
+  var width = Number(first.w);
+  var height = Number(first.h);
+  if (!Number.isFinite(width) || !Number.isFinite(height) ||
+      width <= 0 || height <= 0) {
+    return '';
+  }
+  return ' style="--fit-aspect:' + (width / height).toFixed(6) + '"';
+}
+
 function renderImages_(images) {
   return images.map(function (image, index) {
     // Every archived original marks its images loading="eager". Preserve that

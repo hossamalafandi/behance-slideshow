@@ -8,8 +8,9 @@
  *   node test-live-fit.js <https://script.google.com/macros/s/.../exec>
  *
  * The live slideshow is loaded inside Behance-like outer iframes at a phone
- * width and a wide landscape width. Every imgur request is fulfilled with a
- * synthetic 16:9 SVG, so no original image is downloaded or viewed.
+ * width, the 987 px Behance column, and a wide landscape width. Every imgur
+ * request is fulfilled with a synthetic 16:9 SVG, so no original image is
+ * downloaded or viewed.
  */
 
 const { chromium } = require('playwright-core');
@@ -22,6 +23,8 @@ if (!url || !/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.
 
 const FIT_ID = 'P030-S01';
 const CLASSIC_ID = 'P020-S01';
+const FIT_ASPECT = 2560 / 1440;
+const FIT_ASPECT_TEXT = FIT_ASPECT.toFixed(6);
 const results = [];
 const failures = [];
 let syntheticRequests = 0;
@@ -38,6 +41,11 @@ function assert(condition, name, detail) {
 function assertEqual(actual, expected, name) {
   assert(actual === expected, name,
     'expected ' + JSON.stringify(expected) + ', got ' + JSON.stringify(actual));
+}
+
+function assertClose(actual, expected, tolerance, name) {
+  assert(Math.abs(actual - expected) <= tolerance, name,
+    'expected ' + expected + ' +/- ' + tolerance + ', got ' + actual);
 }
 
 function wait(milliseconds) {
@@ -89,12 +97,15 @@ async function state(frame) {
     const container = document.getElementById('slideshow');
     const firstSlide = document.querySelector('.slide');
     const firstImage = firstSlide ? firstSlide.querySelector('img') : null;
-    const backdrop = firstSlide ? getComputedStyle(firstSlide, '::before') : null;
-    const slides = Array.from(document.querySelectorAll('.slide'));
+    const before = firstSlide ? getComputedStyle(firstSlide, '::before') : null;
+    const rect = container.getBoundingClientRect();
+    const imageRect = firstImage ? firstImage.getBoundingClientRect() : null;
     return {
       innerWidth,
       innerHeight,
       layout: container.getAttribute('data-layout'),
+      styleAttr: container.getAttribute('style'),
+      fitAspect: getComputedStyle(container).getPropertyValue('--fit-aspect').trim(),
       objectFit: firstImage ? getComputedStyle(firstImage).objectFit : null,
       imageCount: document.querySelectorAll('.slide img').length,
       fullscreenButtons: document.querySelectorAll('#fullscreenBtn').length,
@@ -102,18 +113,62 @@ async function state(frame) {
       activeDot: Array.from(document.querySelectorAll('.dot'))
         .findIndex(dot => dot.classList.contains('active')),
       transform: document.getElementById('slidesContainer').style.transform,
-      backdropImage: backdrop ? backdrop.backgroundImage : null,
-      backdropFilter: backdrop ? backdrop.filter : null,
-      withBackdrop: slides
-        .map((slide, index) => ({
-          index,
-          value: slide.style.getPropertyValue('--slide-image')
-        }))
-        .filter(item => item.value),
+      backdropContent: before ? before.content : null,
+      backdropImage: before ? before.backgroundImage : null,
+      container: {
+        top: rect.top,
+        width: rect.width,
+        height: rect.height,
+        radius: getComputedStyle(container).borderRadius,
+        paddingBottom: getComputedStyle(container).paddingBottom
+      },
+      image: imageRect ? {
+        width: imageRect.width,
+        height: imageRect.height
+      } : null,
+      imageNatural: firstImage ? {
+        width: firstImage.naturalWidth,
+        height: firstImage.naturalHeight
+      } : null,
       scrollWidth: document.documentElement.scrollWidth,
       scrollHeight: document.documentElement.scrollHeight
     };
   });
+}
+
+function assertCard(value, label, viewportWidth) {
+  assertEqual(value.layout, 'fit', label + ': opt-in layout attribute');
+  assertEqual(value.styleAttr, '--fit-aspect:' + FIT_ASPECT_TEXT,
+    label + ': generated aspect style');
+  assertEqual(value.objectFit, 'contain', label + ': whole image is contained');
+  assertEqual(value.container.paddingBottom, '0px',
+    label + ': card has no reserved control strip');
+  assertEqual(value.container.radius, '20px', label + ': card radius');
+  assertEqual(value.imageCount, 4, label + ': no duplicate image elements');
+  assertEqual(value.fullscreenButtons, 1, label + ': exactly one fullscreen button');
+  assertClose(value.container.width, viewportWidth, 1,
+    label + ': card fills the iframe width');
+  assertClose(value.container.height, viewportWidth / FIT_ASPECT, 1,
+    label + ': card height follows the image aspect');
+  assertClose(value.container.top,
+    (value.innerHeight - value.container.height) / 2, 2,
+    label + ': card is vertically centered');
+  assertClose(value.image.width, value.container.width, 1,
+    label + ': image element fills the card width');
+  assertClose(value.image.height, value.container.height, 1,
+    label + ': image element fills the card height');
+  assertClose(value.imageNatural.width / value.imageNatural.height,
+    FIT_ASPECT, 0.001, label + ': displayed image keeps its own ratio');
+  assertEqual(value.backdropContent, 'none',
+    label + ': no ::before backdrop is generated');
+  assertEqual(value.backdropImage, 'none',
+    label + ': no blurred background image');
+  assert(value.scrollWidth <= value.innerWidth,
+    label + ': no horizontal overflow',
+    value.scrollWidth + ' vs ' + value.innerWidth);
+  assert(value.scrollHeight <= value.innerHeight,
+    label + ': no vertical overflow',
+    value.scrollHeight + ' vs ' + value.innerHeight);
 }
 
 async function main() {
@@ -145,31 +200,9 @@ async function main() {
     // --------------------------------------------------- live phone portrait
     const phoneEmbed = await openEmbed(context, FIT_ID, 390, 1107, 4);
     const phone = await state(phoneEmbed.frame);
-    assertEqual(phone.layout, 'fit', 'live phone: P030 opt-in layout attribute');
-    assertEqual(phone.objectFit, 'contain', 'live phone: whole image is contained');
-    assertEqual(phone.imageCount, 4, 'live phone: no duplicate image elements');
-    assertEqual(phone.fullscreenButtons, 1, 'live phone: exactly one fullscreen button');
+    assertCard(phone, 'live phone', 390);
     assertEqual(phone.counter, '1 / 4', 'live phone: initial counter');
-    assert(phone.withBackdrop.length >= 1 && phone.withBackdrop.length <= 3,
-      'live phone: backdrop is limited to the active slide and neighbors',
-      String(phone.withBackdrop.length));
-    assert(phone.withBackdrop.some(item =>
-      item.index === 0 && item.value.includes('dreLaoI.jpeg')),
-      'live phone: active backdrop uses the first P030 URL',
-      JSON.stringify(phone.withBackdrop));
-    assert(/url\(/.test(phone.backdropImage || '') &&
-      phone.backdropImage.includes('dreLaoI.jpeg'),
-      'live phone: ::before resolves the same image URL',
-      phone.backdropImage);
-    assert(/blur\(/.test(phone.backdropFilter || ''),
-      'live phone: ::before applies the blur filter',
-      phone.backdropFilter);
-    assert(phone.scrollWidth <= phone.innerWidth,
-      'live phone: no horizontal overflow',
-      phone.scrollWidth + ' vs ' + phone.innerWidth);
-    assert(phone.scrollHeight <= phone.innerHeight,
-      'live phone: no vertical overflow',
-      phone.scrollHeight + ' vs ' + phone.innerHeight);
+    assertEqual(phone.activeDot, 0, 'live phone: initial active dot');
 
     await phoneEmbed.frame.click('.next');
     await phoneEmbed.frame.waitForFunction(() => {
@@ -180,27 +213,40 @@ async function main() {
     assertEqual(phoneNext.counter, '2 / 4', 'live phone: next counter');
     assertEqual(phoneNext.activeDot, 1, 'live phone: next active dot');
     assertEqual(phoneNext.transform, 'translateX(-100vw)', 'live phone: next transform');
-    assert(phoneNext.withBackdrop.some(item =>
-      item.index === 1 && item.value.includes('UKgOr45.jpeg')),
-      'live phone: second slide backdrop uses the second URL',
-      JSON.stringify(phoneNext.withBackdrop));
+    assertClose(phoneNext.container.width / phoneNext.container.height,
+      FIT_ASPECT, 0.001, 'live phone: next keeps the card ratio');
     await phoneEmbed.page.close();
+
+    // --------------------------------------- live Behance column (987 x 1107)
+    const columnEmbed = await openEmbed(context, FIT_ID, 987, 1107, 4);
+    const column = await state(columnEmbed.frame);
+    assertCard(column, 'live Behance column', 987);
+    await columnEmbed.page.close();
 
     // -------------------------------------------------- live wide landscape
     const wideEmbed = await openEmbed(context, FIT_ID, 1335, 1107, 4);
     const wide = await state(wideEmbed.frame);
-    assertEqual(wide.layout, 'fit', 'live wide: P030 opt-in layout attribute');
+    assertEqual(wide.layout, 'fit', 'live wide: opt-in layout attribute');
     assertEqual(wide.objectFit, 'cover', 'live wide: original cover behavior');
-    assertEqual(wide.withBackdrop.length, 0, 'live wide: no backdrop is created');
-    assertEqual(wide.backdropImage, 'none', 'live wide: ::before has no background');
+    assertClose(wide.container.width, 1335, 1, 'live wide: original full width');
+    assertClose(wide.container.height, 1107, 1, 'live wide: original full height');
+    assertEqual(wide.container.paddingBottom, '50px',
+      'live wide: original control strip');
+    assertEqual(wide.backdropContent, 'none', 'live wide: no backdrop');
+    assertEqual(wide.backdropImage, 'none', 'live wide: no background image');
     await wideEmbed.page.close();
 
     // ------------------------------------ live non-gated slideshow on phone
     const classicEmbed = await openEmbed(context, CLASSIC_ID, 390, 1052, 4);
     const classic = await state(classicEmbed.frame);
     assertEqual(classic.layout, '', 'live phone: P020 has no fit layout');
+    assertEqual(classic.styleAttr, null, 'live phone: P020 has no fit aspect style');
     assertEqual(classic.objectFit, 'cover', 'live phone: P020 cover behavior is unchanged');
-    assertEqual(classic.withBackdrop.length, 0, 'live phone: P020 has no backdrop');
+    assertClose(classic.container.width, 390, 1, 'live phone: P020 original width');
+    assertClose(classic.container.height, 1052, 1, 'live phone: P020 original height');
+    assertEqual(classic.container.paddingBottom, '50px',
+      'live phone: P020 original control strip');
+    assertEqual(classic.backdropContent, 'none', 'live phone: P020 has no backdrop');
     assertEqual(classic.imageCount, 4, 'live phone: P020 keeps four image elements');
     assertEqual(classic.fullscreenButtons, 1,
       'live phone: P020 has exactly one fullscreen button');
@@ -212,7 +258,7 @@ async function main() {
   const passed = results.filter(result => result.passed).length;
   console.log(JSON.stringify({
     deployment: url,
-    scope: { fitSlideshow: FIT_ID, classicSlideshow: CLASSIC_ID },
+    scope: { fitSlideshow: FIT_ID, classicSlideshow: CLASSIC_ID, fitAspect: FIT_ASPECT_TEXT },
     browser: 'Chrome',
     syntheticImageRequests: syntheticRequests,
     checks: results.length,

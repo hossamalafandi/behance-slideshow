@@ -53,38 +53,45 @@
      * Opt-in phone fit layout (data-layout="fit").
      *
      * Behance keeps the iframe height fixed while the width shrinks on a
-     * phone, so the available frame becomes much taller than a 16:9 image.
-     * When the embed is portrait/taller than wide, show the whole image
-     * instead of cropping it, and fill the letterbox with a blurred copy of
-     * the same remote image. The main <img> remains the only image element
-     * and the only URL in the document; script copies its URL into the
-     * --slide-image variable used by the ::before backdrop.
+     * phone, so the available frame becomes much taller than the image.
+     * Instead of stretching the slideshow to the full height and cropping or
+     * blurring, size the slideshow box to the image's own aspect ratio and
+     * center it inside the unchanged iframe. The surrounding iframe stays
+     * transparent, so the Behance page background shows above and below.
+     *
+     * --fit-aspect is written by the generator from the first image's
+     * width/height. Classic slides have no style attribute and never match
+     * this block. The main <img> remains the only image element and the only
+     * copy of each remote URL.
      */
     @media (max-aspect-ratio: 1/1) {
-      .slideshow-container[data-layout="fit"] .slide {
-        position: relative;
-        overflow: hidden;
-      }
-
-      .slideshow-container[data-layout="fit"] .slide::before {
-        content: "";
-        position: absolute;
-        top: -60px;
-        right: -60px;
-        bottom: -60px;
-        left: -60px;
-        background-image: var(--slide-image);
-        background-position: center;
-        background-size: cover;
-        filter: blur(28px) brightness(0.52) saturate(1.15);
-        pointer-events: none;
-        z-index: 0;
+      .slideshow-container[data-layout="fit"] {
+        width: 100vw;
+        height: auto;
+        max-height: 100vh;
+        aspect-ratio: var(--fit-aspect, 1.7777778);
+        padding-bottom: 0;
       }
 
       .slideshow-container[data-layout="fit"] .slide > img {
-        position: relative;
-        z-index: 1;
         object-fit: contain;
+      }
+
+      /*
+       * Fullscreen and theater mode always fill the screen; only the embedded
+       * card is sized to the image. The image stays contained, so a portrait
+       * screen shows the whole image with black bars instead of cropping.
+       */
+      .slideshow-container[data-layout="fit"]:fullscreen,
+      .slideshow-container[data-layout="fit"]:-webkit-full-screen,
+      .slideshow-container[data-layout="fit"].theater-mode {
+        width: 100vw;
+        height: 100vh;
+        max-height: none;
+        aspect-ratio: auto;
+        padding-bottom: 50px;
+        border-radius: 0;
+        background: #000;
       }
     }
 
@@ -313,49 +320,6 @@
 
   const dots = dotContainer.querySelectorAll('.dot');
 
-  // Phone fit layout: only the opt-in slideshow gets a blurred backdrop, and
-  // only while the embed is portrait/taller than wide. The backdrop reuses
-  // the main image URL, so the browser serves the same cached image instead
-  // of downloading a second copy. The current slide and its two neighbors
-  // keep a backdrop ready; distant slides release theirs so a phone never
-  // rasterizes a blur layer for every image at once.
-  const fitContainer = document.getElementById('slideshow');
-  const fitQuery = window.matchMedia
-    ? window.matchMedia('(max-aspect-ratio: 1/1)')
-    : null;
-  const fitEnabled = Boolean(fitContainer) &&
-    fitContainer.getAttribute('data-layout') === 'fit' &&
-    Boolean(fitQuery);
-
-  function updateFitBackdrops() {
-    if (!fitEnabled) return;
-    slides.forEach((slide, index) => {
-      const distance = Math.min(
-        Math.abs(index - currentIndex),
-        slides.length - Math.abs(index - currentIndex)
-      );
-      if (!fitQuery.matches || distance > 1) {
-        slide.style.removeProperty('--slide-image');
-        return;
-      }
-      const image = slide.querySelector('img');
-      if (image) {
-        slide.style.setProperty(
-          '--slide-image',
-          'url(' + JSON.stringify(image.src) + ')'
-        );
-      }
-    });
-  }
-
-  if (fitEnabled) {
-    if (fitQuery.addEventListener) {
-      fitQuery.addEventListener('change', updateFitBackdrops);
-    } else if (fitQuery.addListener) {
-      fitQuery.addListener(updateFitBackdrops);
-    }
-  }
-
   function showSlide(index) {
     if (index >= slides.length) index = 0;
     if (index < 0) index = slides.length - 1;
@@ -364,7 +328,6 @@
     dots.forEach(dot => dot.classList.remove('active'));
     dots[currentIndex].classList.add('active');
     updatePageNumber();
-    updateFitBackdrops();
   }
 
   function moveSlide(step) {

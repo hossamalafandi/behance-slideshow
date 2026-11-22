@@ -310,12 +310,23 @@ function main() {
       (preview.match(/class="slideshow-container"/g) || []).length === 1 &&
         (preview.match(/id="slideshow"/g) || []).length === 1);
     const layoutAttribute =
-      /<div class="slideshow-container" id="slideshow" data-layout="([^"]*)"/.exec(preview);
+      /<div class="slideshow-container" id="slideshow" data-layout="([^"]*)"(?: style="--fit-aspect:([0-9.]+)")?>/.exec(preview);
     check(id + ': preview layout attribute matches the gate',
       fitLayout
         ? Boolean(layoutAttribute) && layoutAttribute[1] === 'fit'
         : !layoutAttribute || layoutAttribute[1] === '',
       layoutAttribute ? layoutAttribute[1] : 'absent');
+    if (fitLayout) {
+      const expectedAspect =
+        (Number(source.images[0].w) / Number(source.images[0].h)).toFixed(6);
+      check(id + ': preview card uses the first image aspect ratio',
+        Boolean(layoutAttribute) && layoutAttribute[2] === expectedAspect,
+        layoutAttribute ? String(layoutAttribute[2]) : 'absent');
+    } else {
+      check(id + ': classic preview has no fit aspect style',
+        !layoutAttribute || layoutAttribute[2] === undefined,
+        layoutAttribute ? String(layoutAttribute[2]) : 'absent');
+    }
     check(id + ': preview has exactly one dot container',
       (preview.match(/class="dot-container"/g) || []).length === 1);
     const dotIndex = preview.indexOf('id="dotContainer"');
@@ -343,11 +354,12 @@ function main() {
     if (fitLayout) {
       check(id + ': preview includes the portrait fit layout',
         /@media \(max-aspect-ratio: 1\/1\)/.test(preview) &&
-          /object-fit:\s*contain/.test(preview) &&
-          /--slide-image/.test(preview));
-      check(id + ': preview reuses the main image for the backdrop',
-        /style\.setProperty\(\s*'--slide-image'/.test(preview) &&
-          /image\.src/.test(preview));
+          /aspect-ratio:\s*var\(--fit-aspect/.test(preview) &&
+          /object-fit:\s*contain/.test(preview));
+      check(id + ': preview sizes the card without a blurred backdrop',
+        /padding-bottom:\s*0/.test(preview) &&
+          !/--slide-image/.test(preview) &&
+          !/filter:\s*blur/.test(preview));
     }
     check(id + ': preview keeps a transparent background',
       /background-color:\s*transparent/.test(preview));
@@ -434,13 +446,18 @@ function main() {
   const router = read(path.join(APPS_DIR, 'Code.gs'));
   const slideshowTemplate = read(path.join(APPS_DIR, 'Slideshow.html'));
   check('template carries the opt-in portrait fit layout',
-    /data-layout="<\?= layoutMode \?>"/.test(slideshowTemplate) &&
+    /data-layout="<\?= layoutMode \?>"<\?!= layoutStyle \?>/.test(slideshowTemplate) &&
       /@media \(max-aspect-ratio: 1\/1\)/.test(slideshowTemplate) &&
+      /aspect-ratio:\s*var\(--fit-aspect/.test(slideshowTemplate) &&
       /object-fit:\s*contain/.test(slideshowTemplate) &&
-      /--slide-image/.test(slideshowTemplate) &&
-      /matchMedia\('\(max-aspect-ratio: 1\/1\)'\)/.test(slideshowTemplate));
-  check('router passes the generated layout mode to the template',
-    /template\.layoutMode\s*=\s*slide\.layout === 'fit' \? 'fit' : ''/.test(router));
+      !/--slide-image/.test(slideshowTemplate));
+  check('router passes the generated layout mode and aspect to the template',
+    /template\.layoutMode\s*=\s*slide\.layout === 'fit' \? 'fit' : ''/.test(router) &&
+      /template\.layoutStyle\s*=\s*layoutStyle_\(slide\)/.test(router));
+  check('router computes the fit aspect from the first image',
+    /function layoutStyle_\(slide\)/.test(router) &&
+      /slide\.images\[0\]/.test(router) &&
+      /toFixed\(6\)/.test(router));
   check('router counts raw slide and tools parameters',
     /function countQueryParameters_/.test(router) &&
     /countQueryParameters_\(queryString, 'slide'\)/.test(router) &&

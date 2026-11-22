@@ -8,10 +8,11 @@
  * be measured without downloading, viewing, copying, or rehosting any original
  * image. The test covers:
  *  - the opt-in data-layout attribute and the per-slideshow gate;
- *  - contain + blurred backdrop on portrait/tall frames (phone and the 987 px
- *    Behance column), with no overflow or duplicated image elements;
- *  - the original cover behavior on a wide landscape frame;
- *  - backdrop refresh on navigation, dots, counter, and fullscreen.
+ *  - a slideshow card sized to the first image's aspect ratio on portrait/tall
+ *    frames (phone and the 987 px Behance column), centered with no blur and
+ *    no overflow;
+ *  - the original full-frame cover behavior on a wide landscape frame;
+ *  - navigation, dots, counter, and fullscreen filling the screen.
  */
 
 const fs = require('fs');
@@ -28,6 +29,8 @@ const fitData = JSON.parse(fs.readFileSync(path.join(DATA_DIR, FIT_ID + '.json')
 const classicData = JSON.parse(fs.readFileSync(path.join(DATA_DIR, CLASSIC_ID + '.json'), 'utf8'));
 const FIT_URLS = fitData.images.map(image => image.src);
 const CLASSIC_URLS = classicData.images.map(image => image.src);
+const FIT_ASPECT = fitData.images[0].w / fitData.images[0].h;
+const FIT_ASPECT_TEXT = FIT_ASPECT.toFixed(6);
 
 const results = [];
 const failures = [];
@@ -46,6 +49,11 @@ function assert(condition, name, detail) {
 function assertEqual(actual, expected, name) {
   return assert(actual === expected, name,
     'expected ' + JSON.stringify(expected) + ', got ' + JSON.stringify(actual));
+}
+
+function assertClose(actual, expected, tolerance, name) {
+  return assert(Math.abs(actual - expected) <= tolerance, name,
+    'expected ' + expected + ' +/- ' + tolerance + ', got ' + actual);
 }
 
 function wait(milliseconds) {
@@ -70,17 +78,14 @@ async function state(page) {
     const container = document.getElementById('slideshow');
     const firstSlide = document.querySelector('.slide');
     const firstImage = firstSlide ? firstSlide.querySelector('img') : null;
-    const backdrop = firstSlide ? getComputedStyle(firstSlide, '::before') : null;
+    const before = firstSlide ? getComputedStyle(firstSlide, '::before') : null;
+    const rect = container.getBoundingClientRect();
+    const imageRect = firstImage ? firstImage.getBoundingClientRect() : null;
     const slides = Array.from(document.querySelectorAll('.slide'));
-    const withBackdrop = slides
-      .map((slide, index) => ({
-        index,
-        value: slide.style.getPropertyValue('--slide-image')
-      }))
-      .filter(item => item.value);
-    const containerRect = container.getBoundingClientRect();
     return {
       layout: container.getAttribute('data-layout'),
+      styleAttr: container.getAttribute('style'),
+      fitAspect: getComputedStyle(container).getPropertyValue('--fit-aspect').trim(),
       innerWidth,
       innerHeight,
       objectFit: firstImage ? getComputedStyle(firstImage).objectFit : null,
@@ -92,15 +97,28 @@ async function state(page) {
       activeDot: Array.from(document.querySelectorAll('.dot'))
         .findIndex(dot => dot.classList.contains('active')),
       transform: document.getElementById('slidesContainer').style.transform,
-      backdropImage: backdrop ? backdrop.backgroundImage : null,
-      backdropFilter: backdrop ? backdrop.filter : null,
-      backdropContent: backdrop ? backdrop.content : null,
-      withBackdrop,
+      backdropContent: before ? before.content : null,
+      backdropImage: before ? before.backgroundImage : null,
+      slidesWithBackdrop: slides
+        .filter(slide => slide.style.getPropertyValue('--slide-image')).length,
       container: {
-        width: containerRect.width,
-        height: containerRect.height,
-        radius: getComputedStyle(container).borderRadius
+        top: rect.top,
+        left: rect.left,
+        width: rect.width,
+        height: rect.height,
+        radius: getComputedStyle(container).borderRadius,
+        paddingBottom: getComputedStyle(container).paddingBottom
       },
+      image: imageRect ? {
+        top: imageRect.top,
+        left: imageRect.left,
+        width: imageRect.width,
+        height: imageRect.height
+      } : null,
+      imageNatural: firstImage ? {
+        width: firstImage.naturalWidth,
+        height: firstImage.naturalHeight
+      } : null,
       scrollWidth: document.documentElement.scrollWidth,
       scrollHeight: document.documentElement.scrollHeight
     };
@@ -115,6 +133,51 @@ async function openSlide(context, base, id, total) {
   return page;
 }
 
+async function assertCard(stateValue, label, viewportWidth) {
+  assertEqual(stateValue.layout, 'fit', label + ': opt-in layout attribute');
+  assertEqual(stateValue.fitAspect, FIT_ASPECT_TEXT,
+    label + ': first image aspect is exposed to CSS');
+  assertEqual(stateValue.objectFit, 'contain', label + ': whole image is contained');
+  assertEqual(stateValue.container.paddingBottom, '0px',
+    label + ': card has no reserved control strip');
+  assertEqual(stateValue.container.radius, '20px', label + ': card radius');
+  assertEqual(stateValue.imageCount, FIT_URLS.length,
+    label + ': no duplicate image elements');
+  assertEqual(stateValue.slideCount, FIT_URLS.length, label + ': slide count');
+  assertEqual(stateValue.dotCount, FIT_URLS.length, label + ': dot count');
+  assertEqual(stateValue.fullscreenButtons, 1,
+    label + ': exactly one fullscreen button');
+
+  assertClose(stateValue.container.width, viewportWidth, 1,
+    label + ': card fills the iframe width');
+  assertClose(stateValue.container.height, viewportWidth / FIT_ASPECT, 1,
+    label + ': card height follows the image aspect');
+  assertClose(stateValue.container.aspectRatioValue,
+    FIT_ASPECT, 0.001, label + ': card ratio is the image ratio');
+  assertClose(stateValue.container.top,
+    (stateValue.innerHeight - stateValue.container.height) / 2, 2,
+    label + ': card is vertically centered');
+  assertClose(stateValue.image.width, stateValue.container.width, 1,
+    label + ': image element fills the card width');
+  assertClose(stateValue.image.height, stateValue.container.height, 1,
+    label + ': image element fills the card height');
+  assertClose(stateValue.imageNatural.width / stateValue.imageNatural.height,
+    FIT_ASPECT, 0.001, label + ': displayed image keeps its own ratio');
+
+  assertEqual(stateValue.backdropContent, 'none',
+    label + ': no ::before backdrop is generated');
+  assertEqual(stateValue.backdropImage, 'none',
+    label + ': no blurred background image');
+  assertEqual(stateValue.slidesWithBackdrop, 0,
+    label + ': no slide carries a backdrop URL');
+  assert(stateValue.scrollWidth <= stateValue.innerWidth,
+    label + ': no horizontal overflow',
+    stateValue.scrollWidth + ' vs ' + stateValue.innerWidth);
+  assert(stateValue.scrollHeight <= stateValue.innerHeight,
+    label + ': no vertical overflow',
+    stateValue.scrollHeight + ' vs ' + stateValue.innerHeight);
+}
+
 async function main() {
   const server = createPilotServer();
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
@@ -123,7 +186,6 @@ async function main() {
   const browser = await chromium.launch({ channel: 'chrome', headless: true });
   const context = await browser.newContext({ viewport: { width: 390, height: 1107 } });
 
-  // A synthetic 16:9 SVG keeps the exact geometry without touching imgur.
   const syntheticSvg = [
     '<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900">',
     '<rect width="1600" height="900" fill="#1d4ed8"/>',
@@ -152,43 +214,19 @@ async function main() {
     await phone.setViewportSize({ width: 390, height: 1107 });
     await wait(200);
     const phoneState = await state(phone);
+    // Expose a numeric ratio for the helper without adding browser code.
+    phoneState.container.aspectRatioValue =
+      phoneState.container.width / phoneState.container.height;
 
-    assertEqual(phoneState.layout, 'fit', 'phone: opt-in layout attribute');
-    assertEqual(phoneState.objectFit, 'contain', 'phone: whole image is contained');
-    assertEqual(phoneState.imageCount, FIT_URLS.length, 'phone: no duplicate image elements');
-    assertEqual(phoneState.slideCount, FIT_URLS.length, 'phone: slide count');
-    assertEqual(phoneState.dotCount, FIT_URLS.length, 'phone: dot count');
-    assertEqual(phoneState.fullscreenButtons, 1, 'phone: exactly one fullscreen button');
+    await assertCard(phoneState, 'phone', 390);
     assertEqual(phoneState.counter, '1 / ' + FIT_URLS.length, 'phone: initial counter');
     assertEqual(phoneState.activeDot, 0, 'phone: initial active dot');
-    assert(phoneState.withBackdrop.length >= 1 && phoneState.withBackdrop.length <= 3,
-      'phone: only the active slide and its neighbors keep a backdrop',
-      JSON.stringify(phoneState.withBackdrop.map(item => item.index)));
-    assert(
-      phoneState.withBackdrop.some(item =>
-        item.index === 0 && item.value.includes(FIT_URLS[0])),
-      'phone: active backdrop reuses the first remote URL',
-      JSON.stringify(phoneState.withBackdrop)
-    );
-    assert(/url\(/.test(phoneState.backdropImage || '') &&
-      phoneState.backdropImage.includes(FIT_URLS[0]),
-      'phone: ::before resolves the same image URL',
-      phoneState.backdropImage);
-    assert(/blur\(/.test(phoneState.backdropFilter || ''),
-      'phone: ::before applies a blur filter',
-      phoneState.backdropFilter);
-    assertEqual(phoneState.backdropContent, '""', 'phone: ::before is generated');
-    assert(phoneState.scrollWidth <= phoneState.innerWidth,
-      'phone: no horizontal overflow',
-      phoneState.scrollWidth + ' vs ' + phoneState.innerWidth);
-    assert(phoneState.scrollHeight <= phoneState.innerHeight,
-      'phone: no vertical overflow',
-      phoneState.scrollHeight + ' vs ' + phoneState.innerHeight);
-    assertEqual(Math.round(phoneState.container.width), 390, 'phone: container width');
-    assertEqual(Math.round(phoneState.container.height), 1107, 'phone: container height');
-    assertEqual(phoneState.container.radius, '20px', 'phone: container radius');
+    assert(phoneState.styleAttr &&
+      phoneState.styleAttr.includes('--fit-aspect:' + FIT_ASPECT_TEXT),
+      'phone: generated fit aspect is present in the markup',
+      phoneState.styleAttr);
 
-    // Navigation keeps the backdrop in sync and never duplicates the image.
+    // Navigation keeps the card and the image ratio unchanged.
     await phone.click('.next');
     await waitForCounter(phone, '2 / ' + FIT_URLS.length);
     await wait(150);
@@ -196,13 +234,9 @@ async function main() {
     assertEqual(phoneNext.counter, '2 / ' + FIT_URLS.length, 'phone: next counter');
     assertEqual(phoneNext.activeDot, 1, 'phone: next active dot');
     assertEqual(phoneNext.transform, 'translateX(-100vw)', 'phone: next transform');
+    assertClose(phoneNext.container.width / phoneNext.container.height,
+      FIT_ASPECT, 0.001, 'phone: next keeps the card ratio');
     assertEqual(phoneNext.imageCount, FIT_URLS.length, 'phone: image count after next');
-    assert(
-      phoneNext.withBackdrop.some(item =>
-        item.index === 1 && item.value.includes(FIT_URLS[1])),
-      'phone: second slide backdrop uses the second remote URL',
-      JSON.stringify(phoneNext.withBackdrop)
-    );
 
     await phone.click('.dot:nth-child(4)');
     await waitForCounter(phone, '4 / ' + FIT_URLS.length);
@@ -210,29 +244,42 @@ async function main() {
     const phoneLast = await state(phone);
     assertEqual(phoneLast.counter, '4 / ' + FIT_URLS.length, 'phone: dot jump counter');
     assertEqual(phoneLast.activeDot, 3, 'phone: dot jump active dot');
-    assert(
-      phoneLast.withBackdrop.some(item =>
-        item.index === 3 && item.value.includes(FIT_URLS[3])),
-      'phone: last slide backdrop uses the fourth remote URL',
-      JSON.stringify(phoneLast.withBackdrop)
-    );
+    assertEqual(phoneLast.transform, 'translateX(-300vw)', 'phone: dot jump transform');
 
-    // Fullscreen remains exactly one button and targets the slideshow.
+    // Fullscreen always fills the screen on a portrait phone.
     await phone.click('#fullscreenBtn');
-    await wait(500);
+    await wait(600);
     const fullscreen = await phone.evaluate(() => {
       const element = document.fullscreenElement;
+      const container = document.getElementById('slideshow');
+      const rect = container.getBoundingClientRect();
+      const image = document.querySelector('.slide img');
       return {
         native: Boolean(element),
         target: element ? element.id : null,
-        theater: document.getElementById('slideshow').classList.contains('theater-mode'),
-        aria: document.getElementById('fullscreenBtn').getAttribute('aria-label')
+        theater: container.classList.contains('theater-mode'),
+        width: rect.width,
+        height: rect.height,
+        objectFit: getComputedStyle(image).objectFit,
+        paddingBottom: getComputedStyle(container).paddingBottom,
+        radius: getComputedStyle(container).borderRadius
       };
     });
     assert((fullscreen.native && fullscreen.target === 'slideshow') || fullscreen.theater,
       'phone: fullscreen enters native or theater mode', JSON.stringify(fullscreen));
-    await phone.keyboard.press('Escape');
-    await wait(400);
+    assertClose(fullscreen.width, 390, 2, 'phone: fullscreen fills the width');
+    assertClose(fullscreen.height, 1107, 2, 'phone: fullscreen fills the height');
+    assertEqual(fullscreen.objectFit, 'contain',
+      'phone: fullscreen keeps the whole image visible');
+    assertEqual(fullscreen.radius, '0px', 'phone: fullscreen drops the card radius');
+    await phone.click('#fullscreenBtn');
+    await phone.waitForFunction(() => !document.fullscreenElement, null, { timeout: 10000 });
+    await wait(500);
+    const phoneRestored = await state(phone);
+    phoneRestored.container.aspectRatioValue =
+      phoneRestored.container.width / phoneRestored.container.height;
+    assertClose(phoneRestored.container.height, 390 / FIT_ASPECT, 1,
+      'phone: exit returns to the image-ratio card');
     await phone.close();
 
     // ------------------------------------------ Behance column (987 x 1107)
@@ -240,10 +287,9 @@ async function main() {
     await column.setViewportSize({ width: 987, height: 1107 });
     await wait(200);
     const columnState = await state(column);
-    assertEqual(columnState.objectFit, 'contain',
-      'Behance column: tall frame uses contain');
-    assert(columnState.withBackdrop.length >= 1,
-      'Behance column: backdrop is present');
+    columnState.container.aspectRatioValue =
+      columnState.container.width / columnState.container.height;
+    await assertCard(columnState, 'Behance column', 987);
     await column.close();
 
     // ------------------------------------------------- wide landscape frame
@@ -251,12 +297,19 @@ async function main() {
     await desktop.setViewportSize({ width: 1335, height: 1107 });
     await wait(200);
     const desktopState = await state(desktop);
+    assertEqual(desktopState.layout, 'fit', 'wide frame: opt-in layout attribute');
     assertEqual(desktopState.objectFit, 'cover',
       'wide frame: original cover behavior is preserved');
-    assertEqual(desktopState.withBackdrop.length, 0,
-      'wide frame: no backdrop is created');
+    assertClose(desktopState.container.width, 1335, 1,
+      'wide frame: original full width');
+    assertClose(desktopState.container.height, 1107, 1,
+      'wide frame: original full height');
+    assertEqual(desktopState.container.paddingBottom, '50px',
+      'wide frame: original control strip is preserved');
+    assertEqual(desktopState.backdropContent, 'none',
+      'wide frame: no backdrop is generated');
     assertEqual(desktopState.backdropImage, 'none',
-      'wide frame: ::before has no background image');
+      'wide frame: no background image');
     await desktop.close();
 
     // ------------------------------------------------- non-gated slideshow
@@ -266,10 +319,18 @@ async function main() {
     const classicState = await state(classic);
     assertEqual(classicState.layout, '',
       'non-gated slideshow: no fit layout attribute');
+    assertEqual(classicState.styleAttr, null,
+      'non-gated slideshow: no fit aspect style');
     assertEqual(classicState.objectFit, 'cover',
       'non-gated slideshow: cover behavior is unchanged on a phone');
-    assertEqual(classicState.withBackdrop.length, 0,
-      'non-gated slideshow: no backdrop is created');
+    assertClose(classicState.container.width, 390, 1,
+      'non-gated slideshow: original width');
+    assertClose(classicState.container.height, 1052, 1,
+      'non-gated slideshow: original height');
+    assertEqual(classicState.container.paddingBottom, '50px',
+      'non-gated slideshow: original control strip');
+    assertEqual(classicState.backdropContent, 'none',
+      'non-gated slideshow: no backdrop');
     assertEqual(classicState.fullscreenButtons, 1,
       'non-gated slideshow: exactly one fullscreen button');
     await classic.close();
@@ -287,6 +348,7 @@ async function main() {
     scope: {
       fitSlideshow: FIT_ID,
       classicSlideshow: CLASSIC_ID,
+      fitAspect: FIT_ASPECT_TEXT,
       syntheticImageRequests
     },
     checks: results.length,

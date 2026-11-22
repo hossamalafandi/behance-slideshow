@@ -1,6 +1,6 @@
 # Phone fit layout — P030-S01 pilot
 
-Status: **pilot deployed as version 7 on 2026-11-22; awaiting the owner's
+Status: **pilot deployed as version 8 on 2026-11-22; awaiting the owner's
 phone review before any rollout.**
 
 ## 1. Why
@@ -25,31 +25,43 @@ the deployment URL, the iframe width/height, and the image URLs and order are
 unchanged.
 
 For slideshows explicitly opted in through `01_AUDIT/layout.config.json`, the
-shared template adds a `data-layout="fit"` attribute. When that attribute is
-present **and** the iframe viewport is portrait/taller than wide
-(`max-aspect-ratio: 1/1`):
+shared template adds a `data-layout="fit"` attribute and a generated
+`--fit-aspect` value taken from the first image's width/height. When the
+iframe viewport is portrait/taller than wide (`max-aspect-ratio: 1/1`):
 
-- the main image switches from `object-fit: cover` to `object-fit: contain`,
-  so the complete image is visible;
-- a `::before` backdrop fills the letterbox with the same remote image,
-  blurred and darkened;
-- only the active slide and its two neighbors keep a backdrop, so a phone does
-  not rasterize a blur layer for every image at once;
+- the slideshow card is sized to the image's aspect ratio: full iframe width,
+  height derived from `--fit-aspect`, and centered vertically;
+- the image uses `object-fit: contain` and fills the card, so the complete
+  image is visible with no cropping;
+- there is **no blurred backdrop**. The iframe remains transparent, so the
+  Behance page background shows above and below the card;
+- the 50 px control strip is removed in fit mode; dots and controls overlay the
+  card;
+- native fullscreen and theater mode still fill the screen and keep the whole
+  image visible with black bars;
 - navigation, dots, counter, hover-reveal, side shadows, the single fullscreen
   button, and the theater-mode fallback are unchanged.
 
 On a wide landscape frame the original `cover` behavior is preserved exactly.
-At the 987 px Behance column, P030-S01 is 987 x 1107 (portrait), so the fit
-layout is active there too. At the audited 1335 x 1107 Google Sites frame it
-stays `cover`.
+At the 987 px Behance column, P030-S01 is 987 x 1107 (portrait), so the card is
+987 x 555. At the audited 1335 x 1107 Google Sites frame it stays `cover`.
+
+### Tradeoff
+
+Behance's iframe itself stays the fixed audited height (1107 px for P030-S01).
+On a 390 px phone the 16:9 card is 390 x 219 and is centered, so there is empty
+transparent space above and below it. That empty space is the unavoidable
+result of keeping the embed untouched while showing the whole 16:9 image with
+no blur and no crop. If the owner prefers filling that space, the previous
+version 7 used a blurred copy of the same image; version 6 is the original
+full-frame `cover` layout.
 
 ### No image duplication or rehosting
 
 - The HTML still contains exactly one `<img>` per image slot and one copy of
   each remote URL.
-- The backdrop is a CSS pseudo-element. Script copies the existing `<img>`
-  `src` into the `--slide-image` custom property; the browser serves that URL
-  from the same cache entry.
+- The fit layout uses no CSS background image and no second copy of any URL;
+  it only sizes the card and uses `object-fit: contain`.
 - No image is downloaded, copied, resized, proxied, or rehosted.
 
 ## 3. The gate
@@ -63,31 +75,33 @@ stays `cover`.
 ```
 
 `generate.js` writes `"layout": "fit"` into that slideshow's generated data and
-`SlidesData.gs`. `Code.gs` reads the generated flag and passes it to the
-template; it does not hardcode slideshow IDs. Classic slides have no `layout`
-field and render `data-layout=""`, so the new CSS and script stay inert.
+`SlidesData.gs`. `Code.gs` reads the generated flag, computes the
+`--fit-aspect` style from the first image, and passes both to the template; it
+does not hardcode slideshow IDs. Classic slides have no `layout` field, no
+style attribute, and render `data-layout=""`, so the new CSS stays inert.
 
 ## 4. Pilot verification
 
 Local suites:
 
-- `node tools/validate.js` — **3264/3264**, all 48 slideshows, frozen URL hash
+- `node tools/validate.js` — **3313/3313**, all 48 slideshows, frozen URL hash
   unchanged.
 - `node tools/test-all.js` — **347/347**, 48/48 slideshows at their audited
   dimensions; 339 image requests blocked; no image downloads.
 - `node tools/test-pilot.js` — **37/37**, P001-S01 regression suite.
-- `node tools/test-fit-layout.js` — **37/37**, phone 390 x 1107, Behance
-  column 987 x 1107, wide 1335 x 1107, non-gated P020-S01, navigation,
-  backdrop reuse, no overflow, fullscreen. Synthetic 16:9 SVG placeholders are
-  used; no original image is downloaded or viewed.
+- `node tools/test-fit-layout.js` — **75/75**, phone 390 x 1107, Behance
+  column 987 x 1107, wide 1335 x 1107, non-gated P020-S01, card ratio,
+  centering, no blur or backdrop, no overflow, navigation, fullscreen fill and
+  restore. Synthetic 16:9 SVG placeholders are used; no original image is
+  downloaded or viewed.
 
-Live deployment:
+Live deployment (version 8):
 
 - `node tools/test-live-all.js <deployment-url>` — **339/339**, 48/48
   slideshows; no banner; exact URLs; fullscreen.
-- `node tools/test-live-fit.js <deployment-url>` — **24/24**, P030-S01 at
-  phone and wide sizes through Behance-like outer iframes, plus non-gated
-  P020-S01.
+- `node tools/test-live-fit.js <deployment-url>` — **56/56**, P030-S01 at
+  phone, Behance column, and wide sizes through Behance-like outer iframes,
+  plus non-gated P020-S01.
 
 Pilot URL:
 
@@ -127,7 +141,7 @@ new version automatically because the deployment ID did not change.
    cd 04_APPS_SCRIPT
    clasp push -f
    clasp version "Enable phone fit layout on all slideshows"
-   clasp deploy -V <new-version> -i <same-deployment-id> -d "Enable phone fit layout on all slideshows"
+   clasp deploy -V <next-version> -i <same-deployment-id> -d "Enable phone fit layout on all slideshows"
    ```
 4. Re-run `test-live-all.js` and `test-live-fit.js`.
 
@@ -136,26 +150,28 @@ new version automatically because the deployment ID did not change.
 The deployment ID and Behance codes stay stable, so reverting never requires
 editing Behance.
 
-- **Disable the fit layout everywhere, keep the rest of version 7:**
-  set `"fit": []` in `01_AUDIT/layout.config.json`, regenerate, validate, push,
+- **Disable the fit layout everywhere, keep the current code:** set
+  `"fit": []` in `01_AUDIT/layout.config.json`, regenerate, validate, push,
   create the next version, and update the same deployment ID. Every slideshow
   returns to `data-layout=""` and the original `cover` behavior.
-- **Full rollback to the pre-pilot code:** in the Apps Script editor, open
-  **Deploy → Manage deployments**, edit the existing deployment, and select
-  **version 6** (`Add P024 slideshow and TOOLS USED strip`). The deployment ID
-  and all Behance embeds stay unchanged.
-- **Source rollback:** revert the pilot commit in Git. The generated artifacts
-  and `SlidesData.gs` return to their version-6 state.
+- **Return to the blurred pilot:** select version 7 in **Deploy → Manage
+  deployments** on the existing deployment.
+- **Full rollback to the pre-pilot code:** select version 6
+  (`Add P024 slideshow and TOOLS USED strip`). The deployment ID and all
+  Behance embeds stay unchanged.
+- **Source rollback:** revert the pilot commits in Git. The generated
+  artifacts and `SlidesData.gs` return to their earlier state.
 
 ## 7. Files touched
 
 - `01_AUDIT/layout.config.json` — the opt-in gate (new).
-- `04_APPS_SCRIPT/Slideshow.html` — opt-in CSS and backdrop script.
-- `04_APPS_SCRIPT/Code.gs` — passes the generated layout flag to the template.
+- `04_APPS_SCRIPT/Slideshow.html` — opt-in image-ratio card CSS.
+- `04_APPS_SCRIPT/Code.gs` — passes the layout flag and first-image aspect to
+  the template.
 - `04_APPS_SCRIPT/SlidesData.gs` — generated `layout` flag for P030-S01 only.
 - `03_REBUILT_SLIDESHOWS/data/P030-S01.json` — generated flag.
 - `03_REBUILT_SLIDESHOWS/preview/*.html` — regenerated from the shared
   template; only P030-S01 activates the layout.
-- `tools/generate.js`, `tools/validate.js` — gate support and checks.
+- `tools/generate.js`, `tools/validate.js` — gate, aspect style, and checks.
 - `tools/test-fit-layout.js`, `tools/test-live-fit.js` — focused tests.
 - `05_BEHANCE_OUTPUT/*` — unchanged; the outer embed codes are identical.

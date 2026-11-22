@@ -148,6 +148,18 @@ function escapeHtml(value) {
   })[character]);
 }
 
+function layoutStyleFor(slide) {
+  if (slide.layout !== 'fit' || !slide.images || !slide.images.length) return '';
+  const first = slide.images[0];
+  const width = Number(first.w);
+  const height = Number(first.h);
+  if (!Number.isFinite(width) || !Number.isFinite(height) ||
+      width <= 0 || height <= 0) {
+    return '';
+  }
+  return ' style="--fit-aspect:' + (width / height).toFixed(6) + '"';
+}
+
 function renderImages(images) {
   return images.map((image, index) => {
     // Every archived original marks its images loading="eager". Preserve that
@@ -234,6 +246,7 @@ function renderPreview(template, slide) {
   let html = template
     .replace('<?= pageTitle ?>', escapeHtml(pageTitle))
     .replace('<?= layoutMode ?>', slide.layout === 'fit' ? 'fit' : '')
+    .replace('<?!= layoutStyle ?>', layoutStyleFor(slide))
     .replace('<?!= imagesHtml ?>', renderImages(slide.images));
   if (/<\?/.test(html)) {
     fail('Unreplaced Apps Script template directive remains in preview');
