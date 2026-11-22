@@ -17,6 +17,7 @@ const crypto = require('crypto');
 const ROOT = path.resolve(__dirname, '..');
 const CONFIG_PATH = path.join(ROOT, '01_AUDIT', 'slides.config.json');
 const IMAGES_CSV = path.join(ROOT, '01_AUDIT', 'images.csv');
+const LAYOUT_CONFIG_PATH = path.join(ROOT, '01_AUDIT', 'layout.config.json');
 const PREVIEW_DIR = path.join(ROOT, '03_REBUILT_SLIDESHOWS', 'preview');
 const DATA_DIR = path.join(ROOT, '03_REBUILT_SLIDESHOWS', 'data');
 const APPS_DIR = path.join(ROOT, '04_APPS_SCRIPT');
@@ -134,6 +135,25 @@ function main() {
   const ids = sources.map(source => source.slideshow_id);
   const projectIds = Array.from(new Set(sources.map(source => source.project_id)));
 
+  // --------------------------------------------------------------- layout gate
+  const layoutConfig = JSON.parse(read(LAYOUT_CONFIG_PATH));
+  const fitSetting = layoutConfig.fit;
+  check('layout.config.json uses "all" or an ID array',
+    fitSetting === 'all' || Array.isArray(fitSetting),
+    typeof fitSetting);
+  const fitIds = new Set();
+  if (fitSetting === 'all') {
+    ids.forEach(id => fitIds.add(id));
+  } else if (Array.isArray(fitSetting)) {
+    const normalizedFitIds = fitSetting.map(id => String(id).trim().toUpperCase());
+    check('layout.config.json fit IDs are unique',
+      new Set(normalizedFitIds).size === normalizedFitIds.length);
+    normalizedFitIds.forEach(id => {
+      check('layout.config.json fit ID is known: ' + id, ids.includes(id));
+      if (ids.includes(id)) fitIds.add(id);
+    });
+  }
+
   check('slideshow IDs are unique', new Set(ids).size === ids.length);
   check('37 projects have slideshows', projectIds.length === EXPECTED_PROJECTS,
     'found ' + projectIds.length);
@@ -191,6 +211,11 @@ function main() {
     mapKeys.length + ' keys');
   check('SlidesData.gs preserves the audited order',
     mapKeys.join(',') === ids.join(','));
+  check('SlidesData.gs layout flags match layout.config.json',
+    ids.every(id => fitIds.has(id)
+      ? slideMap[id].layout === 'fit'
+      : !Object.prototype.hasOwnProperty.call(slideMap[id], 'layout')),
+    fitIds.size + ' fit slideshow(s)');
   check('SlidesData.gs has no P036 entry',
     !mapKeys.some(id => id.startsWith('P036-')));
   const mapUrls = dataSource.match(/https:\/\/i\.imgur\.com\/[^"']+/g) || [];
@@ -205,6 +230,7 @@ function main() {
 
   for (const id of ids) {
     const { source, expectedUrls } = byId.get(id);
+    const fitLayout = fitIds.has(id);
     const expectedSnippetWidth = source.frame_w >= BEHANCE_MAX_WIDTH
       ? '100%'
       : String(source.frame_w);
@@ -230,6 +256,9 @@ function main() {
     check(id + ': data aspect matches the audit', data.aspect === source.aspect);
     check(id + ': data radius is 20px', data.radius_px === '20px');
     check(id + ': data object fit is cover', data.object_fit === 'cover');
+    check(id + ': data layout matches the gate',
+      fitLayout ? data.layout === 'fit' : !Object.prototype.hasOwnProperty.call(data, 'layout'),
+      fitLayout ? String(data.layout) : 'unexpected layout flag');
     check(id + ': data requires fullscreen', data.fullscreen_required === true);
     check(id + ': data image count matches the audit',
       data.image_count === expectedUrls.length, data.image_count + ' vs ' + expectedUrls.length);
@@ -280,6 +309,13 @@ function main() {
     check(id + ': preview has exactly one slideshow container',
       (preview.match(/class="slideshow-container"/g) || []).length === 1 &&
         (preview.match(/id="slideshow"/g) || []).length === 1);
+    const layoutAttribute =
+      /<div class="slideshow-container" id="slideshow" data-layout="([^"]*)"/.exec(preview);
+    check(id + ': preview layout attribute matches the gate',
+      fitLayout
+        ? Boolean(layoutAttribute) && layoutAttribute[1] === 'fit'
+        : !layoutAttribute || layoutAttribute[1] === '',
+      layoutAttribute ? layoutAttribute[1] : 'absent');
     check(id + ': preview has exactly one dot container',
       (preview.match(/class="dot-container"/g) || []).length === 1);
     const dotIndex = preview.indexOf('id="dotContainer"');
@@ -304,6 +340,15 @@ function main() {
     check(id + ': preview uses a 20px radius',
       (preview.match(/border-radius:\s*20px/g) || []).length >= 2);
     check(id + ': preview uses cover object fit', /object-fit:\s*cover/.test(preview));
+    if (fitLayout) {
+      check(id + ': preview includes the portrait fit layout',
+        /@media \(max-aspect-ratio: 1\/1\)/.test(preview) &&
+          /object-fit:\s*contain/.test(preview) &&
+          /--slide-image/.test(preview));
+      check(id + ': preview reuses the main image for the backdrop',
+        /style\.setProperty\(\s*'--slide-image'/.test(preview) &&
+          /image\.src/.test(preview));
+    }
     check(id + ': preview keeps a transparent background',
       /background-color:\s*transparent/.test(preview));
     check(id + ': preview reveals arrows on hover',
@@ -387,6 +432,15 @@ function main() {
 
   // ---------------------------------------------------------- router (static)
   const router = read(path.join(APPS_DIR, 'Code.gs'));
+  const slideshowTemplate = read(path.join(APPS_DIR, 'Slideshow.html'));
+  check('template carries the opt-in portrait fit layout',
+    /data-layout="<\?= layoutMode \?>"/.test(slideshowTemplate) &&
+      /@media \(max-aspect-ratio: 1\/1\)/.test(slideshowTemplate) &&
+      /object-fit:\s*contain/.test(slideshowTemplate) &&
+      /--slide-image/.test(slideshowTemplate) &&
+      /matchMedia\('\(max-aspect-ratio: 1\/1\)'\)/.test(slideshowTemplate));
+  check('router passes the generated layout mode to the template',
+    /template\.layoutMode\s*=\s*slide\.layout === 'fit' \? 'fit' : ''/.test(router));
   check('router counts raw slide and tools parameters',
     /function countQueryParameters_/.test(router) &&
     /countQueryParameters_\(queryString, 'slide'\)/.test(router) &&

@@ -1,21 +1,19 @@
 {
   "url": "https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec",
   "scope": {
-    "slideshows": 47,
-    "projects": 36,
-    "imageSlots": 335,
+    "slideshows": 48,
+    "projects": 37,
+    "imageSlots": 339,
     "behanceColumn": 987
   },
   "browser": "Chrome 157.0.8103.79",
-  "checks": 332,
-  "passed": 332,
+  "checks": 339,
+  "passed": 339,
   "failed": 0,
-  "slideshowsPassed": 47,
+  "slideshowsPassed": 48,
   "slideshowsFailed": 0,
-  "retriedSlides": [
-    "P011-S01"
-  ],
-  "blockedImages": 335,
+  "retriedSlides": [],
+  "blockedImages": 346,
   "failures": [],
   "routerChecks": [
     {
@@ -646,7 +644,7 @@
     {
       "id": "P011-S01",
       "passed": true,
-      "attempts": 2,
+      "attempts": 1,
       "checks": [
         {
           "name": "P011-S01: reaches the live slideshow frame",
@@ -1171,6 +1169,44 @@
         },
         {
           "name": "P023-S02: live navigation and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P024-S01",
+      "passed": true,
+      "attempts": 1,
+      "checks": [
+        {
+          "name": "P024-S01: reaches the live slideshow frame",
+          "passed": true
+        },
+        {
+          "name": "P024-S01: reaches the Apps Script wrapper",
+          "passed": true
+        },
+        {
+          "name": "P024-S01: no visible Google banner",
+          "passed": true,
+          "detail": "0 px"
+        },
+        {
+          "name": "P024-S01: sandbox receives the full 1052 px",
+          "passed": true,
+          "detail": "1052 px"
+        },
+        {
+          "name": "P024-S01: live URLs, dots, counter, and dimensions pass",
+          "passed": true
+        },
+        {
+          "name": "P024-S01: live fullscreen targets the slideshow",
+          "passed": true,
+          "detail": "{\"native\":true,\"targetIsContainer\":true,\"theater\":false,\"aria\":\"Exit fullscreen\"}"
+        },
+        {
+          "name": "P024-S01: live navigation and fullscreen pass",
           "passed": true
         }
       ]

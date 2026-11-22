@@ -1,16 +1,16 @@
 {
   "scope": {
-    "slideshows": 47,
-    "projects": 36,
-    "imageSlots": 335
+    "slideshows": 48,
+    "projects": 37,
+    "imageSlots": 339
   },
   "browser": "Chrome 157.0.8103.79",
-  "checks": 340,
-  "passed": 340,
+  "checks": 347,
+  "passed": 347,
   "failed": 0,
-  "slideshowsPassed": 47,
+  "slideshowsPassed": 48,
   "slideshowsFailed": 0,
-  "blockedImageRequests": 334,
+  "blockedImageRequests": 339,
   "failures": [],
   "results": [
     {
@@ -459,6 +459,21 @@
         },
         {
           "name": "P023-S02: navigation, hover, and fullscreen pass",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "P024-S01",
+      "passed": true,
+      "checks": [
+        {
+          "name": "P024-S01: renders 4 slides and dots",
+          "passed": true,
+          "detail": "4 slides, 4 dots"
+        },
+        {
+          "name": "P024-S01: navigation, hover, and fullscreen pass",
           "passed": true
         }
       ]

@@ -25,6 +25,7 @@ const crypto = require('crypto');
 const ROOT = path.resolve(__dirname, '..');
 const CONFIG_PATH = path.join(ROOT, '01_AUDIT', 'slides.config.json');
 const IMAGES_CSV = path.join(ROOT, '01_AUDIT', 'images.csv');
+const LAYOUT_CONFIG_PATH = path.join(ROOT, '01_AUDIT', 'layout.config.json');
 const TEMPLATE_PATH = path.join(ROOT, '04_APPS_SCRIPT', 'Slideshow.html');
 const DATA_DIR = path.join(ROOT, '03_REBUILT_SLIDESHOWS', 'data');
 const PREVIEW_DIR = path.join(ROOT, '03_REBUILT_SLIDESHOWS', 'preview');
@@ -73,6 +74,25 @@ function parseArgs(argv) {
     fail('Invalid deployment ID format');
   }
   return options;
+}
+
+function readLayoutConfig() {
+  if (!fs.existsSync(LAYOUT_CONFIG_PATH)) {
+    fail('Missing 01_AUDIT/layout.config.json');
+  }
+  const config = JSON.parse(fs.readFileSync(LAYOUT_CONFIG_PATH, 'utf8'));
+  const setting = config.fit;
+  if (setting !== 'all' && !Array.isArray(setting)) {
+    fail('layout.config.json "fit" must be "all" or an array of slideshow IDs');
+  }
+  if (setting === 'all') {
+    return { all: true, ids: [] };
+  }
+  const ids = setting.map(id => String(id).trim().toUpperCase());
+  if (ids.some(id => !/^P\d{3}-S\d{2}$/.test(id))) {
+    fail('layout.config.json contains an invalid slideshow ID');
+  }
+  return { all: false, ids: Array.from(new Set(ids)) };
 }
 
 function parseCsvLine(line) {
@@ -139,7 +159,7 @@ function renderImages(images) {
   }).join('\n');
 }
 
-function buildSlide(source, csvRows) {
+function buildSlide(source, csvRows, fitIds) {
   if (!source) fail('Missing slideshow in slides.config.json');
   const images = source.images.map((image, index) => {
     if (!image.src || !/^https?:\/\//.test(image.src)) {
@@ -200,6 +220,8 @@ function buildSlide(source, csvRows) {
     aspect: source.aspect,
     radius_px: source.radius_px,
     object_fit: source.object_fit,
+    // Omitted entirely for classic slides so their data files stay unchanged.
+    layout: fitIds.has(source.slideshow_id) ? 'fit' : undefined,
     fullscreen_required: true,
     repair_note: source.repair_note || null,
     image_count: images.length,
@@ -211,6 +233,7 @@ function renderPreview(template, slide) {
   const pageTitle = slide.project_title + ' — ' + slide.section_label;
   let html = template
     .replace('<?= pageTitle ?>', escapeHtml(pageTitle))
+    .replace('<?= layoutMode ?>', slide.layout === 'fit' ? 'fit' : '')
     .replace('<?!= imagesHtml ?>', renderImages(slide.images));
   if (/<\?/.test(html)) {
     fail('Unreplaced Apps Script template directive remains in preview');
@@ -260,7 +283,16 @@ function main() {
     fail('The global image URL hash changed; refusing to generate');
   }
 
-  const allSlides = config.slideshows.map(source => buildSlide(source, imagesCsv.rows));
+  const layout = readLayoutConfig();
+  const configuredIds = config.slideshows.map(source => source.slideshow_id);
+  for (const id of layout.ids) {
+    if (!configuredIds.includes(id)) {
+      fail('layout.config.json contains an unknown slideshow: ' + id);
+    }
+  }
+  const fitIds = new Set(layout.all ? configuredIds : layout.ids);
+
+  const allSlides = config.slideshows.map(source => buildSlide(source, imagesCsv.rows, fitIds));
   const allIds = allSlides.map(slide => slide.slideshow_id);
   if (new Set(allIds).size !== allIds.length) {
     fail('Duplicate slideshow IDs in slides.config.json');
@@ -358,7 +390,8 @@ function main() {
       slideshow_id: slide.slideshow_id,
       images: slide.image_count,
       width: slide.snippet_width,
-      height: slide.embed_height
+      height: slide.embed_height,
+      layout: slide.layout || 'classic'
     })),
     serverMap: allSlides.length,
     projects: byProject.size,

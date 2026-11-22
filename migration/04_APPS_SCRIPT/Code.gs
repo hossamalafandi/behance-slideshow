@@ -43,6 +43,9 @@ function slideshowResponse_(e) {
   var pageTitle = slide.project_title + ' — ' + slide.section_label;
   var template = HtmlService.createTemplateFromFile('Slideshow');
   template.pageTitle = pageTitle;
+  // Per-slideshow opt-in generated in SlidesData.gs. Classic slides get an
+  // empty attribute, so the fit CSS and backdrop script stay inert.
+  template.layoutMode = slide.layout === 'fit' ? 'fit' : '';
   template.imagesHtml = renderImages_(slide.images);
 
   return template.evaluate()

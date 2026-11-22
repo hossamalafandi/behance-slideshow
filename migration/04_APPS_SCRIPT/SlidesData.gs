@@ -2872,6 +2872,7 @@ var SLIDES = {
     "aspect": 1.206,
     "radius_px": "20px",
     "object_fit": "cover",
+    "layout": "fit",
     "fullscreen_required": true,
     "repair_note": null,
     "image_count": 4,

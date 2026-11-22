@@ -6,7 +6,9 @@
   "scripts": {
     "validate": "node validate.js",
     "serve": "node serve.js",
-    "test:pilot": "node test-pilot.js"
+    "test:pilot": "node test-pilot.js",
+    "test:fit": "node test-fit-layout.js",
+    "test:live-fit": "node test-live-fit.js"
   },
   "devDependencies": {
     "@google/clasp": "^3.4.1",
