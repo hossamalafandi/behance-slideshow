@@ -1,6 +1,4 @@
 {
   "note": "Per-slideshow phone layout gate. \"fit\" may be an array of slideshow IDs for a pilot, or \"all\" after the owner approves a full rollout. An empty array disables the fit layout everywhere. The generated SlidesData.gs carries the flag; Code.gs does not hardcode IDs.",
-  "fit": [
-    "P030-S01"
-  ]
+  "fit": "all"
 }

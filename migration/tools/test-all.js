@@ -30,11 +30,15 @@ const RESULTS_DIR = path.join(ROOT, '01_AUDIT', 'evidence', 'phase2-bulk');
 const slides = CONFIG.slideshows.map(source => {
   const data = JSON.parse(fs.readFileSync(
     path.join(DATA_DIR, source.slideshow_id + '.json'), 'utf8'));
+  const firstImage = data.images[0];
+  const imageAspect = firstImage.w / firstImage.h;
   return {
     id: source.slideshow_id,
     project: source.project_id,
     width: data.embed_width,
     height: data.embed_height,
+    fit: data.layout === 'fit',
+    cardHeight: Math.min(data.embed_width / imageAspect, data.embed_height),
     urls: data.images.map(image => image.src),
     total: data.images.length
   };
@@ -51,6 +55,11 @@ function assert(condition, message) {
 function assertEqual(actual, expected, label) {
   assert(actual === expected, label + ': expected ' + JSON.stringify(expected) +
     ', got ' + JSON.stringify(actual));
+}
+
+function assertClose(actual, expected, tolerance, label) {
+  assert(Math.abs(actual - expected) <= tolerance, label + ': expected ' +
+    expected + ' +/- ' + tolerance + ', got ' + actual);
 }
 
 function wait(milliseconds) {
@@ -158,7 +167,9 @@ async function runSlide(context, base, slide, checks) {
         eager: images.every(image => image.getAttribute('loading') === 'eager'),
         lazy: images.some(image => image.getAttribute('loading') === 'lazy'),
         objectFit: getComputedStyle(first).objectFit,
+        layout: container.getAttribute('data-layout'),
         radius: style.borderRadius,
+        paddingBottom: style.paddingBottom,
         background: style.backgroundColor,
         innerWidth: window.innerWidth,
         innerHeight: window.innerHeight,
@@ -173,7 +184,11 @@ async function runSlide(context, base, slide, checks) {
           bottom: buttonRect.bottom
         },
         dotBox: { width: dotRect.width, left: dotRect.left, right: dotRect.right },
-        containerBox: { width: containerRect.width, height: containerRect.height },
+        containerBox: {
+          top: containerRect.top,
+          width: containerRect.width,
+          height: containerRect.height
+        },
         nested: document.querySelectorAll('iframe, embed, object').length,
         localStorage: storage('localStorage'),
         sessionStorage: storage('sessionStorage'),
@@ -193,7 +208,21 @@ async function runSlide(context, base, slide, checks) {
       assertEqual(src, slide.urls[index], 'image ' + (index + 1)));
     assert(initial.eager, 'not every image is eager');
     assert(!initial.lazy, 'an image is lazy');
-    assertEqual(initial.objectFit, 'cover', 'object-fit');
+    const fitActive = slide.fit && slide.width <= slide.height;
+    if (fitActive) {
+      assertEqual(initial.layout, 'fit', 'layout');
+      assertEqual(initial.objectFit, 'contain', 'object-fit');
+      assertEqual(initial.paddingBottom, '0px', 'fit padding');
+      assertClose(initial.containerBox.width, slide.width, 1, 'card width');
+      assertClose(initial.containerBox.height, slide.cardHeight, 1, 'card height');
+      assertClose(initial.containerBox.top,
+        (slide.height - slide.cardHeight) / 2, 2, 'card top');
+    } else {
+      assertEqual(initial.objectFit, 'cover', 'object-fit');
+      assertEqual(initial.paddingBottom, '50px', 'control strip padding');
+      assertEqual(Math.round(initial.containerBox.width), slide.width, 'container width');
+      assertEqual(Math.round(initial.containerBox.height), slide.height, 'container height');
+    }
     assertEqual(initial.radius, '20px', 'container radius');
     assertEqual(initial.background, 'rgba(0, 0, 0, 0)', 'background');
     assertEqual(initial.innerWidth, slide.width, 'viewport width');
@@ -208,8 +237,6 @@ async function runSlide(context, base, slide, checks) {
     assert(initial.dotBox.width <= initial.innerWidth, 'dot container is wider than the frame');
     assert(initial.dotBox.left >= 0 && initial.dotBox.right <= initial.innerWidth,
       'dot container is outside the frame');
-    assertEqual(Math.round(initial.containerBox.width), slide.width, 'container width');
-    assertEqual(Math.round(initial.containerBox.height), slide.height, 'container height');
     assertEqual(initial.localStorage, 0, 'localStorage entries');
     assertEqual(initial.sessionStorage, 0, 'sessionStorage entries');
     assertEqual(initial.cookie, '', 'cookies');
@@ -269,16 +296,33 @@ async function runSlide(context, base, slide, checks) {
     const restored = await page.evaluate(() => {
       const container = document.getElementById('slideshow');
       const rect = container.getBoundingClientRect();
+      const style = getComputedStyle(container);
       return {
+        layout: container.getAttribute('data-layout'),
+        top: rect.top,
         width: rect.width,
         height: rect.height,
-        radius: getComputedStyle(container).borderRadius,
+        radius: style.borderRadius,
+        paddingBottom: style.paddingBottom,
+        objectFit: getComputedStyle(document.querySelector('.slide img')).objectFit,
         scrollWidth: document.documentElement.scrollWidth,
         scrollHeight: document.documentElement.scrollHeight
       };
     });
-    assertEqual(Math.round(restored.width), slide.width, 'restored width');
-    assertEqual(Math.round(restored.height), slide.height, 'restored height');
+    if (fitActive) {
+      assertEqual(restored.layout, 'fit', 'restored layout');
+      assertEqual(restored.objectFit, 'contain', 'restored object-fit');
+      assertEqual(restored.paddingBottom, '0px', 'restored fit padding');
+      assertClose(restored.width, slide.width, 1, 'restored width');
+      assertClose(restored.height, slide.cardHeight, 1, 'restored height');
+      assertClose(restored.top, (slide.height - slide.cardHeight) / 2, 2,
+        'restored card top');
+    } else {
+      assertEqual(restored.objectFit, 'cover', 'restored object-fit');
+      assertEqual(restored.paddingBottom, '50px', 'restored control strip padding');
+      assertEqual(Math.round(restored.width), slide.width, 'restored width');
+      assertEqual(Math.round(restored.height), slide.height, 'restored height');
+    }
     assertEqual(restored.radius, '20px', 'restored radius');
     assert(restored.scrollWidth <= slide.width, 'horizontal overflow after exit');
     assert(restored.scrollHeight <= slide.height, 'vertical overflow after exit');

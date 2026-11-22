@@ -2,12 +2,12 @@
 'use strict';
 
 /**
- * Phone fit-layout browser test for the gated P030-S01 pilot.
+ * Phone fit-layout browser test for the global fit layout.
  *
  * Every imgur request is fulfilled with a synthetic 16:9 SVG so the layout can
  * be measured without downloading, viewing, copying, or rehosting any original
  * image. The test covers:
- *  - the opt-in data-layout attribute and the per-slideshow gate;
+ *  - the data-layout attribute and generated per-slideshow aspect;
  *  - a slideshow card sized to the first image's aspect ratio on portrait/tall
  *    frames (phone and the 987 px Behance column), centered with no blur and
  *    no overflow;
@@ -23,14 +23,16 @@ const { createPilotServer } = require('./serve');
 const ROOT = path.resolve(__dirname, '..');
 const DATA_DIR = path.join(ROOT, '03_REBUILT_SLIDESHOWS', 'data');
 const FIT_ID = 'P030-S01';
-const CLASSIC_ID = 'P020-S01';
+const SECOND_ID = 'P020-S01';
 
 const fitData = JSON.parse(fs.readFileSync(path.join(DATA_DIR, FIT_ID + '.json'), 'utf8'));
-const classicData = JSON.parse(fs.readFileSync(path.join(DATA_DIR, CLASSIC_ID + '.json'), 'utf8'));
+const secondData = JSON.parse(fs.readFileSync(path.join(DATA_DIR, SECOND_ID + '.json'), 'utf8'));
 const FIT_URLS = fitData.images.map(image => image.src);
-const CLASSIC_URLS = classicData.images.map(image => image.src);
+const SECOND_URLS = secondData.images.map(image => image.src);
 const FIT_ASPECT = fitData.images[0].w / fitData.images[0].h;
 const FIT_ASPECT_TEXT = FIT_ASPECT.toFixed(6);
+const SECOND_ASPECT = secondData.images[0].w / secondData.images[0].h;
+const SECOND_ASPECT_TEXT = SECOND_ASPECT.toFixed(6);
 
 const results = [];
 const failures = [];
@@ -133,27 +135,28 @@ async function openSlide(context, base, id, total) {
   return page;
 }
 
-async function assertCard(stateValue, label, viewportWidth) {
-  assertEqual(stateValue.layout, 'fit', label + ': opt-in layout attribute');
-  assertEqual(stateValue.fitAspect, FIT_ASPECT_TEXT,
+async function assertCard(stateValue, label, viewportWidth,
+  aspect, aspectText, urls) {
+  assertEqual(stateValue.layout, 'fit', label + ': layout attribute');
+  assertEqual(stateValue.fitAspect, aspectText,
     label + ': first image aspect is exposed to CSS');
   assertEqual(stateValue.objectFit, 'contain', label + ': whole image is contained');
   assertEqual(stateValue.container.paddingBottom, '0px',
     label + ': card has no reserved control strip');
   assertEqual(stateValue.container.radius, '20px', label + ': card radius');
-  assertEqual(stateValue.imageCount, FIT_URLS.length,
+  assertEqual(stateValue.imageCount, urls.length,
     label + ': no duplicate image elements');
-  assertEqual(stateValue.slideCount, FIT_URLS.length, label + ': slide count');
-  assertEqual(stateValue.dotCount, FIT_URLS.length, label + ': dot count');
+  assertEqual(stateValue.slideCount, urls.length, label + ': slide count');
+  assertEqual(stateValue.dotCount, urls.length, label + ': dot count');
   assertEqual(stateValue.fullscreenButtons, 1,
     label + ': exactly one fullscreen button');
 
   assertClose(stateValue.container.width, viewportWidth, 1,
     label + ': card fills the iframe width');
-  assertClose(stateValue.container.height, viewportWidth / FIT_ASPECT, 1,
+  assertClose(stateValue.container.height, viewportWidth / aspect, 1,
     label + ': card height follows the image aspect');
   assertClose(stateValue.container.aspectRatioValue,
-    FIT_ASPECT, 0.001, label + ': card ratio is the image ratio');
+    aspect, 0.001, label + ': card ratio is the image ratio');
   assertClose(stateValue.container.top,
     (stateValue.innerHeight - stateValue.container.height) / 2, 2,
     label + ': card is vertically centered');
@@ -162,7 +165,7 @@ async function assertCard(stateValue, label, viewportWidth) {
   assertClose(stateValue.image.height, stateValue.container.height, 1,
     label + ': image element fills the card height');
   assertClose(stateValue.imageNatural.width / stateValue.imageNatural.height,
-    FIT_ASPECT, 0.001, label + ': displayed image keeps its own ratio');
+    aspect, 0.001, label + ': displayed image keeps its own ratio');
 
   assertEqual(stateValue.backdropContent, 'none',
     label + ': no ::before backdrop is generated');
@@ -218,7 +221,8 @@ async function main() {
     phoneState.container.aspectRatioValue =
       phoneState.container.width / phoneState.container.height;
 
-    await assertCard(phoneState, 'phone', 390);
+    await assertCard(phoneState, 'phone', 390,
+      FIT_ASPECT, FIT_ASPECT_TEXT, FIT_URLS);
     assertEqual(phoneState.counter, '1 / ' + FIT_URLS.length, 'phone: initial counter');
     assertEqual(phoneState.activeDot, 0, 'phone: initial active dot');
     assert(phoneState.styleAttr &&
@@ -289,7 +293,8 @@ async function main() {
     const columnState = await state(column);
     columnState.container.aspectRatioValue =
       columnState.container.width / columnState.container.height;
-    await assertCard(columnState, 'Behance column', 987);
+    await assertCard(columnState, 'Behance column', 987,
+      FIT_ASPECT, FIT_ASPECT_TEXT, FIT_URLS);
     await column.close();
 
     // ------------------------------------------------- wide landscape frame
@@ -312,28 +317,20 @@ async function main() {
       'wide frame: no background image');
     await desktop.close();
 
-    // ------------------------------------------------- non-gated slideshow
-    const classic = await openSlide(context, base, CLASSIC_ID, CLASSIC_URLS.length);
-    await classic.setViewportSize({ width: 390, height: 1052 });
+    // ------------------------------------ second slideshow on a phone frame
+    const second = await openSlide(context, base, SECOND_ID, SECOND_URLS.length);
+    await second.setViewportSize({ width: 390, height: 1052 });
     await wait(200);
-    const classicState = await state(classic);
-    assertEqual(classicState.layout, '',
-      'non-gated slideshow: no fit layout attribute');
-    assertEqual(classicState.styleAttr, null,
-      'non-gated slideshow: no fit aspect style');
-    assertEqual(classicState.objectFit, 'cover',
-      'non-gated slideshow: cover behavior is unchanged on a phone');
-    assertClose(classicState.container.width, 390, 1,
-      'non-gated slideshow: original width');
-    assertClose(classicState.container.height, 1052, 1,
-      'non-gated slideshow: original height');
-    assertEqual(classicState.container.paddingBottom, '50px',
-      'non-gated slideshow: original control strip');
-    assertEqual(classicState.backdropContent, 'none',
-      'non-gated slideshow: no backdrop');
-    assertEqual(classicState.fullscreenButtons, 1,
-      'non-gated slideshow: exactly one fullscreen button');
-    await classic.close();
+    const secondState = await state(second);
+    secondState.container.aspectRatioValue =
+      secondState.container.width / secondState.container.height;
+    await assertCard(secondState, 'second slideshow', 390,
+      SECOND_ASPECT, SECOND_ASPECT_TEXT, SECOND_URLS);
+    assert(secondState.styleAttr &&
+      secondState.styleAttr.includes('--fit-aspect:' + SECOND_ASPECT_TEXT),
+      'second slideshow: generated fit aspect is present in the markup',
+      secondState.styleAttr);
+    await second.close();
 
     assert(syntheticImageRequests > 0,
       'layout test used synthetic local images only',
@@ -347,8 +344,9 @@ async function main() {
   console.log(JSON.stringify({
     scope: {
       fitSlideshow: FIT_ID,
-      classicSlideshow: CLASSIC_ID,
+      secondSlideshow: SECOND_ID,
       fitAspect: FIT_ASPECT_TEXT,
+      secondAspect: SECOND_ASPECT_TEXT,
       syntheticImageRequests
     },
     checks: results.length,

@@ -11,6 +11,7 @@
   "aspect": 0.85,
   "radius_px": "20px",
   "object_fit": "cover",
+  "layout": "fit",
   "fullscreen_required": true,
   "repair_note": null,
   "image_count": 6,

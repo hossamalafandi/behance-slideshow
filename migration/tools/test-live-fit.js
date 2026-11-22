@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * Focused live check for the P030-S01 phone fit-layout pilot.
+ * Focused live check for the global phone fit layout.
  *
  * Usage:
  *   node test-live-fit.js <https://script.google.com/macros/s/.../exec>
@@ -22,9 +22,11 @@ if (!url || !/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.
 }
 
 const FIT_ID = 'P030-S01';
-const CLASSIC_ID = 'P020-S01';
+const SECOND_ID = 'P020-S01';
 const FIT_ASPECT = 2560 / 1440;
 const FIT_ASPECT_TEXT = FIT_ASPECT.toFixed(6);
+const SECOND_ASPECT = 2560 / 1440;
+const SECOND_ASPECT_TEXT = SECOND_ASPECT.toFixed(6);
 const results = [];
 const failures = [];
 let syntheticRequests = 0;
@@ -136,19 +138,19 @@ async function state(frame) {
   });
 }
 
-function assertCard(value, label, viewportWidth) {
-  assertEqual(value.layout, 'fit', label + ': opt-in layout attribute');
-  assertEqual(value.styleAttr, '--fit-aspect:' + FIT_ASPECT_TEXT,
+function assertCard(value, label, viewportWidth, aspect, aspectText, count) {
+  assertEqual(value.layout, 'fit', label + ': layout attribute');
+  assertEqual(value.styleAttr, '--fit-aspect:' + aspectText,
     label + ': generated aspect style');
   assertEqual(value.objectFit, 'contain', label + ': whole image is contained');
   assertEqual(value.container.paddingBottom, '0px',
     label + ': card has no reserved control strip');
   assertEqual(value.container.radius, '20px', label + ': card radius');
-  assertEqual(value.imageCount, 4, label + ': no duplicate image elements');
+  assertEqual(value.imageCount, count, label + ': no duplicate image elements');
   assertEqual(value.fullscreenButtons, 1, label + ': exactly one fullscreen button');
   assertClose(value.container.width, viewportWidth, 1,
     label + ': card fills the iframe width');
-  assertClose(value.container.height, viewportWidth / FIT_ASPECT, 1,
+  assertClose(value.container.height, viewportWidth / aspect, 1,
     label + ': card height follows the image aspect');
   assertClose(value.container.top,
     (value.innerHeight - value.container.height) / 2, 2,
@@ -158,7 +160,7 @@ function assertCard(value, label, viewportWidth) {
   assertClose(value.image.height, value.container.height, 1,
     label + ': image element fills the card height');
   assertClose(value.imageNatural.width / value.imageNatural.height,
-    FIT_ASPECT, 0.001, label + ': displayed image keeps its own ratio');
+    aspect, 0.001, label + ': displayed image keeps its own ratio');
   assertEqual(value.backdropContent, 'none',
     label + ': no ::before backdrop is generated');
   assertEqual(value.backdropImage, 'none',
@@ -200,7 +202,8 @@ async function main() {
     // --------------------------------------------------- live phone portrait
     const phoneEmbed = await openEmbed(context, FIT_ID, 390, 1107, 4);
     const phone = await state(phoneEmbed.frame);
-    assertCard(phone, 'live phone', 390);
+    assertCard(phone, 'live phone', 390,
+      FIT_ASPECT, FIT_ASPECT_TEXT, 4);
     assertEqual(phone.counter, '1 / 4', 'live phone: initial counter');
     assertEqual(phone.activeDot, 0, 'live phone: initial active dot');
 
@@ -220,7 +223,8 @@ async function main() {
     // --------------------------------------- live Behance column (987 x 1107)
     const columnEmbed = await openEmbed(context, FIT_ID, 987, 1107, 4);
     const column = await state(columnEmbed.frame);
-    assertCard(column, 'live Behance column', 987);
+    assertCard(column, 'live Behance column', 987,
+      FIT_ASPECT, FIT_ASPECT_TEXT, 4);
     await columnEmbed.page.close();
 
     // -------------------------------------------------- live wide landscape
@@ -236,21 +240,12 @@ async function main() {
     assertEqual(wide.backdropImage, 'none', 'live wide: no background image');
     await wideEmbed.page.close();
 
-    // ------------------------------------ live non-gated slideshow on phone
-    const classicEmbed = await openEmbed(context, CLASSIC_ID, 390, 1052, 4);
-    const classic = await state(classicEmbed.frame);
-    assertEqual(classic.layout, '', 'live phone: P020 has no fit layout');
-    assertEqual(classic.styleAttr, null, 'live phone: P020 has no fit aspect style');
-    assertEqual(classic.objectFit, 'cover', 'live phone: P020 cover behavior is unchanged');
-    assertClose(classic.container.width, 390, 1, 'live phone: P020 original width');
-    assertClose(classic.container.height, 1052, 1, 'live phone: P020 original height');
-    assertEqual(classic.container.paddingBottom, '50px',
-      'live phone: P020 original control strip');
-    assertEqual(classic.backdropContent, 'none', 'live phone: P020 has no backdrop');
-    assertEqual(classic.imageCount, 4, 'live phone: P020 keeps four image elements');
-    assertEqual(classic.fullscreenButtons, 1,
-      'live phone: P020 has exactly one fullscreen button');
-    await classicEmbed.page.close();
+    // ------------------------------- live second slideshow on a phone frame
+    const secondEmbed = await openEmbed(context, SECOND_ID, 390, 1052, 4);
+    const second = await state(secondEmbed.frame);
+    assertCard(second, 'live phone', 390,
+      SECOND_ASPECT, SECOND_ASPECT_TEXT, 4);
+    await secondEmbed.page.close();
   } finally {
     await browser.close();
   }
@@ -258,7 +253,12 @@ async function main() {
   const passed = results.filter(result => result.passed).length;
   console.log(JSON.stringify({
     deployment: url,
-    scope: { fitSlideshow: FIT_ID, classicSlideshow: CLASSIC_ID, fitAspect: FIT_ASPECT_TEXT },
+    scope: {
+      fitSlideshow: FIT_ID,
+      secondSlideshow: SECOND_ID,
+      fitAspect: FIT_ASPECT_TEXT,
+      secondAspect: SECOND_ASPECT_TEXT
+    },
     browser: 'Chrome',
     syntheticImageRequests: syntheticRequests,
     checks: results.length,

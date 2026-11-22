@@ -7,14 +7,14 @@ Apps Script host. The complete copy/paste set is in
 `05_BEHANCE_OUTPUT/ALL_EMBEDS.md` and `05_BEHANCE_OUTPUT/ALL_EMBEDS.csv`, with
 the tools-only set in `05_BEHANCE_OUTPUT/TOOLS_USED_EMBEDS.md` and
 `TOOLS_USED_EMBEDS.csv`. The owner paused further Behance test embeds after the
-bulk rollout; P001-S01 remains the only real-Behance-verified embed. A phone
-fit-layout pilot for `P030-S01` is deployed as version 8: on portrait embeds
-the slideshow becomes an image-ratio card with no blur or crop. It awaits the
-owner's phone review; no other slideshow has the layout enabled.**
+bulk rollout; P001-S01 remains the only real-Behance-verified embed. The phone
+fit layout was approved on `P030-S01` and is deployed as version 9 for all 48
+slideshows: on portrait embeds each slideshow becomes an image-ratio card with
+no blur and no crop.**
 Audit date: 2026-11-18
 Bulk rollout date: 2026-11-20
 P024 completion date: 2026-11-21
-Phone fit pilot: 2026-11-22
+Phone fit rollout: 2026-11-22
 Scope: the **Freelance** page of <https://sites.google.com/view/hossam-alafandi/>
 and its 38 project pages.
 
@@ -22,11 +22,11 @@ This folder is the migration workspace. It was created without changing,
 deleting, renaming, or redeploying anything in the live portfolio, the existing
 production Apps Script project, or the existing `index.html` prototype. A **new
 standalone** Apps Script project hosts all 48 slideshows and the 38 TOOLS USED
-strips; it is deployed as version 8. One temporary Behance test project was
+strips; it is deployed as version 9. One temporary Behance test project was
 published. The audit, pilot, and bulk rollout commits are pushed to `main`. See
 `01_AUDIT/phase_2_pilot_report.md` and `01_AUDIT/phase_2_bulk_report.md` for the
 bulk test results, and `00_DOCUMENTATION/PHONE_FIT_LAYOUT.md` for the phone fit
-pilot, its tests, rollout, and rollback.
+layout, its tests, rollout, and rollback.
 
 Phase 1.1 adds two mandatory requirements: **no image downloading/rehosting**
 and **one consistent fullscreen button on all 48 slideshows**. The owner also
@@ -62,14 +62,14 @@ migration/
 │   ├── IMAGE_HOSTING_POLICY.md          mandatory no-download/no-rehost rule
 │   ├── FULLSCREEN_STANDARD.md           mandatory button, CSS, JS and fallback standard
 │   ├── INDEPENDENT_EMBED_STANDARD.md    one request = one slideshow; no gallery
-│   ├── PHONE_FIT_LAYOUT.md              opt-in phone fit pilot, rollout and rollback
+│   ├── PHONE_FIT_LAYOUT.md              phone fit layout, rollout and rollback
 │   └── PHASE_2_IMPLEMENTATION_PLAN.md   detailed build, test and rollout plan
 ├── 01_AUDIT/
 │   ├── projects.csv                     38 projects: IDs, titles, URLs, status, counts
 │   ├── slideshows.csv                   48 slideshows: IDs, stems, sections, controls, status
 │   ├── images.csv                       339 remote image slots: order, exact URL, dimensions
 │   ├── slides.config.json               machine-readable master for the rebuild phase
-│   ├── layout.config.json               per-slideshow phone fit gate (P030-S01 pilot)
+│   ├── layout.config.json               phone fit gate (now "all")
 │   ├── audit_summary.md                 method, inventory and findings
 │   ├── unresolved_items.md              blockers, defects and decisions needed
 │   ├── phase_1_1_report.md              Phase 1.1 findings and approval checklist
@@ -77,7 +77,7 @@ migration/
 │   └── evidence/                        pilot and bulk test reports (screenshots gitignored)
 ├── 02_SOURCE_BACKUP/                    untouched original slideshow HTML, one folder per project
 ├── 03_REBUILT_SLIDESHOWS/               generated data and previews for all 48 slideshows
-├── 04_APPS_SCRIPT/                      shared Apps Script project (48-slide map, 38-tool map, version 8)
+├── 04_APPS_SCRIPT/                      shared Apps Script project (48-slide map, 38-tool map, version 9)
 └── 05_BEHANCE_OUTPUT/                   all 48 embed codes plus 38 TOOLS USED codes: ALL_EMBEDS.md, ALL_EMBEDS.csv, TOOLS_USED_EMBEDS.md, TOOLS_USED_EMBEDS.csv, 37 project files
 ```
 
@@ -231,16 +231,16 @@ all 38 TOOLS USED iframe codes in the same Markdown file and in
 `TOOLS_USED_EMBEDS.md` / `TOOLS_USED_EMBEDS.csv`. P001-S01 remains the only
 real-Behance-verified embed. On 2026-11-21 the owner supplied the fixed P024
 page; it was audited, added as `P024-S01` + `P024-TOOLS`, and deployed as
-version 6 with the same deployment ID. On 2026-11-22 an opt-in phone fit layout
-was added and refined into version 8 for the single pilot `P030-S01`. On
-portrait/tall embeds the slideshow becomes a card sized to the first image's
-aspect ratio, centered with no blur and no crop; wide landscape frames keep the
-original `cover` behavior. The outer Behance codes, image URLs, and image order
-are unchanged. All 48 live slideshows still pass (339/339), the focused live
-pilot passes 56/56, the local fit suite passes 75/75, and static validation
-passes 3313/3313. The layout is enabled for `P030-S01` only and awaits the
-owner's phone review; see `00_DOCUMENTATION/PHONE_FIT_LAYOUT.md` for the
-rollout and rollback steps.
+version 6 with the same deployment ID. On 2026-11-22 the owner approved the
+phone fit layout after reviewing the `P030-S01` pilot, and it was rolled out to
+all 48 slideshows as version 9. On portrait/tall embeds the slideshow becomes a
+card sized to the first image's aspect ratio, centered with no blur and no crop;
+wide landscape frames keep the original `cover` behavior. The outer Behance
+codes, image URLs, and image order are unchanged. All 48 live slideshows pass
+(339/339), the focused live fit suite passes 64/64, the local fit suite passes
+89/89, and static validation passes 3405/3405. See
+`00_DOCUMENTATION/PHONE_FIT_LAYOUT.md` for the layout details, rollout, and
+rollback steps.
 
 ## 10. What was deliberately not done
 
@@ -257,8 +257,9 @@ rollout and rollback steps.
   published. The owner will paste the remaining codes manually.
 - No real Behance verification of the other 47 slideshows. The owner closed
   further testing; those codes are delivered ready for manual use.
-- No rollout of the phone fit layout beyond `P030-S01`. The pilot awaits the
-  owner's phone review; all other slideshows keep the original layout.
+- No rollout of any other change beyond the approved phone fit layout, which is
+  enabled for all 48 slideshows as version 9. The outer Behance codes and image
+  order are untouched.
 
 ## 11. Exception summary
 
