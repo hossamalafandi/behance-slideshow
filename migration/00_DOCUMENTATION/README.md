@@ -8,9 +8,9 @@ Apps Script host. The complete copy/paste set is in
 the tools-only set in `05_BEHANCE_OUTPUT/TOOLS_USED_EMBEDS.md` and
 `TOOLS_USED_EMBEDS.csv`. The owner paused further Behance test embeds after the
 bulk rollout; P001-S01 remains the only real-Behance-verified embed. The phone
-fit layout was approved on `P030-S01` and is deployed as version 9 for all 48
+fit layout was approved on `P030-S01` and is deployed as version 10 for all 48
 slideshows: on portrait embeds each slideshow becomes an image-ratio card with
-no blur and no crop.**
+no blur and no crop, and the fullscreen fallback expands quietly.**
 Audit date: 2026-11-18
 Bulk rollout date: 2026-11-20
 P024 completion date: 2026-11-21
@@ -22,7 +22,7 @@ This folder is the migration workspace. It was created without changing,
 deleting, renaming, or redeploying anything in the live portfolio, the existing
 production Apps Script project, or the existing `index.html` prototype. A **new
 standalone** Apps Script project hosts all 48 slideshows and the 38 TOOLS USED
-strips; it is deployed as version 9. One temporary Behance test project was
+strips; it is deployed as version 10. One temporary Behance test project was
 published. The audit, pilot, and bulk rollout commits are pushed to `main`. See
 `01_AUDIT/phase_2_pilot_report.md` and `01_AUDIT/phase_2_bulk_report.md` for the
 bulk test results, and `00_DOCUMENTATION/PHONE_FIT_LAYOUT.md` for the phone fit
@@ -77,7 +77,7 @@ migration/
 │   └── evidence/                        pilot and bulk test reports (screenshots gitignored)
 ├── 02_SOURCE_BACKUP/                    untouched original slideshow HTML, one folder per project
 ├── 03_REBUILT_SLIDESHOWS/               generated data and previews for all 48 slideshows
-├── 04_APPS_SCRIPT/                      shared Apps Script project (48-slide map, 38-tool map, version 9)
+├── 04_APPS_SCRIPT/                      shared Apps Script project (48-slide map, 38-tool map, version 10)
 └── 05_BEHANCE_OUTPUT/                   all 48 embed codes plus 38 TOOLS USED codes: ALL_EMBEDS.md, ALL_EMBEDS.csv, TOOLS_USED_EMBEDS.md, TOOLS_USED_EMBEDS.csv, 37 project files
 ```
 
@@ -235,10 +235,12 @@ version 6 with the same deployment ID. On 2026-11-22 the owner approved the
 phone fit layout after reviewing the `P030-S01` pilot, and it was rolled out to
 all 48 slideshows as version 9. On portrait/tall embeds the slideshow becomes a
 card sized to the first image's aspect ratio, centered with no blur and no crop;
-wide landscape frames keep the original `cover` behavior. The outer Behance
-codes, image URLs, and image order are unchanged. All 48 live slideshows pass
-(339/339), the focused live fit suite passes 64/64, the local fit suite passes
-89/89, and static validation passes 3405/3405. See
+wide landscape frames keep the original `cover` behavior. Version 10 made the
+fullscreen fallback quiet: when the browser or Behance app denies native
+fullscreen, the slideshow expands into theater mode without showing a technical
+message. The outer Behance codes, image URLs, and image order are unchanged. All
+48 live slideshows pass (339/339), the focused live fit suite passes 64/64, the
+local fit suite passes 89/89, and static validation passes 3405/3405. See
 `00_DOCUMENTATION/PHONE_FIT_LAYOUT.md` for the layout details, rollout, and
 rollback steps.
 
@@ -257,9 +259,9 @@ rollback steps.
   published. The owner will paste the remaining codes manually.
 - No real Behance verification of the other 47 slideshows. The owner closed
   further testing; those codes are delivered ready for manual use.
-- No rollout of any other change beyond the approved phone fit layout, which is
-  enabled for all 48 slideshows as version 9. The outer Behance codes and image
-  order are untouched.
+- No rollout of any other change beyond the approved phone fit layout and quiet
+  fullscreen fallback, which are enabled for all 48 slideshows as version 10.
+  The outer Behance codes and image order are untouched.
 
 ## 11. Exception summary
 

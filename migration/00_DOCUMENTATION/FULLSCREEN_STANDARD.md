@@ -86,28 +86,6 @@ Use the P038 rules verbatim. Add only the fallback rules below; do not restyle
 the normal state.
 
 ```css
-.fullscreen-note {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 21;
-  max-width: calc(100% - 140px);
-  padding: 6px 12px;
-  border-radius: 10px;
-  background: rgba(0,0,0,0.6);
-  color: white;
-  font-size: 13px;
-  text-align: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.fullscreen-note.is-visible {
-  opacity: 1;
-}
-
 .slideshow-container.theater-mode {
   position: fixed;
   inset: 0;
@@ -124,8 +102,7 @@ body.theater-open {
 }
 ```
 
-The note exists only to report a failed native request. It is not a control and
-does not affect the normal layout.
+The fallback expands quietly: no status note, alert, or technical message.
 
 ## 5. Required JavaScript behavior
 
@@ -138,8 +115,8 @@ The implementation must:
 5. listen for `fullscreenchange` and `fullscreenerror`;
 6. update the button's `aria-label` and `title` on every state change;
 7. call `exitFullscreen()` when already fullscreen;
-8. fall back to in-iframe theater mode when native fullscreen is unavailable or
-   denied;
+8. fall back quietly to in-iframe theater mode when native fullscreen is
+   unavailable or denied;
 9. never throw an uncaught error, block with `alert()`, or leave the button
    doing nothing;
 10. preserve the slideshow's other interactions.
@@ -152,8 +129,6 @@ Reference implementation:
   var button = document.getElementById('fullscreenBtn');
   if (!container || !button) return;
 
-  var note = null;
-  var noteTimer = null;
   var fallbackActive = false;
 
   function setButtonState(active) {
@@ -161,29 +136,13 @@ Reference implementation:
     button.setAttribute('title', active ? 'Exit fullscreen' : 'Fullscreen');
   }
 
-  function showNote(text) {
-    if (!note) {
-      note = document.createElement('div');
-      note.className = 'fullscreen-note';
-      note.setAttribute('role', 'status');
-      note.setAttribute('aria-live', 'polite');
-      container.appendChild(note);
-    }
-    note.textContent = text;
-    note.classList.add('is-visible');
-    clearTimeout(noteTimer);
-    noteTimer = setTimeout(function () {
-      note.classList.remove('is-visible');
-    }, 3500);
-  }
-
   function enterFallback() {
     if (fallbackActive) return;
+    if (document.fullscreenElement || document.webkitFullscreenElement) return;
     fallbackActive = true;
     container.classList.add('theater-mode');
     document.body.classList.add('theater-open');
     setButtonState(true);
-    showNote('Native fullscreen is unavailable here — using theater mode.');
   }
 
   function exitFallback() {
@@ -260,8 +219,9 @@ as part of this standard.
 ## 6. Fallback and its limitations
 
 Native fullscreen is attempted first. If it is denied or unavailable, the button
-toggles `.theater-mode`, which makes the slideshow fill the iframe viewport, and
-shows a short status note.
+toggles `.theater-mode`, which makes the slideshow fill the iframe viewport. The
+fallback is intentionally quiet: it does not show a status note, alert, or
+technical message.
 
 Limitations of theater mode:
 
@@ -271,9 +231,10 @@ Limitations of theater mode:
   state;
 - it is not equivalent to browser fullscreen and must be described as a
   fallback;
-- the note disappears automatically; the button remains the exit control.
+- the button remains the exit control.
 
-This is preferable to a silent failure, a blocking alert, or a broken slideshow.
+This is preferable to a blocking alert, a technical message, or a broken
+slideshow.
 
 ## 7. Behance iframe requirements
 
@@ -339,7 +300,7 @@ For every slideshow:
 - [ ] images, order, aspect ratios and repeated URLs unchanged;
 - [ ] arrows, dots, counter, shadows, borders and transitions unchanged;
 - [ ] native request works when permission is granted;
-- [ ] denial triggers theater mode and the status note, with no crash;
+- [ ] denial triggers theater mode quietly, with no crash or technical note;
 - [ ] `fullscreenchange` updates the button label;
 - [ ] exiting fullscreen restores the normal layout;
 - [ ] fullscreen in one embed leaves other embeds' slide and fullscreen state

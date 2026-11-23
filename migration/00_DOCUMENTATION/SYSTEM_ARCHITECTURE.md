@@ -194,7 +194,7 @@ No snippet loads more than one slideshow or communicates with another snippet.
    `allow="fullscreen"`, the nested slideshow can enter native fullscreen; when
    it does not, `document.fullscreenEnabled` is false and `fullscreenerror`
    fires. Behance must preserve those attributes. Mitigation: native first, then
-   a visible in-iframe theater mode; real Behance test is a release gate.
+   a quiet in-iframe theater mode; real Behance test is a release gate.
 2. **Fixed iframe height.** Behance does not auto-size embedded iframes. Each
    slideshow needs a deliberate height; portrait slideshows will look small in a
    wide column. Mitigation: per-slide aspect ratio in the config and a

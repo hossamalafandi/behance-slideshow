@@ -153,7 +153,7 @@ Rules:
 | Different aspect ratios | Each embed uses its own audited height |
 | Portrait and landscape side by side | No cross-iframe resizing or scroll interference |
 | Fullscreen one embed | Only that iframe's container becomes fullscreen |
-| Denied fullscreen | Only that iframe shows the fallback note |
+| Denied fullscreen | Only that iframe enters quiet theater mode |
 | Exit fullscreen | Only that iframe restores its normal layout |
 
 ## 8. Acceptance checklist

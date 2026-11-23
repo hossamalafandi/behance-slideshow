@@ -144,9 +144,7 @@ async function fullscreenState(frame) {
         ? document.fullscreenElement.contains(dotContainer)
         : null,
       aria: document.getElementById('fullscreenBtn').getAttribute('aria-label'),
-      note: document.querySelector('.fullscreen-note')
-        ? document.querySelector('.fullscreen-note').textContent
-        : null,
+      note: Boolean(document.querySelector('.fullscreen-note')),
       noteVisible: Boolean(document.querySelector('.fullscreen-note.is-visible'))
     };
   });
@@ -409,8 +407,8 @@ async function main() {
     assertEqual(state.native, null, 'native fullscreen should be absent');
     assertEqual(state.theater, true, 'theater mode');
     assertEqual(state.aria, 'Exit fullscreen', 'button label');
-    assert(state.note && /theater mode/i.test(state.note), 'fallback note text');
-    assertEqual(state.noteVisible, true, 'fallback note visibility');
+    assertEqual(state.note, false, 'fallback note absent');
+    assertEqual(state.noteVisible, false, 'fallback note not visible');
   });
 
   await test('Fallback: second click exits theater mode and clears the state', async () => {

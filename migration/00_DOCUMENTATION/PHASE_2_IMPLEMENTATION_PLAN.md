@@ -259,7 +259,7 @@ Implementation follows `FULLSCREEN_STANDARD.md` exactly:
 1. native request on `#slideshow`;
 2. Promise rejection and `fullscreenerror` handling;
 3. `fullscreenchange` state updates;
-4. in-iframe theater-mode fallback with a transient status note;
+4. quiet in-iframe theater-mode fallback;
 5. one button, no duplicate in P038-S01;
 6. generated iframe permissions as above.
 

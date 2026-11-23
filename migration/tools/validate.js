@@ -342,7 +342,8 @@ function main() {
     check(id + ': preview handles fullscreenerror', /fullscreenerror/.test(preview));
     check(id + ': preview handles fullscreenchange', /fullscreenchange/.test(preview));
     check(id + ': preview has theater-mode fallback', /theater-mode/.test(preview));
-    check(id + ': preview has a non-blocking fallback note', /fullscreen-note/.test(preview));
+    check(id + ': preview fallback stays quiet', !/fullscreen-note/.test(preview) &&
+      !/Native fullscreen is unavailable/.test(preview));
     check(id + ': preview does not call alert()', !/\balert\s*\(/.test(preview));
     check(id + ': preview does not use storage or messaging',
       !/localStorage|sessionStorage|indexedDB|document\.cookie|postMessage|BroadcastChannel/i

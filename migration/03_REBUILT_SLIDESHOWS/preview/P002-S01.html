@@ -216,29 +216,7 @@
       background: rgba(0,0,0,0.6);
     }
 
-    /* Fullscreen fallback note and in-iframe theater mode */
-    .fullscreen-note {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 21;
-      max-width: calc(100% - 140px);
-      padding: 6px 12px;
-      border-radius: 10px;
-      background: rgba(0,0,0,0.6);
-      color: white;
-      font-size: 13px;
-      text-align: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .fullscreen-note.is-visible {
-      opacity: 1;
-    }
-
+    /* In-iframe theater mode for browsers that deny native fullscreen */
     .slideshow-container.theater-mode {
       position: fixed;
       inset: 0;
@@ -332,35 +310,17 @@
   // Initialize
   showSlide(currentIndex);
 
-  // Fullscreen handling: native first, visible theater-mode fallback second.
+  // Fullscreen handling: native first, quiet theater-mode fallback second.
   (function () {
     const container = document.getElementById('slideshow');
     const button = document.getElementById('fullscreenBtn');
     if (!container || !button) return;
 
-    let note = null;
-    let noteTimer = null;
     let fallbackActive = false;
 
     function setButtonState(active) {
       button.setAttribute('aria-label', active ? 'Exit fullscreen' : 'Enter fullscreen');
       button.setAttribute('title', active ? 'Exit fullscreen' : 'Fullscreen');
-    }
-
-    function showNote(text) {
-      if (!note) {
-        note = document.createElement('div');
-        note.className = 'fullscreen-note';
-        note.setAttribute('role', 'status');
-        note.setAttribute('aria-live', 'polite');
-        container.appendChild(note);
-      }
-      note.textContent = text;
-      note.classList.add('is-visible');
-      clearTimeout(noteTimer);
-      noteTimer = setTimeout(function () {
-        note.classList.remove('is-visible');
-      }, 3500);
     }
 
     function enterFallback() {
@@ -370,7 +330,6 @@
       container.classList.add('theater-mode');
       document.body.classList.add('theater-open');
       setButtonState(true);
-      showNote('Native fullscreen is unavailable here — using theater mode.');
     }
 
     function exitFallback() {

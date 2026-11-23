@@ -1,7 +1,8 @@
 # Phone fit layout — all 48 slideshows
 
 Status: **approved on the `P030-S01` pilot and rolled out to all 48 slideshows
-as version 9 on 2026-11-22.**
+as version 10 on 2026-11-22. Version 10 keeps the approved layout and makes the
+fullscreen fallback quiet.**
 
 ## 1. Why
 
@@ -39,7 +40,8 @@ portrait/taller than wide (`max-aspect-ratio: 1/1`):
 - the 50 px control strip is removed in fit mode; dots and controls overlay the
   card;
 - native fullscreen and theater mode still fill the screen and keep the whole
-  image visible with black bars;
+  image visible with black bars. When the browser or Behance app denies native
+  fullscreen, theater mode activates quietly without a technical message;
 - navigation, dots, counter, hover-reveal, side shadows, the single fullscreen
   button, and the theater-mode fallback are unchanged.
 
@@ -104,7 +106,7 @@ Local suites:
   fullscreen fill and restore. Synthetic 16:9 SVG placeholders are used; no
   original image is downloaded or viewed.
 
-Live deployment (version 9):
+Live deployment (version 10):
 
 - `node tools/test-live-all.js <deployment-url>` — **339/339**, 48/48
   slideshows; no banner; exact URLs; fullscreen.
@@ -130,6 +132,9 @@ deployment ID did not change. No Behance code needs to be replaced.
 4. `layout.config.json` was set to `"fit": "all"`, all artifacts were
    regenerated, the suites above passed, and version 9 was deployed under the
    same deployment ID. The Behance codes remain unchanged.
+5. Version 10 removed the technical fullscreen fallback note. On browsers that
+   deny native fullscreen, the button now enters theater mode quietly. Native
+   fullscreen is still used wherever the browser and embedding page allow it.
 
 ## 6. Revert
 
