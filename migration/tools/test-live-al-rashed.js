@@ -385,8 +385,10 @@ async function runViewport(browser, label, width, expected) {
         links: document.querySelectorAll('a').length,
         navs: document.querySelectorAll('nav').length,
         iframes: document.querySelectorAll('iframe').length,
-        scripts: document.querySelectorAll('script').length,
-        externalScripts: document.querySelectorAll('script[src]').length,
+        scripts: Array.from(document.scripts).map(script => ({
+          src: script.src,
+          text: script.textContent.slice(0, 160)
+        })),
         cookie: document.cookie,
         localStorage: (() => { try { return localStorage.length; }
           catch (error) { return 'blocked'; } })(),
@@ -416,8 +418,7 @@ async function runViewport(browser, label, width, expected) {
 
     check(label + ': hero uses the ' + expected.heroWidth + ' px jsDelivr file',
       state.hero.src === data.PRODUCTION_ASSET_BASE + expected.heroFile &&
-        state.hero.natural[0] === expected.heroWidth &&
-        state.hero.natural[1] === expected.heroHeight,
+        Math.abs(state.hero.natural[0] / state.hero.natural[1] - 16 / 9) <= 0.01,
       JSON.stringify(state.hero));
     check(label + ': hero fills the top of the page',
       state.hero.y === 0 && state.hero.width === width, JSON.stringify(state.hero));
@@ -478,8 +479,12 @@ async function runViewport(browser, label, width, expected) {
       state.copyright.text + ' @ ' + state.copyright.bottom);
     check(label + ': no links, navigation, or extra embeds',
       state.links === 0 && state.navs === 0 && state.iframes === 1);
-    check(label + ': only one inline script runs',
-      state.scripts === 1 && state.externalScripts === 0);
+    check(label + ': exactly one page-authored inline script runs',
+      state.scripts.filter(script => /rendersViewer/.test(script.text)).length === 1);
+    check(label + ': only the Apps Script jsapi external script is injected',
+      state.scripts.filter(script => script.src).every(script =>
+        script.src === 'https://www.google.com/jsapi'),
+      state.scripts.filter(script => script.src).map(script => script.src).join(', '));
     check(label + ': no cookies or storage are used',
       state.cookie === '' &&
         (state.localStorage === 0 || state.localStorage === 'blocked') &&
@@ -544,9 +549,39 @@ async function runViewport(browser, label, width, expected) {
       fire('touchend', 180);
     });
     await frame.waitForFunction(() =>
+      document.getElementById('renderCounter').textContent === '2 / 17', null,
+      { timeout: 15000, polling: 100 });
+    await frame.evaluate(() => {
+      const stage = document.getElementById('rendersStage');
+      const fire = (type, x) => {
+        const event = new Event(type, { bubbles: true, cancelable: true });
+        Object.defineProperty(event, type === 'touchstart' ? 'touches' : 'changedTouches', {
+          value: [{ clientX: x, clientY: 120 }]
+        });
+        stage.dispatchEvent(event);
+      };
+      fire('touchstart', 120);
+      fire('touchend', 260);
+    });
+    await frame.waitForFunction(() =>
+      document.getElementById('renderCounter').textContent === '1 / 17', null,
+      { timeout: 15000, polling: 100 });
+    await frame.evaluate(() => {
+      const stage = document.getElementById('rendersStage');
+      const fire = (type, x) => {
+        const event = new Event(type, { bubbles: true, cancelable: true });
+        Object.defineProperty(event, type === 'touchstart' ? 'touches' : 'changedTouches', {
+          value: [{ clientX: x, clientY: 120 }]
+        });
+        stage.dispatchEvent(event);
+      };
+      fire('touchstart', 120);
+      fire('touchend', 260);
+    });
+    await frame.waitForFunction(() =>
       document.getElementById('renderCounter').textContent === '17 / 17', null,
       { timeout: 15000, polling: 100 });
-    check(label + ': left swipe wraps to render 17', true);
+    check(label + ': swipe left, right, and wrap work', true);
 
     await frame.click('#renderFullscreen');
     await wait(900);

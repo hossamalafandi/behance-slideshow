@@ -256,7 +256,7 @@ fullscreen fallback quiet: when the browser or Behance app denies native
 fullscreen, the slideshow expands into theater mode without showing a technical
 message. The outer Behance codes, image URLs, and image order are unchanged. All
 48 live slideshows pass (339/339), the focused live fit suite passes 64/64, the
-local fit suite passes 89/89, and static validation passes 3405/3405. See
+local fit suite passes 89/89, and static validation passes 3488/3488. See
 `00_DOCUMENTATION/PHONE_FIT_LAYOUT.md` for the layout details, rollout, and
 rollback steps.
 
@@ -264,10 +264,11 @@ Version 11 adds the standalone Al-Rashed project page at `?page=al-rashed`
 without touching the 48 slideshow routes. The page omits the Google Sites
 header, logo, navigation, and footer, uses a fixed 2980 px Behance iframe that
 fills the 987 px desktop column and the 390 px phone column exactly, and keeps
-the 17 render URLs and 5 tool URLs unchanged. Static validation passes
-3488/3488 and the new page suite passes 212/212; the existing 48-slideshow local,
-fit, pilot, and live suites remain green. The copy/paste code and rollback steps
-are in `05_BEHANCE_OUTPUT/AL_RASHED_EMBED.md`.
+the 17 render URLs and 5 tool URLs unchanged. It is deployed as version 11 under
+the same deployment ID. Static validation passes 3488/3488, the new local page
+suite passes 212/212, and the live page suite passes 128/128. The existing
+48-slideshow local, fit, pilot, and live suites remain green. The copy/paste
+code and rollback steps are in `05_BEHANCE_OUTPUT/AL_RASHED_EMBED.md`.
 
 ## 10. What was deliberately not done
 

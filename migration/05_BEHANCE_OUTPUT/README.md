@@ -56,6 +56,9 @@ original logo URLs and CSS; the images are not copied or rehosted.
 4. Keep `width="100%"` and `height="2980"`; the height is sized to the Behance
    desktop column and phone. Do not combine it with a slideshow code.
 
+Live verification: the page suite passes **128/128**, the all-slideshow suite
+passes **339/339**, and the phone fit suite passes **64/64** against version 11.
+
 ## Not included
 
 - **P036** has no slideshow, but its TOOLS USED code is included in both

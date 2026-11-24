@@ -1,8 +1,9 @@
 # Al-Rashed Project — standalone Behance embed
 
 Status: **ready for manual copy/paste. Nothing has been published or replaced.**
-Built 2026-11-24. This page is independent of the 48 slideshow embeds and the
-38 TOOLS USED strips; none of those codes or image URLs changed.
+Built 2026-11-24 and deployed as version 11 under the existing deployment ID.
+This page is independent of the 48 slideshow embeds and the 38 TOOLS USED
+strips; none of those codes or image URLs changed.
 
 The page is a clean standalone version of the Al-Rashed Google Sites project
 page without the Google Sites header, navigation, logo, or footer. It uses the
@@ -71,7 +72,7 @@ index of the 48 slideshows.
 ## Deployment
 
 The page uses the existing standalone Apps Script deployment under the same
-deployment ID, with the new `?page=al-rashed` route:
+deployment ID, with the new `?page=al-rashed` route. It is live as version 11:
 
 ```
 https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec?page=al-rashed
@@ -101,6 +102,18 @@ native fullscreen, and the theater fallback. It fulfills every Imgur request
 with a synthetic image and every map request with a stub, so no original image
 or map tile is downloaded.
 
+The live deployment is also covered:
+
+```powershell
+node test-live-al-rashed.js https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec
+```
+
+It verifies all 9 jsDelivr files, both Behance-like frames, the phone and
+desktop image sources, navigation, fullscreen, the map, and the unchanged
+`?slide=` / `?tools=` routes. Result: **128/128**. The full live regression is
+also green: **339/339** for all 48 slideshows and **64/64** for the phone fit
+layout.
+
 ## Rollback
 
 - **Remove the embed only:** delete the iframe block from the Behance project.
@@ -120,4 +133,5 @@ or map tile is downloaded.
 - The copyright line is provisional and can be removed from the page generator
   without touching any other section.
 - The page is static HTML served by Apps Script; it uses no cookies, storage,
-  messaging, or external scripts.
+  messaging, or external scripts of its own. Apps Script injects its standard
+  `jsapi` bootstrap script into the served frame.
