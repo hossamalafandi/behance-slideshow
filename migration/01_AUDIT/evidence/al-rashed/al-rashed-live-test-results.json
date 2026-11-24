@@ -11,10 +11,10 @@
     "assets": 9
   },
   "browser": "Chrome 158.0.8127.88",
-  "checks": 128,
-  "passed": 128,
+  "checks": 130,
+  "passed": 130,
   "failed": 0,
-  "blockedImgurRequests": 100,
+  "blockedImgurRequests": 72,
   "failures": [],
   "results": [
     {
@@ -223,6 +223,16 @@
       "detail": "17"
     },
     {
+      "name": "route: page has the 17 full-resolution render originals",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "route: page has the 17 phone h render sources",
+      "passed": true,
+      "detail": null
+    },
+    {
       "name": "route: page has the 9 jsDelivr assets",
       "passed": true,
       "detail": null
@@ -348,14 +358,14 @@
       "detail": "17 / 17 / 1 / 17"
     },
     {
-      "name": "desktop 987x2980: live render URLs match the data exactly in order",
+      "name": "desktop 987x2980: live render URLs match the expected source in order",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x2980: first render decodes at 1024x576",
+      "name": "desktop 987x2980: first render decodes at 3840x2160",
       "passed": true,
-      "detail": "1024x576"
+      "detail": "3840x2160"
     },
     {
       "name": "desktop 987x2980: render stage keeps 16:9",
@@ -528,7 +538,7 @@
       "detail": "17 / 17 / 1 / 17"
     },
     {
-      "name": "phone 390x2980: live render URLs match the data exactly in order",
+      "name": "phone 390x2980: live render URLs match the expected source in order",
       "passed": true,
       "detail": null
     },

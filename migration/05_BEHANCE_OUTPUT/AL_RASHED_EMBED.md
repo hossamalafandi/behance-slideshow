@@ -114,7 +114,7 @@ node test-live-al-rashed.js https://script.google.com/macros/s/AKfycbzV7OufIj8Q6
 
 It verifies all 9 jsDelivr files, both Behance-like frames, the full-resolution
 desktop renders, the phone `h` sources, navigation, fullscreen, the map, and the
-unchanged `?slide=` / `?tools=` routes. Result: **PENDING**. The full live
+unchanged `?slide=` / `?tools=` routes. Result: **130/130**. The full live
 regression is also green: **339/339** for all 48 slideshows and **64/64** for the
 phone fit layout.
 

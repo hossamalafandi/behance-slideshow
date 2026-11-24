@@ -274,7 +274,7 @@ renders: desktop visitors now receive the full-resolution 3840×2160 Imgur
 originals, while phones keep the existing 1024×576 `h` variants through
 `<picture>`. It is deployed as version 12 under the same deployment ID. Static
 validation passes 3489/3489, the new local page suite passes 213/213, and the
-live page suite passes PENDING. The existing 48-slideshow local, fit, pilot, and
+live page suite passes 130/130. The existing 48-slideshow local, fit, pilot, and
 live suites remain green. The copy/paste code and rollback steps are in
 `05_BEHANCE_OUTPUT/AL_RASHED_EMBED.md`.
 
