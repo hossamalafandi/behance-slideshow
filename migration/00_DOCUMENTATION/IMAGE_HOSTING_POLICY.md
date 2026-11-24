@@ -2,12 +2,15 @@
 
 Status: **mandatory owner requirement** (Phase 1.1, 2026-11-18; reconfirmed for
 Phase 2). Applies to every later phase, including Phase 2 and any future
-maintenance. Phase 2 tests do not fetch, open, or inspect image content.
+maintenance. Phase 2 tests do not fetch, open, or inspect image content. The
+single documented exception is the standalone Al-Rashed page in section 8.
 
 ## 1. The rule
 
 The slideshow images already exist online, predominantly on `i.imgur.com`. The
-migration must use those original URLs directly.
+migration must use those original URLs directly. The only exception is the
+standalone Al-Rashed page described in section 8; it does not apply to any of
+the 48 slideshows.
 
 It is prohibited to:
 
@@ -20,7 +23,7 @@ It is prohibited to:
 - use an imgur thumbnail or resized variant in place of the original URL.
 
 The rebuilt slideshow HTML must contain the original remote URL in the `<img
-src="…">` attribute. No image binaries are part of this project.
+src="…">` attribute. No image binaries are part of the 48-slideshow project.
 
 ## 2. What is allowed
 
@@ -53,7 +56,7 @@ Every URL is treated as an opaque, exact string:
 ## 4. Repository and pipeline rules
 
 - `03_REBUILT_SLIDESHOWS/assets/` is not used. No `assets` directory is created
-  for images.
+  for slideshow images.
 - `01_AUDIT/images.csv` stores the remote URL only. The obsolete `local_target`
   column was removed in Phase 1.1.
 - `01_AUDIT/slides.config.json` stores remote URLs and dimensions only.
@@ -61,6 +64,9 @@ Every URL is treated as an opaque, exact string:
   It only renders HTML that points at the remote URLs.
 - Generated Behance snippets contain the Apps Script URL, never an image.
 - The Phase 2 generator must never invoke an image download.
+- The only committed image binaries are the 9 owner-approved derivatives in
+  `assets/al-rashed/` for the standalone page (section 8). Scratch originals in
+  `assets/al-rashed/raw/` are gitignored.
 
 ## 5. Failure handling
 
@@ -85,7 +91,8 @@ Before publishing any snippet:
   order;
 - confirm the generated HTML contains no `assets/`, `data:image`, base64,
   Drive, or local-file references;
-- confirm the repository contains no image binaries added by the migration;
+- confirm the repository contains no image binaries added by the migration,
+  except the 9 approved `assets/al-rashed/` derivatives;
 - confirm the browser loads the images directly from `i.imgur.com`.
 
 A SHA-256 of the ordered URL sequence from `images.csv` at Phase 1.1 completion
@@ -97,3 +104,25 @@ Imgur can rate-limit, block hotlinking, or remove content. This risk is accepted
 by the owner in exchange for not duplicating the assets. It is recorded as U07
 in `01_AUDIT/unresolved_items.md`. The mitigation is monitoring and a documented
 failure record, not rehosting.
+
+## 8. Standalone Al-Rashed page exception
+
+Date: 2026-11-24. Owner-approved scope: the standalone Al-Rashed project page
+served at `?page=al-rashed`, and nothing else.
+
+Google Sites serves the page hero and 3 real photos with
+`Cross-Origin-Resource-Policy: same-site`, so those four source images cannot be
+loaded inside a Behance iframe. The owner approved copying them for this page:
+
+- 9 optimized JPEG derivatives live in `assets/al-rashed/`: 768 px phone
+  versions, 1280 px desktop versions, and a 1920 px hero fallback.
+- They are served from the public repository through jsDelivr at
+  `https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/al-rashed/`.
+- The scratch originals in `assets/al-rashed/raw/` are gitignored and are not
+  part of the deployed page.
+- The page still uses the exact Imgur URLs and order for the 17 renders and the
+  5 tool logos.
+- No slideshow image was copied, resized, proxied, or rehosted. The 48
+  slideshows remain governed by sections 1–6.
+- This exception does not authorize copying any other Google Sites image or any
+  slideshow image.

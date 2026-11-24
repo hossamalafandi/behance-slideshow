@@ -1,9 +1,10 @@
 /**
  * Shared stateless embed renderer.
  *
- * One request = one slideshow or one TOOLS USED strip. This file intentionally
- * has no index, gallery, dashboard, or multi-item route. Missing, repeated,
- * array, list, or unknown IDs return a neutral error page with no links.
+ * One request = one slideshow, one TOOLS USED strip, or the standalone
+ * Al-Rashed project page. This file intentionally has no index, gallery,
+ * dashboard, or multi-item route. Missing, repeated, array, list, or unknown
+ * IDs return a neutral error page with no links.
  *
  * The SLIDES lookup is generated in SlidesData.gs and the TOOLS lookup in
  * ToolsData.gs. Neither map is sent wholesale to the browser.
@@ -15,14 +16,34 @@ function doGet(e) {
   var queryString = e && e.queryString;
   var slideCount = countQueryParameters_(queryString, 'slide');
   var toolsCount = countQueryParameters_(queryString, 'tools');
+  var pageCount = countQueryParameters_(queryString, 'page');
 
-  if (slideCount === 1 && toolsCount === 0) {
+  if (pageCount === 1 && slideCount === 0 && toolsCount === 0) {
+    return alRashedResponse_(e);
+  }
+  if (slideCount === 1 && toolsCount === 0 && pageCount === 0) {
     return slideshowResponse_(e);
   }
-  if (toolsCount === 1 && slideCount === 0) {
+  if (toolsCount === 1 && slideCount === 0 && pageCount === 0) {
     return toolsResponse_(e);
   }
   return notFoundResponse_();
+}
+
+/**
+ * Standalone Al-Rashed project page. The page is a static HTML file so the
+ * shared slideshow and tools routes are untouched.
+ */
+function alRashedResponse_(e) {
+  var raw = e.parameter.page;
+
+  if (typeof raw !== 'string' || raw.trim().toLowerCase() !== 'al-rashed') {
+    return notFoundResponse_();
+  }
+
+  return HtmlService.createHtmlOutputFromFile('AlRashed')
+    .setTitle('Al-Rashed Project — Hossam Alafandi')
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
 function slideshowResponse_(e) {

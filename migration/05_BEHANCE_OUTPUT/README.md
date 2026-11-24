@@ -1,7 +1,7 @@
 # Behance Embed Output
 
-All 48 slideshows and all 38 TOOLS USED strips are generated and ready for
-manual copy/paste.
+All 48 slideshows, all 38 TOOLS USED strips, and the standalone Al-Rashed
+project page are generated and ready for manual copy/paste.
 
 ## Files
 
@@ -11,16 +11,18 @@ manual copy/paste.
 | `ALL_EMBEDS.csv` | Spreadsheet version of the 48 slideshow codes, one row per slideshow. |
 | `TOOLS_USED_EMBEDS.md` | All 38 TOOLS USED codes on their own, grouped by project. |
 | `TOOLS_USED_EMBEDS.csv` | Spreadsheet version of the 38 TOOLS USED codes. |
+| `AL_RASHED_EMBED.md` | **Standalone Al-Rashed project page code**, usage notes, image exception, and rollback. |
 | `P001.md` … `P038.md` | Per-project slideshow files. These contain slideshows only; use `ALL_EMBEDS.md` or `TOOLS_USED_EMBEDS.md` for TOOLS USED codes. |
 
 ## Deployment
 
 `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
 
-Deployment version 6. Every slideshow code uses one `?slide=<ID>` value and
+Deployment version 11. Every slideshow code uses one `?slide=<ID>` value and
 loads exactly one slideshow. Every TOOLS USED code uses one `?tools=<ID>`
-value and loads the original logo strip from the same host. The production
-Apps Script deployment is untouched.
+value and loads the original logo strip from the same host. The standalone page
+uses one `?page=al-rashed` value. The production Apps Script deployment is
+untouched.
 
 ## How to use
 
@@ -45,6 +47,14 @@ width. Heights are per slideshow and must not be changed.
 
 Each strip is 127 px high with 4–5 logos. The iframe loads the exact
 original logo URLs and CSS; the images are not copied or rehosted.
+
+### Al-Rashed project page
+
+1. Open `AL_RASHED_EMBED.md`.
+2. Copy the single `<iframe>…</iframe>` block.
+3. Paste it into the Al-Rashed Behance project as one embed.
+4. Keep `width="100%"` and `height="2980"`; the height is sized to the Behance
+   desktop column and phone. Do not combine it with a slideshow code.
 
 ## Not included
 

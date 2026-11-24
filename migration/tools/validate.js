@@ -2,17 +2,18 @@
 'use strict';
 
 /**
- * Phase 2 static validation — all 48 slideshows.
+ * Phase 2 static validation — all 48 slideshows and the standalone page.
  *
  * Verifies the frozen audit data, every generated data file and preview, every
- * project snippet, the complete server-side lookup, and the static
- * independent-embed rules. No network requests and no image downloads are
- * performed.
+ * project snippet, the complete server-side lookup, the standalone Al-Rashed
+ * page, and the static independent-embed rules. No network requests and no
+ * image downloads are performed.
  */
 
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const pageData = require('./al-rashed-data');
 
 const ROOT = path.resolve(__dirname, '..');
 const CONFIG_PATH = path.join(ROOT, '01_AUDIT', 'slides.config.json');
@@ -22,6 +23,21 @@ const PREVIEW_DIR = path.join(ROOT, '03_REBUILT_SLIDESHOWS', 'preview');
 const DATA_DIR = path.join(ROOT, '03_REBUILT_SLIDESHOWS', 'data');
 const APPS_DIR = path.join(ROOT, '04_APPS_SCRIPT');
 const BEHANCE_DIR = path.join(ROOT, '05_BEHANCE_OUTPUT');
+const ASSETS_DIR = path.resolve(ROOT, '..', 'assets', 'al-rashed');
+const PAGE_PREVIEW = path.join(PREVIEW_DIR, 'al-rashed.html');
+const PAGE_PRODUCTION = path.join(APPS_DIR, 'AlRashed.html');
+const PAGE_DELIVERABLE = path.join(BEHANCE_DIR, 'AL_RASHED_EMBED.md');
+const PAGE_ASSETS = [
+  { name: 'hero-768.jpg', width: 768, height: 432, maxBytes: 80 * 1024 },
+  { name: 'hero-1280.jpg', width: 1280, height: 720, maxBytes: 180 * 1024 },
+  { name: 'hero-1920.jpg', width: 1920, height: 1080, maxBytes: 340 * 1024 },
+  { name: 'real1-768.jpg', width: 768, height: 577, maxBytes: 120 * 1024 },
+  { name: 'real1-1280.jpg', width: 1277, height: 960, maxBytes: 300 * 1024 },
+  { name: 'real2-768.jpg', width: 768, height: 577, maxBytes: 120 * 1024 },
+  { name: 'real2-1280.jpg', width: 1277, height: 960, maxBytes: 300 * 1024 },
+  { name: 'real3-768.jpg', width: 768, height: 577, maxBytes: 120 * 1024 },
+  { name: 'real3-1280.jpg', width: 1280, height: 962, maxBytes: 260 * 1024 }
+];
 
 const EXPECTED_DEPLOYMENT_ID =
   'AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA';
@@ -111,6 +127,32 @@ function listFiles(dir) {
     const full = path.join(dir, entry.name);
     return entry.isDirectory() ? listFiles(full) : [full];
   });
+}
+
+function jpegDimensions(buffer) {
+  if (buffer.length < 4 || buffer[0] !== 0xff || buffer[1] !== 0xd8) return null;
+  let offset = 2;
+  while (offset + 9 < buffer.length) {
+    if (buffer[offset] !== 0xff) {
+      offset++;
+      continue;
+    }
+    const marker = buffer[offset + 1];
+    if (marker === 0xd8 || marker === 0xd9 || (marker >= 0xd0 && marker <= 0xd7)) {
+      offset += 2;
+      continue;
+    }
+    const length = buffer.readUInt16BE(offset + 2);
+    if (marker >= 0xc0 && marker <= 0xcf &&
+        marker !== 0xc4 && marker !== 0xc8 && marker !== 0xcc) {
+      return {
+        height: buffer.readUInt16BE(offset + 5),
+        width: buffer.readUInt16BE(offset + 7)
+      };
+    }
+    offset += 2 + length;
+  }
+  return null;
 }
 
 function main() {
@@ -463,6 +505,8 @@ function main() {
     /function countQueryParameters_/.test(router) &&
     /countQueryParameters_\(queryString, 'slide'\)/.test(router) &&
     /countQueryParameters_\(queryString, 'tools'\)/.test(router));
+  check('router counts the raw page parameter',
+    /countQueryParameters_\(queryString, 'page'\)/.test(router));
   check('router requires a string parameter', /typeof raw !== 'string'/.test(router));
   check('router normalizes with trim and uppercase', /raw\.trim\(\)\.toUpperCase\(\)/.test(router));
   check('router uses an own-property lookup',
@@ -479,6 +523,214 @@ function main() {
   check('router has only one HTML response path per request',
     !/createHtmlOutput\([\s\S]*SLIDES/.test(router));
 
+  // ------------------------------------------------------- standalone page
+  check('Al-Rashed production page exists', fs.existsSync(PAGE_PRODUCTION));
+  check('Al-Rashed preview page exists', fs.existsSync(PAGE_PREVIEW));
+  check('Al-Rashed embed deliverable exists', fs.existsSync(PAGE_DELIVERABLE));
+
+  if (fs.existsSync(PAGE_PRODUCTION) && fs.existsSync(PAGE_PREVIEW)) {
+    const pageProduction = read(PAGE_PRODUCTION);
+    const pagePreview = read(PAGE_PREVIEW);
+    const normalizedProduction = pageProduction
+      .split(pageData.PRODUCTION_ASSET_BASE).join('ASSET/');
+    const normalizedPreview = pagePreview
+      .split(pageData.PREVIEW_ASSET_BASE).join('ASSET/');
+
+    check('Al-Rashed production and preview share one generated source',
+      normalizedProduction === normalizedPreview);
+    check('Al-Rashed production uses jsDelivr',
+      pageProduction.includes(pageData.PRODUCTION_ASSET_BASE) &&
+        !/(?:src|srcset)="\/assets\/al-rashed\//.test(pageProduction));
+    check('Al-Rashed preview uses the local asset route',
+      pagePreview.includes(pageData.PREVIEW_ASSET_BASE) &&
+        !pagePreview.includes(pageData.PRODUCTION_ASSET_BASE));
+    check('Al-Rashed page title is exact',
+      pageProduction.includes('<title>' + pageData.PAGE_TITLE + '</title>'));
+    check('Al-Rashed page has no template directives',
+      !/<\?/.test(pageProduction));
+    check('Al-Rashed page has no Google Sites chrome',
+      !/sites\.google\.com|googleusercontent|atari|view\/hossam-alafandi|Report abuse|Skip to content/i
+        .test(pageProduction));
+    check('Al-Rashed page has no site navigation or anchors',
+      !/<nav\b/i.test(pageProduction) && !/<a\b/i.test(pageProduction));
+    check('Al-Rashed page has no data, file, or blob URLs',
+      !/["'](?:data:|file:|blob:)/i.test(pageProduction));
+    check('Al-Rashed page has no slideshow or tools route',
+      !/[?&](?:slide|tools)=/i.test(pageProduction) &&
+        !/P\d{3}-S\d{2}/.test(pageProduction));
+    check('Al-Rashed page has exactly one iframe, the map',
+      (pageProduction.match(/<iframe\b/g) || []).length === 1 &&
+        pageProduction.includes('src="' + escapeHtml(pageData.MAP_URL) + '"'));
+    check('Al-Rashed page uses the fixed 2980 px Behance height in data',
+      pageData.EMBED_HEIGHT === 2980 && pageData.EMBED_WIDTH === '100%');
+
+    const pageImages = Array.from(pageProduction.matchAll(/<img\b[^>]*>/g))
+      .map(match => match[0]);
+    const pageImageSource = tag => {
+      const match = /\bsrc="([^"]*)"/.exec(tag);
+      return match ? match[1] : '';
+    };
+    const pageImageAlt = tag => {
+      const match = /\balt="([^"]*)"/.exec(tag);
+      return match ? match[1] : '';
+    };
+    const renderTags = pageImages.filter(tag =>
+      /^Al-Rashed project render \d+$/.test(pageImageAlt(tag)));
+    const photoTags = pageImages.filter(tag =>
+      /^Al-Rashed project real photo \d$/.test(pageImageAlt(tag)));
+    const toolTags = pageImages.filter(tag =>
+      pageData.TOOLS.some(tool => tool.name === pageImageAlt(tag)));
+    const heroTags = pageImages.filter(tag => pageImageAlt(tag) === pageData.HERO.alt);
+
+    check('Al-Rashed page has 26 images', pageImages.length === 26,
+      pageImages.length + ' images');
+    check('Al-Rashed page has one hero, 17 renders, 3 photos, and 5 tools',
+      heroTags.length === 1 && renderTags.length === 17 &&
+        photoTags.length === 3 && toolTags.length === 5,
+      [heroTags.length, renderTags.length, photoTags.length, toolTags.length].join('/'));
+    check('Al-Rashed render URLs match the data exactly in order',
+      renderTags.length === 17 &&
+        renderTags.every((tag, index) =>
+          pageImageSource(tag) === pageData.renderUrl(pageData.RENDERS[index])));
+    check('Al-Rashed renders use the 1024x576 h variant',
+      renderTags.every(tag => /^https:\/\/i\.imgur\.com\/[A-Za-z0-9]+h\.jpeg$/.test(
+        pageImageSource(tag))));
+    check('Al-Rashed only eagerly loads the first render',
+      /\bloading="eager"/.test(renderTags[0] || '') &&
+        renderTags.slice(1).every(tag => /\bloading="lazy"/.test(tag)));
+    check('Al-Rashed real photos match the 1280 desktop files',
+      photoTags.length === 3 &&
+        photoTags.every((tag, index) => pageImageSource(tag) ===
+          pageData.PRODUCTION_ASSET_BASE + pageData.REAL_PHOTOS[index].desktop));
+    check('Al-Rashed tool URLs match the data exactly in order',
+      toolTags.length === 5 &&
+        toolTags.every((tag, index) =>
+          pageImageSource(tag) === pageData.toolUrl(pageData.TOOLS[index].id)));
+    check('Al-Rashed hero is eager with high priority',
+      heroTags.length === 1 && /\bloading="eager"/.test(heroTags[0]) &&
+        /\bfetchpriority="high"/.test(heroTags[0]));
+    check('Al-Rashed page includes the 768 phone sources',
+      pageData.REAL_PHOTOS.every(photo =>
+        pageProduction.includes('<source media="(max-width: 700px)" srcset="' +
+          pageData.PRODUCTION_ASSET_BASE + photo.file + '">')) &&
+        pageProduction.includes('<source media="(max-width: 700px)" srcset="' +
+          pageData.PRODUCTION_ASSET_BASE + 'hero-768.jpg">'));
+    check('Al-Rashed page keeps the exact overview and copyright text',
+      pageProduction.includes('Al-Rashed or (Zahret Al-Khuzama) project') &&
+        pageProduction.includes('<footer class="copyright">' +
+          escapeHtml(pageData.COPYRIGHT_TEXT) + '</footer>'));
+    check('Al-Rashed page keeps the 16:9 stage, 1:2.05 grid, and 5 tool columns',
+      /aspect-ratio:\s*16 \/ 9/.test(pageProduction) &&
+        /grid-template-columns:\s*1fr 2\.05fr/.test(pageProduction) &&
+        /grid-template-columns:\s*repeat\(5, 1fr\)/.test(pageProduction));
+    check('Al-Rashed page keeps native fullscreen and the quiet fallback',
+      /requestFullscreen/.test(pageProduction) &&
+        /fullscreenerror/.test(pageProduction) &&
+        /theater-mode/.test(pageProduction) &&
+        !/fullscreen-note|Native fullscreen is unavailable|\balert\s*\(/.test(pageProduction));
+    check('Al-Rashed page uses no storage, cookies, or messaging',
+      !/localStorage|sessionStorage|indexedDB|document\.cookie|postMessage|BroadcastChannel/i
+        .test(pageProduction));
+    check('Al-Rashed page supports keyboard and swipe navigation',
+      /ArrowLeft/.test(pageProduction) && /ArrowRight/.test(pageProduction) &&
+        /touchstart/.test(pageProduction) && /touchend/.test(pageProduction));
+
+    const referencedPageAssets = Array.from(new Set(
+      Array.from(pageProduction.matchAll(
+        /https:\/\/cdn\.jsdelivr\.net\/gh\/hossamalafandi\/behance-slideshow@main\/assets\/al-rashed\/([A-Za-z0-9._-]+)/g
+      )).map(match => match[1])
+    )).sort();
+    check('Al-Rashed production references exactly the 9 approved assets',
+      JSON.stringify(referencedPageAssets) ===
+        JSON.stringify(PAGE_ASSETS.map(asset => asset.name).sort()),
+      referencedPageAssets.join(', '));
+    check('Al-Rashed preview references exactly the 9 local assets',
+      PAGE_ASSETS.every(asset =>
+        pagePreview.includes(pageData.PREVIEW_ASSET_BASE + asset.name)));
+
+    const assetFiles = fs.existsSync(ASSETS_DIR)
+      ? fs.readdirSync(ASSETS_DIR, { withFileTypes: true })
+        .filter(entry => entry.isFile())
+        .map(entry => entry.name)
+        .sort()
+      : [];
+    check('Al-Rashed asset folder contains exactly the 9 approved files',
+      JSON.stringify(assetFiles) ===
+        JSON.stringify(PAGE_ASSETS.map(asset => asset.name).sort()),
+      assetFiles.join(', '));
+    for (const asset of PAGE_ASSETS) {
+      const file = path.join(ASSETS_DIR, asset.name);
+      check('Al-Rashed asset exists: ' + asset.name, fs.existsSync(file));
+      if (!fs.existsSync(file)) continue;
+      const buffer = fs.readFileSync(file);
+      const dimensions = jpegDimensions(buffer);
+      check('Al-Rashed asset is a JPEG: ' + asset.name,
+        Boolean(dimensions));
+      check('Al-Rashed asset dimensions are ' + asset.width + 'x' + asset.height + ': ' + asset.name,
+        Boolean(dimensions) && dimensions.width === asset.width &&
+          dimensions.height === asset.height,
+        dimensions ? dimensions.width + 'x' + dimensions.height : 'unreadable');
+      check('Al-Rashed asset is optimized: ' + asset.name,
+        buffer.length > 0 && buffer.length <= asset.maxBytes,
+        buffer.length + ' bytes');
+    }
+    const gitignoreFile = path.resolve(ROOT, '..', '.gitignore');
+    check('Al-Rashed raw originals are gitignored',
+      fs.existsSync(gitignoreFile) &&
+        /assets\/al-rashed\/raw\//.test(read(gitignoreFile)));
+
+    const snippet = pageData.embedSnippet();
+    check('Al-Rashed embed snippet is the exact 2980 px fluid iframe',
+      snippet.includes('src="' + pageData.embedUrl() + '"') &&
+        snippet.includes('width="100%"') && snippet.includes('height="2980"') &&
+        snippet.includes('allowfullscreen') &&
+        snippet.includes('allow="fullscreen"') && !/\bsandbox\b/i.test(snippet));
+  }
+
+  if (fs.existsSync(PAGE_DELIVERABLE)) {
+    const deliverable = read(PAGE_DELIVERABLE);
+    check('Al-Rashed deliverable contains the exact iframe snippet',
+      deliverable.includes(pageData.embedSnippet()));
+    check('Al-Rashed deliverable documents the 2980 px height',
+      /2980/.test(deliverable));
+    check('Al-Rashed deliverable documents phone and desktop behavior',
+      /phone/i.test(deliverable) && /desktop/i.test(deliverable));
+    check('Al-Rashed deliverable documents rollback',
+      /rollback/i.test(deliverable));
+    check('Al-Rashed deliverable keeps the 48 slideshow embeds unchanged',
+      /48/.test(deliverable) && /unchanged|untouched|do not/i.test(deliverable));
+    check('Al-Rashed deliverable documents the approved image exception',
+      /jsDelivr/i.test(deliverable) &&
+        /Google Sites/i.test(deliverable) && /9|nine/i.test(deliverable));
+  }
+
+  check('router serves the standalone Al-Rashed page',
+    /function alRashedResponse_/.test(router) &&
+      /createHtmlOutputFromFile\('AlRashed'\)/.test(router) &&
+      /setXFrameOptionsMode\(HtmlService\.XFrameOptionsMode\.ALLOWALL\)/.test(router) &&
+      /raw\.trim\(\)\.toLowerCase\(\) !== 'al-rashed'/.test(router));
+  check('router requires exactly one page parameter and no slide/tools',
+    /pageCount === 1 && slideCount === 0 && toolsCount === 0/.test(router) &&
+      /slideCount === 1 && toolsCount === 0 && pageCount === 0/.test(router) &&
+      /toolsCount === 1 && slideCount === 0 && pageCount === 0/.test(router));
+  const pageRouteBody = /function alRashedResponse_\(e\) \{([\s\S]*?)\n\}/.exec(router);
+  check('Al-Rashed route never serializes the slideshow catalog',
+    Boolean(pageRouteBody) && !/SLIDES|TOOLS|P\d{3}-S\d{2}/.test(pageRouteBody[1]));
+  check('Al-Rashed route returns the neutral error for other page values',
+    Boolean(pageRouteBody) && /return notFoundResponse_\(\);/.test(pageRouteBody[1]));
+
+  const serveSource = read(path.join(__dirname, 'serve.js'));
+  check('local router mirrors the page route',
+    /PAGE_CODE = 'al-rashed'/.test(serveSource) &&
+      /pageCount === 1 && slideCount === 0 && toolsCount === 0/.test(serveSource) &&
+      /PAGE_PREVIEW/.test(serveSource));
+  check('local router serves only the approved page assets',
+    /ASSET_PREFIX = '\/assets\/al-rashed\/'/.test(serveSource) &&
+      /\[A-Za-z0-9\._-\]\+/.test(serveSource) &&
+      /name\.startsWith\('\.'\)/.test(serveSource));
+  check('local router keeps raw originals unreachable',
+    /raw/.test(serveSource) && /404/.test(serveSource));
+
   // -------------------------------------------------------------------- hygiene
   const previewFiles = listFiles(PREVIEW_DIR).filter(file => !file.endsWith('.gitkeep'));
   const dataFiles = listFiles(DATA_DIR).filter(file => !file.endsWith('.gitkeep'));
@@ -486,18 +738,19 @@ function main() {
   const previewNames = previewFiles.map(file => path.basename(file)).sort();
   const dataNames = dataFiles.map(file => path.basename(file)).sort();
   const behanceNames = behanceFiles.map(file => path.basename(file)).sort();
-  const expectedPreviewNames = ids.map(id => id + '.html').sort();
+  const expectedPreviewNames = ids.map(id => id + '.html').concat('al-rashed.html').sort();
   const expectedDataNames = ids.map(id => id + '.json').sort();
   const expectedBehanceNames = [
     ...projectIds.map(id => id + '.md'),
     'ALL_EMBEDS.md',
     'ALL_EMBEDS.csv',
+    'AL_RASHED_EMBED.md',
     'README.md',
     'TOOLS_USED_EMBEDS.md',
     'TOOLS_USED_EMBEDS.csv'
   ].sort();
 
-  check('preview output contains exactly the 48 audited slideshows',
+  check('preview output contains exactly the 48 slideshows and the standalone page',
     JSON.stringify(previewNames) === JSON.stringify(expectedPreviewNames),
     previewNames.join(', '));
   check('data output contains exactly the 48 audited slideshows',

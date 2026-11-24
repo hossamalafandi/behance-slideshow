@@ -8,6 +8,8 @@
     "serve": "node serve.js",
     "test:pilot": "node test-pilot.js",
     "test:fit": "node test-fit-layout.js",
+    "test:al-rashed": "node test-al-rashed.js",
+    "test:live-al-rashed": "node test-live-al-rashed.js",
     "test:live-fit": "node test-live-fit.js"
   },
   "devDependencies": {

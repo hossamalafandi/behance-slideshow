@@ -1,0 +1,1080 @@
+{
+  "scope": {
+    "page": "?page=al-rashed",
+    "behanceFrames": [
+      "987x2980",
+      "390x2980"
+    ],
+    "renders": 17,
+    "tools": 5,
+    "assets": 9
+  },
+  "browser": "Chrome 158.0.8127.88",
+  "checks": 212,
+  "passed": 212,
+  "failed": 0,
+  "blockedImgurRequests": 44,
+  "failures": [],
+  "results": [
+    {
+      "name": "data: exactly 17 unique renders",
+      "passed": true,
+      "detail": "17"
+    },
+    {
+      "name": "data: exactly 5 unique tools",
+      "passed": true,
+      "detail": "5"
+    },
+    {
+      "name": "data: fixed Behance height is 2980",
+      "passed": true,
+      "detail": "2980"
+    },
+    {
+      "name": "data: map URL is the audited embed URL",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "production page exists",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "preview page exists",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "production and preview come from the same generator",
+      "passed": true,
+      "detail": "27150 vs 26500"
+    },
+    {
+      "name": "production page uses jsDelivr for page images",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "preview page uses the local asset route",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page title is exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page declares the phone viewport",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page keeps a dark color scheme",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page loads only the Lexend font stylesheet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has one inline script and no external script",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no template directives",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no anchors or site navigation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page contains no Google Sites chrome or links",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page contains no data, file, or blob URLs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page contains no slideshow or tools route",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has exactly one iframe, the map",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "map iframe has a title and lazy loading",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no external embeds besides the map",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has exactly 26 images",
+      "passed": true,
+      "detail": "26"
+    },
+    {
+      "name": "page has one hero image",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has 17 render images",
+      "passed": true,
+      "detail": "17"
+    },
+    {
+      "name": "page has 3 real photos",
+      "passed": true,
+      "detail": "3"
+    },
+    {
+      "name": "page has 5 tool logos",
+      "passed": true,
+      "detail": "5"
+    },
+    {
+      "name": "render URLs match the data exactly in order",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "render images use the 1024x576 h variant",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "only the first render is eager; the rest are lazy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "real photos use the 1280 desktop files",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "real photos are lazy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "tool URLs match the data exactly in order",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "tool logos are lazy and have alt text",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "hero is eager with high fetch priority",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "hero has a 768 phone source and a 1280/1920 desktop srcset",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "real photos have 768 phone sources",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "production references exactly the 9 approved page assets",
+      "passed": true,
+      "detail": "hero-1280.jpg, hero-1920.jpg, hero-768.jpg, real1-1280.jpg, real1-768.jpg, real2-1280.jpg, real2-768.jpg, real3-1280.jpg, real3-768.jpg"
+    },
+    {
+      "name": "preview references exactly the 9 local page assets",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page builds 17 dots and the 1 / 17 counter",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has next, previous, and fullscreen controls",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page supports keyboard navigation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page supports horizontal swipe with a vertical guard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page attempts native fullscreen first",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page keeps the approved quiet theater fallback",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page uses no storage, cookies, or messaging",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page uses no top navigation or popups",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page respects reduced motion",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has the phone breakpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page keeps the subtle copyright line",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page keeps the exact overview text",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page uses a 16:9 render stage",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page uses a 1:2.05 desktop photo grid",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page stacks the photos on phone",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page uses 5 tool columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "embed snippet is a 2980 px fluid iframe",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "embed snippet targets the page route exactly once",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "assets: exactly the 9 approved files are present",
+      "passed": true,
+      "detail": "hero-1280.jpg, hero-1920.jpg, hero-768.jpg, real1-1280.jpg, real1-768.jpg, real2-1280.jpg, real2-768.jpg, real3-1280.jpg, real3-768.jpg"
+    },
+    {
+      "name": "assets: hero-768.jpg is a JPEG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "assets: hero-768.jpg is optimized",
+      "passed": true,
+      "detail": "51803 bytes"
+    },
+    {
+      "name": "assets: hero-1280.jpg is a JPEG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "assets: hero-1280.jpg is optimized",
+      "passed": true,
+      "detail": "132890 bytes"
+    },
+    {
+      "name": "assets: hero-1920.jpg is a JPEG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "assets: hero-1920.jpg is optimized",
+      "passed": true,
+      "detail": "269198 bytes"
+    },
+    {
+      "name": "assets: real1-768.jpg is a JPEG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "assets: real1-768.jpg is optimized",
+      "passed": true,
+      "detail": "82104 bytes"
+    },
+    {
+      "name": "assets: real1-1280.jpg is a JPEG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "assets: real1-1280.jpg is optimized",
+      "passed": true,
+      "detail": "221396 bytes"
+    },
+    {
+      "name": "assets: real2-768.jpg is a JPEG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "assets: real2-768.jpg is optimized",
+      "passed": true,
+      "detail": "86199 bytes"
+    },
+    {
+      "name": "assets: real2-1280.jpg is a JPEG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "assets: real2-1280.jpg is optimized",
+      "passed": true,
+      "detail": "230684 bytes"
+    },
+    {
+      "name": "assets: real3-768.jpg is a JPEG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "assets: real3-768.jpg is optimized",
+      "passed": true,
+      "detail": "62472 bytes"
+    },
+    {
+      "name": "assets: real3-1280.jpg is a JPEG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "assets: real3-1280.jpg is optimized",
+      "passed": true,
+      "detail": "173030 bytes"
+    },
+    {
+      "name": "router: page returns HTTP 200 HTML",
+      "passed": true,
+      "detail": "200 text/html; charset=utf-8"
+    },
+    {
+      "name": "router: page returns the generated preview byte-for-byte",
+      "passed": true,
+      "detail": "26500 vs 26500"
+    },
+    {
+      "name": "router: page is served without cache",
+      "passed": true,
+      "detail": "no-store"
+    },
+    {
+      "name": "router: page value is case-insensitive",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "router: page value is trimmed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "router: rejects /exec?page=",
+      "passed": true,
+      "detail": "neutral response"
+    },
+    {
+      "name": "router: rejects /exec?page",
+      "passed": true,
+      "detail": "neutral response"
+    },
+    {
+      "name": "router: rejects /exec?page=al-rashed-project",
+      "passed": true,
+      "detail": "neutral response"
+    },
+    {
+      "name": "router: rejects /exec?page=P001-S01",
+      "passed": true,
+      "detail": "neutral response"
+    },
+    {
+      "name": "router: rejects /exec?page=al-rashed&page=al-rashed",
+      "passed": true,
+      "detail": "neutral response"
+    },
+    {
+      "name": "router: rejects /exec?page=al-rashed&page=nope",
+      "passed": true,
+      "detail": "neutral response"
+    },
+    {
+      "name": "router: rejects /exec?page=al-rashed&slide=P001-S01",
+      "passed": true,
+      "detail": "neutral response"
+    },
+    {
+      "name": "router: rejects /exec?page=al-rashed&tools=P001",
+      "passed": true,
+      "detail": "neutral response"
+    },
+    {
+      "name": "router: rejects /exec?slide=P001-S01&page=al-rashed",
+      "passed": true,
+      "detail": "neutral response"
+    },
+    {
+      "name": "router: rejects /exec?page=al-rashed%00",
+      "passed": true,
+      "detail": "neutral response"
+    },
+    {
+      "name": "router: rejects /exec?page=al-rashed/",
+      "passed": true,
+      "detail": "neutral response"
+    },
+    {
+      "name": "router: the 48-slide route still works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "router: no route for /",
+      "passed": true,
+      "detail": "404"
+    },
+    {
+      "name": "router: no route for /index.html",
+      "passed": true,
+      "detail": "404"
+    },
+    {
+      "name": "router: no route for /al-rashed.html",
+      "passed": true,
+      "detail": "404"
+    },
+    {
+      "name": "router: no route for /preview/al-rashed.html",
+      "passed": true,
+      "detail": "404"
+    },
+    {
+      "name": "assets: route serves hero-768.jpg",
+      "passed": true,
+      "detail": "200 image/jpeg"
+    },
+    {
+      "name": "assets: route serves hero-1280.jpg",
+      "passed": true,
+      "detail": "200 image/jpeg"
+    },
+    {
+      "name": "assets: route serves hero-1920.jpg",
+      "passed": true,
+      "detail": "200 image/jpeg"
+    },
+    {
+      "name": "assets: route serves real1-768.jpg",
+      "passed": true,
+      "detail": "200 image/jpeg"
+    },
+    {
+      "name": "assets: route serves real1-1280.jpg",
+      "passed": true,
+      "detail": "200 image/jpeg"
+    },
+    {
+      "name": "assets: route serves real2-768.jpg",
+      "passed": true,
+      "detail": "200 image/jpeg"
+    },
+    {
+      "name": "assets: route serves real2-1280.jpg",
+      "passed": true,
+      "detail": "200 image/jpeg"
+    },
+    {
+      "name": "assets: route serves real3-768.jpg",
+      "passed": true,
+      "detail": "200 image/jpeg"
+    },
+    {
+      "name": "assets: route serves real3-1280.jpg",
+      "passed": true,
+      "detail": "200 image/jpeg"
+    },
+    {
+      "name": "assets: blocks /assets/al-rashed/raw/hero-original.jpg",
+      "passed": true,
+      "detail": "404"
+    },
+    {
+      "name": "assets: blocks /assets/al-rashed/raw/",
+      "passed": true,
+      "detail": "404"
+    },
+    {
+      "name": "assets: blocks /assets/al-rashed/",
+      "passed": true,
+      "detail": "404"
+    },
+    {
+      "name": "assets: blocks /assets/al-rashed/nope.jpg",
+      "passed": true,
+      "detail": "404"
+    },
+    {
+      "name": "assets: blocks /assets/al-rashed/..%2F..%2Fpackage.json",
+      "passed": true,
+      "detail": "404"
+    },
+    {
+      "name": "assets: blocks /assets/al-rashed/%2e%2e%2f%2e%2e%2fpackage.json",
+      "passed": true,
+      "detail": "404"
+    },
+    {
+      "name": "assets: blocks /assets/al-rashed/hero-768.jpg%00.png",
+      "passed": true,
+      "detail": "404"
+    },
+    {
+      "name": "assets: hero-768.jpg dimensions are 768x432",
+      "passed": true,
+      "detail": "[768,432]"
+    },
+    {
+      "name": "assets: hero-1280.jpg dimensions are 1280x720",
+      "passed": true,
+      "detail": "[1280,720]"
+    },
+    {
+      "name": "assets: hero-1920.jpg dimensions are 1920x1080",
+      "passed": true,
+      "detail": "[1920,1080]"
+    },
+    {
+      "name": "assets: real1-768.jpg dimensions are 768x577",
+      "passed": true,
+      "detail": "[768,577]"
+    },
+    {
+      "name": "assets: real1-1280.jpg dimensions are 1277x960",
+      "passed": true,
+      "detail": "[1277,960]"
+    },
+    {
+      "name": "assets: real2-768.jpg dimensions are 768x577",
+      "passed": true,
+      "detail": "[768,577]"
+    },
+    {
+      "name": "assets: real2-1280.jpg dimensions are 1277x960",
+      "passed": true,
+      "detail": "[1277,960]"
+    },
+    {
+      "name": "assets: real3-768.jpg dimensions are 768x577",
+      "passed": true,
+      "detail": "[768,577]"
+    },
+    {
+      "name": "assets: real3-1280.jpg dimensions are 1280x962",
+      "passed": true,
+      "detail": "[1280,962]"
+    },
+    {
+      "name": "desktop 987x2980: the sandboxed page frame loads",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: frame viewport is 987x2980",
+      "passed": true,
+      "detail": "987x2980"
+    },
+    {
+      "name": "desktop 987x2980: page fills exactly 2980 px",
+      "passed": true,
+      "detail": "{\"scroll\":[987,2980],\"body\":[987,2980],\"main\":2980}"
+    },
+    {
+      "name": "desktop 987x2980: no horizontal overflow",
+      "passed": true,
+      "detail": "{\"scroll\":987,\"body\":987}"
+    },
+    {
+      "name": "desktop 987x2980: main distributes the exact height",
+      "passed": true,
+      "detail": "{\"justify\":\"space-between\",\"children\":7,\"first\":0,\"last\":2980}"
+    },
+    {
+      "name": "desktop 987x2980: gaps stay small and non-negative",
+      "passed": true,
+      "detail": "18, 18, 19, 18, 19, 18"
+    },
+    {
+      "name": "desktop 987x2980: hero height is 430",
+      "passed": true,
+      "detail": "430"
+    },
+    {
+      "name": "desktop 987x2980: hero title is 74.025 px",
+      "passed": true,
+      "detail": "74.025"
+    },
+    {
+      "name": "desktop 987x2980: hero subtitle is 22.67 px",
+      "passed": true,
+      "detail": "22.67"
+    },
+    {
+      "name": "desktop 987x2980: section headings are 64 px",
+      "passed": true,
+      "detail": "64, 64, 64, 64, 64"
+    },
+    {
+      "name": "desktop 987x2980: section heading text is exact",
+      "passed": true,
+      "detail": "OVERVIEW, RENDERS, REAL PHOTOS, LOCATION, TOOLS USED"
+    },
+    {
+      "name": "desktop 987x2980: render stage is 16:9 and fits the content width",
+      "passed": true,
+      "detail": "{\"x\":60,\"y\":899,\"width\":867,\"height\":488,\"bottom\":1387,\"right\":927,\"ratio\":1.7777777777777777,\"objectFit\":\"cover\"}"
+    },
+    {
+      "name": "desktop 987x2980: 17 renders, 17 dots, and the 1 / 17 counter",
+      "passed": true,
+      "detail": "17 / 17 / 1 / 17"
+    },
+    {
+      "name": "desktop 987x2980: render URLs match the data exactly in order",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: the first render image decodes at 1024x576",
+      "passed": true,
+      "detail": "1024x576"
+    },
+    {
+      "name": "desktop 987x2980: photo grid uses 2 layout column(s)",
+      "passed": true,
+      "detail": "2 (279.016px 571.984px)"
+    },
+    {
+      "name": "desktop 987x2980: all three real photos are visible with a 20px radius",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: desktop photos use a 1:2.05 two-column grid",
+      "passed": true,
+      "detail": "279, 279, 572"
+    },
+    {
+      "name": "desktop 987x2980: the third photo spans the tall right column",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: phone and desktop photo sources are correct",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: map iframe keeps the exact embed URL and height",
+      "passed": true,
+      "detail": "https://maps-api-ssl.google.com/maps?hl=en-US&ll=24.687677,46.763814&output=embed&z=19 @ 336"
+    },
+    {
+      "name": "desktop 987x2980: map document resolves inside the iframe",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: map stub renders",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: 5 tool logos sit in one row",
+      "passed": true,
+      "detail": "60, 60, 60, 60, 60"
+    },
+    {
+      "name": "desktop 987x2980: tool logos are grayscale until hover",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: tool row fits the content width",
+      "passed": true,
+      "detail": "867"
+    },
+    {
+      "name": "desktop 987x2980: copyright is exact and sits at the page bottom",
+      "passed": true,
+      "detail": "© 2025 HOSSAM ALAFANDI. All rights reserved. @ 2980"
+    },
+    {
+      "name": "desktop 987x2980: no links, navigation, or extra embeds",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: only one inline script runs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: no cookies or storage are used",
+      "passed": true,
+      "detail": "{\"cookie\":\"\",\"local\":\"blocked\",\"session\":\"blocked\"}"
+    },
+    {
+      "name": "desktop 987x2980: no Google Sites or third-party page requests",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: no page errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop 987x2980: next moves to render 2",
+      "passed": true,
+      "detail": "{\"counter\":\"2 / 17\",\"current\":1,\"transform\":\"translateX(-5.88235%)\",\"hidden\":[\"true\",\"false\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\"]}"
+    },
+    {
+      "name": "desktop 987x2980: previous returns to render 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: dot 5 jumps to render 5",
+      "passed": true,
+      "detail": "{\"current\":4,\"transform\":\"translateX(-23.5294%)\"}"
+    },
+    {
+      "name": "desktop 987x2980: End reveals the 17th render at 1024x576",
+      "passed": true,
+      "detail": "{\"width\":1024,\"height\":576,\"loading\":\"eager\",\"src\":\"https://i.imgur.com/qI1GMsIh.jpeg\"}"
+    },
+    {
+      "name": "desktop 987x2980: keyboard arrows, Home, and End work with wrap-around",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: left and right swipe navigate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: clicking the stage focuses the viewer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: fullscreen activates natively or with the quiet fallback",
+      "passed": true,
+      "detail": "{\"native\":true,\"target\":\"rendersViewer\",\"theater\":false,\"bodyLocked\":false,\"label\":\"Exit fullscreen\",\"pressed\":\"true\",\"width\":987,\"height\":2980}"
+    },
+    {
+      "name": "desktop 987x2980: fullscreen updates its accessible state",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: fullscreen exits cleanly",
+      "passed": true,
+      "detail": "{\"native\":false,\"theater\":false,\"label\":\"Enter fullscreen\"}"
+    },
+    {
+      "name": "desktop 987x2980: denied native fullscreen falls back quietly",
+      "passed": true,
+      "detail": "{\"theater\":true,\"bodyLocked\":true,\"label\":\"Exit fullscreen\",\"width\":987,\"height\":2980}"
+    },
+    {
+      "name": "desktop 987x2980: Escape exits the fallback",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2980: still no page errors after interaction",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "phone 390x2980: the sandboxed page frame loads",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: frame viewport is 390x2980",
+      "passed": true,
+      "detail": "390x2980"
+    },
+    {
+      "name": "phone 390x2980: page fills exactly 2980 px",
+      "passed": true,
+      "detail": "{\"scroll\":[390,2980],\"body\":[390,2980],\"main\":2980}"
+    },
+    {
+      "name": "phone 390x2980: no horizontal overflow",
+      "passed": true,
+      "detail": "{\"scroll\":390,\"body\":390}"
+    },
+    {
+      "name": "phone 390x2980: main distributes the exact height",
+      "passed": true,
+      "detail": "{\"justify\":\"space-between\",\"children\":7,\"first\":0,\"last\":2980}"
+    },
+    {
+      "name": "phone 390x2980: gaps stay small and non-negative",
+      "passed": true,
+      "detail": "10, 10, 10, 10, 10, 10"
+    },
+    {
+      "name": "phone 390x2980: hero height is 435",
+      "passed": true,
+      "detail": "435"
+    },
+    {
+      "name": "phone 390x2980: hero title is 61.33 px",
+      "passed": true,
+      "detail": "61.33"
+    },
+    {
+      "name": "phone 390x2980: hero subtitle is 22.67 px",
+      "passed": true,
+      "detail": "22.67"
+    },
+    {
+      "name": "phone 390x2980: section headings are 44 px",
+      "passed": true,
+      "detail": "44, 44, 44, 44, 44"
+    },
+    {
+      "name": "phone 390x2980: section heading text is exact",
+      "passed": true,
+      "detail": "OVERVIEW, RENDERS, REAL PHOTOS, LOCATION, TOOLS USED"
+    },
+    {
+      "name": "phone 390x2980: render stage is 16:9 and fits the content width",
+      "passed": true,
+      "detail": "{\"x\":24,\"y\":977,\"width\":342,\"height\":192,\"bottom\":1169,\"right\":366,\"ratio\":1.7777777777777777,\"objectFit\":\"cover\"}"
+    },
+    {
+      "name": "phone 390x2980: 17 renders, 17 dots, and the 1 / 17 counter",
+      "passed": true,
+      "detail": "17 / 17 / 1 / 17"
+    },
+    {
+      "name": "phone 390x2980: render URLs match the data exactly in order",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: the first render image decodes at 1024x576",
+      "passed": true,
+      "detail": "1024x576"
+    },
+    {
+      "name": "phone 390x2980: photo grid uses 1 layout column(s)",
+      "passed": true,
+      "detail": "1 (342px)"
+    },
+    {
+      "name": "phone 390x2980: all three real photos are visible with a 20px radius",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: phone photos stack in one column",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: phone photos keep a 4:3 card",
+      "passed": true,
+      "detail": "1.331, 1.331, 1.331"
+    },
+    {
+      "name": "phone 390x2980: phone and desktop photo sources are correct",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: map iframe keeps the exact embed URL and height",
+      "passed": true,
+      "detail": "https://maps-api-ssl.google.com/maps?hl=en-US&ll=24.687677,46.763814&output=embed&z=19 @ 260"
+    },
+    {
+      "name": "phone 390x2980: map document resolves inside the iframe",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: map stub renders",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: 5 tool logos sit in one row",
+      "passed": true,
+      "detail": "48, 48, 48, 48, 48"
+    },
+    {
+      "name": "phone 390x2980: tool logos are grayscale until hover",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: tool row fits the content width",
+      "passed": true,
+      "detail": "342"
+    },
+    {
+      "name": "phone 390x2980: copyright is exact and sits at the page bottom",
+      "passed": true,
+      "detail": "© 2025 HOSSAM ALAFANDI. All rights reserved. @ 2980"
+    },
+    {
+      "name": "phone 390x2980: no links, navigation, or extra embeds",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: only one inline script runs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: no cookies or storage are used",
+      "passed": true,
+      "detail": "{\"cookie\":\"\",\"local\":\"blocked\",\"session\":\"blocked\"}"
+    },
+    {
+      "name": "phone 390x2980: no Google Sites or third-party page requests",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: no page errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "phone 390x2980: next moves to render 2",
+      "passed": true,
+      "detail": "{\"counter\":\"2 / 17\",\"current\":1,\"transform\":\"translateX(-5.88235%)\",\"hidden\":[\"true\",\"false\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\",\"true\"]}"
+    },
+    {
+      "name": "phone 390x2980: previous returns to render 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: dot 5 jumps to render 5",
+      "passed": true,
+      "detail": "{\"current\":4,\"transform\":\"translateX(-23.5294%)\"}"
+    },
+    {
+      "name": "phone 390x2980: End reveals the 17th render at 1024x576",
+      "passed": true,
+      "detail": "{\"width\":1024,\"height\":576,\"loading\":\"eager\",\"src\":\"https://i.imgur.com/qI1GMsIh.jpeg\"}"
+    },
+    {
+      "name": "phone 390x2980: keyboard arrows, Home, and End work with wrap-around",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: left and right swipe navigate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: clicking the stage focuses the viewer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: fullscreen activates natively or with the quiet fallback",
+      "passed": true,
+      "detail": "{\"native\":true,\"target\":\"rendersViewer\",\"theater\":false,\"bodyLocked\":false,\"label\":\"Exit fullscreen\",\"pressed\":\"true\",\"width\":390,\"height\":2980}"
+    },
+    {
+      "name": "phone 390x2980: fullscreen updates its accessible state",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: fullscreen exits cleanly",
+      "passed": true,
+      "detail": "{\"native\":false,\"theater\":false,\"label\":\"Enter fullscreen\"}"
+    },
+    {
+      "name": "phone 390x2980: denied native fullscreen falls back quietly",
+      "passed": true,
+      "detail": "{\"theater\":true,\"bodyLocked\":true,\"label\":\"Exit fullscreen\",\"width\":390,\"height\":2980}"
+    },
+    {
+      "name": "phone 390x2980: Escape exits the fallback",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2980: still no page errors after interaction",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}

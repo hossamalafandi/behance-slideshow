@@ -7,6 +7,10 @@ migration/tools/node_modules/
 # Local test artifacts
 migration/tools/.cache/
 
+# Scratch originals for the standalone Al-Rashed page. Only the 9 optimized
+# derivatives in assets/al-rashed/ are committed.
+assets/al-rashed/raw/
+
 # Phase 1 page screenshots are local audit evidence only. No image file is
 # committed to the repository, in line with the image hosting policy.
 migration/01_AUDIT/evidence/*.png

@@ -30,6 +30,8 @@ const EXPECTED_URLS = SLIDE.images.map(image => image.src);
 const TOTAL = SLIDE.images.length;
 const WIDTH = 1335;
 const HEIGHT = 1553;
+const ASPECT = SLIDE.images[0].w / SLIDE.images[0].h;
+const CARD_HEIGHT = WIDTH / ASPECT;
 
 const results = [];
 const failures = [];
@@ -239,6 +241,7 @@ async function main() {
           .findIndex(dot => dot.classList.contains('active')),
         srcs: images.map(image => image.src),
         eager: images.every(image => image.getAttribute('loading') === 'eager'),
+        layout: container.getAttribute('data-layout'),
         objectFit: getComputedStyle(first).objectFit,
         radius: getComputedStyle(container).borderRadius,
         localStorage: (() => { try { return window.localStorage.length; } catch (error) { return 'blocked'; } })(),
@@ -252,7 +255,9 @@ async function main() {
     assertEqual(state.activeDot, 0, 'active dot');
     assert(state.eager, 'not every image is eager');
     state.srcs.forEach((src, index) => assertEqual(src, EXPECTED_URLS[index], 'image ' + (index + 1)));
-    assertEqual(state.objectFit, 'cover', 'object-fit');
+    // The approved phone fit layout applies to this portrait frame.
+    assertEqual(state.layout, 'fit', 'layout');
+    assertEqual(state.objectFit, 'contain', 'object-fit');
     assertEqual(state.radius, '20px', 'container radius');
     assertEqual(state.localStorage, 0, 'localStorage entries');
     assertEqual(state.sessionStorage, 0, 'sessionStorage entries');
@@ -340,7 +345,7 @@ async function main() {
       };
     });
     assertEqual(Math.round(layout.width), WIDTH, 'container width');
-    assertEqual(Math.round(layout.height), HEIGHT, 'container height');
+    assertEqual(Math.round(layout.height), Math.round(CARD_HEIGHT), 'container height');
     assertEqual(layout.radius, '20px', 'restored radius');
     assert(layout.scrollWidth <= WIDTH, 'horizontal overflow after exit');
     assert(layout.scrollHeight <= HEIGHT, 'vertical overflow after exit');

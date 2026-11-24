@@ -2,14 +2,17 @@
 'use strict';
 
 /**
- * Local router emulator for the pilot.
+ * Local router emulator for the deployed Apps Script contract.
  *
- * Mirrors the deployed doGet contract without deploying anything:
+ * Mirrors the deployed doGet behavior without deploying anything:
  *   /exec?slide=P001-S01  -> one self-contained slideshow
- *   every other request    -> neutral error page with no links
+ *   /exec?page=al-rashed  -> the standalone Al-Rashed project page
+ *   /assets/al-rashed/*   -> local page images (preview only)
+ *   every other request   -> neutral error page with no links
  *
- * There is deliberately no index, gallery, catalog, or static file route. The
- * only HTML this server returns is one slideshow or the neutral error page.
+ * There is deliberately no index, gallery, catalog, or directory listing.
+ * Only the single-slideshow route, the one project page, and the approved
+ * page assets are served.
  */
 
 const fs = require('fs');
@@ -19,7 +22,18 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const DATA_SOURCE = path.join(ROOT, '04_APPS_SCRIPT', 'SlidesData.gs');
 const PREVIEW_DIR = path.join(ROOT, '03_REBUILT_SLIDESHOWS', 'preview');
+const PAGE_PREVIEW = path.join(PREVIEW_DIR, 'al-rashed.html');
+const ASSET_DIR = path.resolve(ROOT, '..', 'assets', 'al-rashed');
+const PAGE_CODE = 'al-rashed';
+const ASSET_PREFIX = '/assets/al-rashed/';
 const PORT = Number(process.env.PILOT_PORT || 4173);
+
+const IMAGE_TYPES = {
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.png': 'image/png',
+  '.webp': 'image/webp'
+};
 
 const NOT_FOUND_HTML = [
   '<!DOCTYPE html>',
@@ -46,7 +60,7 @@ function loadSlides() {
   return JSON.parse(match[1]);
 }
 
-function countSlideParameters(queryString) {
+function countParameters(queryString, keyName) {
   if (!queryString) return 0;
   return queryString.split('&').reduce((count, pair) => {
     const rawKey = pair.split('=')[0].replace(/\+/g, ' ');
@@ -56,8 +70,37 @@ function countSlideParameters(queryString) {
     } catch (error) {
       key = rawKey;
     }
-    return key === 'slide' ? count + 1 : count;
+    return key === keyName ? count + 1 : count;
   }, 0);
+}
+
+function countSlideParameters(queryString) {
+  return countParameters(queryString, 'slide');
+}
+
+function serveAsset(response, pathname) {
+  const encodedName = pathname.slice(ASSET_PREFIX.length);
+  let name;
+  try {
+    name = decodeURIComponent(encodedName);
+  } catch (error) {
+    send(response, 404, 'text/plain; charset=utf-8', 'Not found');
+    return;
+  }
+
+  if (!/^[A-Za-z0-9._-]+$/.test(name) || name.startsWith('.')) {
+    send(response, 404, 'text/plain; charset=utf-8', 'Not found');
+    return;
+  }
+
+  const file = path.join(ASSET_DIR, name);
+  const type = IMAGE_TYPES[path.extname(name).toLowerCase()];
+  if (!type || !fs.existsSync(file) || !fs.statSync(file).isFile()) {
+    send(response, 404, 'text/plain; charset=utf-8', 'Not found');
+    return;
+  }
+
+  send(response, 200, type, fs.readFileSync(file), 'public, max-age=3600');
 }
 
 function createPilotServer() {
@@ -66,14 +109,35 @@ function createPilotServer() {
   return http.createServer((request, response) => {
     const url = new URL(request.url, 'http://127.0.0.1');
 
-    // Only the single-slideshow endpoint exists. Nothing else is routed, so
+    if (url.pathname.startsWith(ASSET_PREFIX)) {
+      serveAsset(response, url.pathname);
+      return;
+    }
+
+    // Only the two single-item endpoints exist. Nothing else is routed, so
     // the server can never expose a gallery or a file listing.
     if (url.pathname !== '/exec') {
       send(response, 404, 'text/plain; charset=utf-8', 'Not found');
       return;
     }
 
-    if (countSlideParameters(url.search.slice(1)) !== 1) {
+    const queryString = url.search.slice(1);
+    const slideCount = countParameters(queryString, 'slide');
+    const toolsCount = countParameters(queryString, 'tools');
+    const pageCount = countParameters(queryString, 'page');
+
+    if (pageCount === 1 && slideCount === 0 && toolsCount === 0) {
+      const rawPage = url.searchParams.get('page');
+      if (typeof rawPage !== 'string' || rawPage.trim().toLowerCase() !== PAGE_CODE ||
+          !fs.existsSync(PAGE_PREVIEW)) {
+        send(response, 200, 'text/html; charset=utf-8', NOT_FOUND_HTML);
+        return;
+      }
+      send(response, 200, 'text/html; charset=utf-8', fs.readFileSync(PAGE_PREVIEW, 'utf8'));
+      return;
+    }
+
+    if (slideCount !== 1 || pageCount !== 0 || toolsCount !== 0) {
       send(response, 200, 'text/html; charset=utf-8', NOT_FOUND_HTML);
       return;
     }
@@ -101,10 +165,10 @@ function createPilotServer() {
   });
 }
 
-function send(response, status, contentType, body) {
+function send(response, status, contentType, body, cacheControl) {
   response.writeHead(status, {
     'Content-Type': contentType,
-    'Cache-Control': 'no-store',
+    'Cache-Control': cacheControl || 'no-store',
     'X-Content-Type-Options': 'nosniff'
   });
   response.end(body);
@@ -117,10 +181,20 @@ function start(port) {
   });
 }
 
-module.exports = { createPilotServer, countSlideParameters, loadSlides, NOT_FOUND_HTML };
+module.exports = {
+  createPilotServer,
+  countParameters,
+  countSlideParameters,
+  loadSlides,
+  NOT_FOUND_HTML,
+  PAGE_CODE,
+  PAGE_PREVIEW,
+  ASSET_DIR
+};
 
 if (require.main === module) {
   start(PORT).then(() => {
     console.log('Pilot router listening on http://127.0.0.1:' + PORT + '/exec?slide=P001-S01');
+    console.log('Al-Rashed page: http://127.0.0.1:' + PORT + '/exec?page=al-rashed');
   });
 }
