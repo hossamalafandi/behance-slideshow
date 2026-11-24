@@ -120,8 +120,11 @@ loaded inside a Behance iframe. The owner approved copying them for this page:
   `https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/al-rashed/`.
 - The scratch originals in `assets/al-rashed/raw/` are gitignored and are not
   part of the deployed page.
-- The page still uses the exact Imgur URLs and order for the 17 renders and the
-  5 tool logos.
+- The page keeps the exact 17 Imgur render IDs and order: full-resolution
+  originals (`https://i.imgur.com/<id>.jpeg`) are used at desktop widths, and
+  the existing 1024×576 `h` variants are used only on phones through
+  `<picture>`.
+- The 5 tool logos keep their exact Imgur PNG URLs.
 - No slideshow image was copied, resized, proxied, or rehosted. The 48
   slideshows remain governed by sections 1–6.
 - This exception does not authorize copying any other Google Sites image or any

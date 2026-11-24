@@ -58,8 +58,13 @@ function renderSlides() {
     return [
       '          <figure class="render-slide" aria-roledescription="slide" aria-label="Render ' +
         (index + 1) + ' of ' + data.RENDERS.length + '">',
-      '            <img src="' + escapeHtml(data.renderUrl(id)) + '" alt="Al-Rashed project render ' +
-        (index + 1) + '"' + loading + ' decoding="async">',
+      '            <picture>',
+      '              <source media="(max-width: 700px)" srcset="' +
+        escapeHtml(data.renderThumbUrl(id)) + '">',
+      '              <img src="' + escapeHtml(data.renderUrl(id)) +
+        '" alt="Al-Rashed project render ' + (index + 1) + '"' + loading +
+        ' decoding="async">',
+      '            </picture>',
       '          </figure>'
     ].join('\n');
   }).join('\n');
@@ -276,6 +281,12 @@ function buildPage(assetBase) {
     height: 100%;
     margin: 0;
     overflow: hidden;
+  }
+
+  .render-slide picture {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .render-slide img {
@@ -720,9 +731,17 @@ ${toolsMarkup()}
     if (!target) return;
     var image = target.querySelector('img');
     if (!image || image.complete) return;
+    var src = image.currentSrc || image.getAttribute('src');
+    var picture = image.parentElement;
+    var source = picture && picture.tagName === 'PICTURE'
+      ? picture.querySelector('source[media]') : null;
+    if (source && window.matchMedia &&
+        window.matchMedia(source.getAttribute('media')).matches) {
+      src = source.getAttribute('srcset');
+    }
     var warm = new Image();
     warm.decoding = 'async';
-    warm.src = image.getAttribute('src');
+    warm.src = src;
   }
 
   function show(nextIndex) {
@@ -744,7 +763,6 @@ ${toolsMarkup()}
     var image = slides[index].querySelector('img');
     if (image) {
       image.loading = 'eager';
-      if (!image.complete) image.src = image.getAttribute('src');
       preload(index + 1);
       preload(index - 1);
     }

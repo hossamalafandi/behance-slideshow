@@ -4,13 +4,14 @@
 /**
  * Live Al-Rashed page suite.
  *
- * Runs against the deployed Apps Script URL after version 11 is live:
+ * Runs against the deployed Apps Script URL after version 12 is live:
  *  - all 9 page images resolve through jsDelivr with JPEG bytes;
  *  - `?page=al-rashed` returns the page, and `?slide=` / `?tools=` still work;
  *  - mixed, repeated, and unknown values keep the neutral error page;
  *  - the page fills Behance-like sandboxed frames at 987x2980 and 390x2980;
- *  - phone visitors receive the 768 px sources, desktop visitors the 1280 px
- *    sources, and both decode at the expected dimensions;
+ *  - desktop visitors receive the full-resolution 3840x2160 render originals,
+ *    phone visitors receive the 1024x576 `h` variants, and both decode at the
+ *    expected dimensions;
  *  - navigation, dots, keyboard, swipe, fullscreen, map, tools, and copyright
  *    all work in the live deployment.
  *
@@ -52,12 +53,16 @@ const ASSETS = [
   ])
 ];
 
-const RENDER_SVG = [
-  '<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="576">',
-  '<rect width="1024" height="576" fill="#17324d"/>',
-  '<circle cx="512" cy="288" r="150" fill="#e2a24a"/>',
-  '</svg>'
-].join('');
+function renderSvg(width, height) {
+  return [
+    '<svg xmlns="http://www.w3.org/2000/svg" width="' + width + '" height="' + height + '">',
+    '<rect width="' + width + '" height="' + height + '" fill="#17324d"/>',
+    '<circle cx="' + width / 2 + '" cy="' + height / 2 + '" r="150" fill="#e2a24a"/>',
+    '</svg>'
+  ].join('');
+}
+const RENDER_SVG = renderSvg(3840, 2160);
+const RENDER_THUMB_SVG = renderSvg(1024, 576);
 const LOGO_SVG = [
   '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">',
   '<rect width="200" height="200" fill="#000"/>',
@@ -201,6 +206,16 @@ async function routeChecks(context) {
     Boolean(page) &&
       (page.html.match(/class="render-slide"/g) || []).length === 17,
     page ? (page.html.match(/class="render-slide"/g) || []).length : null);
+  check('route: page has the 17 full-resolution render originals',
+    Boolean(page) &&
+      (page.html.match(
+        /<img src="https:\/\/i\.imgur\.com\/[A-Za-z0-9]+\.jpeg"/g
+      ) || []).length === 17);
+  check('route: page has the 17 phone h render sources',
+    Boolean(page) &&
+      (page.html.match(
+        /<source media="\(max-width: 700px\)" srcset="https:\/\/i\.imgur\.com\/[A-Za-z0-9]+h\.jpeg">/g
+      ) || []).length === 17);
   check('route: page has the 9 jsDelivr assets',
     Boolean(page) && ASSETS.every(asset => page.html.includes(
       data.PRODUCTION_ASSET_BASE + asset.name)));
@@ -244,7 +259,9 @@ async function routeChecks(context) {
 async function blockThirdParty(context) {
   await context.route('https://i.imgur.com/**', route => {
     blockedImgurRequests += 1;
-    const body = route.request().url().endsWith('.png') ? LOGO_SVG : RENDER_SVG;
+    const requestUrl = route.request().url();
+    const body = requestUrl.endsWith('.png') ? LOGO_SVG
+      : /h\.jpeg$/.test(requestUrl) ? RENDER_THUMB_SVG : RENDER_SVG;
     return route.fulfill({ status: 200, contentType: 'image/svg+xml', body });
   });
   await context.route('https://maps-api-ssl.google.com/**', route => route.fulfill({
@@ -427,12 +444,14 @@ async function runViewport(browser, label, width, expected) {
       state.slides === 17 && state.dots === 17 &&
         state.counter === '1 / 17' && state.currentDot === 0,
       [state.slides, state.dots, state.counter].join(' / '));
-    check(label + ': live render URLs match the data exactly in order',
+    check(label + ': live render URLs match the expected source in order',
       state.renders.length === 17 &&
         state.renders.every((image, index) =>
-          image.src === data.renderUrl(data.RENDERS[index])));
-    check(label + ': first render decodes at 1024x576',
-      state.renders[0].natural[0] === 1024 && state.renders[0].natural[1] === 576,
+          image.src === expected.renderUrls[index]));
+    check(label + ': first render decodes at ' + expected.renderWidth + 'x' +
+      expected.renderHeight,
+      state.renders[0].natural[0] === expected.renderWidth &&
+        state.renders[0].natural[1] === expected.renderHeight,
       state.renders[0].natural.join('x'));
     check(label + ': render stage keeps 16:9',
       Math.abs(state.stage.width / state.stage.height - 16 / 9) <= 0.01,
@@ -653,7 +672,10 @@ async function main() {
       photoTracks: 2,
       photoFiles: data.REAL_PHOTOS.map(photo => photo.desktop),
       photoSizes: [[1277, 960], [1277, 960], [1280, 962]],
-      mapHeight: 335.58
+      mapHeight: 335.58,
+      renderUrls: data.RENDERS.map(id => data.renderUrl(id)),
+      renderWidth: 3840,
+      renderHeight: 2160
     });
     await runViewport(browser, 'phone 390x2980', PHONE_WIDTH, {
       heroFile: 'hero-768.jpg',
@@ -662,7 +684,10 @@ async function main() {
       photoTracks: 1,
       photoFiles: data.REAL_PHOTOS.map(photo => photo.file),
       photoSizes: [[768, 577], [768, 577], [768, 577]],
-      mapHeight: 260
+      mapHeight: 260,
+      renderUrls: data.RENDERS.map(id => data.renderThumbUrl(id)),
+      renderWidth: 1024,
+      renderHeight: 576
     });
   } finally {
     if (browser) await browser.close();

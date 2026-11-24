@@ -43,12 +43,16 @@ const BEHANCE_HEIGHT = data.EMBED_HEIGHT;
 const BEHANCE_WIDTH = 987;
 const PHONE_WIDTH = 390;
 
-const RENDER_SVG = [
-  '<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="576">',
-  '<rect width="1024" height="576" fill="#17324d"/>',
-  '<circle cx="512" cy="288" r="150" fill="#e2a24a"/>',
-  '</svg>'
-].join('');
+function renderSvg(width, height) {
+  return [
+    '<svg xmlns="http://www.w3.org/2000/svg" width="' + width + '" height="' + height + '">',
+    '<rect width="' + width + '" height="' + height + '" fill="#17324d"/>',
+    '<circle cx="' + width / 2 + '" cy="' + height / 2 + '" r="150" fill="#e2a24a"/>',
+    '</svg>'
+  ].join('');
+}
+const RENDER_SVG = renderSvg(3840, 2160);
+const RENDER_THUMB_SVG = renderSvg(1024, 576);
 const LOGO_SVG = [
   '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">',
   '<rect width="200" height="200" fill="#000"/>',
@@ -212,8 +216,12 @@ function staticChecks() {
   check('render URLs match the data exactly in order',
     renders.length === 17 &&
       renders.every((image, index) => image.src === data.renderUrl(data.RENDERS[index])));
-  check('render images use the 1024x576 h variant',
-    renders.every(image => /^https:\/\/i\.imgur\.com\/[A-Za-z0-9]+h\.jpeg$/.test(image.src)));
+  check('render images use the full-resolution Imgur originals',
+    renders.every(image => /^https:\/\/i\.imgur\.com\/[A-Za-z0-9]+\.jpeg$/.test(image.src)));
+  check('render pictures provide the 1024x576 h variant on phone',
+    (production.match(
+      /<source media="\(max-width: 700px\)" srcset="https:\/\/i\.imgur\.com\/[A-Za-z0-9]+h\.jpeg">/g
+    ) || []).length === 17);
   check('only the first render is eager; the rest are lazy',
     renders[0] && renders[0].loading === 'eager' &&
       renders.slice(1).every(image => image.loading === 'lazy'));
@@ -399,7 +407,9 @@ async function routerChecks(base) {
 async function blockThirdParty(context) {
   await context.route('https://i.imgur.com/**', route => {
     blockedImgurRequests += 1;
-    const body = route.request().url().endsWith('.png') ? LOGO_SVG : RENDER_SVG;
+    const url = route.request().url();
+    const body = url.endsWith('.png') ? LOGO_SVG
+      : /h\.jpeg$/.test(url) ? RENDER_THUMB_SVG : RENDER_SVG;
     return route.fulfill({ status: 200, contentType: 'image/svg+xml', body });
   });
   await context.route('https://maps-api-ssl.google.com/**', route => route.fulfill({
@@ -629,11 +639,12 @@ async function runViewport(browser, base, label, width, expected) {
       state.renders.length === 17 && state.dots === 17 &&
         state.counter === '1 / 17' && state.currentDot === 0,
       state.renders.length + ' / ' + state.dots + ' / ' + state.counter);
-    check(label + ': render URLs match the data exactly in order',
-      state.renders.every((image, index) => image.src === data.renderUrl(data.RENDERS[index])));
-    check(label + ': the first render image decodes at 1024x576',
-      state.renders[0] && state.renders[0].width === 1024 &&
-        state.renders[0].height === 576,
+    check(label + ': render URLs match the expected source in order',
+      state.renders.every((image, index) => image.src === expected.renderUrls[index]));
+    check(label + ': the first render image decodes at ' +
+      expected.renderWidth + 'x' + expected.renderHeight,
+      state.renders[0] && state.renders[0].width === expected.renderWidth &&
+        state.renders[0].height === expected.renderHeight,
       state.renders[0] ? state.renders[0].width + 'x' + state.renders[0].height : 'missing');
 
     check(label + ': photo grid uses ' + expected.photoColumns + ' layout column(s)',
@@ -761,18 +772,20 @@ async function runViewport(browser, base, label, width, expected) {
     await frame.waitForFunction(() =>
       document.getElementById('renderCounter').textContent === '17 / 17', null,
       { timeout: 10000, polling: 100 });
-    await frame.waitForFunction(() => {
+    await frame.waitForFunction(expectedWidth => {
       const image = document.querySelectorAll('.render-slide img')[16];
-      return image && image.complete && image.naturalWidth === 1024;
-    }, null, { timeout: 15000, polling: 100 });
+      return image && image.complete && image.naturalWidth === expectedWidth;
+    }, expected.renderWidth, { timeout: 15000, polling: 100 });
     const lastRender = await frame.evaluate(() => {
       const image = document.querySelectorAll('.render-slide img')[16];
       return { width: image.naturalWidth, height: image.naturalHeight,
         loading: image.loading, src: image.currentSrc || image.src };
     });
-    check(label + ': End reveals the 17th render at 1024x576',
-      lastRender.width === 1024 && lastRender.height === 576 &&
-        lastRender.src === data.renderUrl(data.RENDERS[16]),
+    check(label + ': End reveals the 17th render at ' +
+      expected.renderWidth + 'x' + expected.renderHeight,
+      lastRender.width === expected.renderWidth &&
+        lastRender.height === expected.renderHeight &&
+        lastRender.src === expected.renderUrls[16],
       JSON.stringify(lastRender));
     await frame.press('#rendersViewer', 'Home');
     await frame.waitForFunction(() =>
@@ -926,7 +939,10 @@ async function main() {
       photoColumns: 2,
       photoWidth: 1280,
       toolHeight: 60,
-      copyrightSize: 10.67
+      copyrightSize: 10.67,
+      renderUrls: data.RENDERS.map(id => data.renderUrl(id)),
+      renderWidth: 3840,
+      renderHeight: 2160
     });
     await runViewport(browser, base, 'phone 390x2980', PHONE_WIDTH, {
       hero: 435,
@@ -938,7 +954,10 @@ async function main() {
       photoColumns: 1,
       photoWidth: 768,
       toolHeight: 48,
-      copyrightSize: 11
+      copyrightSize: 11,
+      renderUrls: data.RENDERS.map(id => data.renderThumbUrl(id)),
+      renderWidth: 1024,
+      renderHeight: 576
     });
   } finally {
     if (browser) await browser.close();

@@ -73,6 +73,10 @@ const OVERVIEW_TEXT =
 const COPYRIGHT_TEXT = '© 2025 HOSSAM ALAFANDI. All rights reserved.';
 
 function renderUrl(id) {
+  return 'https://i.imgur.com/' + id + '.jpeg';
+}
+
+function renderThumbUrl(id) {
   return 'https://i.imgur.com/' + id + 'h.jpeg';
 }
 
@@ -115,6 +119,7 @@ module.exports = {
   OVERVIEW_TEXT,
   COPYRIGHT_TEXT,
   renderUrl,
+  renderThumbUrl,
   toolUrl,
   embedUrl,
   embedSnippet

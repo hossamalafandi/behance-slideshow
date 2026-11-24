@@ -1,7 +1,7 @@
 # Al-Rashed Project — standalone Behance embed
 
 Status: **ready for manual copy/paste. Nothing has been published or replaced.**
-Built 2026-11-24 and deployed as version 11 under the existing deployment ID.
+Built 2026-11-24 and deployed as version 12 under the existing deployment ID.
 This page is independent of the 48 slideshow embeds and the 38 TOOLS USED
 strips; none of those codes or image URLs changed.
 
@@ -55,8 +55,11 @@ index of the 48 slideshows.
 
 ## Images and hosting
 
-- The **17 renders** keep their exact Imgur `h` URLs
-  (`https://i.imgur.com/<id>h.jpeg`) in the original order.
+- The **17 renders** keep their exact Imgur IDs and original order. Desktop
+  visitors receive the full-resolution originals
+  (`https://i.imgur.com/<id>.jpeg`, 3840×2160); phone visitors receive the
+  existing 1024×576 `h` variants through `<picture>`, so the phone page stays
+  lightweight.
 - The **5 tool logos** keep their exact Imgur PNG URLs.
 - The **hero and 3 real photos** are the only copied images. Google Sites serves
   them with `Cross-Origin-Resource-Policy: same-site`, so they cannot be
@@ -72,7 +75,7 @@ index of the 48 slideshows.
 ## Deployment
 
 The page uses the existing standalone Apps Script deployment under the same
-deployment ID, with the new `?page=al-rashed` route. It is live as version 11:
+deployment ID, with the new `?page=al-rashed` route. It is live as version 12:
 
 ```
 https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec?page=al-rashed
@@ -96,11 +99,12 @@ node validate.js
 ```
 
 `test-al-rashed.js` loads the page inside Behance-like sandboxed frames at
-987×2980 and 390×2980, checks exact URLs and order, checks that both frames fill
-2980 px with no overflow, and exercises navigation, dots, keyboard, swipe,
-native fullscreen, and the theater fallback. It fulfills every Imgur request
-with a synthetic image and every map request with a stub, so no original image
-or map tile is downloaded.
+987×2980 and 390×2980, checks exact URLs and order, checks that desktop frames
+request the full-resolution 3840×2160 originals and phone frames the 1024×576
+`h` variants, checks that both frames fill 2980 px with no overflow, and
+exercises navigation, dots, keyboard, swipe, native fullscreen, and the theater
+fallback. It fulfills every Imgur request with a synthetic image and every map
+request with a stub, so no original image or map tile is downloaded.
 
 The live deployment is also covered:
 
@@ -108,18 +112,18 @@ The live deployment is also covered:
 node test-live-al-rashed.js https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec
 ```
 
-It verifies all 9 jsDelivr files, both Behance-like frames, the phone and
-desktop image sources, navigation, fullscreen, the map, and the unchanged
-`?slide=` / `?tools=` routes. Result: **128/128**. The full live regression is
-also green: **339/339** for all 48 slideshows and **64/64** for the phone fit
-layout.
+It verifies all 9 jsDelivr files, both Behance-like frames, the full-resolution
+desktop renders, the phone `h` sources, navigation, fullscreen, the map, and the
+unchanged `?slide=` / `?tools=` routes. Result: **PENDING**. The full live
+regression is also green: **339/339** for all 48 slideshows and **64/64** for the
+phone fit layout.
 
 ## Rollback
 
 - **Remove the embed only:** delete the iframe block from the Behance project.
   The page remains deployed but unreferenced.
 - **Revert the page:** revert the Al-Rashed commit and deploy the previous
-  Apps Script version (version 10) under the same deployment ID. The 48
+  Apps Script version (version 11) under the same deployment ID. The 48
   `?slide=` and 38 `?tools=` codes are unaffected because their routes, data,
   and image URLs are untouched.
 - **Keep the slideshows:** do not replace, reorder, or edit the existing 48

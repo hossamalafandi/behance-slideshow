@@ -10,8 +10,8 @@
     "assets": 9
   },
   "browser": "Chrome 158.0.8127.88",
-  "checks": 212,
-  "passed": 212,
+  "checks": 213,
+  "passed": 213,
   "failed": 0,
   "blockedImgurRequests": 44,
   "failures": [],
@@ -49,7 +49,7 @@
     {
       "name": "production and preview come from the same generator",
       "passed": true,
-      "detail": "27150 vs 26500"
+      "detail": "29879 vs 29229"
     },
     {
       "name": "production page uses jsDelivr for page images",
@@ -157,7 +157,12 @@
       "detail": null
     },
     {
-      "name": "render images use the 1024x576 h variant",
+      "name": "render images use the full-resolution Imgur originals",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "render pictures provide the 1024x576 h variant on phone",
       "passed": true,
       "detail": null
     },
@@ -404,7 +409,7 @@
     {
       "name": "router: page returns the generated preview byte-for-byte",
       "passed": true,
-      "detail": "26500 vs 26500"
+      "detail": "29229 vs 29229"
     },
     {
       "name": "router: page is served without cache",
@@ -692,14 +697,14 @@
       "detail": "17 / 17 / 1 / 17"
     },
     {
-      "name": "desktop 987x2980: render URLs match the data exactly in order",
+      "name": "desktop 987x2980: render URLs match the expected source in order",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x2980: the first render image decodes at 1024x576",
+      "name": "desktop 987x2980: the first render image decodes at 3840x2160",
       "passed": true,
-      "detail": "1024x576"
+      "detail": "3840x2160"
     },
     {
       "name": "desktop 987x2980: photo grid uses 2 layout column(s)",
@@ -802,9 +807,9 @@
       "detail": "{\"current\":4,\"transform\":\"translateX(-23.5294%)\"}"
     },
     {
-      "name": "desktop 987x2980: End reveals the 17th render at 1024x576",
+      "name": "desktop 987x2980: End reveals the 17th render at 3840x2160",
       "passed": true,
-      "detail": "{\"width\":1024,\"height\":576,\"loading\":\"eager\",\"src\":\"https://i.imgur.com/qI1GMsIh.jpeg\"}"
+      "detail": "{\"width\":3840,\"height\":2160,\"loading\":\"eager\",\"src\":\"https://i.imgur.com/qI1GMsI.jpeg\"}"
     },
     {
       "name": "desktop 987x2980: keyboard arrows, Home, and End work with wrap-around",
@@ -917,7 +922,7 @@
       "detail": "17 / 17 / 1 / 17"
     },
     {
-      "name": "phone 390x2980: render URLs match the data exactly in order",
+      "name": "phone 390x2980: render URLs match the expected source in order",
       "passed": true,
       "detail": null
     },

@@ -592,9 +592,16 @@ function main() {
       renderTags.length === 17 &&
         renderTags.every((tag, index) =>
           pageImageSource(tag) === pageData.renderUrl(pageData.RENDERS[index])));
-    check('Al-Rashed renders use the 1024x576 h variant',
-      renderTags.every(tag => /^https:\/\/i\.imgur\.com\/[A-Za-z0-9]+h\.jpeg$/.test(
+    check('Al-Rashed renders use the full-resolution Imgur originals',
+      renderTags.every(tag => /^https:\/\/i\.imgur\.com\/[A-Za-z0-9]+\.jpeg$/.test(
         pageImageSource(tag))));
+    const renderSources = Array.from(pageProduction.matchAll(
+      /<source media="\(max-width: 700px\)" srcset="(https:\/\/i\.imgur\.com\/[A-Za-z0-9]+h\.jpeg)">/g
+    )).map(match => match[1]);
+    check('Al-Rashed renders provide the 1024x576 h variant on phone',
+      renderSources.length === 17 &&
+        renderSources.every((source, index) =>
+          source === pageData.renderThumbUrl(pageData.RENDERS[index])));
     check('Al-Rashed only eagerly loads the first render',
       /\bloading="eager"/.test(renderTags[0] || '') &&
         renderTags.slice(1).every(tag => /\bloading="lazy"/.test(tag)));
