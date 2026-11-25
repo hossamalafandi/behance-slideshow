@@ -2,18 +2,18 @@
   "scope": {
     "page": "?page=cellphone-store",
     "behanceFrames": [
-      "987x11500",
-      "390x11500"
+      "987x13320",
+      "390x13320"
     ],
     "stages": 7,
     "videos": 9,
     "assets": 44
   },
   "browser": "Chrome 158.0.8127.88",
-  "checks": 62,
-  "passed": 62,
+  "checks": 72,
+  "passed": 72,
   "failed": 0,
-  "blockedImgurRequests": 31,
+  "blockedImgurRequests": 24,
   "failures": [],
   "results": [
     {
@@ -62,9 +62,9 @@
       "detail": null
     },
     {
-      "name": "page has 37 images",
+      "name": "page has 38 images",
       "passed": true,
-      "detail": "37"
+      "detail": "38"
     },
     {
       "name": "page has one hero, 21 copied shots, 11 slides, and 4 tools",
@@ -102,6 +102,16 @@
       "detail": null
     },
     {
+      "name": "slideshow track is 11 frames wide",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has the slideshow fullscreen viewer",
+      "passed": true,
+      "detail": null
+    },
+    {
       "name": "tool logos match the exact Imgur PNGs",
       "passed": true,
       "detail": null
@@ -122,7 +132,7 @@
       "detail": null
     },
     {
-      "name": "page keeps the fixed 11500 px embed height",
+      "name": "page keeps the fixed 13320 px embed height",
       "passed": true,
       "detail": null
     },
@@ -147,182 +157,222 @@
       "detail": null
     },
     {
-      "name": "desktop 987x11500: the sandboxed page frame loads",
+      "name": "desktop 987x13320: the sandboxed page frame loads",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x11500: frame viewport is 987x11500",
+      "name": "desktop 987x13320: frame viewport is 987x13320",
       "passed": true,
-      "detail": "987x11500"
+      "detail": "987x13320"
     },
     {
-      "name": "desktop 987x11500: page fills exactly 11500 px",
+      "name": "desktop 987x13320: page fills exactly 13320 px",
       "passed": true,
-      "detail": "{\"scroll\":[987,11500],\"body\":[987,11500],\"main\":11500}"
+      "detail": "{\"scroll\":[987,13320],\"body\":[987,13320],\"main\":13320}"
     },
     {
-      "name": "desktop 987x11500: no horizontal overflow",
+      "name": "desktop 987x13320: no horizontal overflow",
       "passed": true,
       "detail": "987 / 987"
     },
     {
-      "name": "desktop 987x11500: headings and stages are exact",
+      "name": "desktop 987x13320: headings and stages are exact",
       "passed": true,
       "detail": "OVERVIEW, WORK DEVELOPMENT STAGES, Render VS Reality, LOCATION, TOOLS USED / 7"
     },
     {
-      "name": "desktop 987x11500: 9 Vimeo videos use 9:16 frames",
+      "name": "desktop 987x13320: 9 Vimeo videos use 9:16 frames",
       "passed": true,
       "detail": "[[0.5625100401606425,\"le=0&byline=0&portrait=0\"],[0.5625039097524867,\"le=0&byline=0&portrait=0\"],[0.5625039097524867,\"le=0&byline=0&portrait=0\"],[0.5625039097524867,\"le=0&byline=0&portrait=0\"],[0.5625039097524867,\"le=0&byline=0&portrait=0\"],[0.5625100401606425,\"le=0&byline=0&portrait=0\"],[0.5625100401606425,\"le=0&byline=0&portrait=0\"],[0.5625039097524867,\"le=0&byline=0&portrait=0\"],[0.5625039097524867,\"le=0&byline=0&portrait=0\"]]"
     },
     {
-      "name": "desktop 987x11500: two-video stages stack into horizontal scrollers on phone",
+      "name": "desktop 987x13320: two-video stages stack vertically on phone",
       "passed": true,
       "detail": "grid / visible"
     },
     {
-      "name": "desktop 987x11500: 21 copied shots use the right source size",
+      "name": "desktop 987x13320: 21 copied shots use the right source size",
       "passed": true,
-      "detail": "21 / http://127.0.0.1:51391/assets/cellphone-store/stage1-1-1280.jpg"
+      "detail": "21 / http://127.0.0.1:50945/assets/cellphone-store/stage1-1-1280.jpg"
     },
     {
-      "name": "desktop 987x11500: 11 slides use the right Imgur size",
+      "name": "desktop 987x13320: slides use the right Imgur source",
       "passed": true,
       "detail": "11 / https://i.imgur.com/C9xftbD.jpg"
     },
     {
-      "name": "desktop 987x11500: first slide decodes at the expected size",
+      "name": "desktop 987x13320: first slide decodes at the expected size",
       "passed": true,
       "detail": "2000x2667"
     },
     {
-      "name": "desktop 987x11500: 4 tools use the exact Imgur logos",
+      "name": "desktop 987x13320: 4 tools use the exact Imgur logos",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x11500: the map keeps the exact URL",
+      "name": "desktop 987x13320: the map keeps the exact URL",
       "passed": true,
       "detail": "https://maps-api-ssl.google.com/maps?hl=en-US&ll=35.133634,36.752241&output=embed&q=35.133655,36.752207&z=21"
     },
     {
-      "name": "desktop 987x11500: slideshow starts at 1 / 11 with 11 dots",
+      "name": "desktop 987x13320: slideshow starts at 1 / 11 with 11 dots",
       "passed": true,
       "detail": "1 / 11 / 11"
     },
     {
-      "name": "desktop 987x11500: next moves to 2 / 11",
+      "name": "desktop 987x13320: slideshow track is 11 full frames wide",
+      "passed": true,
+      "detail": "{\"stage\":437.703125,\"slide\":437.703125,\"track\":4814.734375}"
+    },
+    {
+      "name": "desktop 987x13320: next reveals exactly one full frame",
+      "passed": true,
+      "detail": "{\"stage\":60,\"slide\":60}"
+    },
+    {
+      "name": "desktop 987x13320: dot 5 jumps to 5 / 11",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x11500: dot 5 jumps to 5 / 11",
+      "name": "desktop 987x13320: End loads the 11th slide at the expected size",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x11500: keyboard End and Home work",
+      "name": "desktop 987x13320: keyboard End and Home work",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x11500: horizontal swipe changes the slide",
+      "name": "desktop 987x13320: horizontal swipe changes the slide",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x11500: no page errors",
+      "name": "desktop 987x13320: no page errors",
       "passed": true,
       "detail": ""
     },
     {
-      "name": "phone 390x11500: the sandboxed page frame loads",
+      "name": "phone 390x13320: the sandboxed page frame loads",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x11500: frame viewport is 390x11500",
+      "name": "phone 390x13320: frame viewport is 390x13320",
       "passed": true,
-      "detail": "390x11500"
+      "detail": "390x13320"
     },
     {
-      "name": "phone 390x11500: page fills exactly 11500 px",
+      "name": "phone 390x13320: page fills exactly 13320 px",
       "passed": true,
-      "detail": "{\"scroll\":[390,11500],\"body\":[390,11500],\"main\":11500}"
+      "detail": "{\"scroll\":[390,13320],\"body\":[390,13320],\"main\":13320}"
     },
     {
-      "name": "phone 390x11500: no horizontal overflow",
+      "name": "phone 390x13320: no horizontal overflow",
       "passed": true,
       "detail": "390 / 390"
     },
     {
-      "name": "phone 390x11500: headings and stages are exact",
+      "name": "phone 390x13320: headings and stages are exact",
       "passed": true,
       "detail": "OVERVIEW, WORK DEVELOPMENT STAGES, Render VS Reality, LOCATION, TOOLS USED / 7"
     },
     {
-      "name": "phone 390x11500: 9 Vimeo videos use 9:16 frames",
+      "name": "phone 390x13320: 9 Vimeo videos use 9:16 frames",
       "passed": true,
-      "detail": "[[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625018677345127,\"le=0&byline=0&portrait=0\"],[0.5625018677345127,\"le=0&byline=0&portrait=0\"],[0.5625018677345127,\"le=0&byline=0&portrait=0\"],[0.5625018677345127,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625018677345127,\"le=0&byline=0&portrait=0\"],[0.5625018677345127,\"le=0&byline=0&portrait=0\"]]"
+      "detail": "[[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"]]"
     },
     {
-      "name": "phone 390x11500: two-video stages stack into horizontal scrollers on phone",
+      "name": "phone 390x13320: two-video stages stack vertically on phone",
       "passed": true,
-      "detail": "flex / auto"
+      "detail": "grid / visible"
     },
     {
-      "name": "phone 390x11500: 21 copied shots use the right source size",
+      "name": "phone 390x13320: 21 copied shots use the right source size",
       "passed": true,
-      "detail": "21 / http://127.0.0.1:51391/assets/cellphone-store/stage1-1-768.jpg"
+      "detail": "21 / http://127.0.0.1:50945/assets/cellphone-store/stage1-1-768.jpg"
     },
     {
-      "name": "phone 390x11500: 11 slides use the right Imgur size",
+      "name": "phone 390x13320: slides use the right Imgur source",
       "passed": true,
       "detail": "11 / https://i.imgur.com/C9xftbDh.jpg"
     },
     {
-      "name": "phone 390x11500: first slide decodes at the expected size",
+      "name": "phone 390x13320: first slide decodes at the expected size",
       "passed": true,
       "detail": "1024x1365"
     },
     {
-      "name": "phone 390x11500: 4 tools use the exact Imgur logos",
+      "name": "phone 390x13320: 4 tools use the exact Imgur logos",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x11500: the map keeps the exact URL",
+      "name": "phone 390x13320: the map keeps the exact URL",
       "passed": true,
       "detail": "https://maps-api-ssl.google.com/maps?hl=en-US&ll=35.133634,36.752241&output=embed&q=35.133655,36.752207&z=21"
     },
     {
-      "name": "phone 390x11500: slideshow starts at 1 / 11 with 11 dots",
+      "name": "phone 390x13320: slideshow starts at 1 / 11 with 11 dots",
       "passed": true,
       "detail": "1 / 11 / 11"
     },
     {
-      "name": "phone 390x11500: next moves to 2 / 11",
+      "name": "phone 390x13320: slideshow track is 11 full frames wide",
+      "passed": true,
+      "detail": "{\"stage\":342,\"slide\":342,\"track\":3762}"
+    },
+    {
+      "name": "phone 390x13320: next reveals exactly one full frame",
+      "passed": true,
+      "detail": "{\"stage\":24,\"slide\":24}"
+    },
+    {
+      "name": "phone 390x13320: dot 5 jumps to 5 / 11",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x11500: dot 5 jumps to 5 / 11",
+      "name": "phone 390x13320: End loads the 11th slide at the expected size",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x11500: keyboard End and Home work",
+      "name": "phone 390x13320: keyboard End and Home work",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x11500: horizontal swipe changes the slide",
+      "name": "phone 390x13320: horizontal swipe changes the slide",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x11500: no page errors",
+      "name": "phone 390x13320: phone slideshow fullscreen opens with vertical space",
+      "passed": true,
+      "detail": "{\"open\":true,\"height\":844,\"top\":2938,\"src\":\"https://i.imgur.com/C9xftbDh.jpg\",\"natural\":[1024,1365],\"counter\":\"1 / 11\",\"label\":\"Exit fullscreen\",\"body\":true}"
+    },
+    {
+      "name": "phone 390x13320: phone fullscreen navigation stays in sync",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x13320: phone fullscreen closes cleanly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x13320: Escape closes the phone slideshow fullscreen",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x13320: no page errors",
       "passed": true,
       "detail": ""
     }

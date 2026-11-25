@@ -142,7 +142,7 @@ function staticChecks() {
     (production.match(/<iframe\b/g) || []).length === 10 &&
       production.includes('class="map-frame" src="' +
         data.MAP_URL.replace(/&/g, '&amp;') + '"'));
-  check('page has 37 images', images.length === 37, images.length);
+  check('page has 38 images', images.length === 38, images.length);
 
   const hero = images.filter(tag => attr(tag, 'alt') === data.HERO.alt);
   const slides = images.filter(tag => /^Cellphone Store render \d+$/.test(attr(tag, 'alt')));
@@ -171,6 +171,13 @@ function staticChecks() {
   check('slideshow starts with 1 / 11 and has 11 dots',
     production.includes('>1 / ' + data.RENDERS.length + '</span>') &&
       production.includes('var count = slides.length'));
+  check('slideshow track is 11 frames wide',
+    production.includes('width: ' + (data.RENDERS.length * 100) + '%;'));
+  check('page has the slideshow fullscreen viewer',
+    production.includes('id="slideFullscreen"') &&
+      production.includes('id="slideFullscreenViewer"') &&
+      production.includes('id="slideFsImage"') &&
+      production.includes('slide-fs-open'));
   check('tool logos match the exact Imgur PNGs',
     tools.length === 4 &&
       tools.every((tag, index) => attr(tag, 'src') === data.toolUrl(data.TOOLS[index].id)));
@@ -181,8 +188,8 @@ function staticChecks() {
       .test(production));
   check('page has no external scripts',
     !/<script\b[^>]*\bsrc=/i.test(production));
-  check('page keeps the fixed 11500 px embed height',
-    data.EMBED_HEIGHT === 11500 && data.EMBED_WIDTH === '100%');
+  check('page keeps the fixed 13320 px embed height',
+    data.EMBED_HEIGHT === 13320 && data.EMBED_WIDTH === '100%');
   check('page has the phone breakpoint', /@media \(max-width: 700px\)/.test(production));
 
   const referenced = Array.from(new Set(Array.from(production.matchAll(
@@ -271,8 +278,9 @@ async function runViewport(browser, base, label, width) {
     await frame.evaluate(() => document.fonts.ready.then(() => true));
     await frame.waitForFunction(() => {
       const images = Array.from(document.querySelectorAll(
-        '.hero img, .shot img, .slide img, .tools-row img'));
-      return images.length === 37 && images.every(image => image.complete && image.naturalWidth > 0);
+        '.hero img, .shot img, .tools-row img, .slide:first-child img'));
+      return images.length === 27 &&
+        images.every(image => image.complete && image.naturalWidth > 0);
     }, null, { timeout: 30000, polling: 100 });
     await wait(400);
 
@@ -313,6 +321,9 @@ async function runViewport(browser, base, label, width) {
         })),
         counter: document.getElementById('slideCounter').textContent,
         dots: document.querySelectorAll('.slide-dot').length,
+        stageWidth: document.getElementById('slideshowStage').getBoundingClientRect().width,
+        slideWidth: document.querySelector('.slide').getBoundingClientRect().width,
+        trackWidth: document.getElementById('slideshowTrack').getBoundingClientRect().width,
         map: document.querySelector('.map-frame').src,
         stageTops: Array.from(document.querySelectorAll('.stage')).map(stage => ({
           id: stage.id, ...rect(stage)
@@ -340,9 +351,9 @@ async function runViewport(browser, base, label, width) {
         state.videos.every(video => /player\.vimeo\.com\/video\/\d+/.test(video.src)) &&
         state.videos.every(video => Math.abs(video.ratio - 9 / 16) <= 0.01),
       JSON.stringify(state.videos.map(video => [video.ratio, video.src.slice(-24)])));
-    check(label + ': two-video stages stack into horizontal scrollers on phone',
+    check(label + ': two-video stages stack vertically on phone',
       width <= 700
-        ? state.videoRowDisplay === 'flex' && state.videoRowOverflow === 'auto'
+        ? state.videoRowDisplay === 'grid' && state.videoRowOverflow === 'visible'
         : state.videoRowDisplay === 'grid' && state.videoRowOverflow === 'visible',
       state.videoRowDisplay + ' / ' + state.videoRowOverflow);
     check(label + ': 21 copied shots use the right source size',
@@ -350,11 +361,11 @@ async function runViewport(browser, base, label, width) {
         state.shots.every(shot => shot.src.includes(
           width <= 700 ? '-768.jpg' : '-1280.jpg')),
       state.shots.length + ' / ' + (state.shots[0] && state.shots[0].src));
-    check(label + ': 11 slides use the right Imgur size',
+    check(label + ': slides use the right Imgur source',
       state.slides.length === 11 &&
-        state.slides.every(slide => width <= 700
-          ? /https:\/\/i\.imgur\.com\/[A-Za-z0-9]+h\.jpg$/.test(slide.src)
-          : /https:\/\/i\.imgur\.com\/[A-Za-z0-9]+\.jpg$/.test(slide.src)),
+        (width <= 700
+          ? /https:\/\/i\.imgur\.com\/[A-Za-z0-9]+h\.jpg$/.test(state.slides[0].src)
+          : /https:\/\/i\.imgur\.com\/[A-Za-z0-9]+\.jpg$/.test(state.slides[0].src)),
       state.slides.length + ' / ' + (state.slides[0] && state.slides[0].src));
     check(label + ': first slide decodes at the expected size',
       width <= 700
@@ -371,12 +382,25 @@ async function runViewport(browser, base, label, width) {
     check(label + ': slideshow starts at 1 / 11 with 11 dots',
       state.counter === '1 / 11' && state.dots === 11,
       state.counter + ' / ' + state.dots);
+    check(label + ': slideshow track is 11 full frames wide',
+      Math.abs(state.slideWidth - state.stageWidth) <= 1 &&
+        Math.abs(state.trackWidth - state.stageWidth * 11) <= 2,
+      JSON.stringify({ stage: state.stageWidth, slide: state.slideWidth,
+        track: state.trackWidth }));
 
     await frame.click('#slideNext');
     await frame.waitForFunction(() =>
       document.getElementById('slideCounter').textContent === '2 / 11', null,
       { timeout: 10000, polling: 100 });
-    check(label + ': next moves to 2 / 11', true);
+    await wait(700);
+    const framePosition = await frame.evaluate(() => {
+      const stageBox = document.getElementById('slideshowStage').getBoundingClientRect();
+      const slideBox = document.querySelectorAll('.slide')[1].getBoundingClientRect();
+      return { stage: stageBox.x, slide: slideBox.x };
+    });
+    check(label + ': next reveals exactly one full frame',
+      Math.abs(framePosition.slide - framePosition.stage) <= 1,
+      JSON.stringify(framePosition));
     await frame.click('.slide-dot:nth-child(5)');
     await frame.waitForFunction(() =>
       document.getElementById('slideCounter').textContent === '5 / 11', null,
@@ -386,6 +410,14 @@ async function runViewport(browser, base, label, width) {
     await frame.waitForFunction(() =>
       document.getElementById('slideCounter').textContent === '11 / 11', null,
       { timeout: 10000, polling: 100 });
+    await frame.waitForFunction(expectedWidth => {
+      const image = document.querySelectorAll('.slide img')[10];
+      return image && image.complete && image.naturalWidth === expectedWidth;
+    }, width <= 700 ? 1024 : 2000, { timeout: 15000, polling: 100 });
+    check(label + ': End loads the 11th slide at the expected size',
+      await frame.evaluate(() =>
+        document.querySelectorAll('.slide img')[10].naturalWidth) ===
+          (width <= 700 ? 1024 : 2000));
     await frame.press('#rendersSlideshow', 'Home');
     await frame.waitForFunction(() =>
       document.getElementById('slideCounter').textContent === '1 / 11', null,
@@ -408,6 +440,64 @@ async function runViewport(browser, base, label, width) {
       document.getElementById('slideCounter').textContent === '2 / 11', null,
       { timeout: 10000, polling: 100 });
     check(label + ': horizontal swipe changes the slide', true);
+
+    if (width <= 700) {
+      await frame.evaluate(() => {
+        Object.defineProperty(screen, 'width', { configurable: true, get: () => 390 });
+        Object.defineProperty(screen, 'height', { configurable: true, get: () => 844 });
+        Object.defineProperty(screen, 'availWidth', { configurable: true, get: () => 390 });
+        Object.defineProperty(screen, 'availHeight', { configurable: true, get: () => 844 });
+      });
+      await frame.press('#rendersSlideshow', 'Home');
+      await frame.waitForFunction(() =>
+        document.getElementById('slideCounter').textContent === '1 / 11', null,
+        { timeout: 10000, polling: 100 });
+      await frame.click('#slideFullscreen');
+      await wait(400);
+      const fs = await frame.evaluate(() => {
+        const viewer = document.getElementById('slideFullscreenViewer');
+        const image = document.getElementById('slideFsImage');
+        const box = viewer.getBoundingClientRect();
+        return {
+          open: viewer.classList.contains('is-open') && !viewer.hidden,
+          height: box.height,
+          top: box.top,
+          src: image.getAttribute('src'),
+          natural: [image.naturalWidth, image.naturalHeight],
+          counter: document.getElementById('slideFsCounter').textContent,
+          label: document.getElementById('slideFullscreen').getAttribute('aria-label'),
+          body: document.body.classList.contains('slide-fs-open')
+        };
+      });
+      check(label + ': phone slideshow fullscreen opens with vertical space',
+        fs.open && Math.abs(fs.height - 844) <= 1 && fs.top >= 0 &&
+          fs.src === data.renderThumbUrl(data.RENDERS[0]) &&
+          fs.counter === '1 / 11' &&
+          fs.label === 'Exit fullscreen' && fs.body,
+        JSON.stringify(fs));
+      await frame.click('#slideFsNext');
+      await frame.waitForFunction(() =>
+        document.getElementById('slideFsCounter').textContent === '2 / 11' &&
+        document.getElementById('slideCounter').textContent === '2 / 11', null,
+        { timeout: 10000, polling: 100 });
+      check(label + ': phone fullscreen navigation stays in sync', true);
+      await frame.click('#slideFsClose');
+      await wait(300);
+      check(label + ': phone fullscreen closes cleanly',
+        await frame.evaluate(() =>
+          document.getElementById('slideFullscreenViewer').hidden &&
+          !document.body.classList.contains('slide-fs-open')));
+
+      await frame.click('#slideFullscreen');
+      await wait(300);
+      await frame.evaluate(() => {
+        document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+      });
+      await wait(300);
+      check(label + ': Escape closes the phone slideshow fullscreen',
+        await frame.evaluate(() =>
+          document.getElementById('slideFullscreenViewer').hidden));
+    }
 
     check(label + ': no page errors', pageErrors.length === 0, pageErrors.join(' | '));
   } finally {

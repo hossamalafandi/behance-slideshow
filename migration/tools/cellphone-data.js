@@ -7,7 +7,7 @@ const PAGE_TITLE = 'Cellphone Store — Hossam Alafandi';
 const PAGE_CODE = 'cellphone-store';
 // Fixed Behance height, sized to cover both the 987 px desktop column and the
 // 390 px phone column without clipping the long stage/media layout.
-const EMBED_HEIGHT = 11500;
+const EMBED_HEIGHT = 13320;
 const EMBED_WIDTH = '100%';
 const PRODUCTION_ASSET_BASE =
   'https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/';

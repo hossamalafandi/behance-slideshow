@@ -1,7 +1,7 @@
 # Cellphone Store — standalone Behance embed
 
 Status: **ready for manual copy/paste. Nothing has been published or replaced.**
-Built 2026-11-25 and deployed as version 16 under the existing deployment ID.
+Built 2026-11-25 and deployed as version 17 under the existing deployment ID.
 This page is independent of the 48 slideshow embeds, the 38 TOOLS USED strips,
 and the Al-Rashed page.
 
@@ -19,7 +19,7 @@ Do not combine it with a slideshow code.
 <iframe
   src="https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec?page=cellphone-store"
   width="100%"
-  height="11500"
+  height="13320"
   style="border:0;overflow:hidden"
   loading="lazy"
   allowfullscreen
@@ -27,7 +27,7 @@ Do not combine it with a slideshow code.
 </iframe>
 ```
 
-Keep `width="100%"` and `height="11500"`. The height is sized to the full
+Keep `width="100%"` and `height="13320"`. The height is sized to the full
 desktop and phone layouts; the page does not use an internal scrollbar.
 
 ## What is on the page
@@ -37,7 +37,7 @@ desktop and phone layouts; the page does not use an internal scrollbar.
 | Hero | Original hero image, `CELLPHONE STORE`, `SYRIA, HAMA`, `- 2026 -` |
 | Overview | The original 13 m² store description |
 | Work development stages | 7 numbered stages with their original text, videos, and photos |
-| Renders | The original 11-render slideshow in the planning stage, with arrows, dots, counter, keyboard, and swipe |
+| Renders | The original 11-render slideshow in the planning stage, with arrows, dots, counter, keyboard, swipe, and an in-page fullscreen viewer on phones |
 | Render VS Reality | The 4 original render/reality comparisons |
 | Location | The original Google Maps embed |
 | Tools used | 3ds Max, AutoCAD, Corona, Photoshop |
@@ -89,7 +89,7 @@ page.
 
 The page uses the existing standalone Apps Script deployment under the same
 deployment ID, with the new `?page=cellphone-store` route. It is live as
-version 16:
+version 17:
 
 ```
 https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec?page=cellphone-store
@@ -113,7 +113,7 @@ node test-cellphone-store.js
 ```
 
 `test-cellphone-store.js` loads the page inside Behance-like sandboxed frames
-at 987×11500 and 390×11500, checks the exact stage order, all 9 Vimeo IDs, the
+at 987×13320 and 390×13320, checks the exact stage order, all 9 Vimeo IDs, the
 21 copied shots, the 11-slide slideshow, the map, the 4 tools, the 44 local
 assets, and the slideshow navigation. It stubs Imgur, Vimeo, the map, and the
 fonts, so no original media is downloaded.
@@ -126,7 +126,7 @@ node test-live-cellphone-store.js https://script.google.com/macros/s/AKfycbzV7Ou
 
 It verifies the 44 jsDelivr files, the new page route, the unchanged
 Al-Rashed/slide/tools routes, both Behance-like frames, and the slideshow.
-Result: **98/98**. The local page suite passes **62/62**.
+Result: **PENDING**. The local page suite passes **72/72**.
 
 ## Rollback
 
@@ -141,8 +141,14 @@ Result: **98/98**. The local page suite passes **62/62**.
 
 ## Notes
 
-- The videos are portrait phone recordings. Two-video stages become horizontal
-  swipe rows on phones so the page stays usable.
+- The RENDERS slideshow has a fullscreen button. On phones it opens an
+  in-page viewer that uses the phone's vertical space, shows the portrait
+  render whole, and uses a blurred version of the same render as the backdrop.
+  Arrows, swipe, the counter, and Escape all work in that viewer.
+- On phones, stages with two videos stack the videos one per row instead of
+  forcing them side by side.
+- The videos are portrait phone recordings. Two-video stages are stacked on
+  phones so each video gets the full content width.
 - The map is the original `maps-api-ssl.google.com` embed. If a network or
   regional policy blocks Google Maps, only the map frame stays blank.
 - The page is static HTML served by Apps Script; it uses no cookies, storage,

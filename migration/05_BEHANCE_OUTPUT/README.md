@@ -18,7 +18,7 @@ project page are generated and ready for manual copy/paste.
 
 `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
 
-Deployment version 16. Every slideshow code uses one `?slide=<ID>` value and
+Deployment version 17. Every slideshow code uses one `?slide=<ID>` value and
 loads exactly one slideshow. Every TOOLS USED code uses one `?tools=<ID>`
 value and loads the original logo strip from the same host. The standalone page
 uses one `?page=al-rashed` value. The production Apps Script deployment is
@@ -61,12 +61,12 @@ original logo URLs and CSS; the images are not copied or rehosted.
 1. Open `CELLPHONE_STORE_EMBED.md`.
 2. Copy the single `<iframe>…</iframe>` block.
 3. Paste it into the Cellphone Store Behance project as one embed.
-4. Keep `width="100%"` and `height="11500"`; the height covers the full
+4. Keep `width="100%"` and `height="13320"`; the height covers the full
    desktop and phone layout. Do not combine it with a slideshow code.
 
 Live verification: the Al-Rashed page suite passes **135/135**, the Cellphone
-Store page suite passes **98/98** (local **62/62**), the all-slideshow suite
-passes **339/339**, and the phone fit suite passes **64/64** against version 16.
+Store page suite passes **PENDING** (local **72/72**), the all-slideshow suite
+passes **339/339**, and the phone fit suite passes **64/64** against version 17.
 
 ## Not included
 

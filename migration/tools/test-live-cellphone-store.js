@@ -178,6 +178,14 @@ async function routeChecks(context) {
   check('route: page has 11 slides and the 1 / 11 counter',
     Boolean(page) && (page.html.match(/class="slide"/g) || []).length === 11 &&
       page.html.includes('1 / ' + data.RENDERS.length));
+  check('route: page has the 11 phone h slide sources',
+    Boolean(page) && (page.html.match(
+      /<source media="\(max-width: 700px\)" srcset="https:\/\/i\.imgur\.com\/[A-Za-z0-9]+h\.jpg">/g
+    ) || []).length === 11);
+  check('route: page has the slideshow fullscreen viewer',
+    Boolean(page) && page.html.includes('id="slideFullscreenViewer"') &&
+      page.html.includes('id="slideFullscreen"') &&
+      page.html.includes('id="slideFsImage"'));
   check('route: page has one map iframe',
     Boolean(page) && page.html.includes('class="map-frame"'));
   check('route: page has no Drive, Google Sites, or YouTube chrome',
@@ -294,8 +302,9 @@ async function runViewport(browser, label, width) {
     await frame.evaluate(() => document.fonts.ready.then(() => true));
     await frame.waitForFunction(() => {
       const images = Array.from(document.querySelectorAll(
-        '.hero img, .shot img, .slide img, .tools-row img'));
-      return images.length === 37 && images.every(image => image.complete && image.naturalWidth > 0);
+        '.hero img, .shot img, .tools-row img, .slide:first-child img'));
+      return images.length === 27 &&
+        images.every(image => image.complete && image.naturalWidth > 0);
     }, null, { timeout: 45000, polling: 100 });
     await wait(400);
 
@@ -324,7 +333,10 @@ async function runViewport(browser, label, width) {
         tools: Array.from(document.querySelectorAll('.tools-row img')).map(image => image.src),
         map: document.querySelector('.map-frame').src,
         counter: document.getElementById('slideCounter').textContent,
-        dots: document.querySelectorAll('.slide-dot').length
+        dots: document.querySelectorAll('.slide-dot').length,
+        stageWidth: document.getElementById('slideshowStage').getBoundingClientRect().width,
+        slideWidth: document.querySelector('.slide').getBoundingClientRect().width,
+        trackWidth: document.getElementById('slideshowTrack').getBoundingClientRect().width
       };
     });
 
@@ -353,11 +365,11 @@ async function runViewport(browser, label, width) {
         state.shots.every(shot => shot.src.includes(
           width <= 700 ? '-768.jpg' : '-1280.jpg')),
       state.shots.length + ' / ' + (state.shots[0] && state.shots[0].src));
-    check(label + ': 11 slides use the right Imgur size',
+    check(label + ': slides use the right Imgur source',
       state.slides.length === 11 &&
-        state.slides.every(slide => width <= 700
-          ? /https:\/\/i\.imgur\.com\/[A-Za-z0-9]+h\.jpg$/.test(slide.src)
-          : /https:\/\/i\.imgur\.com\/[A-Za-z0-9]+\.jpg$/.test(slide.src)),
+        (width <= 700
+          ? /https:\/\/i\.imgur\.com\/[A-Za-z0-9]+h\.jpg$/.test(state.slides[0].src)
+          : /https:\/\/i\.imgur\.com\/[A-Za-z0-9]+\.jpg$/.test(state.slides[0].src)),
       state.slides.length + ' / ' + (state.slides[0] && state.slides[0].src));
     check(label + ': first slide decodes at the expected size',
       width <= 700
@@ -372,6 +384,11 @@ async function runViewport(browser, label, width) {
     check(label + ': slideshow starts at 1 / 11 with 11 dots',
       state.counter === '1 / 11' && state.dots === 11,
       state.counter + ' / ' + state.dots);
+    check(label + ': slideshow track is 11 full frames wide',
+      Math.abs(state.slideWidth - state.stageWidth) <= 1 &&
+        Math.abs(state.trackWidth - state.stageWidth * 11) <= 2,
+      JSON.stringify({ stage: state.stageWidth, slide: state.slideWidth,
+        track: state.trackWidth }));
 
     await frame.click('#slideNext');
     await frame.waitForFunction(() =>
