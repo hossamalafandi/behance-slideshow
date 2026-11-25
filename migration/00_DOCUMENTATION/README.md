@@ -279,10 +279,10 @@ originals, while phones keep the existing 1024×576 `h` variants through
 `<picture>`. Version 15 adds the phone fullscreen fallback: because Behance's
 phone app blocks native fullscreen, the button opens an in-page viewer that
 keeps the page height stable, rotates the current 16:9 render to use the tall
-screen, and switches to upright when the phone is turned landscape. It is
-deployed as version 15 under the same deployment ID. Static validation passes
-3491/3491, the local page suite passes 218/218, and the live page suite passes
-135/135. The existing 48-slideshow local, fit, pilot, and live suites remain
+screen, and switches to upright when the phone is turned landscape. The
+Al-Rashed page is unchanged in version 16, which adds the Cellphone Store page.
+Static validation passes 3491/3491, the local page suite passes 218/218, and the
+live page suite passes 135/135. The existing 48-slideshow local, fit, pilot, and live suites remain
 green. The copy/paste code and rollback steps are in
 `05_BEHANCE_OUTPUT/AL_RASHED_EMBED.md`.
 
@@ -293,7 +293,8 @@ stage/render-reality photos are copied as 44 optimized derivatives under
 `assets/cellphone-store/` and served through jsDelivr; the 11 slideshow images
 and 4 tool logos stay on Imgur. The page uses a fixed 11500 px Behance iframe
 sized to cover both the desktop and phone layouts. The copy/paste code and
-verification steps are in `05_BEHANCE_OUTPUT/CELLPHONE_STORE_EMBED.md`.
+verification steps are in `05_BEHANCE_OUTPUT/CELLPHONE_STORE_EMBED.md`. The
+local page suite passes 62/62 and the live page suite passes 98/98.
 
 ## 10. What was deliberately not done
 

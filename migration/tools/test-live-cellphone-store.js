@@ -82,24 +82,28 @@ const MAP_HTML = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Map</t
 
 async function assetChecks() {
   const assets = expectedAssets();
-  const results = await Promise.all(assets.map(async name => {
+  for (const name of assets) {
     const assetUrl = data.PRODUCTION_ASSET_BASE + name;
-    try {
-      const response = await fetch(assetUrl, { method: 'HEAD', redirect: 'follow' });
-      return {
-        name,
-        status: response.status,
-        type: response.headers.get('content-type') || '',
-        length: Number(response.headers.get('content-length') || 0)
-      };
-    } catch (error) {
-      return { name, error: error.message };
+    let last = { name, error: 'not attempted' };
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        const response = await fetch(assetUrl, { redirect: 'follow' });
+        const bytes = await response.arrayBuffer();
+        last = {
+          name,
+          status: response.status,
+          type: response.headers.get('content-type') || '',
+          length: bytes.byteLength
+        };
+        if (response.status === 200 && bytes.byteLength > 0) break;
+      } catch (error) {
+        last = { name, error: error.message };
+      }
+      await wait(400 * attempt);
     }
-  }));
-  for (const item of results) {
-    check('jsDelivr: ' + item.name + ' resolves',
-      item.status === 200 && /^image\/jpeg\b/.test(item.type) && item.length > 0,
-      JSON.stringify(item));
+    check('jsDelivr: ' + name + ' resolves',
+      last.status === 200 && /^image\/jpeg\b/.test(last.type) && last.length > 0,
+      JSON.stringify(last));
   }
 }
 
@@ -113,7 +117,9 @@ async function loadRoute(context, query) {
         try {
           const state = await frame.evaluate(() => {
             const body = document.body ? document.body.textContent.trim() : '';
-            const pageRoot = Boolean(document.getElementById('rendersSlideshow'));
+            const pageRoot = Boolean(
+              document.getElementById('rendersSlideshow') ||
+              document.getElementById('rendersViewer'));
             const slides = document.querySelectorAll('.slide').length;
             const logos = document.querySelectorAll('.logo-row').length;
             let kind = null;
@@ -144,8 +150,17 @@ async function loadRoute(context, query) {
   }
 }
 
+async function loadRouteRetry(context, query) {
+  let result = await loadRoute(context, query);
+  if (!result) {
+    await wait(1200);
+    result = await loadRoute(context, query);
+  }
+  return result;
+}
+
 async function routeChecks(context) {
-  const page = await loadRoute(context, '?page=cellphone-store');
+  const page = await loadRouteRetry(context, '?page=cellphone-store');
   check('route: ?page=cellphone-store returns the standalone page',
     Boolean(page) && page.kind === 'page', page && page.kind);
   check('route: page title is exact',
@@ -172,21 +187,21 @@ async function routeChecks(context) {
   check('route: page has no anchors or top navigation',
     Boolean(page) && !/<a\b|target="_blank"/i.test(page.html));
 
-  const upper = await loadRoute(context, '?page=CELLPHONE-STORE');
+  const upper = await loadRouteRetry(context, '?page=CELLPHONE-STORE');
   check('route: cellphone-store page value is case-insensitive',
     Boolean(upper) && upper.kind === 'page', upper && upper.kind);
 
-  const alRashed = await loadRoute(context, '?page=al-rashed');
+  const alRashed = await loadRouteRetry(context, '?page=al-rashed');
   check('route: ?page=al-rashed still returns its page',
     Boolean(alRashed) && alRashed.kind === 'page' &&
       alRashed.title === 'Al-Rashed Project — Hossam Alafandi',
     alRashed && alRashed.title);
 
-  const slide = await loadRoute(context, '?slide=P002-S01');
+  const slide = await loadRouteRetry(context, '?slide=P002-S01');
   check('route: ?slide=P002-S01 still returns its 11-slide page',
     Boolean(slide) && slide.kind === 'slides' && slide.slides === 11 && !slide.page,
     slide ? slide.kind + ' / ' + slide.slides : null);
-  const tools = await loadRoute(context, '?tools=P002');
+  const tools = await loadRouteRetry(context, '?tools=P002');
   check('route: ?tools=P002 still returns a logo strip',
     Boolean(tools) && tools.kind === 'tools' && tools.logos === 1 && !tools.page,
     tools ? tools.kind + ' / ' + tools.logos : null);
@@ -197,7 +212,7 @@ async function routeChecks(context) {
     '?slide=P002-S01&page=cellphone-store',
     '?page=cellphone-store&tools=P002'];
   for (const query of rejected) {
-    const result = await loadRoute(context, query);
+    const result = await loadRouteRetry(context, query);
     check('route: rejects ' + (query || '(no query)'),
       Boolean(result) && result.kind === 'neutral' && !result.page &&
         result.slides === 0 && result.logos === 0,

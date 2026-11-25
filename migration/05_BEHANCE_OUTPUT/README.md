@@ -65,8 +65,8 @@ original logo URLs and CSS; the images are not copied or rehosted.
    desktop and phone layout. Do not combine it with a slideshow code.
 
 Live verification: the Al-Rashed page suite passes **135/135**, the Cellphone
-Store page suite passes **PENDING**, the all-slideshow suite passes
-**339/339**, and the phone fit suite passes **64/64** against version 16.
+Store page suite passes **98/98** (local **62/62**), the all-slideshow suite
+passes **339/339**, and the phone fit suite passes **64/64** against version 16.
 
 ## Not included
 

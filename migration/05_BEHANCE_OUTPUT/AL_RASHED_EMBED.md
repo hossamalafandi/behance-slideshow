@@ -1,7 +1,7 @@
 # Al-Rashed Project — standalone Behance embed
 
 Status: **ready for manual copy/paste. Nothing has been published or replaced.**
-Built 2026-11-24 and deployed as version 15 under the existing deployment ID.
+Built 2026-11-24 and deployed as version 16 under the existing deployment ID.
 This page is independent of the 48 slideshow embeds and the 38 TOOLS USED
 strips; none of those codes or image URLs changed.
 
@@ -94,7 +94,7 @@ browser blocks it.
 ## Deployment
 
 The page uses the existing standalone Apps Script deployment under the same
-deployment ID, with the new `?page=al-rashed` route. It is live as version 15:
+deployment ID, with the new `?page=al-rashed` route. It is live as version 16:
 
 ```
 https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec?page=al-rashed
