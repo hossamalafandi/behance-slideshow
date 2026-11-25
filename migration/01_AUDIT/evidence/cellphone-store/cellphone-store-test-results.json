@@ -13,7 +13,7 @@
   "checks": 72,
   "passed": 72,
   "failed": 0,
-  "blockedImgurRequests": 24,
+  "blockedImgurRequests": 25,
   "failures": [],
   "results": [
     {
@@ -194,7 +194,7 @@
     {
       "name": "desktop 987x13320: 21 copied shots use the right source size",
       "passed": true,
-      "detail": "21 / http://127.0.0.1:50945/assets/cellphone-store/stage1-1-1280.jpg"
+      "detail": "21 / http://127.0.0.1:61729/assets/cellphone-store/stage1-1-1280.jpg"
     },
     {
       "name": "desktop 987x13320: slides use the right Imgur source",
@@ -294,7 +294,7 @@
     {
       "name": "phone 390x13320: 21 copied shots use the right source size",
       "passed": true,
-      "detail": "21 / http://127.0.0.1:50945/assets/cellphone-store/stage1-1-768.jpg"
+      "detail": "21 / http://127.0.0.1:61729/assets/cellphone-store/stage1-1-768.jpg"
     },
     {
       "name": "phone 390x13320: slides use the right Imgur source",
@@ -354,7 +354,7 @@
     {
       "name": "phone 390x13320: phone slideshow fullscreen opens with vertical space",
       "passed": true,
-      "detail": "{\"open\":true,\"height\":844,\"top\":2938,\"src\":\"https://i.imgur.com/C9xftbDh.jpg\",\"natural\":[1024,1365],\"counter\":\"1 / 11\",\"label\":\"Exit fullscreen\",\"body\":true}"
+      "detail": "{\"open\":true,\"height\":844,\"top\":2917,\"src\":\"https://i.imgur.com/C9xftbDh.jpg\",\"natural\":[1024,1365],\"counter\":\"1 / 11\",\"label\":\"Exit fullscreen\",\"body\":true}"
     },
     {
       "name": "phone 390x13320: phone fullscreen navigation stays in sync",

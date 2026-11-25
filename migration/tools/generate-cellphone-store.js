@@ -245,7 +245,7 @@ function buildPage(assetBase) {
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 100%;
     min-height: 100vh;
   }
@@ -346,7 +346,24 @@ function buildPage(assetBase) {
     line-height: 1.55;
   }
 
-  .stages-section { padding-bottom: calc(var(--section-y) + 4px); }
+  .stages-section {
+    padding-bottom: calc(var(--section-y) + 4px);
+    display: flex;
+    flex: 1 1 auto;
+  }
+
+  .stages-section > .wrap {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+  }
+
+  .stages-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 auto;
+  }
 
   .stage + .stage {
     margin-top: var(--stage-gap);
@@ -832,7 +849,9 @@ function buildPage(assetBase) {
   <section class="section stages-section" aria-labelledby="stages-title">
     <div class="wrap">
       <h2 id="stages-title">WORK DEVELOPMENT STAGES</h2>
-      ${data.STAGES.map(stage => stageMarkup(stage, assetBase)).join('\n')}
+      <div class="stages-list">
+        ${data.STAGES.map(stage => stageMarkup(stage, assetBase)).join('\n')}
+      </div>
     </div>
   </section>
 

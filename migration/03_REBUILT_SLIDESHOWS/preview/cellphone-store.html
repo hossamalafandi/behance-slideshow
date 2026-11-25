@@ -44,7 +44,7 @@
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 100%;
     min-height: 100vh;
   }
@@ -145,7 +145,24 @@
     line-height: 1.55;
   }
 
-  .stages-section { padding-bottom: calc(var(--section-y) + 4px); }
+  .stages-section {
+    padding-bottom: calc(var(--section-y) + 4px);
+    display: flex;
+    flex: 1 1 auto;
+  }
+
+  .stages-section > .wrap {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+  }
+
+  .stages-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 auto;
+  }
 
   .stage + .stage {
     margin-top: var(--stage-gap);
@@ -636,7 +653,8 @@
   <section class="section stages-section" aria-labelledby="stages-title">
     <div class="wrap">
       <h2 id="stages-title">WORK DEVELOPMENT STAGES</h2>
-      <article class="stage" id="stage-inspecting">
+      <div class="stages-list">
+        <article class="stage" id="stage-inspecting">
   <h3>1-Inspecting</h3>
   <p class="stage-text">The existing electrical and plumbing systems were assessed to determine what could be retained or required modification. Site measurements were taken to evaluate the layout and identify opportunities to improve space utilization and functionality. A key decision was to replace the existing spiral staircase, which occupied approximately 13% of the store’s floor area, with a more compact alternative to maximize usable retail space.</p>
 <div class="stage-media split video-images">
@@ -927,6 +945,7 @@
   <p class="stage-text">The final stage focused on installing the remaining elements, including tables and shelving, while addressing outstanding cabinetry adjustments and on-site issues. With the final details completed, the store came together as a cohesive, modern retail space, maximizing the potential of its 13 m² area through thoughtful design, efficient planning, and careful attention to functionality.</p>
 
 </article>
+      </div>
     </div>
   </section>
 
