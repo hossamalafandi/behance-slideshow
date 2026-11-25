@@ -131,3 +131,25 @@ loaded inside a Behance iframe. The owner approved copying them for this page:
   slideshows remain governed by sections 1–6.
 - This exception does not authorize copying any other Google Sites image or any
   slideshow image.
+
+## 9. Cellphone Store page exception
+
+Date: 2026-11-25. Owner-approved scope: the standalone Cellphone Store project
+page served at `?page=cellphone-store`, and nothing else.
+
+Google Sites serves the page's 21 stage and render/reality photos with
+cross-site blocking headers, so they cannot be loaded inside a Behance iframe.
+The owner asked for the page to be rebuilt as an embed, which authorizes this
+page-only copy:
+
+- 44 optimized JPEG derivatives live in `assets/cellphone-store/`: a 768 px
+  phone version and a 1280 px desktop version for each of the 21 photos, plus
+  1920/768 px hero versions.
+- They are served through jsDelivr at
+  `https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/`.
+- The 11 RENDERS slideshow images and the 4 tool logos keep their exact Imgur
+  URLs. The 9 videos use the owner's Vimeo player embeds, not Google Drive.
+- No slideshow image was copied, resized, proxied, or rehosted. The 48
+  slideshows remain governed by sections 1–6.
+- This exception does not authorize copying any other Google Sites image or any
+  slideshow image.

@@ -1,14 +1,25 @@
 /**
  * Shared stateless embed renderer.
  *
- * One request = one slideshow, one TOOLS USED strip, or the standalone
- * Al-Rashed project page. This file intentionally has no index, gallery,
- * dashboard, or multi-item route. Missing, repeated, array, list, or unknown
- * IDs return a neutral error page with no links.
+ * One request = one slideshow, one TOOLS USED strip, or one standalone project
+ * page. This file intentionally has no index, gallery, dashboard, or
+ * multi-item route. Missing, repeated, array, list, or unknown IDs return a
+ * neutral error page with no links.
  *
  * The SLIDES lookup is generated in SlidesData.gs and the TOOLS lookup in
  * ToolsData.gs. Neither map is sent wholesale to the browser.
  */
+
+var PAGE_FILES = {
+  'al-rashed': {
+    file: 'AlRashed',
+    title: 'Al-Rashed Project — Hossam Alafandi'
+  },
+  'cellphone-store': {
+    file: 'CellphoneStore',
+    title: 'Cellphone Store — Hossam Alafandi'
+  }
+};
 
 function doGet(e) {
   // Require exactly one known key. Checking the raw query string catches
@@ -19,7 +30,7 @@ function doGet(e) {
   var pageCount = countQueryParameters_(queryString, 'page');
 
   if (pageCount === 1 && slideCount === 0 && toolsCount === 0) {
-    return alRashedResponse_(e);
+    return pageResponse_(e);
   }
   if (slideCount === 1 && toolsCount === 0 && pageCount === 0) {
     return slideshowResponse_(e);
@@ -31,18 +42,21 @@ function doGet(e) {
 }
 
 /**
- * Standalone Al-Rashed project page. The page is a static HTML file so the
- * shared slideshow and tools routes are untouched.
+ * Standalone project page. Each page is a static HTML file, so the shared
+ * slideshow and tools routes are untouched.
  */
-function alRashedResponse_(e) {
+function pageResponse_(e) {
   var raw = e.parameter.page;
+  var key = typeof raw === 'string' ? raw.trim().toLowerCase() : '';
+  var page = Object.prototype.hasOwnProperty.call(PAGE_FILES, key)
+    ? PAGE_FILES[key] : null;
 
-  if (typeof raw !== 'string' || raw.trim().toLowerCase() !== 'al-rashed') {
+  if (!page) {
     return notFoundResponse_();
   }
 
-  return HtmlService.createHtmlOutputFromFile('AlRashed')
-    .setTitle('Al-Rashed Project — Hossam Alafandi')
+  return HtmlService.createHtmlOutputFromFile(page.file)
+    .setTitle(page.title)
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 

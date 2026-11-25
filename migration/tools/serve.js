@@ -22,10 +22,16 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const DATA_SOURCE = path.join(ROOT, '04_APPS_SCRIPT', 'SlidesData.gs');
 const PREVIEW_DIR = path.join(ROOT, '03_REBUILT_SLIDESHOWS', 'preview');
-const PAGE_PREVIEW = path.join(PREVIEW_DIR, 'al-rashed.html');
+const PAGE_PREVIEWS = {
+  'al-rashed': path.join(PREVIEW_DIR, 'al-rashed.html'),
+  'cellphone-store': path.join(PREVIEW_DIR, 'cellphone-store.html')
+};
+const PAGE_PREVIEW = PAGE_PREVIEWS['al-rashed'];
 const ASSET_DIR = path.resolve(ROOT, '..', 'assets', 'al-rashed');
+const CELLPHONE_ASSET_DIR = path.resolve(ROOT, '..', 'assets', 'cellphone-store');
 const PAGE_CODE = 'al-rashed';
 const ASSET_PREFIX = '/assets/al-rashed/';
+const CELLPHONE_ASSET_PREFIX = '/assets/cellphone-store/';
 const PORT = Number(process.env.PILOT_PORT || 4173);
 
 const IMAGE_TYPES = {
@@ -78,8 +84,8 @@ function countSlideParameters(queryString) {
   return countParameters(queryString, 'slide');
 }
 
-function serveAsset(response, pathname) {
-  const encodedName = pathname.slice(ASSET_PREFIX.length);
+function serveAsset(response, pathname, prefix, directory) {
+  const encodedName = pathname.slice(prefix.length);
   let name;
   try {
     name = decodeURIComponent(encodedName);
@@ -93,7 +99,7 @@ function serveAsset(response, pathname) {
     return;
   }
 
-  const file = path.join(ASSET_DIR, name);
+  const file = path.join(directory, name);
   const type = IMAGE_TYPES[path.extname(name).toLowerCase()];
   if (!type || !fs.existsSync(file) || !fs.statSync(file).isFile()) {
     send(response, 404, 'text/plain; charset=utf-8', 'Not found');
@@ -110,7 +116,12 @@ function createPilotServer() {
     const url = new URL(request.url, 'http://127.0.0.1');
 
     if (url.pathname.startsWith(ASSET_PREFIX)) {
-      serveAsset(response, url.pathname);
+      serveAsset(response, url.pathname, ASSET_PREFIX, ASSET_DIR);
+      return;
+    }
+
+    if (url.pathname.startsWith(CELLPHONE_ASSET_PREFIX)) {
+      serveAsset(response, url.pathname, CELLPHONE_ASSET_PREFIX, CELLPHONE_ASSET_DIR);
       return;
     }
 
@@ -128,12 +139,14 @@ function createPilotServer() {
 
     if (pageCount === 1 && slideCount === 0 && toolsCount === 0) {
       const rawPage = url.searchParams.get('page');
-      if (typeof rawPage !== 'string' || rawPage.trim().toLowerCase() !== PAGE_CODE ||
-          !fs.existsSync(PAGE_PREVIEW)) {
+      const key = typeof rawPage === 'string' ? rawPage.trim().toLowerCase() : '';
+      const previewFile = Object.prototype.hasOwnProperty.call(PAGE_PREVIEWS, key)
+        ? PAGE_PREVIEWS[key] : null;
+      if (!previewFile || !fs.existsSync(previewFile)) {
         send(response, 200, 'text/html; charset=utf-8', NOT_FOUND_HTML);
         return;
       }
-      send(response, 200, 'text/html; charset=utf-8', fs.readFileSync(PAGE_PREVIEW, 'utf8'));
+      send(response, 200, 'text/html; charset=utf-8', fs.readFileSync(previewFile, 'utf8'));
       return;
     }
 
@@ -189,7 +202,9 @@ module.exports = {
   NOT_FOUND_HTML,
   PAGE_CODE,
   PAGE_PREVIEW,
-  ASSET_DIR
+  PAGE_PREVIEWS,
+  ASSET_DIR,
+  CELLPHONE_ASSET_DIR
 };
 
 if (require.main === module) {

@@ -31,7 +31,8 @@ This folder is the migration workspace. It was created without changing,
 deleting, renaming, or redeploying anything in the live portfolio, the existing
 production Apps Script project, or the existing `index.html` prototype. A **new
 standalone** Apps Script project hosts all 48 slideshows, the 38 TOOLS USED
-strips, and the standalone Al-Rashed page; it is deployed as version 15. One
+strips, the standalone Al-Rashed page, and the Cellphone Store page; it is
+deployed as version 16. One
 temporary Behance test project was published. The audit, pilot, and bulk
 rollout commits are pushed to `main`. See
 `01_AUDIT/phase_2_pilot_report.md` and `01_AUDIT/phase_2_bulk_report.md` for the
@@ -87,8 +88,8 @@ migration/
 │   └── evidence/                        pilot and bulk test reports (screenshots gitignored)
 ├── 02_SOURCE_BACKUP/                    untouched original slideshow HTML, one folder per project
 ├── 03_REBUILT_SLIDESHOWS/               generated data and previews for all 48 slideshows
-├── 04_APPS_SCRIPT/                      shared Apps Script project (48-slide map, 38-tool map, AlRashed page, version 15)
-└── 05_BEHANCE_OUTPUT/                   all 48 embed codes plus 38 TOOLS USED codes: ALL_EMBEDS.md, ALL_EMBEDS.csv, TOOLS_USED_EMBEDS.md, TOOLS_USED_EMBEDS.csv, AL_RASHED_EMBED.md, 37 project files
+├── 04_APPS_SCRIPT/                      shared Apps Script project (48-slide map, 38-tool map, AlRashed + CellphoneStore pages, version 16)
+└── 05_BEHANCE_OUTPUT/                   all 48 embed codes plus 38 TOOLS USED codes: ALL_EMBEDS.md, ALL_EMBEDS.csv, TOOLS_USED_EMBEDS.md, TOOLS_USED_EMBEDS.csv, AL_RASHED_EMBED.md, CELLPHONE_STORE_EMBED.md, 37 project files
 ```
 
 The standalone page also uses the repository-level `assets/al-rashed/` folder
@@ -285,13 +286,24 @@ deployed as version 15 under the same deployment ID. Static validation passes
 green. The copy/paste code and rollback steps are in
 `05_BEHANCE_OUTPUT/AL_RASHED_EMBED.md`.
 
+Version 16 adds the standalone Cellphone Store page at `?page=cellphone-store`.
+It reproduces the 7-stage workflow, 9 Vimeo videos, the original 11-render
+slideshow, the 4 render/reality comparisons, the map, and the 4 tools. The 21
+stage/render-reality photos are copied as 44 optimized derivatives under
+`assets/cellphone-store/` and served through jsDelivr; the 11 slideshow images
+and 4 tool logos stay on Imgur. The page uses a fixed 11500 px Behance iframe
+sized to cover both the desktop and phone layouts. The copy/paste code and
+verification steps are in `05_BEHANCE_OUTPUT/CELLPHONE_STORE_EMBED.md`.
+
 ## 10. What was deliberately not done
 
 - No image downloads, copies, mirrors, rehosting, or uploads for any of the 48
   slideshows. Phase 2 tests block every slideshow image request and do not
   inspect image content. The only copied images are the owner-approved 9
   optimized derivatives for the standalone Al-Rashed page (hero + 3 real
-  photos), because Google Sites blocks hotlinking those four sources.
+  photos), because Google Sites blocks hotlinking those four sources. The
+  Cellphone Store page copies 21 Google Sites stage/render-reality photos as 44
+  derivatives for the same reason.
 - No edits to the Google Sites portfolio.
 - No deletion or overwrite of existing repository files.
 - No Git commit or push of the audit and pilot files until they were reviewed;
@@ -305,11 +317,13 @@ green. The copy/paste code and rollback steps are in
   further testing; those codes are delivered ready for manual use.
 - No rollout of any other change beyond the approved phone fit layout and quiet
   fullscreen fallback, which are enabled for all 48 slideshows as version 10.
-  Versions 11–14 add only the independent Al-Rashed page route, its responsive
-  render sources, and its phone fullscreen viewer. The outer Behance codes,
+  Versions 11-16 add only the independent project-page routes, their responsive
+  render sources, and their phone fullscreen viewer. The outer Behance codes,
   image order, and all 48 slideshow routes are untouched.
-- No publishing or replacement of the Al-Rashed page embed. The code is
-  delivered for manual copy/paste in `05_BEHANCE_OUTPUT/AL_RASHED_EMBED.md`.
+- No publishing or replacement of the Al-Rashed page embed or the Cellphone
+  Store page embed. The code is delivered for manual copy/paste in
+  `05_BEHANCE_OUTPUT/AL_RASHED_EMBED.md` and
+  `05_BEHANCE_OUTPUT/CELLPHONE_STORE_EMBED.md`.
 
 ## 11. Exception summary
 

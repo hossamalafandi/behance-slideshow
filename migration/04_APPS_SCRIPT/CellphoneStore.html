@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Cellphone Store — Hossam Alafandi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;900&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #000;
+    --ink: #f9f9f9;
+    --muted: rgba(249, 249, 249, 0.66);
+    --pad: 60px;
+    --section-y: 52px;
+    --stage-gap: 64px;
+    --radius: 20px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Lexend', Arial, sans-serif;
+    font-weight: 100;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  main {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  img { max-width: 100%; }
+
+  .wrap {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--pad);
+  }
+
+  /* ---------------------------------------------------------------- hero */
+  .hero {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    min-height: 430px;
+    overflow: hidden;
+    padding: 56px 24px;
+    background: #050505;
+    text-align: center;
+    isolation: isolate;
+  }
+
+  .hero-media,
+  .hero-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-media img {
+    display: block;
+    object-fit: cover;
+    object-position: center 38%;
+  }
+
+  .hero-shade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.66) 100%),
+      radial-gradient(circle at 50% 40%, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.7) 78%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(54px, 7.4vw, 104px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+  }
+
+  .hero-sub {
+    margin: 16px 0 0;
+    color: rgba(249, 249, 249, 0.78);
+    font-size: clamp(15px, 1.5vw, 22px);
+    font-weight: 200;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .hero-sub + .hero-sub { margin-top: 4px; }
+
+  /* ------------------------------------------------------------- sections */
+  .section {
+    width: 100%;
+    padding: var(--section-y) 0;
+  }
+
+  .section h2 {
+    margin: 0 0 26px;
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 900;
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+
+  .overview p {
+    max-width: 1040px;
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(16px, 1.35vw, 19px);
+    line-height: 1.55;
+  }
+
+  .stages-section { padding-bottom: calc(var(--section-y) + 4px); }
+
+  .stage + .stage {
+    margin-top: var(--stage-gap);
+    padding-top: var(--stage-gap);
+    border-top: 1px solid rgba(249, 249, 249, 0.16);
+  }
+
+  .stage h3 {
+    margin: 0 0 18px;
+    font-size: clamp(25px, 2.6vw, 34px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .stage-text {
+    max-width: 1040px;
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(15px, 1.2vw, 17px);
+    line-height: 1.58;
+  }
+
+  .stage-media { margin-top: 30px; }
+
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .video-single { min-width: 0; }
+
+  .image-single-grid { min-width: 0; }
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    align-items: start;
+  }
+
+  .video-frame {
+    margin: 0;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: #080808;
+  }
+
+  .video-frame iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .video-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .shot {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #0a0a0a;
+  }
+
+  .shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .drawing-column { min-width: 0; }
+
+  .drawing { border-radius: var(--radius); }
+
+  .stage-group-spaced { margin-top: 36px; }
+
+  /* -------------------------------------------------------- slideshow */
+  .slideshow-column { min-width: 0; }
+
+  .slideshow {
+    width: 100%;
+    max-width: 659px;
+    outline: none;
+  }
+
+  .slideshow:focus-visible {
+    outline: 2px solid rgba(249, 249, 249, 0.8);
+    outline-offset: 6px;
+  }
+
+  .slideshow-stage {
+    position: relative;
+    aspect-ratio: 659 / 927;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: #080808;
+    cursor: grab;
+    touch-action: pan-y;
+  }
+
+  .slideshow-stage:active { cursor: grabbing; }
+
+  .slideshow-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform;
+  }
+
+  .slide {
+    flex: 0 0 calc(100% / 11);
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .slide picture,
+  .slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide img {
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+  }
+
+  .slide-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    transform: translateY(-50%);
+  }
+
+  .slideshow-stage:hover .slide-arrow,
+  .slideshow-stage:focus-within .slide-arrow { opacity: 1; }
+  .slide-arrow.prev { left: 12px; }
+  .slide-arrow.next { right: 12px; }
+
+  .slide-counter {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 3;
+    padding: 6px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 200;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  .slide-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 16px;
+  }
+
+  .slide-dot {
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #4a4a4a;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .slide-dot:hover { background: #8a8a8a; }
+  .slide-dot[aria-current="true"] {
+    background: var(--ink);
+    transform: scale(1.12);
+  }
+
+  /* ---------------------------------------------------- render vs reality */
+  .reality-list { display: grid; gap: 34px; }
+
+  .reality-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 20px;
+    align-items: center;
+  }
+
+  .reality-arrow {
+    color: #fff;
+    font-size: clamp(36px, 5vw, 72px);
+    font-weight: 200;
+    line-height: 1;
+  }
+
+  /* ------------------------------------------------------------ location */
+  .map-frame {
+    display: block;
+    width: 100%;
+    height: 335px;
+    border: 0;
+    border-radius: var(--radius);
+    background: #0a0a0a;
+  }
+
+  /* -------------------------------------------------------------- tools */
+  .tools-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .tools-row img {
+    display: block;
+    width: auto;
+    height: 60px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.9;
+    transition: filter 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  @media (hover: hover) {
+    .tools-row img:hover {
+      filter: none;
+      opacity: 1;
+      transform: scale(1.06);
+    }
+  }
+
+  .copyright {
+    padding: 20px 24px 26px;
+    color: rgba(249, 249, 249, 0.55);
+    font-size: 11px;
+    font-weight: 200;
+    text-align: center;
+  }
+
+  @media (max-width: 700px) {
+    :root {
+      --pad: 24px;
+      --section-y: 38px;
+      --stage-gap: 44px;
+    }
+
+    .hero {
+      min-height: 435px;
+      padding: 44px 20px;
+    }
+
+    .hero h1 { font-size: 56px; }
+    .hero-sub { font-size: 15px; margin-top: 14px; }
+
+    .section h2 {
+      margin-bottom: 22px;
+      font-size: 42px;
+    }
+
+    .overview p { font-size: 16px; line-height: 1.6; }
+
+    .stage h3 { font-size: 24px; margin-bottom: 14px; }
+    .stage-text { font-size: 15px; line-height: 1.6; }
+    .stage-media { margin-top: 22px; }
+
+    .split { display: block; }
+    .split > * + * { margin-top: 18px; }
+
+    .video-row {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 6px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .video-row .video-frame {
+      flex: 0 0 86%;
+      scroll-snap-align: start;
+    }
+
+    .image-grid { gap: 10px; }
+
+    .slideshow { max-width: none; }
+
+    .slide-arrow { opacity: 1; }
+
+    .reality-list { gap: 22px; }
+    .reality-row { gap: 8px; }
+    .reality-arrow { font-size: 24px; }
+
+    .map-frame { height: 260px; }
+    .tools-row { justify-content: center; gap: 18px 24px; }
+    .tools-row img { height: 44px; }
+
+    .copyright { font-size: 11px; }
+  }
+
+  @media (max-width: 380px) {
+    :root { --pad: 20px; }
+    .hero h1 { font-size: 50px; }
+    .reality-row {
+      grid-template-columns: minmax(0, 1fr) 14px minmax(0, 1fr);
+      gap: 5px;
+    }
+    .reality-arrow { font-size: 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slideshow-track,
+    .slide-arrow,
+    .slide-dot,
+    .tools-row img { transition: none; }
+  }
+</style>
+</head>
+<body>
+<main id="page">
+  <header class="hero">
+    <picture class="hero-media">
+        <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/hero-768.jpg">
+        <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/hero-1920.jpg"
+             alt="Cellphone Store interior"
+             loading="eager" fetchpriority="high" decoding="async">
+      </picture>
+    <div class="hero-shade"></div>
+    <div class="hero-content">
+      <h1>CELLPHONE STORE</h1>
+      <p class="hero-sub">SYRIA, HAMA</p>
+      <p class="hero-sub">- 2026 -</p>
+    </div>
+  </header>
+
+  <section class="section overview" aria-labelledby="overview-title">
+    <div class="wrap">
+      <h2 id="overview-title">OVERVIEW</h2>
+      <p>This 13 m² cellphone store was renovated and reconfigured from a former thrift shop in poor condition into a modern retail space. The project involved extensive repairs and a comprehensive redesign to accommodate the functional requirements of a cellphone store within a highly limited area. The design prioritized space optimization, functionality, and operational efficiency, with careful consideration of display integration, circulation, customer capacity, and staff convenience. The result is a compact, contemporary retail environment that maximizes the potential of every square meter without compromising usability or visual appeal.</p>
+    </div>
+  </section>
+
+  <section class="section stages-section" aria-labelledby="stages-title">
+    <div class="wrap">
+      <h2 id="stages-title">WORK DEVELOPMENT STAGES</h2>
+      <article class="stage" id="stage-inspecting">
+  <h3>1-Inspecting</h3>
+  <p class="stage-text">The existing electrical and plumbing systems were assessed to determine what could be retained or required modification. Site measurements were taken to evaluate the layout and identify opportunities to improve space utilization and functionality. A key decision was to replace the existing spiral staircase, which occupied approximately 13% of the store’s floor area, with a more compact alternative to maximize usable retail space.</p>
+<div class="stage-media split video-images">
+  <div class="video-single">
+<figure class="video-frame">
+  <iframe src="https://player.vimeo.com/video/1245908917?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0"
+          title="1-Inspecting — IMG_3040"
+          loading="lazy" allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+          allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</figure>
+  </div>
+  <div class="image-single-grid">
+<div class="image-grid">
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage1-1-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage1-1-1280.jpg"
+         alt="Inspecting photo 1" loading="lazy" decoding="async">
+  </picture>
+</figure>
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage1-2-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage1-2-1280.jpg"
+         alt="Inspecting photo 2" loading="lazy" decoding="async">
+  </picture>
+</figure>
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage1-4-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage1-4-1280.jpg"
+         alt="Inspecting photo 3" loading="lazy" decoding="async">
+  </picture>
+</figure>
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage1-3-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage1-3-1280.jpg"
+         alt="Inspecting photo 4" loading="lazy" decoding="async">
+  </picture>
+</figure>
+</div>
+  </div>
+</div>
+</article>
+<article class="stage" id="stage-planning">
+  <h3>2-Planning and Desgining</h3>
+  <p class="stage-text">Detailed designs, 3D cabinet modeling and visualization, technical drawings, and shop drawings were developed for the store’s custom cabinetry, including drawer and door mechanisms. Every element was carefully planned to maximize space utilization and functionality. The design was refined through detailed client consultations, ensuring all requirements were addressed before the final proposal received formal approval.</p>
+<div class="stage-media split slideshow-drawing">
+  <div class="slideshow-column">
+<div class="slideshow" id="rendersSlideshow" tabindex="0" role="region"
+     aria-roledescription="carousel" aria-label="Cellphone Store renders">
+  <div class="slideshow-stage" id="slideshowStage">
+    <div class="slideshow-track" id="slideshowTrack">
+          <figure class="slide" aria-roledescription="slide" aria-label="Render 1 of 11">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/C9xftbDh.jpg">
+              <img src="https://i.imgur.com/C9xftbD.jpg" alt="Cellphone Store render 1" loading="eager" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Render 2 of 11">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/TauRfiTh.jpg">
+              <img src="https://i.imgur.com/TauRfiT.jpg" alt="Cellphone Store render 2" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Render 3 of 11">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/SFKlaHVh.jpg">
+              <img src="https://i.imgur.com/SFKlaHV.jpg" alt="Cellphone Store render 3" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Render 4 of 11">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/b1Ruxrmh.jpg">
+              <img src="https://i.imgur.com/b1Ruxrm.jpg" alt="Cellphone Store render 4" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Render 5 of 11">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/giTrAnrh.jpg">
+              <img src="https://i.imgur.com/giTrAnr.jpg" alt="Cellphone Store render 5" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Render 6 of 11">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/SWfGA67h.jpg">
+              <img src="https://i.imgur.com/SWfGA67.jpg" alt="Cellphone Store render 6" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Render 7 of 11">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/i756vHjh.jpg">
+              <img src="https://i.imgur.com/i756vHj.jpg" alt="Cellphone Store render 7" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Render 8 of 11">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/xuPgtcDh.jpg">
+              <img src="https://i.imgur.com/xuPgtcD.jpg" alt="Cellphone Store render 8" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Render 9 of 11">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/1PdJEKUh.jpg">
+              <img src="https://i.imgur.com/1PdJEKU.jpg" alt="Cellphone Store render 9" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Render 10 of 11">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/jmLU6pQh.jpg">
+              <img src="https://i.imgur.com/jmLU6pQ.jpg" alt="Cellphone Store render 10" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Render 11 of 11">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/GWoGGanh.jpg">
+              <img src="https://i.imgur.com/GWoGGan.jpg" alt="Cellphone Store render 11" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+    </div>
+    <span class="slide-counter" id="slideCounter" aria-live="polite">1 / 11</span>
+    <button class="slide-arrow prev" id="slidePrev" type="button" aria-label="Previous render">❮</button>
+    <button class="slide-arrow next" id="slideNext" type="button" aria-label="Next render">❯</button>
+  </div>
+  <div class="slide-dots" id="slideDots" role="group" aria-label="Choose a render"></div>
+</div>
+  </div>
+  <div class="drawing-column">
+<figure class="shot drawing">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage2-1-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage2-1-1280.jpg"
+         alt="Planning technical drawing" loading="lazy" decoding="async">
+  </picture>
+</figure>
+  </div>
+</div>
+</article>
+<article class="stage" id="stage-site-preparation">
+  <h3>3-Site Preperation</h3>
+  <p class="stage-text">The space was cleared of existing contents, fixtures, and the old shopfront and glazing to prepare for renovation. The upper floor was designated for storage, with an additional WC incorporated into the layout at the client&#39;s request, requiring further plumbing provisions and modifications.</p>
+<div class="stage-media video-row">
+<figure class="video-frame">
+  <iframe src="https://player.vimeo.com/video/1245909044?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0"
+          title="3-Site Preperation — IMG_3208"
+          loading="lazy" allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+          allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</figure>
+<figure class="video-frame">
+  <iframe src="https://player.vimeo.com/video/1245909094?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0"
+          title="3-Site Preperation — IMG_3211"
+          loading="lazy" allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+          allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</figure>
+</div>
+</article>
+<article class="stage" id="stage-electricity">
+  <h3>4-Electricty</h3>
+  <p class="stage-text">Following the detailed planning phase, gypsum board ceiling installation, lighting layouts, and electrical outlets were implemented according to the approved CAD drawings. Accurate site measurements ensured precise coordination between the design and on-site execution, minimizing errors and maintaining alignment with the planned layout.</p>
+<div class="stage-media video-row">
+<figure class="video-frame">
+  <iframe src="https://player.vimeo.com/video/1245909398?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0"
+          title="4-Electricty — IMG_3219 3"
+          loading="lazy" allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+          allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</figure>
+<figure class="video-frame">
+  <iframe src="https://player.vimeo.com/video/1245912603?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0"
+          title="4-Electricty — IMG_3231"
+          loading="lazy" allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+          allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</figure>
+</div>
+</article>
+<article class="stage" id="stage-flooring">
+  <h3>5-Flooring</h3>
+  <p class="stage-text">Following the completion of electrical and plumbing works, flooring works commenced. Materials were carefully selected to complement the store’s modern design while ensuring durability, reliability, and suitability for daily commercial use.</p>
+<div class="stage-media split stage-group">
+  <div class="video-single">
+<figure class="video-frame">
+  <iframe src="https://player.vimeo.com/video/1245912647?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0"
+          title="5-Flooring — IMG_3314"
+          loading="lazy" allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+          allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</figure>
+  </div>
+  <div class="image-single-grid">
+<div class="image-grid">
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage5a-1-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage5a-1-1280.jpg"
+         alt="Flooring photo 1" loading="lazy" decoding="async">
+  </picture>
+</figure>
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage5a-2-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage5a-2-1280.jpg"
+         alt="Flooring photo 2" loading="lazy" decoding="async">
+  </picture>
+</figure>
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage5a-3-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage5a-3-1280.jpg"
+         alt="Flooring photo 3" loading="lazy" decoding="async">
+  </picture>
+</figure>
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage5a-4-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage5a-4-1280.jpg"
+         alt="Flooring photo 4" loading="lazy" decoding="async">
+  </picture>
+</figure>
+</div>
+  </div>
+</div>
+<div class="stage-media split stage-group stage-group-spaced">
+  <div class="video-single">
+<figure class="video-frame">
+  <iframe src="https://player.vimeo.com/video/1245912852?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0"
+          title="5-Flooring — IMG_3823"
+          loading="lazy" allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+          allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</figure>
+  </div>
+  <div class="image-single-grid">
+<div class="image-grid">
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage5b-1-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage5b-1-1280.jpg"
+         alt="Flooring photo 1" loading="lazy" decoding="async">
+  </picture>
+</figure>
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage5b-2-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage5b-2-1280.jpg"
+         alt="Flooring photo 2" loading="lazy" decoding="async">
+  </picture>
+</figure>
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage5b-3-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage5b-3-1280.jpg"
+         alt="Flooring photo 3" loading="lazy" decoding="async">
+  </picture>
+</figure>
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage5b-4-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage5b-4-1280.jpg"
+         alt="Flooring photo 4" loading="lazy" decoding="async">
+  </picture>
+</figure>
+</div>
+  </div>
+</div>
+</article>
+<article class="stage" id="stage-cabinetry">
+  <h3>6-Cabinetry Works</h3>
+  <p class="stage-text">The store began to take shape as custom cabinetry work progressed. Each stage was carefully inspected, with minor on-site adjustments made to accommodate actual site conditions while maintaining the original design intent. Materials and finishes were selected to achieve the intended aesthetic while ensuring functionality and durability.</p>
+<div class="stage-media video-row">
+<figure class="video-frame">
+  <iframe src="https://player.vimeo.com/video/1245913033?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0"
+          title="6-Cabinetry Works — IMG_4098"
+          loading="lazy" allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+          allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</figure>
+<figure class="video-frame">
+  <iframe src="https://player.vimeo.com/video/1245913587?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0"
+          title="6-Cabinetry Works — IMG_4100"
+          loading="lazy" allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+          allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</figure>
+</div>
+</article>
+<article class="stage" id="stage-finalizing">
+  <h3>7-Finalizing</h3>
+  <p class="stage-text">The final stage focused on installing the remaining elements, including tables and shelving, while addressing outstanding cabinetry adjustments and on-site issues. With the final details completed, the store came together as a cohesive, modern retail space, maximizing the potential of its 13 m² area through thoughtful design, efficient planning, and careful attention to functionality.</p>
+
+</article>
+    </div>
+  </section>
+
+  <section class="section reality" aria-labelledby="reality-title">
+    <div class="wrap">
+      <h2 id="reality-title">Render VS Reality</h2>
+      <div class="reality-list">
+        <div class="reality-row">
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/reality-1-render-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/reality-1-render-1280.jpg"
+         alt="Render and reality comparison 1 — render" loading="lazy" decoding="async">
+  </picture>
+</figure>
+  <span class="reality-arrow" aria-hidden="true">➜</span>
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/reality-1-photo-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/reality-1-photo-1280.jpg"
+         alt="Render and reality comparison 1 — reality" loading="lazy" decoding="async">
+  </picture>
+</figure>
+</div>
+<div class="reality-row">
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/reality-2-render-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/reality-2-render-1280.jpg"
+         alt="Render and reality comparison 2 — render" loading="lazy" decoding="async">
+  </picture>
+</figure>
+  <span class="reality-arrow" aria-hidden="true">➜</span>
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/reality-2-photo-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/reality-2-photo-1280.jpg"
+         alt="Render and reality comparison 2 — reality" loading="lazy" decoding="async">
+  </picture>
+</figure>
+</div>
+<div class="reality-row">
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/reality-3-render-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/reality-3-render-1280.jpg"
+         alt="Render and reality comparison 3 — render" loading="lazy" decoding="async">
+  </picture>
+</figure>
+  <span class="reality-arrow" aria-hidden="true">➜</span>
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/reality-3-photo-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/reality-3-photo-1280.jpg"
+         alt="Render and reality comparison 3 — reality" loading="lazy" decoding="async">
+  </picture>
+</figure>
+</div>
+<div class="reality-row">
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/reality-4-render-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/reality-4-render-1280.jpg"
+         alt="Render and reality comparison 4 — render" loading="lazy" decoding="async">
+  </picture>
+</figure>
+  <span class="reality-arrow" aria-hidden="true">➜</span>
+<figure class="shot">
+  <picture>
+    <source media="(max-width: 700px)" srcset="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/reality-4-photo-768.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/reality-4-photo-1280.jpg"
+         alt="Render and reality comparison 4 — reality" loading="lazy" decoding="async">
+  </picture>
+</figure>
+</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section location" aria-labelledby="location-title">
+    <div class="wrap">
+      <h2 id="location-title">LOCATION</h2>
+      <iframe class="map-frame" src="https://maps-api-ssl.google.com/maps?hl=en-US&amp;ll=35.133634,36.752241&amp;output=embed&amp;q=35.133655,36.752207&amp;z=21"
+              title="Cellphone Store location map" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="section tools" aria-labelledby="tools-title">
+    <div class="wrap">
+      <h2 id="tools-title">TOOLS USED</h2>
+      <div class="tools-row" aria-label="Software used">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo" loading="lazy" decoding="async">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo" loading="lazy" decoding="async">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo" loading="lazy" decoding="async">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <footer class="copyright">© 2025 HOSSAM ALAFANDI. All rights reserved.</footer>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  var slideshow = document.getElementById('rendersSlideshow');
+  if (!slideshow) return;
+
+  var stage = document.getElementById('slideshowStage');
+  var track = document.getElementById('slideshowTrack');
+  var slides = Array.prototype.slice.call(track.querySelectorAll('.slide'));
+  var dotsBox = document.getElementById('slideDots');
+  var counter = document.getElementById('slideCounter');
+  var prev = document.getElementById('slidePrev');
+  var next = document.getElementById('slideNext');
+  var count = slides.length;
+  var index = 0;
+
+  var dots = slides.map(function (_, i) {
+    var dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'slide-dot';
+    dot.setAttribute('aria-label', 'Show render ' + (i + 1) + ' of ' + count);
+    dot.addEventListener('click', function () { show(i); });
+    dotsBox.appendChild(dot);
+    return dot;
+  });
+
+  function imageSource(image) {
+    if (!image) return '';
+    var src = image.currentSrc || image.getAttribute('src');
+    var picture = image.parentElement;
+    var source = picture && picture.tagName === 'PICTURE'
+      ? picture.querySelector('source[media]') : null;
+    if (source && window.matchMedia &&
+        window.matchMedia(source.getAttribute('media')).matches) {
+      src = source.getAttribute('srcset');
+    }
+    return src;
+  }
+
+  function preload(at) {
+    if (!count) return;
+    var target = slides[((at % count) + count) % count];
+    if (!target) return;
+    var image = target.querySelector('img');
+    if (!image || image.complete) return;
+    var src = imageSource(image);
+    if (!src) return;
+    var warm = new Image();
+    warm.decoding = 'async';
+    warm.src = src;
+  }
+
+  function show(nextIndex) {
+    if (typeof nextIndex !== 'number' || !isFinite(nextIndex)) return;
+    index = ((nextIndex % count) + count) % count;
+    track.style.transform = 'translateX(-' + (index * 100 / count) + '%)';
+
+    dots.forEach(function (dot, i) {
+      if (i === index) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
+
+    slides.forEach(function (slide, i) {
+      slide.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+    });
+
+    counter.textContent = (index + 1) + ' / ' + count;
+
+    var image = slides[index].querySelector('img');
+    if (image) {
+      image.loading = 'eager';
+      preload(index + 1);
+      preload(index - 1);
+    }
+  }
+
+  function step(delta) { show(index + delta); }
+
+  if (prev) prev.addEventListener('click', function () { step(-1); });
+  if (next) next.addEventListener('click', function () { step(1); });
+
+  slideshow.addEventListener('keydown', function (event) {
+    if (event.key === 'ArrowLeft') {
+      step(-1);
+      event.preventDefault();
+    } else if (event.key === 'ArrowRight') {
+      step(1);
+      event.preventDefault();
+    } else if (event.key === 'Home') {
+      show(0);
+      event.preventDefault();
+    } else if (event.key === 'End') {
+      show(count - 1);
+      event.preventDefault();
+    }
+  });
+
+  if (stage) {
+    stage.addEventListener('click', function (event) {
+      if (event.target.closest('button')) return;
+      slideshow.focus({ preventScroll: true });
+    });
+
+    var startX = 0;
+    var startY = 0;
+    var tracking = false;
+
+    stage.addEventListener('touchstart', function (event) {
+      if (event.touches.length !== 1) {
+        tracking = false;
+        return;
+      }
+      tracking = true;
+      startX = event.touches[0].clientX;
+      startY = event.touches[0].clientY;
+    }, { passive: true });
+
+    stage.addEventListener('touchend', function (event) {
+      if (!tracking) return;
+      tracking = false;
+      var touch = event.changedTouches[0];
+      if (!touch) return;
+      var dx = touch.clientX - startX;
+      var dy = touch.clientY - startY;
+      if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+        step(dx < 0 ? 1 : -1);
+      }
+    }, { passive: true });
+  }
+
+  show(0);
+})();
+</script>
+</body>
+</html>
