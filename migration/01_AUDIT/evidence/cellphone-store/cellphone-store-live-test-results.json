@@ -3,18 +3,18 @@
   "scope": {
     "page": "?page=cellphone-store",
     "behanceFrames": [
-      "987x11500",
-      "390x11500"
+      "987x13320",
+      "390x13320"
     ],
     "stages": 7,
     "videos": 9,
     "assets": 44
   },
   "browser": "Chrome 158.0.8127.88",
-  "checks": 98,
-  "passed": 98,
+  "checks": 102,
+  "passed": 102,
   "failed": 0,
-  "blockedImgurRequests": 68,
+  "blockedImgurRequests": 46,
   "failures": [],
   "results": [
     {
@@ -273,6 +273,16 @@
       "detail": null
     },
     {
+      "name": "route: page has the 11 phone h slide sources",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "route: page has the slideshow fullscreen viewer",
+      "passed": true,
+      "detail": null
+    },
+    {
       "name": "route: page has one map iframe",
       "passed": true,
       "detail": null
@@ -348,162 +358,172 @@
       "detail": "neutral"
     },
     {
-      "name": "desktop 987x11500: the live sandboxed page frame loads",
+      "name": "desktop 987x13320: the live sandboxed page frame loads",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x11500: title is exact",
+      "name": "desktop 987x13320: title is exact",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x11500: frame viewport is 987x11500",
+      "name": "desktop 987x13320: frame viewport is 987x13320",
       "passed": true,
-      "detail": "987x11500"
+      "detail": "987x13320"
     },
     {
-      "name": "desktop 987x11500: page fills exactly 11500 px",
+      "name": "desktop 987x13320: page fills exactly 13320 px",
       "passed": true,
-      "detail": "{\"scroll\":[987,11500],\"body\":[987,11500],\"main\":11500}"
+      "detail": "{\"scroll\":[987,13320],\"body\":[987,13320],\"main\":13320}"
     },
     {
-      "name": "desktop 987x11500: no horizontal overflow",
+      "name": "desktop 987x13320: no horizontal overflow",
       "passed": true,
       "detail": "987 / 987"
     },
     {
-      "name": "desktop 987x11500: headings and stages are exact",
+      "name": "desktop 987x13320: headings and stages are exact",
       "passed": true,
       "detail": "OVERVIEW, WORK DEVELOPMENT STAGES, Render VS Reality, LOCATION, TOOLS USED / 7"
     },
     {
-      "name": "desktop 987x11500: 9 Vimeo videos are present in order",
+      "name": "desktop 987x13320: 9 Vimeo videos are present in order",
       "passed": true,
       "detail": "9 videos"
     },
     {
-      "name": "desktop 987x11500: 21 copied shots use the right source size",
+      "name": "desktop 987x13320: 21 copied shots use the right source size",
       "passed": true,
       "detail": "21 / https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage1-1-1280.jpg"
     },
     {
-      "name": "desktop 987x11500: 11 slides use the right Imgur size",
+      "name": "desktop 987x13320: slides use the right Imgur source",
       "passed": true,
       "detail": "11 / https://i.imgur.com/C9xftbD.jpg"
     },
     {
-      "name": "desktop 987x11500: first slide decodes at the expected size",
+      "name": "desktop 987x13320: first slide decodes at the expected size",
       "passed": true,
       "detail": "2000x2667"
     },
     {
-      "name": "desktop 987x11500: 4 tools use the exact Imgur logos",
+      "name": "desktop 987x13320: 4 tools use the exact Imgur logos",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x11500: the map keeps the exact URL",
+      "name": "desktop 987x13320: the map keeps the exact URL",
       "passed": true,
       "detail": "https://maps-api-ssl.google.com/maps?hl=en-US&ll=35.133634,36.752241&output=embed&q=35.133655,36.752207&z=21"
     },
     {
-      "name": "desktop 987x11500: slideshow starts at 1 / 11 with 11 dots",
+      "name": "desktop 987x13320: slideshow starts at 1 / 11 with 11 dots",
       "passed": true,
       "detail": "1 / 11 / 11"
     },
     {
-      "name": "desktop 987x11500: live next moves to 2 / 11",
+      "name": "desktop 987x13320: slideshow track is 11 full frames wide",
+      "passed": true,
+      "detail": "{\"stage\":437.703125,\"slide\":437.703125,\"track\":4814.734375}"
+    },
+    {
+      "name": "desktop 987x13320: live next moves to 2 / 11",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x11500: live dot 5 jumps to 5 / 11",
+      "name": "desktop 987x13320: live dot 5 jumps to 5 / 11",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x11500: no page errors",
+      "name": "desktop 987x13320: no page errors",
       "passed": true,
       "detail": ""
     },
     {
-      "name": "phone 390x11500: the live sandboxed page frame loads",
+      "name": "phone 390x13320: the live sandboxed page frame loads",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x11500: title is exact",
+      "name": "phone 390x13320: title is exact",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x11500: frame viewport is 390x11500",
+      "name": "phone 390x13320: frame viewport is 390x13320",
       "passed": true,
-      "detail": "390x11500"
+      "detail": "390x13320"
     },
     {
-      "name": "phone 390x11500: page fills exactly 11500 px",
+      "name": "phone 390x13320: page fills exactly 13320 px",
       "passed": true,
-      "detail": "{\"scroll\":[390,11500],\"body\":[390,11500],\"main\":11500}"
+      "detail": "{\"scroll\":[390,13320],\"body\":[390,13320],\"main\":13320}"
     },
     {
-      "name": "phone 390x11500: no horizontal overflow",
+      "name": "phone 390x13320: no horizontal overflow",
       "passed": true,
       "detail": "390 / 390"
     },
     {
-      "name": "phone 390x11500: headings and stages are exact",
+      "name": "phone 390x13320: headings and stages are exact",
       "passed": true,
       "detail": "OVERVIEW, WORK DEVELOPMENT STAGES, Render VS Reality, LOCATION, TOOLS USED / 7"
     },
     {
-      "name": "phone 390x11500: 9 Vimeo videos are present in order",
+      "name": "phone 390x13320: 9 Vimeo videos are present in order",
       "passed": true,
       "detail": "9 videos"
     },
     {
-      "name": "phone 390x11500: 21 copied shots use the right source size",
+      "name": "phone 390x13320: 21 copied shots use the right source size",
       "passed": true,
       "detail": "21 / https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/cellphone-store/stage1-1-768.jpg"
     },
     {
-      "name": "phone 390x11500: 11 slides use the right Imgur size",
+      "name": "phone 390x13320: slides use the right Imgur source",
       "passed": true,
       "detail": "11 / https://i.imgur.com/C9xftbDh.jpg"
     },
     {
-      "name": "phone 390x11500: first slide decodes at the expected size",
+      "name": "phone 390x13320: first slide decodes at the expected size",
       "passed": true,
       "detail": "1024x1365"
     },
     {
-      "name": "phone 390x11500: 4 tools use the exact Imgur logos",
+      "name": "phone 390x13320: 4 tools use the exact Imgur logos",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x11500: the map keeps the exact URL",
+      "name": "phone 390x13320: the map keeps the exact URL",
       "passed": true,
       "detail": "https://maps-api-ssl.google.com/maps?hl=en-US&ll=35.133634,36.752241&output=embed&q=35.133655,36.752207&z=21"
     },
     {
-      "name": "phone 390x11500: slideshow starts at 1 / 11 with 11 dots",
+      "name": "phone 390x13320: slideshow starts at 1 / 11 with 11 dots",
       "passed": true,
       "detail": "1 / 11 / 11"
     },
     {
-      "name": "phone 390x11500: live next moves to 2 / 11",
+      "name": "phone 390x13320: slideshow track is 11 full frames wide",
+      "passed": true,
+      "detail": "{\"stage\":342,\"slide\":342,\"track\":3762}"
+    },
+    {
+      "name": "phone 390x13320: live next moves to 2 / 11",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x11500: live dot 5 jumps to 5 / 11",
+      "name": "phone 390x13320: live dot 5 jumps to 5 / 11",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x11500: no page errors",
+      "name": "phone 390x13320: no page errors",
       "passed": true,
       "detail": ""
     }

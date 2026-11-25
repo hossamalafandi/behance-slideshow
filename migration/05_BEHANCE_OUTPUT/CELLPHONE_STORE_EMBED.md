@@ -126,7 +126,7 @@ node test-live-cellphone-store.js https://script.google.com/macros/s/AKfycbzV7Ou
 
 It verifies the 44 jsDelivr files, the new page route, the unchanged
 Al-Rashed/slide/tools routes, both Behance-like frames, and the slideshow.
-Result: **PENDING**. The local page suite passes **72/72**.
+Result: **102/102**. The local page suite passes **72/72**.
 
 ## Rollback
 
