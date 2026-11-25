@@ -10,10 +10,10 @@
     "assets": 9
   },
   "browser": "Chrome 158.0.8127.88",
-  "checks": 213,
-  "passed": 213,
+  "checks": 218,
+  "passed": 218,
   "failed": 0,
-  "blockedImgurRequests": 44,
+  "blockedImgurRequests": 51,
   "failures": [],
   "results": [
     {
@@ -49,7 +49,7 @@
     {
       "name": "production and preview come from the same generator",
       "passed": true,
-      "detail": "29879 vs 29229"
+      "detail": "42901 vs 42251"
     },
     {
       "name": "production page uses jsDelivr for page images",
@@ -127,9 +127,9 @@
       "detail": null
     },
     {
-      "name": "page has exactly 26 images",
+      "name": "page has exactly 27 images",
       "passed": true,
-      "detail": "26"
+      "detail": "27"
     },
     {
       "name": "page has one hero image",
@@ -243,6 +243,16 @@
     },
     {
       "name": "page keeps the approved quiet theater fallback",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has a phone-only fullscreen viewer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone fullscreen viewer uses the full-resolution render source",
       "passed": true,
       "detail": null
     },
@@ -409,7 +419,7 @@
     {
       "name": "router: page returns the generated preview byte-for-byte",
       "passed": true,
-      "detail": "29229 vs 29229"
+      "detail": "42251 vs 42251"
     },
     {
       "name": "router: page is served without cache",
@@ -1052,27 +1062,42 @@
       "detail": null
     },
     {
-      "name": "phone 390x2980: fullscreen activates natively or with the quiet fallback",
+      "name": "phone 390x2980: phone fullscreen opens the in-page viewer",
       "passed": true,
-      "detail": "{\"native\":true,\"target\":\"rendersViewer\",\"theater\":false,\"bodyLocked\":false,\"label\":\"Exit fullscreen\",\"pressed\":\"true\",\"width\":390,\"height\":2980}"
+      "detail": "{\"open\":true,\"theater\":false,\"bodyLocked\":true,\"label\":\"Exit fullscreen\",\"pressed\":\"true\",\"transform\":\"translate(-50%, -50%) rotate(90deg)\",\"src\":\"https://i.imgur.com/ywuUBKU.jpeg\",\"natural\":[3840,2160],\"hintHidden\":false,\"overlay\":{\"top\":876,\"height\":844},\"stageTop\":976.546875,\"frame\":{\"width\":374,\"height\":665},\"counter\":\"1 / 17\",\"mainCounter\":\"1 / 17\"}"
     },
     {
-      "name": "phone 390x2980: fullscreen updates its accessible state",
+      "name": "phone 390x2980: phone fullscreen uses the full-resolution render",
       "passed": true,
-      "detail": null
+      "detail": "{\"src\":\"https://i.imgur.com/ywuUBKU.jpeg\",\"natural\":[3840,2160]}"
     },
     {
-      "name": "phone 390x2980: fullscreen exits cleanly",
+      "name": "phone 390x2980: phone fullscreen rotates the render and shows the hint",
       "passed": true,
-      "detail": "{\"native\":false,\"theater\":false,\"label\":\"Enter fullscreen\"}"
+      "detail": "{\"width\":374,\"height\":665}"
     },
     {
-      "name": "phone 390x2980: denied native fullscreen falls back quietly",
+      "name": "phone 390x2980: phone fullscreen is anchored to the stage and fills the screen",
       "passed": true,
-      "detail": "{\"theater\":true,\"bodyLocked\":true,\"label\":\"Exit fullscreen\",\"width\":390,\"height\":2980}"
+      "detail": "{\"top\":876,\"height\":844}"
     },
     {
-      "name": "phone 390x2980: Escape exits the fallback",
+      "name": "phone 390x2980: phone fullscreen navigation stays in sync",
+      "passed": true,
+      "detail": "{\"src\":\"https://i.imgur.com/Lw0l4UR.jpeg\",\"counter\":\"2 / 17\",\"main\":\"2 / 17\"}"
+    },
+    {
+      "name": "phone 390x2980: phone fullscreen switches to upright landscape",
+      "passed": true,
+      "detail": "{\"landscape\":true,\"transform\":\"translate(-50%, -50%) rotate(0deg)\",\"hintHidden\":true,\"height\":390,\"frame\":{\"width\":665,\"height\":374}}"
+    },
+    {
+      "name": "phone 390x2980: phone fullscreen closes without changing the page height",
+      "passed": true,
+      "detail": "{\"hidden\":true,\"open\":false,\"body\":false,\"label\":\"Enter fullscreen\",\"counter\":\"2 / 17\",\"scrollHeight\":2980}"
+    },
+    {
+      "name": "phone 390x2980: Escape closes the phone fullscreen viewer",
       "passed": true,
       "detail": null
     },

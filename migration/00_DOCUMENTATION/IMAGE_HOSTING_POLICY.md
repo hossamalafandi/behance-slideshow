@@ -124,6 +124,8 @@ loaded inside a Behance iframe. The owner approved copying them for this page:
   originals (`https://i.imgur.com/<id>.jpeg`) are used at desktop widths, and
   the existing 1024×576 `h` variants are used only on phones through
   `<picture>`.
+- In the phone fullscreen viewer, the full-resolution original for the current
+  render is loaded on demand; the slideshow itself keeps the `h` variants.
 - The 5 tool logos keep their exact Imgur PNG URLs.
 - No slideshow image was copied, resized, proxied, or rehosted. The 48
   slideshows remain governed by sections 1–6.

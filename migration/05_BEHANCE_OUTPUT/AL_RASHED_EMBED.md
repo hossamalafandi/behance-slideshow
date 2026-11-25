@@ -1,7 +1,7 @@
 # Al-Rashed Project — standalone Behance embed
 
 Status: **ready for manual copy/paste. Nothing has been published or replaced.**
-Built 2026-11-24 and deployed as version 12 under the existing deployment ID.
+Built 2026-11-24 and deployed as version 15 under the existing deployment ID.
 This page is independent of the 48 slideshow embeds and the 38 TOOLS USED
 strips; none of those codes or image URLs changed.
 
@@ -43,7 +43,7 @@ combine it with a slideshow code.
 |---|---|
 | Hero | Original hero image, `AL-RASHED PROJECT`, `SAUDI ARABIA`, `- 2024 -` |
 | Overview | The original project description |
-| Renders | 17 renders in the original order, with arrows, dots, counter, keyboard arrows, swipe, and fullscreen |
+| Renders | 17 renders in the original order, with arrows, dots, counter, keyboard arrows, swipe, and fullscreen; on phones the fullscreen button opens an in-page viewer that rotates the render to use the tall screen |
 | Real photos | The 3 original real photos in the approved 1:2.05 desktop grid, stacked on phone |
 | Location | The original Google Maps embed |
 | Tools used | 3ds Max, Revit, AutoCAD, Photoshop, Lumion |
@@ -72,10 +72,29 @@ index of the 48 slideshows.
 - The 48 slideshows still use only their original remote URLs. No slideshow
   image was copied, resized, or rehosted.
 
+## Phone fullscreen
+
+Behance's phone app blocks native fullscreen, so the fullscreen button uses a
+custom in-page viewer on phones:
+
+- it stays inside the page, so the page height does not collapse or jump;
+- the current 16:9 render is rotated 90° to use the tall phone screen, with a
+  **Rotate your phone for a larger view** hint;
+- when the phone is turned landscape, the render switches to upright and fills
+  the screen;
+- the viewer loads the full-resolution original for the current render on
+  demand, so the enlarged image stays sharp; the slideshow itself still uses
+  the lightweight 1024×576 `h` files on phones;
+- close with the **×** button, Escape, or a tap on the black area; swipe or use
+  the arrows to change renders.
+
+Desktop still uses native fullscreen, with the quiet theater fallback when the
+browser blocks it.
+
 ## Deployment
 
 The page uses the existing standalone Apps Script deployment under the same
-deployment ID, with the new `?page=al-rashed` route. It is live as version 12:
+deployment ID, with the new `?page=al-rashed` route. It is live as version 15:
 
 ```
 https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec?page=al-rashed
@@ -102,9 +121,10 @@ node validate.js
 987×2980 and 390×2980, checks exact URLs and order, checks that desktop frames
 request the full-resolution 3840×2160 originals and phone frames the 1024×576
 `h` variants, checks that both frames fill 2980 px with no overflow, and
-exercises navigation, dots, keyboard, swipe, native fullscreen, and the theater
-fallback. It fulfills every Imgur request with a synthetic image and every map
-request with a stub, so no original image or map tile is downloaded.
+exercises navigation, dots, keyboard, swipe, native fullscreen, the theater
+fallback, and the phone in-page fullscreen viewer. It fulfills every Imgur
+request with a synthetic image and every map request with a stub, so no original
+image or map tile is downloaded.
 
 The live deployment is also covered:
 
@@ -113,17 +133,17 @@ node test-live-al-rashed.js https://script.google.com/macros/s/AKfycbzV7OufIj8Q6
 ```
 
 It verifies all 9 jsDelivr files, both Behance-like frames, the full-resolution
-desktop renders, the phone `h` sources, navigation, fullscreen, the map, and the
-unchanged `?slide=` / `?tools=` routes. Result: **130/130**. The full live
-regression is also green: **339/339** for all 48 slideshows and **64/64** for the
-phone fit layout.
+desktop renders, the phone `h` sources, the phone in-page fullscreen viewer,
+navigation, fullscreen, the map, and the unchanged `?slide=` / `?tools=` routes.
+Result: **135/135**. The full live regression is also green: **339/339** for all
+48 slideshows and **64/64** for the phone fit layout.
 
 ## Rollback
 
 - **Remove the embed only:** delete the iframe block from the Behance project.
   The page remains deployed but unreferenced.
 - **Revert the page:** revert the Al-Rashed commit and deploy the previous
-  Apps Script version (version 11) under the same deployment ID. The 48
+  Apps Script version (version 12) under the same deployment ID. The 48
   `?slide=` and 38 `?tools=` codes are unaffected because their routes, data,
   and image URLs are untouched.
 - **Keep the slideshows:** do not replace, reorder, or edit the existing 48

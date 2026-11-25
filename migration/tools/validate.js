@@ -582,7 +582,7 @@ function main() {
       pageData.TOOLS.some(tool => tool.name === pageImageAlt(tag)));
     const heroTags = pageImages.filter(tag => pageImageAlt(tag) === pageData.HERO.alt);
 
-    check('Al-Rashed page has 26 images', pageImages.length === 26,
+    check('Al-Rashed page has 27 images', pageImages.length === 27,
       pageImages.length + ' images');
     check('Al-Rashed page has one hero, 17 renders, 3 photos, and 5 tools',
       heroTags.length === 1 && renderTags.length === 17 &&
@@ -635,6 +635,17 @@ function main() {
         /fullscreenerror/.test(pageProduction) &&
         /theater-mode/.test(pageProduction) &&
         !/fullscreen-note|Native fullscreen is unavailable|\balert\s*\(/.test(pageProduction));
+    check('Al-Rashed page has the phone fullscreen fallback',
+      pageProduction.includes('id="phoneFullscreen"') &&
+        pageProduction.includes('id="phoneFsImage"') &&
+        pageProduction.includes('id="phoneFsClose"') &&
+        pageProduction.includes('phone-fs-open') &&
+        /phoneIsLandscape/.test(pageProduction) &&
+        /rotate\('/.test(pageProduction));
+    check('Al-Rashed phone fullscreen uses the full-resolution render source',
+      /function phoneSourceAt/.test(pageProduction) &&
+        /image\.getAttribute\('src'\)/.test(pageProduction) &&
+        /phoneFsImage\.src = full/.test(pageProduction));
     check('Al-Rashed page uses no storage, cookies, or messaging',
       !/localStorage|sessionStorage|indexedDB|document\.cookie|postMessage|BroadcastChannel/i
         .test(pageProduction));

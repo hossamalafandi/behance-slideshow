@@ -18,7 +18,7 @@ project page are generated and ready for manual copy/paste.
 
 `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
 
-Deployment version 12. Every slideshow code uses one `?slide=<ID>` value and
+Deployment version 15. Every slideshow code uses one `?slide=<ID>` value and
 loads exactly one slideshow. Every TOOLS USED code uses one `?tools=<ID>`
 value and loads the original logo strip from the same host. The standalone page
 uses one `?page=al-rashed` value. The production Apps Script deployment is
@@ -56,8 +56,8 @@ original logo URLs and CSS; the images are not copied or rehosted.
 4. Keep `width="100%"` and `height="2980"`; the height is sized to the Behance
    desktop column and phone. Do not combine it with a slideshow code.
 
-Live verification: the page suite passes **130/130**, the all-slideshow suite
-passes **339/339**, and the phone fit suite passes **64/64** against version 12.
+Live verification: the page suite passes **135/135**, the all-slideshow suite
+passes **339/339**, and the phone fit suite passes **64/64** against version 15.
 
 ## Not included
 

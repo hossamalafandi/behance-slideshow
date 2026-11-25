@@ -15,7 +15,10 @@ adds the standalone Al-Rashed project page at `?page=al-rashed`, without
 changing any of the 48 slideshow routes, codes, or image URLs. Version 12 fixes
 the page's render sharpness: desktop visitors receive the full-resolution
 3840×2160 Imgur originals, while phones keep the 1024×576 `h` variants through
-`<picture>`.**
+`<picture>`. Version 15 adds a phone-only fullscreen viewer: because Behance's
+phone app blocks native fullscreen, the button opens an in-page viewer that
+rotates the current 16:9 render to use the tall screen and switches upright
+when the phone is turned landscape.**
 Audit date: 2026-11-18
 Bulk rollout date: 2026-11-20
 P024 completion date: 2026-11-21
@@ -28,7 +31,7 @@ This folder is the migration workspace. It was created without changing,
 deleting, renaming, or redeploying anything in the live portfolio, the existing
 production Apps Script project, or the existing `index.html` prototype. A **new
 standalone** Apps Script project hosts all 48 slideshows, the 38 TOOLS USED
-strips, and the standalone Al-Rashed page; it is deployed as version 12. One
+strips, and the standalone Al-Rashed page; it is deployed as version 15. One
 temporary Behance test project was published. The audit, pilot, and bulk
 rollout commits are pushed to `main`. See
 `01_AUDIT/phase_2_pilot_report.md` and `01_AUDIT/phase_2_bulk_report.md` for the
@@ -84,7 +87,7 @@ migration/
 │   └── evidence/                        pilot and bulk test reports (screenshots gitignored)
 ├── 02_SOURCE_BACKUP/                    untouched original slideshow HTML, one folder per project
 ├── 03_REBUILT_SLIDESHOWS/               generated data and previews for all 48 slideshows
-├── 04_APPS_SCRIPT/                      shared Apps Script project (48-slide map, 38-tool map, AlRashed page, version 12)
+├── 04_APPS_SCRIPT/                      shared Apps Script project (48-slide map, 38-tool map, AlRashed page, version 15)
 └── 05_BEHANCE_OUTPUT/                   all 48 embed codes plus 38 TOOLS USED codes: ALL_EMBEDS.md, ALL_EMBEDS.csv, TOOLS_USED_EMBEDS.md, TOOLS_USED_EMBEDS.csv, AL_RASHED_EMBED.md, 37 project files
 ```
 
@@ -261,7 +264,7 @@ fullscreen fallback quiet: when the browser or Behance app denies native
 fullscreen, the slideshow expands into theater mode without showing a technical
 message. The outer Behance codes, image URLs, and image order are unchanged. All
 48 live slideshows pass (339/339), the focused live fit suite passes 64/64, the
-local fit suite passes 89/89, and static validation passes 3489/3489. See
+local fit suite passes 89/89, and static validation passes 3491/3491. See
 `00_DOCUMENTATION/PHONE_FIT_LAYOUT.md` for the layout details, rollout, and
 rollback steps.
 
@@ -272,10 +275,14 @@ fills the 987 px desktop column and the 390 px phone column exactly, and keeps
 the 17 render IDs and 5 tool URLs unchanged. Version 12 fixes the blurred
 renders: desktop visitors now receive the full-resolution 3840×2160 Imgur
 originals, while phones keep the existing 1024×576 `h` variants through
-`<picture>`. It is deployed as version 12 under the same deployment ID. Static
-validation passes 3489/3489, the new local page suite passes 213/213, and the
-live page suite passes 130/130. The existing 48-slideshow local, fit, pilot, and
-live suites remain green. The copy/paste code and rollback steps are in
+`<picture>`. Version 15 adds the phone fullscreen fallback: because Behance's
+phone app blocks native fullscreen, the button opens an in-page viewer that
+keeps the page height stable, rotates the current 16:9 render to use the tall
+screen, and switches to upright when the phone is turned landscape. It is
+deployed as version 15 under the same deployment ID. Static validation passes
+3491/3491, the local page suite passes 218/218, and the live page suite passes
+135/135. The existing 48-slideshow local, fit, pilot, and live suites remain
+green. The copy/paste code and rollback steps are in
 `05_BEHANCE_OUTPUT/AL_RASHED_EMBED.md`.
 
 ## 10. What was deliberately not done
@@ -298,9 +305,9 @@ live suites remain green. The copy/paste code and rollback steps are in
   further testing; those codes are delivered ready for manual use.
 - No rollout of any other change beyond the approved phone fit layout and quiet
   fullscreen fallback, which are enabled for all 48 slideshows as version 10.
-  Versions 11 and 12 add only the independent Al-Rashed page route and its
-  responsive render sources. The outer Behance codes, image order, and all 48
-  slideshow routes are untouched.
+  Versions 11–14 add only the independent Al-Rashed page route, its responsive
+  render sources, and its phone fullscreen viewer. The outer Behance codes,
+  image order, and all 48 slideshow routes are untouched.
 - No publishing or replacement of the Al-Rashed page embed. The code is
   delivered for manual copy/paste in `05_BEHANCE_OUTPUT/AL_RASHED_EMBED.md`.
 

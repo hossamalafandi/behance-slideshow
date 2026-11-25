@@ -11,10 +11,10 @@
     "assets": 9
   },
   "browser": "Chrome 158.0.8127.88",
-  "checks": 130,
-  "passed": 130,
+  "checks": 135,
+  "passed": 135,
   "failed": 0,
-  "blockedImgurRequests": 72,
+  "blockedImgurRequests": 92,
   "failures": [],
   "results": [
     {
@@ -648,19 +648,44 @@
       "detail": null
     },
     {
-      "name": "phone 390x2980: live fullscreen activates natively or with the fallback",
+      "name": "phone 390x2980: live phone fullscreen opens the in-page viewer",
       "passed": true,
-      "detail": "{\"native\":true,\"target\":\"rendersViewer\",\"theater\":false,\"bodyLocked\":false,\"label\":\"Exit fullscreen\",\"width\":390,\"height\":2980}"
+      "detail": "{\"open\":true,\"theater\":false,\"bodyLocked\":true,\"label\":\"Exit fullscreen\",\"transform\":\"translate(-50%, -50%) rotate(90deg)\",\"src\":\"https://i.imgur.com/ywuUBKU.jpeg\",\"natural\":[3840,2160],\"hintHidden\":false,\"overlay\":{\"top\":876,\"height\":844},\"stageTop\":976.546875,\"frame\":{\"width\":374,\"height\":665},\"counter\":\"1 / 17\",\"mainCounter\":\"1 / 17\"}"
     },
     {
-      "name": "phone 390x2980: live fullscreen updates its accessible state",
+      "name": "phone 390x2980: live phone fullscreen uses the full-resolution render",
+      "passed": true,
+      "detail": "{\"src\":\"https://i.imgur.com/ywuUBKU.jpeg\",\"natural\":[3840,2160]}"
+    },
+    {
+      "name": "phone 390x2980: live phone fullscreen rotates the render and shows the hint",
+      "passed": true,
+      "detail": "{\"width\":374,\"height\":665}"
+    },
+    {
+      "name": "phone 390x2980: live phone fullscreen is anchored and fills the screen",
+      "passed": true,
+      "detail": "{\"top\":876,\"height\":844}"
+    },
+    {
+      "name": "phone 390x2980: live phone fullscreen navigation stays in sync",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x2980: live fullscreen exits cleanly",
+      "name": "phone 390x2980: live phone fullscreen switches to upright landscape",
       "passed": true,
-      "detail": "{\"native\":false,\"theater\":false,\"label\":\"Enter fullscreen\"}"
+      "detail": "{\"landscape\":true,\"transform\":\"translate(-50%, -50%) rotate(0deg)\",\"hintHidden\":true,\"height\":390,\"frame\":{\"width\":665,\"height\":374}}"
+    },
+    {
+      "name": "phone 390x2980: live phone fullscreen closes without changing page height",
+      "passed": true,
+      "detail": "{\"hidden\":true,\"open\":false,\"body\":false,\"label\":\"Enter fullscreen\",\"counter\":\"2 / 17\",\"scrollHeight\":2980}"
+    },
+    {
+      "name": "phone 390x2980: Escape closes the live phone fullscreen viewer",
+      "passed": true,
+      "detail": null
     },
     {
       "name": "phone 390x2980: no page errors",

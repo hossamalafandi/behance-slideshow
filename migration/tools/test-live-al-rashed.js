@@ -4,7 +4,7 @@
 /**
  * Live Al-Rashed page suite.
  *
- * Runs against the deployed Apps Script URL after version 12 is live:
+ * Runs against the deployed Apps Script URL after version 15 is live:
  *  - all 9 page images resolve through jsDelivr with JPEG bytes;
  *  - `?page=al-rashed` returns the page, and `?slide=` / `?tools=` still work;
  *  - mixed, repeated, and unknown values keep the neutral error page;
@@ -12,6 +12,9 @@
  *  - desktop visitors receive the full-resolution 3840x2160 render originals,
  *    phone visitors receive the 1024x576 `h` variants, and both decode at the
  *    expected dimensions;
+ *  - phone fullscreen opens the in-page viewer because Behance blocks native
+ *    fullscreen; it rotates the render in portrait and switches upright in
+ *    landscape;
  *  - navigation, dots, keyboard, swipe, fullscreen, map, tools, and copyright
  *    all work in the live deployment.
  *
@@ -602,43 +605,192 @@ async function runViewport(browser, label, width, expected) {
       { timeout: 15000, polling: 100 });
     check(label + ': swipe left, right, and wrap work', true);
 
-    await frame.click('#renderFullscreen');
-    await wait(900);
-    const fullscreen = await frame.evaluate(() => {
-      const viewer = document.getElementById('rendersViewer');
-      const element = document.fullscreenElement || document.webkitFullscreenElement;
-      const box = viewer.getBoundingClientRect();
-      return {
-        native: Boolean(element),
-        target: element ? element.id : null,
-        theater: viewer.classList.contains('theater-mode'),
-        bodyLocked: document.body.classList.contains('theater-open'),
+    await frame.press('#rendersViewer', 'Home');
+    await frame.waitForFunction(() =>
+      document.getElementById('renderCounter').textContent === '1 / 17', null,
+      { timeout: 15000, polling: 100 });
+
+    if (width <= 700) {
+      await frame.evaluate(() => {
+        Object.defineProperty(screen, 'width', { configurable: true, get: () => 390 });
+        Object.defineProperty(screen, 'height', { configurable: true, get: () => 844 });
+        Object.defineProperty(screen, 'availWidth', { configurable: true, get: () => 390 });
+        Object.defineProperty(screen, 'availHeight', { configurable: true, get: () => 844 });
+      });
+      await frame.click('#renderFullscreen');
+      await wait(500);
+      await frame.waitForFunction(() => {
+        const image = document.getElementById('phoneFsImage');
+        return image && image.complete && image.naturalWidth === 3840;
+      }, null, { timeout: 20000, polling: 100 });
+      const phoneFullscreen = await frame.evaluate(() => {
+        const overlay = document.getElementById('phoneFullscreen');
+        const frameBox = document.getElementById('phoneFsFrame').getBoundingClientRect();
+        const image = document.getElementById('phoneFsImage');
+        const stageBox = document.getElementById('rendersStage').getBoundingClientRect();
+        const panel = overlay.getBoundingClientRect();
+        return {
+          open: overlay.classList.contains('is-open') && !overlay.hidden,
+          theater: document.getElementById('rendersViewer').classList.contains('theater-mode'),
+          bodyLocked: document.body.classList.contains('phone-fs-open'),
+          label: document.getElementById('renderFullscreen').getAttribute('aria-label'),
+          transform: image.style.transform,
+          src: image.getAttribute('src'),
+          natural: [image.naturalWidth, image.naturalHeight],
+          hintHidden: document.getElementById('phoneFsHint').hidden,
+          overlay: { top: panel.top, height: panel.height },
+          stageTop: stageBox.top,
+          frame: { width: frameBox.width, height: frameBox.height },
+          counter: document.getElementById('phoneFsCounter').textContent,
+          mainCounter: document.getElementById('renderCounter').textContent
+        };
+      });
+      check(label + ': live phone fullscreen opens the in-page viewer',
+        phoneFullscreen.open && !phoneFullscreen.theater &&
+          phoneFullscreen.bodyLocked &&
+          phoneFullscreen.label === 'Exit fullscreen' &&
+          phoneFullscreen.counter === '1 / 17' &&
+          phoneFullscreen.mainCounter === '1 / 17',
+        JSON.stringify(phoneFullscreen));
+      check(label + ': live phone fullscreen uses the full-resolution render',
+        phoneFullscreen.src === data.renderUrl(data.RENDERS[0]) &&
+          phoneFullscreen.natural[0] === 3840 &&
+          phoneFullscreen.natural[1] === 2160,
+        JSON.stringify({ src: phoneFullscreen.src, natural: phoneFullscreen.natural }));
+      check(label + ': live phone fullscreen rotates the render and shows the hint',
+        /rotate\(90deg\)/.test(phoneFullscreen.transform) &&
+          !phoneFullscreen.hintHidden &&
+          phoneFullscreen.frame.height > phoneFullscreen.frame.width &&
+          Math.abs(phoneFullscreen.frame.width / phoneFullscreen.frame.height - 9 / 16) <= 0.02,
+        JSON.stringify(phoneFullscreen.frame));
+      check(label + ': live phone fullscreen is anchored and fills the screen',
+        Math.abs(phoneFullscreen.overlay.height - 844) <= 1 &&
+          phoneFullscreen.overlay.top >= 0 &&
+          phoneFullscreen.overlay.top <= phoneFullscreen.stageTop &&
+          phoneFullscreen.stageTop - phoneFullscreen.overlay.top <= 200,
+        JSON.stringify(phoneFullscreen.overlay));
+
+      await frame.click('#phoneFsNext');
+      await frame.waitForFunction(() =>
+        document.getElementById('phoneFsCounter').textContent === '2 / 17' &&
+        document.getElementById('renderCounter').textContent === '2 / 17', null,
+        { timeout: 15000, polling: 100 });
+      await frame.waitForFunction(() => {
+        const image = document.getElementById('phoneFsImage');
+        return image && image.complete && image.naturalWidth === 3840;
+      }, null, { timeout: 20000, polling: 100 });
+      check(label + ': live phone fullscreen navigation stays in sync',
+        await frame.evaluate(() =>
+          document.getElementById('phoneFsImage').getAttribute('src')) ===
+            data.renderUrl(data.RENDERS[1]));
+
+      await frame.evaluate(() => {
+        Object.defineProperty(screen, 'width', { configurable: true, get: () => 844 });
+        Object.defineProperty(screen, 'height', { configurable: true, get: () => 390 });
+        Object.defineProperty(screen, 'availWidth', { configurable: true, get: () => 844 });
+        Object.defineProperty(screen, 'availHeight', { configurable: true, get: () => 390 });
+        Object.defineProperty(screen.orientation, 'type',
+          { configurable: true, get: () => 'landscape-primary' });
+      });
+      await page.evaluate(() => {
+        const iframe = document.getElementById('embed');
+        iframe.width = '844';
+        iframe.style.width = '844px';
+        window.dispatchEvent(new Event('resize'));
+      });
+      await frame.evaluate(() => {
+        window.dispatchEvent(new Event('orientationchange'));
+        if (screen.orientation && screen.orientation.dispatchEvent) {
+          screen.orientation.dispatchEvent(new Event('change'));
+        }
+      });
+      await wait(300);
+      const landscapeState = await frame.evaluate(() => {
+        const overlay = document.getElementById('phoneFullscreen');
+        const image = document.getElementById('phoneFsImage');
+        const frameBox = document.getElementById('phoneFsFrame').getBoundingClientRect();
+        return {
+          landscape: overlay.classList.contains('is-landscape'),
+          transform: image.style.transform,
+          hintHidden: document.getElementById('phoneFsHint').hidden,
+          height: overlay.getBoundingClientRect().height,
+          frame: { width: frameBox.width, height: frameBox.height }
+        };
+      });
+      check(label + ': live phone fullscreen switches to upright landscape',
+        landscapeState.landscape &&
+          /rotate\(0deg\)/.test(landscapeState.transform) &&
+          landscapeState.hintHidden &&
+          Math.abs(landscapeState.height - 390) <= 1 &&
+          Math.abs(landscapeState.frame.width / landscapeState.frame.height - 16 / 9) <= 0.02,
+        JSON.stringify(landscapeState));
+
+      await frame.click('#phoneFsClose');
+      await wait(300);
+      const phoneClosed = await frame.evaluate(() => ({
+        hidden: document.getElementById('phoneFullscreen').hidden,
+        open: document.getElementById('phoneFullscreen').classList.contains('is-open'),
+        body: document.body.classList.contains('phone-fs-open'),
         label: document.getElementById('renderFullscreen').getAttribute('aria-label'),
-        width: box.width,
-        height: box.height
-      };
-    });
-    check(label + ': live fullscreen activates natively or with the fallback',
-      (fullscreen.native && fullscreen.target === 'rendersViewer') ||
-        fullscreen.theater, JSON.stringify(fullscreen));
-    check(label + ': live fullscreen updates its accessible state',
-      fullscreen.label === 'Exit fullscreen');
-    if (fullscreen.theater) {
-      check(label + ': live fallback fills the frame',
-        Math.abs(fullscreen.width - width) <= 1 &&
-          Math.abs(fullscreen.height - BEHANCE_HEIGHT) <= 1 &&
-          fullscreen.bodyLocked);
+        counter: document.getElementById('renderCounter').textContent,
+        scrollHeight: document.documentElement.scrollHeight
+      }));
+      check(label + ': live phone fullscreen closes without changing page height',
+        phoneClosed.hidden && !phoneClosed.open && !phoneClosed.body &&
+          phoneClosed.label === 'Enter fullscreen' &&
+          phoneClosed.counter === '2 / 17' &&
+          phoneClosed.scrollHeight === BEHANCE_HEIGHT,
+        JSON.stringify(phoneClosed));
+
+      await frame.click('#renderFullscreen');
+      await wait(300);
+      await frame.evaluate(() => {
+        document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+      });
+      await wait(300);
+      check(label + ': Escape closes the live phone fullscreen viewer',
+        await frame.evaluate(() =>
+          document.getElementById('phoneFullscreen').hidden &&
+          !document.body.classList.contains('phone-fs-open')));
+    } else {
+      await frame.click('#renderFullscreen');
+      await wait(900);
+      const fullscreen = await frame.evaluate(() => {
+        const viewer = document.getElementById('rendersViewer');
+        const element = document.fullscreenElement || document.webkitFullscreenElement;
+        const box = viewer.getBoundingClientRect();
+        return {
+          native: Boolean(element),
+          target: element ? element.id : null,
+          theater: viewer.classList.contains('theater-mode'),
+          bodyLocked: document.body.classList.contains('theater-open'),
+          label: document.getElementById('renderFullscreen').getAttribute('aria-label'),
+          width: box.width,
+          height: box.height
+        };
+      });
+      check(label + ': live fullscreen activates natively or with the fallback',
+        (fullscreen.native && fullscreen.target === 'rendersViewer') ||
+          fullscreen.theater, JSON.stringify(fullscreen));
+      check(label + ': live fullscreen updates its accessible state',
+        fullscreen.label === 'Exit fullscreen');
+      if (fullscreen.theater) {
+        check(label + ': live fallback fills the frame',
+          Math.abs(fullscreen.width - width) <= 1 &&
+            Math.abs(fullscreen.height - BEHANCE_HEIGHT) <= 1 &&
+            fullscreen.bodyLocked);
+      }
+      await frame.click('#renderFullscreen');
+      await wait(700);
+      const exited = await frame.evaluate(() => ({
+        native: Boolean(document.fullscreenElement),
+        theater: document.getElementById('rendersViewer').classList.contains('theater-mode'),
+        label: document.getElementById('renderFullscreen').getAttribute('aria-label')
+      }));
+      check(label + ': live fullscreen exits cleanly',
+        !exited.native && !exited.theater && exited.label === 'Enter fullscreen',
+        JSON.stringify(exited));
     }
-    await frame.click('#renderFullscreen');
-    await wait(700);
-    const exited = await frame.evaluate(() => ({
-      native: Boolean(document.fullscreenElement),
-      theater: document.getElementById('rendersViewer').classList.contains('theater-mode'),
-      label: document.getElementById('renderFullscreen').getAttribute('aria-label')
-    }));
-    check(label + ': live fullscreen exits cleanly',
-      !exited.native && !exited.theater && exited.label === 'Enter fullscreen',
-      JSON.stringify(exited));
 
     check(label + ': no page errors', pageErrors.length === 0,
       pageErrors.join(' | '));

@@ -12,8 +12,10 @@
   "failed": 0,
   "slideshowsPassed": 48,
   "slideshowsFailed": 0,
-  "retriedSlides": [],
-  "blockedImages": 339,
+  "retriedSlides": [
+    "P037-S01"
+  ],
+  "blockedImages": 342,
   "failures": [],
   "routerChecks": [
     {
@@ -1784,7 +1786,7 @@
     {
       "id": "P037-S01",
       "passed": true,
-      "attempts": 1,
+      "attempts": 2,
       "checks": [
         {
           "name": "P037-S01: reaches the live slideshow frame",

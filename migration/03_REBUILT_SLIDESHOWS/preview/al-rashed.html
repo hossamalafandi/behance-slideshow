@@ -346,6 +346,123 @@
 
   body.theater-open { overflow: hidden; }
 
+  /* Phone fullscreen fallback. Behance's phone app blocks native fullscreen,
+     so this viewer expands inside the page instead, anchored to the stage. */
+  .phone-fs {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2147483647;
+    display: none;
+    overflow: hidden;
+    background: #000;
+    touch-action: pan-y;
+  }
+
+  .phone-fs.is-open { display: block; }
+
+  .phone-fs-panel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .phone-fs-frame {
+    position: relative;
+    flex: 0 0 auto;
+  }
+
+  .phone-fs-img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: block;
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+    transform-origin: center center;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+  }
+
+  .phone-fs-close,
+  .phone-fs-arrow {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-family: inherit;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+  }
+
+  .phone-fs-close {
+    top: 8px;
+    right: 8px;
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .phone-fs-arrow {
+    top: 50%;
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+    transform: translateY(-50%);
+  }
+
+  .phone-fs-arrow.prev { left: 8px; }
+  .phone-fs-arrow.next { right: 8px; }
+
+  .phone-fs-footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 8px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    pointer-events: none;
+  }
+
+  .phone-fs-counter,
+  .phone-fs-hint {
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 200;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  .phone-fs-hint {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .phone-fs.is-landscape .phone-fs-hint { display: none; }
+
+  body.phone-fs-open { overflow: hidden; }
+
   /* --------------------------------------------------------------- photos */
   .photo-grid {
     display: grid;
@@ -728,6 +845,25 @@
   <footer class="copyright">© 2025 HOSSAM ALAFANDI. All rights reserved.</footer>
 </main>
 
+<div class="phone-fs" id="phoneFullscreen" hidden role="dialog"
+     aria-modal="true" aria-label="Render fullscreen">
+  <div class="phone-fs-panel" id="phoneFsPanel">
+    <div class="phone-fs-frame" id="phoneFsFrame">
+      <img class="phone-fs-img" id="phoneFsImage" alt="" decoding="async">
+      <button class="phone-fs-close" id="phoneFsClose" type="button"
+              aria-label="Close fullscreen">×</button>
+      <button class="phone-fs-arrow prev" id="phoneFsPrev" type="button"
+              aria-label="Previous render">❮</button>
+      <button class="phone-fs-arrow next" id="phoneFsNext" type="button"
+              aria-label="Next render">❯</button>
+      <div class="phone-fs-footer">
+        <span class="phone-fs-counter" id="phoneFsCounter" aria-live="polite">1 / 17</span>
+        <span class="phone-fs-hint" id="phoneFsHint">Rotate your phone for a larger view</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 (function () {
   'use strict';
@@ -743,6 +879,20 @@
   var prev = document.getElementById('renderPrev');
   var next = document.getElementById('renderNext');
   var fsButton = document.getElementById('renderFullscreen');
+  var phoneFs = document.getElementById('phoneFullscreen');
+  var phoneFsPanel = document.getElementById('phoneFsPanel');
+  var phoneFsFrame = document.getElementById('phoneFsFrame');
+  var phoneFsImage = document.getElementById('phoneFsImage');
+  var phoneFsClose = document.getElementById('phoneFsClose');
+  var phoneFsPrev = document.getElementById('phoneFsPrev');
+  var phoneFsNext = document.getElementById('phoneFsNext');
+  var phoneFsCounter = document.getElementById('phoneFsCounter');
+  var phoneFsHint = document.getElementById('phoneFsHint');
+  var phoneQuery = window.matchMedia
+    ? window.matchMedia('(max-width: 700px)') : null;
+  var phoneFsActive = false;
+  var phoneFsReturnFocus = null;
+  var phoneFsToken = 0;
   var count = slides.length;
   var index = 0;
 
@@ -758,12 +908,8 @@
     return dot;
   });
 
-  function preload(at) {
-    if (!count) return;
-    var target = slides[((at % count) + count) % count];
-    if (!target) return;
-    var image = target.querySelector('img');
-    if (!image || image.complete) return;
+  function imageSource(image) {
+    if (!image) return '';
     var src = image.currentSrc || image.getAttribute('src');
     var picture = image.parentElement;
     var source = picture && picture.tagName === 'PICTURE'
@@ -772,6 +918,37 @@
         window.matchMedia(source.getAttribute('media')).matches) {
       src = source.getAttribute('srcset');
     }
+    return src;
+  }
+
+  function phoneSourceAt(at) {
+    var slide = slides[((at % count) + count) % count];
+    var image = slide && slide.querySelector('img');
+    if (!image) return '';
+    return image.getAttribute('src') || image.currentSrc || '';
+  }
+
+  function phoneThumbSourceAt(at) {
+    var slide = slides[((at % count) + count) % count];
+    var image = slide && slide.querySelector('img');
+    if (!image) return '';
+    var picture = image.parentElement;
+    var source = picture && picture.tagName === 'PICTURE'
+      ? picture.querySelector('source[media]') : null;
+    if (source && source.getAttribute('srcset')) {
+      return source.getAttribute('srcset');
+    }
+    return image.currentSrc || image.getAttribute('src') || '';
+  }
+
+  function preload(at) {
+    if (!count) return;
+    var target = slides[((at % count) + count) % count];
+    if (!target) return;
+    var image = target.querySelector('img');
+    if (!image || image.complete) return;
+    var src = imageSource(image);
+    if (!src) return;
     var warm = new Image();
     warm.decoding = 'async';
     warm.src = src;
@@ -799,9 +976,234 @@
       preload(index + 1);
       preload(index - 1);
     }
+    updatePhoneFs();
   }
 
   function step(delta) { show(index + delta); }
+
+  function isPhoneLayout() {
+    if (phoneQuery && phoneQuery.matches) return true;
+    if (!window.matchMedia) return window.innerWidth <= 700;
+    if (!window.matchMedia('(pointer: coarse)').matches) return false;
+    return Math.min(window.innerWidth || 0, window.innerHeight || 0) <= 900;
+  }
+
+  function phoneViewportHeight() {
+    var screenHeight = 0;
+    if (window.screen) {
+      screenHeight = window.screen.availHeight || window.screen.height || 0;
+    }
+    var height = window.innerHeight || 0;
+    if (screenHeight > 0) height = Math.min(height || screenHeight, screenHeight);
+    if (!height || !isFinite(height)) {
+      height = Math.min(window.innerHeight || 900, 900);
+    }
+    return Math.max(240, Math.min(height, 1200));
+  }
+
+  function phoneIsLandscape() {
+    var screenWidth = (window.screen && window.screen.width) || 0;
+    var screenHeight = (window.screen && window.screen.height) || 0;
+    if (screenWidth && screenHeight && screenWidth !== screenHeight) {
+      return screenWidth > screenHeight;
+    }
+    var orientation = window.screen && window.screen.orientation;
+    if (orientation && typeof orientation.type === 'string') {
+      return orientation.type.indexOf('landscape') === 0;
+    }
+    if (typeof window.orientation === 'number') {
+      return Math.abs(window.orientation) === 90;
+    }
+    return window.innerWidth > window.innerHeight;
+  }
+
+  function layoutPhoneFs() {
+    if (!phoneFsActive || !phoneFs) return;
+    var panelWidth = phoneFs.clientWidth || window.innerWidth || 390;
+    var panelHeight = phoneViewportHeight();
+    phoneFs.style.height = Math.round(panelHeight) + 'px';
+
+    var rect = (stage || viewer).getBoundingClientRect();
+    var scrollTop = window.pageYOffset ||
+      document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var pageHeight = document.documentElement.scrollHeight ||
+      document.body.scrollHeight || 0;
+    var top = rect.top + scrollTop - Math.round(panelHeight * 0.12);
+    var maxTop = Math.max(0, pageHeight - panelHeight);
+    top = Math.max(0, Math.min(top, maxTop));
+    phoneFs.style.top = Math.round(top) + 'px';
+
+    var maxWidth = Math.max(1, panelWidth - 16);
+    var maxHeight = Math.max(1, panelHeight - 16);
+    var landscape = phoneIsLandscape();
+    var imageWidth;
+    var imageHeight;
+    if (landscape) {
+      imageWidth = Math.min(maxWidth, maxHeight * 16 / 9);
+      imageHeight = imageWidth * 9 / 16;
+      phoneFsFrame.style.width = Math.round(imageWidth) + 'px';
+      phoneFsFrame.style.height = Math.round(imageHeight) + 'px';
+    } else {
+      imageWidth = Math.min(maxHeight, maxWidth * 16 / 9);
+      imageHeight = imageWidth * 9 / 16;
+      phoneFsFrame.style.width = Math.round(imageHeight) + 'px';
+      phoneFsFrame.style.height = Math.round(imageWidth) + 'px';
+    }
+    phoneFsImage.style.width = Math.round(imageWidth) + 'px';
+    phoneFsImage.style.height = Math.round(imageHeight) + 'px';
+    phoneFsImage.style.transform = 'translate(-50%, -50%) rotate(' +
+      (landscape ? 0 : 90) + 'deg)';
+    phoneFs.classList.toggle('is-landscape', landscape);
+    phoneFsHint.hidden = landscape;
+  }
+
+  function updatePhoneFs() {
+    if (!phoneFsActive || !phoneFsImage) return;
+    var full = phoneSourceAt(index);
+    var thumb = phoneThumbSourceAt(index);
+    var preview = thumb || full;
+    if (preview && phoneFsImage.getAttribute('src') !== preview &&
+        phoneFsImage.getAttribute('src') !== full) {
+      phoneFsImage.src = preview;
+    }
+    phoneFsImage.alt = 'Al-Rashed project render ' + (index + 1);
+    phoneFsCounter.textContent = (index + 1) + ' / ' + count;
+
+    if (!full || phoneFsImage.getAttribute('src') === full) return;
+    var token = ++phoneFsToken;
+    var warm = new Image();
+    warm.decoding = 'async';
+    warm.onload = function () {
+      if (token !== phoneFsToken || !phoneFsActive) return;
+      phoneFsImage.src = full;
+    };
+    warm.src = full;
+  }
+
+  function openPhoneFs() {
+    if (!phoneFs || phoneFsActive) return;
+    phoneFsActive = true;
+    phoneFsReturnFocus = document.activeElement;
+    phoneFs.hidden = false;
+    phoneFs.classList.add('is-open');
+    document.body.classList.add('phone-fs-open');
+    setFullscreenState(true);
+    updatePhoneFs();
+    layoutPhoneFs();
+    revealPhoneFs();
+    if (phoneFsClose) phoneFsClose.focus({ preventScroll: true });
+    setTimeout(function () {
+      if (!phoneFsActive) return;
+      layoutPhoneFs();
+      revealPhoneFs();
+    }, 60);
+  }
+
+  function closePhoneFs() {
+    if (!phoneFsActive) return;
+    phoneFsActive = false;
+    phoneFs.classList.remove('is-open');
+    phoneFs.hidden = true;
+    document.body.classList.remove('phone-fs-open');
+    setFullscreenState(false);
+    if (phoneFsReturnFocus && phoneFsReturnFocus.focus) {
+      phoneFsReturnFocus.focus({ preventScroll: true });
+    }
+  }
+
+  function stepPhoneFs(delta) { show(index + delta); }
+
+  if (phoneFsClose) {
+    phoneFsClose.addEventListener('click', closePhoneFs);
+  }
+  if (phoneFsPrev) {
+    phoneFsPrev.addEventListener('click', function () { stepPhoneFs(-1); });
+  }
+  if (phoneFsNext) {
+    phoneFsNext.addEventListener('click', function () { stepPhoneFs(1); });
+  }
+  if (phoneFs) {
+    var fsSwiped = false;
+    phoneFs.addEventListener('click', function (event) {
+      if (fsSwiped) {
+        fsSwiped = false;
+        return;
+      }
+      if (event.target === phoneFs || event.target === phoneFsPanel) {
+        closePhoneFs();
+      }
+    });
+    phoneFs.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closePhoneFs();
+        event.preventDefault();
+      } else if (event.key === 'ArrowLeft') {
+        stepPhoneFs(-1);
+        event.preventDefault();
+      } else if (event.key === 'ArrowRight') {
+        stepPhoneFs(1);
+        event.preventDefault();
+      } else if (event.key === 'Home') {
+        show(0);
+        event.preventDefault();
+      } else if (event.key === 'End') {
+        show(count - 1);
+        event.preventDefault();
+      }
+    });
+
+    var fsStartX = 0;
+    var fsStartY = 0;
+    var fsTracking = false;
+    phoneFs.addEventListener('touchstart', function (event) {
+      fsSwiped = false;
+      if (event.touches.length !== 1) {
+        fsTracking = false;
+        return;
+      }
+      fsTracking = true;
+      fsStartX = event.touches[0].clientX;
+      fsStartY = event.touches[0].clientY;
+    }, { passive: true });
+    phoneFs.addEventListener('touchend', function (event) {
+      if (!fsTracking) return;
+      fsTracking = false;
+      var touch = event.changedTouches[0];
+      if (!touch) return;
+      var dx = touch.clientX - fsStartX;
+      var dy = touch.clientY - fsStartY;
+      if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+        fsSwiped = true;
+        stepPhoneFs(dx < 0 ? 1 : -1);
+      }
+    }, { passive: true });
+  }
+
+  function revealPhoneFs() {
+    if (!phoneFsActive || !phoneFs || !phoneFs.scrollIntoView) return;
+    try {
+      phoneFs.scrollIntoView({ block: 'center', inline: 'nearest' });
+    } catch (error) {
+      // Scrolling is a convenience; the viewer still works without it.
+    }
+  }
+
+  function onPhoneResize() {
+    if (phoneFsActive) layoutPhoneFs();
+  }
+
+  function onPhoneOrientationChange() {
+    if (!phoneFsActive) return;
+    layoutPhoneFs();
+    revealPhoneFs();
+  }
+
+  if (window.screen && window.screen.orientation &&
+      window.screen.orientation.addEventListener) {
+    window.screen.orientation.addEventListener('change', onPhoneOrientationChange);
+  }
+  window.addEventListener('orientationchange', onPhoneOrientationChange);
+  window.addEventListener('resize', onPhoneResize);
 
   function warmAll() {
     for (var i = 1; i < count; i++) preload(i);
@@ -880,6 +1282,10 @@
   function enterFallback() {
     if (fallbackActive) return;
     if (document.fullscreenElement || document.webkitFullscreenElement) return;
+    if (isPhoneLayout()) {
+      openPhoneFs();
+      return;
+    }
     fallbackActive = true;
     viewer.classList.add('theater-mode');
     document.body.classList.add('theater-open');
@@ -895,6 +1301,10 @@
   }
 
   function requestNative() {
+    if (isPhoneLayout()) {
+      openPhoneFs();
+      return;
+    }
     var request = viewer.requestFullscreen || viewer.webkitRequestFullscreen ||
       viewer.msRequestFullscreen;
     if (!request || document.fullscreenEnabled === false) {
@@ -926,18 +1336,29 @@
 
   function onFullscreenChange() {
     var active = (document.fullscreenElement || document.webkitFullscreenElement) === viewer;
-    if (active) exitFallback();
-    setFullscreenState(active || fallbackActive);
+    if (active) {
+      closePhoneFs();
+      exitFallback();
+    }
+    setFullscreenState(active || fallbackActive || phoneFsActive);
   }
 
   if (fsButton) {
     fsButton.addEventListener('click', function () {
+      if (phoneFsActive) {
+        closePhoneFs();
+        return;
+      }
       if (document.fullscreenElement || document.webkitFullscreenElement) {
         exitNative();
         return;
       }
       if (fallbackActive) {
         exitFallback();
+        return;
+      }
+      if (isPhoneLayout()) {
+        openPhoneFs();
         return;
       }
       requestNative();
@@ -949,7 +1370,12 @@
   document.addEventListener('fullscreenerror', enterFallback);
   document.addEventListener('webkitfullscreenerror', enterFallback);
   document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape' && fallbackActive) exitFallback();
+    if (event.key !== 'Escape') return;
+    if (phoneFsActive) {
+      closePhoneFs();
+      return;
+    }
+    if (fallbackActive) exitFallback();
   });
 
   show(0);
