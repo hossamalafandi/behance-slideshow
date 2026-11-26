@@ -18,7 +18,7 @@ project page are generated and ready for manual copy/paste.
 
 `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
 
-Deployment version 18. Every slideshow code uses one `?slide=<ID>` value and
+Deployment version 19. Every slideshow code uses one `?slide=<ID>` value and
 loads exactly one slideshow. Every TOOLS USED code uses one `?tools=<ID>`
 value and loads the original logo strip from the same host. The standalone page
 uses one `?page=al-rashed` value. The production Apps Script deployment is
@@ -65,8 +65,8 @@ original logo URLs and CSS; the images are not copied or rehosted.
    desktop and phone layout. Do not combine it with a slideshow code.
 
 Live verification: the Al-Rashed page suite passes **135/135**, the Cellphone
-Store page suite passes **102/102** (local **72/72**), the all-slideshow suite
-passes **339/339**, and the phone fit suite passes **64/64** against version 18.
+Store page suite passes **PENDING** (local **76/76**), the all-slideshow suite
+passes **339/339**, and the phone fit suite passes **64/64** against version 19.
 
 ## Not included
 

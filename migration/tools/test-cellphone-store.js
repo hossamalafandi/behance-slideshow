@@ -298,6 +298,7 @@ async function runViewport(browser, base, label, width) {
         body: [document.body.scrollWidth, document.body.scrollHeight],
         main: rect(document.getElementById('page')),
         headings: Array.from(document.querySelectorAll('h2')).map(h => h.textContent.trim()),
+        stagesTitle: rect(document.getElementById('stages-title')),
         stages: document.querySelectorAll('.stage').length,
         videos: videoFrames.map(frame => ({
           src: frame.querySelector('iframe').src,
@@ -346,6 +347,13 @@ async function runViewport(browser, base, label, width) {
         'OVERVIEW', 'WORK DEVELOPMENT STAGES', 'Render VS Reality', 'LOCATION', 'TOOLS USED'
       ]) && state.stages === 7,
       state.headings.join(', ') + ' / ' + state.stages);
+    check(label + ': WORK DEVELOPMENT STAGES is one line on desktop',
+      width <= 700 || state.stagesTitle.height <= 70,
+      JSON.stringify(state.stagesTitle));
+    const stageGaps = state.stageTops.slice(1).map((stage, index) =>
+      stage.y - (state.stageTops[index].y + state.stageTops[index].height));
+    check(label + ': stage sections keep normal spacing',
+      stageGaps.every(gap => gap <= 100), stageGaps.join(', '));
     check(label + ': 9 Vimeo videos use 9:16 frames',
       state.videos.length === 9 &&
         state.videos.every(video => /player\.vimeo\.com\/video\/\d+/.test(video.src)) &&

@@ -348,22 +348,9 @@ function buildPage(assetBase) {
 
   .stages-section {
     padding-bottom: calc(var(--section-y) + 4px);
-    display: flex;
-    flex: 1 1 auto;
   }
 
-  .stages-section > .wrap {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
-  }
-
-  .stages-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1 1 auto;
-  }
+  .stages-list { display: block; }
 
   .stage + .stage {
     margin-top: var(--stage-gap);
@@ -753,6 +740,14 @@ function buildPage(assetBase) {
     font-size: 11px;
     font-weight: 200;
     text-align: center;
+  }
+
+  @media (min-width: 701px) {
+    #stages-title {
+      white-space: nowrap;
+      font-size: clamp(40px, 5.3vw, 62px);
+      letter-spacing: -0.04em;
+    }
   }
 
   @media (max-width: 700px) {

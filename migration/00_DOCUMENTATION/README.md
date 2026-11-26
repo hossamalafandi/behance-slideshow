@@ -32,7 +32,7 @@ deleting, renaming, or redeploying anything in the live portfolio, the existing
 production Apps Script project, or the existing `index.html` prototype. A **new
 standalone** Apps Script project hosts all 48 slideshows, the 38 TOOLS USED
 strips, the standalone Al-Rashed page, and the Cellphone Store page; it is
-deployed as version 18. One
+deployed as version 19. One
 temporary Behance test project was published. The audit, pilot, and bulk
 rollout commits are pushed to `main`. See
 `01_AUDIT/phase_2_pilot_report.md` and `01_AUDIT/phase_2_bulk_report.md` for the
@@ -88,7 +88,7 @@ migration/
 │   └── evidence/                        pilot and bulk test reports (screenshots gitignored)
 ├── 02_SOURCE_BACKUP/                    untouched original slideshow HTML, one folder per project
 ├── 03_REBUILT_SLIDESHOWS/               generated data and previews for all 48 slideshows
-├── 04_APPS_SCRIPT/                      shared Apps Script project (48-slide map, 38-tool map, AlRashed + CellphoneStore pages, version 18)
+├── 04_APPS_SCRIPT/                      shared Apps Script project (48-slide map, 38-tool map, AlRashed + CellphoneStore pages, version 19)
 └── 05_BEHANCE_OUTPUT/                   all 48 embed codes plus 38 TOOLS USED codes: ALL_EMBEDS.md, ALL_EMBEDS.csv, TOOLS_USED_EMBEDS.md, TOOLS_USED_EMBEDS.csv, AL_RASHED_EMBED.md, CELLPHONE_STORE_EMBED.md, 37 project files
 ```
 
@@ -280,13 +280,13 @@ originals, while phones keep the existing 1024×576 `h` variants through
 phone app blocks native fullscreen, the button opens an in-page viewer that
 keeps the page height stable, rotates the current 16:9 render to use the tall
 screen, and switches to upright when the phone is turned landscape. The
-Al-Rashed page is unchanged in version 18, which adds the Cellphone Store page.
+Al-Rashed page is unchanged in version 19, which adds the Cellphone Store page.
 Static validation passes 3491/3491, the local page suite passes 218/218, and the
 live page suite passes 135/135. The existing 48-slideshow local, fit, pilot, and live suites remain
 green. The copy/paste code and rollback steps are in
 `05_BEHANCE_OUTPUT/AL_RASHED_EMBED.md`.
 
-version 18 adds the standalone Cellphone Store page at `?page=cellphone-store`.
+version 19 adds the standalone Cellphone Store page at `?page=cellphone-store`.
 It reproduces the 7-stage workflow, 9 Vimeo videos, the original 11-render
 slideshow, the 4 render/reality comparisons, the map, and the 4 tools. The 21
 stage/render-reality photos are copied as 44 optimized derivatives under
@@ -294,7 +294,7 @@ stage/render-reality photos are copied as 44 optimized derivatives under
 and 4 tool logos stay on Imgur. The page uses a fixed 13320 px Behance iframe
 sized to cover both the desktop and phone layouts. The copy/paste code and
 verification steps are in `05_BEHANCE_OUTPUT/CELLPHONE_STORE_EMBED.md`. The
-local page suite passes 72/72 and the live page suite passes 102/102.
+local page suite passes 76/76 and the live page suite passes PENDING.
 
 ## 10. What was deliberately not done
 

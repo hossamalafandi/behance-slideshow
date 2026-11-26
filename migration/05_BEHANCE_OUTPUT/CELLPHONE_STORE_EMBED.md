@@ -1,7 +1,7 @@
 # Cellphone Store — standalone Behance embed
 
 Status: **ready for manual copy/paste. Nothing has been published or replaced.**
-Built 2026-11-25 and deployed as version 18 under the existing deployment ID.
+Built 2026-11-25 and deployed as version 19 under the existing deployment ID.
 This page is independent of the 48 slideshow embeds, the 38 TOOLS USED strips,
 and the Al-Rashed page.
 
@@ -89,7 +89,7 @@ page.
 
 The page uses the existing standalone Apps Script deployment under the same
 deployment ID, with the new `?page=cellphone-store` route. It is live as
-version 18:
+version 19:
 
 ```
 https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec?page=cellphone-store
@@ -126,7 +126,7 @@ node test-live-cellphone-store.js https://script.google.com/macros/s/AKfycbzV7Ou
 
 It verifies the 44 jsDelivr files, the new page route, the unchanged
 Al-Rashed/slide/tools routes, both Behance-like frames, and the slideshow.
-Result: **102/102**. The local page suite passes **72/72**.
+Result: **PENDING**. The local page suite passes **76/76**.
 
 ## Rollback
 

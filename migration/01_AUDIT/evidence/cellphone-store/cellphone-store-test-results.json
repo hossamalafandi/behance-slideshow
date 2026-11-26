@@ -10,8 +10,8 @@
     "assets": 44
   },
   "browser": "Chrome 158.0.8127.88",
-  "checks": 72,
-  "passed": 72,
+  "checks": 76,
+  "passed": 76,
   "failed": 0,
   "blockedImgurRequests": 25,
   "failures": [],
@@ -182,6 +182,16 @@
       "detail": "OVERVIEW, WORK DEVELOPMENT STAGES, Render VS Reality, LOCATION, TOOLS USED / 7"
     },
     {
+      "name": "desktop 987x13320: WORK DEVELOPMENT STAGES is one line on desktop",
+      "passed": true,
+      "detail": "{\"x\":60,\"y\":819,\"width\":867,\"height\":51}"
+    },
+    {
+      "name": "desktop 987x13320: stage sections keep normal spacing",
+      "passed": true,
+      "detail": "64, 64, 65, 64, 64, 64"
+    },
+    {
       "name": "desktop 987x13320: 9 Vimeo videos use 9:16 frames",
       "passed": true,
       "detail": "[[0.5625100401606425,\"le=0&byline=0&portrait=0\"],[0.5625039097524867,\"le=0&byline=0&portrait=0\"],[0.5625039097524867,\"le=0&byline=0&portrait=0\"],[0.5625039097524867,\"le=0&byline=0&portrait=0\"],[0.5625039097524867,\"le=0&byline=0&portrait=0\"],[0.5625100401606425,\"le=0&byline=0&portrait=0\"],[0.5625100401606425,\"le=0&byline=0&portrait=0\"],[0.5625039097524867,\"le=0&byline=0&portrait=0\"],[0.5625039097524867,\"le=0&byline=0&portrait=0\"]]"
@@ -194,7 +204,7 @@
     {
       "name": "desktop 987x13320: 21 copied shots use the right source size",
       "passed": true,
-      "detail": "21 / http://127.0.0.1:61729/assets/cellphone-store/stage1-1-1280.jpg"
+      "detail": "21 / http://127.0.0.1:65066/assets/cellphone-store/stage1-1-1280.jpg"
     },
     {
       "name": "desktop 987x13320: slides use the right Imgur source",
@@ -282,6 +292,16 @@
       "detail": "OVERVIEW, WORK DEVELOPMENT STAGES, Render VS Reality, LOCATION, TOOLS USED / 7"
     },
     {
+      "name": "phone 390x13320: WORK DEVELOPMENT STAGES is one line on desktop",
+      "passed": true,
+      "detail": "{\"x\":24,\"y\":970,\"width\":342,\"height\":123}"
+    },
+    {
+      "name": "phone 390x13320: stage sections keep normal spacing",
+      "passed": true,
+      "detail": "44, 44, 44, 44, 44, 44"
+    },
+    {
       "name": "phone 390x13320: 9 Vimeo videos use 9:16 frames",
       "passed": true,
       "detail": "[[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"],[0.5625,\"le=0&byline=0&portrait=0\"]]"
@@ -294,7 +314,7 @@
     {
       "name": "phone 390x13320: 21 copied shots use the right source size",
       "passed": true,
-      "detail": "21 / http://127.0.0.1:61729/assets/cellphone-store/stage1-1-768.jpg"
+      "detail": "21 / http://127.0.0.1:65066/assets/cellphone-store/stage1-1-768.jpg"
     },
     {
       "name": "phone 390x13320: slides use the right Imgur source",
@@ -354,7 +374,7 @@
     {
       "name": "phone 390x13320: phone slideshow fullscreen opens with vertical space",
       "passed": true,
-      "detail": "{\"open\":true,\"height\":844,\"top\":2917,\"src\":\"https://i.imgur.com/C9xftbDh.jpg\",\"natural\":[1024,1365],\"counter\":\"1 / 11\",\"label\":\"Exit fullscreen\",\"body\":true}"
+      "detail": "{\"open\":true,\"height\":844,\"top\":2896,\"src\":\"https://i.imgur.com/C9xftbDh.jpg\",\"natural\":[1024,1365],\"counter\":\"1 / 11\",\"label\":\"Exit fullscreen\",\"body\":true}"
     },
     {
       "name": "phone 390x13320: phone fullscreen navigation stays in sync",
