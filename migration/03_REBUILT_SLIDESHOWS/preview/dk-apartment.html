@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>DK-Apartment — Hossam Alafandi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;900&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #000;
+    --ink: #f9f9f9;
+    --muted: rgba(249, 249, 249, 0.66);
+    --pad: 60px;
+    --section-y: 52px;
+    --radius: 20px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Lexend', Arial, sans-serif;
+    font-weight: 100;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  main {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  img { max-width: 100%; }
+
+  .wrap {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--pad);
+  }
+
+  /* ---------------------------------------------------------------- hero */
+  .hero {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    min-height: 430px;
+    overflow: hidden;
+    padding: 56px 24px;
+    background: #050505;
+    text-align: center;
+    isolation: isolate;
+  }
+
+  .hero-media,
+  .hero-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-media img {
+    display: block;
+    object-fit: cover;
+    object-position: center 38%;
+  }
+
+  .hero-shade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.66) 100%),
+      radial-gradient(circle at 50% 40%, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.7) 78%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(54px, 7.4vw, 104px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+  }
+
+  .hero-sub {
+    margin: 16px 0 0;
+    color: rgba(249, 249, 249, 0.78);
+    font-size: clamp(15px, 1.5vw, 22px);
+    font-weight: 200;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .hero-sub + .hero-sub { margin-top: 4px; }
+
+  /* ------------------------------------------------------------- sections */
+  .section {
+    width: 100%;
+    padding: var(--section-y) 0;
+  }
+
+  .section h2 {
+    margin: 0 0 26px;
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 900;
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+
+  .overview p {
+    max-width: 1040px;
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(16px, 1.35vw, 19px);
+    line-height: 1.55;
+  }
+
+  /* -------------------------------------------------------- slideshow */
+  .slideshow {
+    width: 100%;
+    max-width: 1100px;
+    outline: none;
+  }
+
+  .slideshow:focus-visible {
+    outline: 2px solid rgba(249, 249, 249, 0.8);
+    outline-offset: 6px;
+  }
+
+  .slideshow-stage {
+    position: relative;
+    aspect-ratio: 1335 / 993;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: #080808;
+    cursor: grab;
+    touch-action: pan-y;
+  }
+
+  .slideshow-stage:active { cursor: grabbing; }
+
+  .slideshow-track {
+    display: flex;
+    width: 3800%;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform;
+  }
+
+  .slide {
+    flex: 0 0 calc(100% / 38);
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .slide picture,
+  .slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide img {
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+  }
+
+  .slide-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    transform: translateY(-50%);
+  }
+
+  .slideshow-stage:hover .slide-arrow,
+  .slideshow-stage:focus-within .slide-arrow { opacity: 1; }
+  .slide-arrow.prev { left: 12px; }
+  .slide-arrow.next { right: 12px; }
+
+  .slide-counter {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 3;
+    padding: 6px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 200;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  .slide-dots {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 16px;
+  }
+
+  .slide-dot {
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #4a4a4a;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .slide-dot:hover { background: #8a8a8a; }
+  .slide-dot[aria-current="true"] {
+    background: var(--ink);
+    transform: scale(1.12);
+  }
+
+  /* ------------------------------------------------------------- videos */
+  .video-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .video-frame {
+    margin: 0;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: #080808;
+  }
+
+  .video-frame iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .caption {
+    margin: 22px 0 0;
+    color: #ff3b30;
+    font-size: clamp(15px, 1.3vw, 18px);
+    font-weight: 200;
+    text-align: center;
+  }
+
+  /* -------------------------------------------------------------- tools */
+  .tools-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .tools-row img {
+    display: block;
+    width: auto;
+    height: 60px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.9;
+    transition: filter 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  @media (hover: hover) {
+    .tools-row img:hover {
+      filter: none;
+      opacity: 1;
+      transform: scale(1.06);
+    }
+  }
+
+  .copyright {
+    padding: 20px 24px 26px;
+    color: rgba(249, 249, 249, 0.55);
+    font-size: 11px;
+    font-weight: 200;
+    text-align: center;
+  }
+
+  @media (max-width: 700px) {
+    :root {
+      --pad: 24px;
+      --section-y: 38px;
+    }
+
+    .hero {
+      min-height: 435px;
+      padding: 44px 20px;
+    }
+
+    .hero h1 { font-size: 56px; }
+    .hero-sub { font-size: 15px; margin-top: 14px; }
+
+    .section h2 {
+      margin-bottom: 22px;
+      font-size: 42px;
+    }
+
+    .overview p { font-size: 16px; line-height: 1.6; }
+
+    .slideshow { max-width: none; }
+    .slide-arrow { opacity: 1; }
+    .slide-dots { gap: 5px; padding-top: 12px; }
+    .slide-dot { width: 5px; height: 5px; }
+
+    .video-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .video-row .video-frame { width: 100%; }
+    .caption { margin-top: 16px; }
+
+    .tools-row { justify-content: center; gap: 18px 24px; }
+    .tools-row img { height: 44px; }
+
+    .copyright { font-size: 11px; }
+  }
+
+  @media (max-width: 380px) {
+    :root { --pad: 20px; }
+    .hero h1 { font-size: 50px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slideshow-track,
+    .slide-arrow,
+    .slide-dot,
+    .tools-row img { transition: none; }
+  }
+</style>
+</head>
+<body>
+<main id="page">
+  <header class="hero">
+    <picture class="hero-media">
+        <source media="(max-width: 700px)" srcset="/assets/dk-apartment/hero-768.jpg">
+        <img src="/assets/dk-apartment/hero-1920.jpg"
+             alt="DK-Apartment interior"
+             loading="eager" fetchpriority="high" decoding="async">
+      </picture>
+    <div class="hero-shade"></div>
+    <div class="hero-content">
+      <h1>DK-APARTMENT</h1>
+      <p class="hero-sub">SYRIA, HAMA</p>
+      <p class="hero-sub">- 2026 -</p>
+    </div>
+  </header>
+
+  <section class="section overview" aria-labelledby="overview-title">
+    <div class="wrap">
+      <h2 id="overview-title">OVERVIEW</h2>
+      <p>The apartment&#39;s design balanced aesthetics with practical considerations. Material selection, colors, textures, and decorative elements were carefully chosen to reflect the client&#39;s preferences, while surface conditions and potential moisture-related issues were considered to ensure suitable finishes and long-term durability.</p>
+    </div>
+  </section>
+
+  <section class="section presentation" aria-labelledby="presentation-title">
+    <div class="wrap">
+      <h2 id="presentation-title">PRESENTATION</h2>
+      <div class="slideshow" id="rendersSlideshow" tabindex="0" role="region"
+     aria-roledescription="carousel" aria-label="DK-Apartment presentation images">
+  <div class="slideshow-stage" id="slideshowStage">
+    <div class="slideshow-track" id="slideshowTrack">
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 1 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/PE64JPSh.jpg">
+              <img src="https://i.imgur.com/PE64JPS.jpg" alt="DK-Apartment slide 1" loading="eager" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 2 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/UguOsh7h.jpg">
+              <img src="https://i.imgur.com/UguOsh7.jpg" alt="DK-Apartment slide 2" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 3 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/rZuFFsFh.jpg">
+              <img src="https://i.imgur.com/rZuFFsF.jpg" alt="DK-Apartment slide 3" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 4 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/DgRW7Udh.jpg">
+              <img src="https://i.imgur.com/DgRW7Ud.jpg" alt="DK-Apartment slide 4" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 5 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/ZdxERMEh.jpg">
+              <img src="https://i.imgur.com/ZdxERME.jpg" alt="DK-Apartment slide 5" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 6 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/PzAxrI1h.jpg">
+              <img src="https://i.imgur.com/PzAxrI1.jpg" alt="DK-Apartment slide 6" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 7 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/Q5YIWr7h.jpg">
+              <img src="https://i.imgur.com/Q5YIWr7.jpg" alt="DK-Apartment slide 7" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 8 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/lYAraEph.jpg">
+              <img src="https://i.imgur.com/lYAraEp.jpg" alt="DK-Apartment slide 8" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 9 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/TzQqwvDh.jpg">
+              <img src="https://i.imgur.com/TzQqwvD.jpg" alt="DK-Apartment slide 9" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 10 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/ubTjwCdh.jpg">
+              <img src="https://i.imgur.com/ubTjwCd.jpg" alt="DK-Apartment slide 10" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 11 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/GDyxMRoh.jpg">
+              <img src="https://i.imgur.com/GDyxMRo.jpg" alt="DK-Apartment slide 11" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 12 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/cmWXlSLh.jpg">
+              <img src="https://i.imgur.com/cmWXlSL.jpg" alt="DK-Apartment slide 12" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 13 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/2Nvavbwh.jpg">
+              <img src="https://i.imgur.com/2Nvavbw.jpg" alt="DK-Apartment slide 13" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 14 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/ojMreDQh.jpg">
+              <img src="https://i.imgur.com/ojMreDQ.jpg" alt="DK-Apartment slide 14" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 15 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/zdH9f9Xh.jpg">
+              <img src="https://i.imgur.com/zdH9f9X.jpg" alt="DK-Apartment slide 15" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 16 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/PtGtb8xh.jpg">
+              <img src="https://i.imgur.com/PtGtb8x.jpg" alt="DK-Apartment slide 16" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 17 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/zrKlCcuh.jpg">
+              <img src="https://i.imgur.com/zrKlCcu.jpg" alt="DK-Apartment slide 17" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 18 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/X42daE7h.jpg">
+              <img src="https://i.imgur.com/X42daE7.jpg" alt="DK-Apartment slide 18" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 19 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/qwCnuaQh.jpg">
+              <img src="https://i.imgur.com/qwCnuaQ.jpg" alt="DK-Apartment slide 19" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 20 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/uufpmxxh.jpg">
+              <img src="https://i.imgur.com/uufpmxx.jpg" alt="DK-Apartment slide 20" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 21 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/r1WXD2yh.jpg">
+              <img src="https://i.imgur.com/r1WXD2y.jpg" alt="DK-Apartment slide 21" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 22 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/p91pIbRh.jpg">
+              <img src="https://i.imgur.com/p91pIbR.jpg" alt="DK-Apartment slide 22" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 23 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/hu4tSIBh.jpg">
+              <img src="https://i.imgur.com/hu4tSIB.jpg" alt="DK-Apartment slide 23" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 24 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/GDF3zGwh.jpg">
+              <img src="https://i.imgur.com/GDF3zGw.jpg" alt="DK-Apartment slide 24" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 25 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/48bAxEGh.jpg">
+              <img src="https://i.imgur.com/48bAxEG.jpg" alt="DK-Apartment slide 25" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 26 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/PcvNdEEh.jpg">
+              <img src="https://i.imgur.com/PcvNdEE.jpg" alt="DK-Apartment slide 26" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 27 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/8Mj7KQWh.jpg">
+              <img src="https://i.imgur.com/8Mj7KQW.jpg" alt="DK-Apartment slide 27" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 28 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/I2rvmJvh.jpg">
+              <img src="https://i.imgur.com/I2rvmJv.jpg" alt="DK-Apartment slide 28" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 29 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/zwG0A1ph.jpg">
+              <img src="https://i.imgur.com/zwG0A1p.jpg" alt="DK-Apartment slide 29" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 30 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/i1JdvmJh.jpg">
+              <img src="https://i.imgur.com/i1JdvmJ.jpg" alt="DK-Apartment slide 30" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 31 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/p9q0cqsh.jpg">
+              <img src="https://i.imgur.com/p9q0cqs.jpg" alt="DK-Apartment slide 31" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 32 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/rI67398h.jpg">
+              <img src="https://i.imgur.com/rI67398.jpg" alt="DK-Apartment slide 32" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 33 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/9TVeN6bh.jpg">
+              <img src="https://i.imgur.com/9TVeN6b.jpg" alt="DK-Apartment slide 33" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 34 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/twGESWah.jpg">
+              <img src="https://i.imgur.com/twGESWa.jpg" alt="DK-Apartment slide 34" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 35 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/3V6en9lh.jpg">
+              <img src="https://i.imgur.com/3V6en9l.jpg" alt="DK-Apartment slide 35" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 36 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/Xud5gCuh.jpg">
+              <img src="https://i.imgur.com/Xud5gCu.jpg" alt="DK-Apartment slide 36" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 37 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/O47TEamh.jpg">
+              <img src="https://i.imgur.com/O47TEam.jpg" alt="DK-Apartment slide 37" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <figure class="slide" aria-roledescription="slide" aria-label="Slide 38 of 38">
+            <picture>
+              <source media="(max-width: 700px)" srcset="https://i.imgur.com/kwGqXJsh.jpg">
+              <img src="https://i.imgur.com/kwGqXJs.jpg" alt="DK-Apartment slide 38" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+    </div>
+    <span class="slide-counter" id="slideCounter" aria-live="polite">1 / 38</span>
+    <button class="slide-arrow prev" id="slidePrev" type="button" aria-label="Previous image">❮</button>
+    <button class="slide-arrow next" id="slideNext" type="button" aria-label="Next image">❯</button>
+  </div>
+  <div class="slide-dots" id="slideDots" role="group" aria-label="Choose an image"></div>
+</div>
+    </div>
+  </section>
+
+  <section class="section images" aria-labelledby="images-title">
+    <div class="wrap">
+      <h2 id="images-title">IMAGES</h2>
+      <div class="video-row">
+        <figure class="video-frame">
+  <iframe src="https://player.vimeo.com/video/1250270804?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0"
+          title="DK-Apartment — IMG_3011"
+          loading="lazy" allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+          allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</figure>
+<figure class="video-frame">
+  <iframe src="https://player.vimeo.com/video/1250270805?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0"
+          title="DK-Apartment — IMG_3045"
+          loading="lazy" allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+          allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</figure>
+      </div>
+      <p class="caption">on-site works in progress.</p>
+    </div>
+  </section>
+
+  <section class="section tools" aria-labelledby="tools-title">
+    <div class="wrap">
+      <h2 id="tools-title">TOOLS USED</h2>
+      <div class="tools-row" aria-label="Software used">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo" loading="lazy" decoding="async">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo" loading="lazy" decoding="async">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo" loading="lazy" decoding="async">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <footer class="copyright">© 2025 HOSSAM ALAFANDI. All rights reserved.</footer>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  var slideshow = document.getElementById('rendersSlideshow');
+  if (!slideshow) return;
+
+  var stage = document.getElementById('slideshowStage');
+  var track = document.getElementById('slideshowTrack');
+  var slides = Array.prototype.slice.call(track.querySelectorAll('.slide'));
+  var dotsBox = document.getElementById('slideDots');
+  var counter = document.getElementById('slideCounter');
+  var prev = document.getElementById('slidePrev');
+  var next = document.getElementById('slideNext');
+  var count = slides.length;
+  var index = 0;
+
+  var dots = slides.map(function (_, i) {
+    var dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'slide-dot';
+    dot.setAttribute('aria-label', 'Show image ' + (i + 1) + ' of ' + count);
+    dot.addEventListener('click', function () { show(i); });
+    dotsBox.appendChild(dot);
+    return dot;
+  });
+
+  function imageSource(image) {
+    if (!image) return '';
+    var src = image.currentSrc || image.getAttribute('src');
+    var picture = image.parentElement;
+    var source = picture && picture.tagName === 'PICTURE'
+      ? picture.querySelector('source[media]') : null;
+    if (source && window.matchMedia &&
+        window.matchMedia(source.getAttribute('media')).matches) {
+      src = source.getAttribute('srcset');
+    }
+    return src;
+  }
+
+  function preload(at) {
+    if (!count) return;
+    var target = slides[((at % count) + count) % count];
+    if (!target) return;
+    var image = target.querySelector('img');
+    if (!image || image.complete) return;
+    var src = imageSource(image);
+    if (!src) return;
+    var warm = new Image();
+    warm.decoding = 'async';
+    warm.src = src;
+  }
+
+  function show(nextIndex) {
+    if (typeof nextIndex !== 'number' || !isFinite(nextIndex)) return;
+    index = ((nextIndex % count) + count) % count;
+    track.style.transform = 'translateX(-' + (index * 100 / count) + '%)';
+
+    dots.forEach(function (dot, i) {
+      if (i === index) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
+
+    slides.forEach(function (slide, i) {
+      slide.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+    });
+
+    counter.textContent = (index + 1) + ' / ' + count;
+
+    var image = slides[index].querySelector('img');
+    if (image) {
+      image.loading = 'eager';
+      preload(index + 1);
+      preload(index - 1);
+    }
+  }
+
+  function step(delta) { show(index + delta); }
+
+  if (prev) prev.addEventListener('click', function () { step(-1); });
+  if (next) next.addEventListener('click', function () { step(1); });
+
+  slideshow.addEventListener('keydown', function (event) {
+    if (event.key === 'ArrowLeft') {
+      step(-1);
+      event.preventDefault();
+    } else if (event.key === 'ArrowRight') {
+      step(1);
+      event.preventDefault();
+    } else if (event.key === 'Home') {
+      show(0);
+      event.preventDefault();
+    } else if (event.key === 'End') {
+      show(count - 1);
+      event.preventDefault();
+    }
+  });
+
+  if (stage) {
+    stage.addEventListener('click', function (event) {
+      if (event.target.closest('button')) return;
+      slideshow.focus({ preventScroll: true });
+    });
+
+    var startX = 0;
+    var startY = 0;
+    var tracking = false;
+
+    stage.addEventListener('touchstart', function (event) {
+      if (event.touches.length !== 1) {
+        tracking = false;
+        return;
+      }
+      tracking = true;
+      startX = event.touches[0].clientX;
+      startY = event.touches[0].clientY;
+    }, { passive: true });
+
+    stage.addEventListener('touchend', function (event) {
+      if (!tracking) return;
+      tracking = false;
+      var touch = event.changedTouches[0];
+      if (!touch) return;
+      var dx = touch.clientX - startX;
+      var dy = touch.clientY - startY;
+      if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+        step(dx < 0 ? 1 : -1);
+      }
+    }, { passive: true });
+  }
+
+  show(0);
+})();
+</script>
+</body>
+</html>

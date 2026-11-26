@@ -18,6 +18,10 @@ var PAGE_FILES = {
   'cellphone-store': {
     file: 'CellphoneStore',
     title: 'Cellphone Store — Hossam Alafandi'
+  },
+  'dk-apartment': {
+    file: 'DKApartment',
+    title: 'DK-Apartment — Hossam Alafandi'
   }
 };
 

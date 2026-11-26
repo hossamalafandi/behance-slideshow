@@ -153,3 +153,21 @@ page-only copy:
   slideshows remain governed by sections 1–6.
 - This exception does not authorize copying any other Google Sites image or any
   slideshow image.
+
+## 10. DK-Apartment page exception
+
+Date: 2026-11-26. Owner-approved scope: the standalone DK-Apartment project page
+served at `?page=dk-apartment`, and nothing else.
+
+Google Sites serves the page hero with cross-site blocking headers, so it
+cannot be loaded inside a Behance iframe. The owner asked for the page to be
+rebuilt as an embed, which authorizes this page-only copy:
+
+- 2 optimized hero JPEG derivatives live in `assets/dk-apartment/`: a 768 px
+  phone version and a 1920 px desktop version.
+- The 38 presentation images and 4 tool logos keep their exact Imgur URLs.
+- The 2 videos use the owner's Vimeo player embeds, not Google Drive.
+- No slideshow image was copied, resized, proxied, or rehosted. The 48
+  slideshows remain governed by sections 1–6.
+- This exception does not authorize copying any other Google Sites image or any
+  slideshow image.

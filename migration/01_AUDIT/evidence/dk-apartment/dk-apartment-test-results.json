@@ -1,0 +1,290 @@
+{
+  "scope": {
+    "page": "?page=dk-apartment",
+    "behanceFrames": [
+      "987x2900",
+      "390x2900"
+    ],
+    "slides": 38,
+    "videos": 2,
+    "assets": 2
+  },
+  "browser": "Chrome 158.0.8127.88",
+  "checks": 54,
+  "passed": 54,
+  "failed": 0,
+  "blockedImgurRequests": 55,
+  "failures": [],
+  "results": [
+    {
+      "name": "page title is exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no Google Sites chrome",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no Drive video embeds",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has 4 section headings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has 2 Vimeo iframes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Vimeo IDs are exact and in order",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has 43 images",
+      "passed": true,
+      "detail": "43"
+    },
+    {
+      "name": "page has one hero, 38 slides, and 4 tools",
+      "passed": true,
+      "detail": "1/38/4"
+    },
+    {
+      "name": "hero uses the 1920 desktop file and 768 phone source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "slides use the full Imgur JPGs on desktop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "slides provide the h JPGs on phone",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "slideshow starts with 1 / 38 and has 38 dots",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "slideshow track is 38 frames wide",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "tool logos match the exact Imgur PNGs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no anchors or popup navigation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page uses no storage, cookies, or messaging",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no external scripts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page keeps the fixed 2900 px embed height",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has the phone breakpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "hero assets exist on disk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "preview uses local hero assets",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "production references exactly the 2 copied hero files",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2900: the sandboxed page frame loads",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2900: frame viewport is 987x2900",
+      "passed": true,
+      "detail": "987x2900"
+    },
+    {
+      "name": "desktop 987x2900: page fills exactly 2900 px",
+      "passed": true,
+      "detail": "{\"scroll\":[987,2900],\"body\":[987,2900],\"main\":2900}"
+    },
+    {
+      "name": "desktop 987x2900: no horizontal overflow",
+      "passed": true,
+      "detail": "987 / 987"
+    },
+    {
+      "name": "desktop 987x2900: headings are exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2900: 38 slides, 38 dots, and the 1 / 38 counter",
+      "passed": true,
+      "detail": "38 / 38 / 1 / 38"
+    },
+    {
+      "name": "desktop 987x2900: slideshow track is 38 full frames wide",
+      "passed": true,
+      "detail": "{\"stage\":867,\"slide\":867,\"track\":32946}"
+    },
+    {
+      "name": "desktop 987x2900: hero uses the right source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2900: first slide uses the right Imgur source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2900: 2 Vimeo videos are present in order",
+      "passed": true,
+      "detail": "https://player.vimeo.com/video/1250270804?dnt=1&title=0&byline=0&portrait=0, https://player.vimeo.com/video/1250270805?dnt=1&title=0&byline=0&portrait=0"
+    },
+    {
+      "name": "desktop 987x2900: video row is 2 columns on desktop and 1 on phone",
+      "passed": true,
+      "detail": "grid / 2"
+    },
+    {
+      "name": "desktop 987x2900: 4 tools use the exact Imgur logos",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2900: next reveals exactly one full frame",
+      "passed": true,
+      "detail": "{\"stage\":60,\"slide\":60}"
+    },
+    {
+      "name": "desktop 987x2900: dot 20 jumps to 20 / 38",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2900: keyboard End and Home work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2900: no page errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "phone 390x2900: the sandboxed page frame loads",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2900: frame viewport is 390x2900",
+      "passed": true,
+      "detail": "390x2900"
+    },
+    {
+      "name": "phone 390x2900: page fills exactly 2900 px",
+      "passed": true,
+      "detail": "{\"scroll\":[390,2900],\"body\":[390,2900],\"main\":2900}"
+    },
+    {
+      "name": "phone 390x2900: no horizontal overflow",
+      "passed": true,
+      "detail": "390 / 390"
+    },
+    {
+      "name": "phone 390x2900: headings are exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2900: 38 slides, 38 dots, and the 1 / 38 counter",
+      "passed": true,
+      "detail": "38 / 38 / 1 / 38"
+    },
+    {
+      "name": "phone 390x2900: slideshow track is 38 full frames wide",
+      "passed": true,
+      "detail": "{\"stage\":342,\"slide\":342,\"track\":12996}"
+    },
+    {
+      "name": "phone 390x2900: hero uses the right source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2900: first slide uses the right Imgur source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2900: 2 Vimeo videos are present in order",
+      "passed": true,
+      "detail": "https://player.vimeo.com/video/1250270804?dnt=1&title=0&byline=0&portrait=0, https://player.vimeo.com/video/1250270805?dnt=1&title=0&byline=0&portrait=0"
+    },
+    {
+      "name": "phone 390x2900: video row is 2 columns on desktop and 1 on phone",
+      "passed": true,
+      "detail": "grid / 1"
+    },
+    {
+      "name": "phone 390x2900: 4 tools use the exact Imgur logos",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2900: next reveals exactly one full frame",
+      "passed": true,
+      "detail": "{\"stage\":24,\"slide\":24}"
+    },
+    {
+      "name": "phone 390x2900: dot 20 jumps to 20 / 38",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2900: keyboard End and Home work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2900: no page errors",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}
