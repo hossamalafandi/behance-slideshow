@@ -87,7 +87,7 @@ node test-dk-apartment.js
 `test-dk-apartment.js` loads the page inside Behance-like sandboxed frames at
 987×2900 and 390×2900, checks the exact 38-slide order, both Vimeo IDs, the two
 copied hero files, the tools, and the slideshow navigation. It stubs Imgur,
-Vimeo, and the fonts, so no original media is downloaded.
+Vimeo, and the fonts, so no original media is downloaded. Result: **54/54**.
 
 The live deployment is covered by:
 
@@ -97,7 +97,7 @@ node test-live-dk-apartment.js https://script.google.com/macros/s/AKfycbzV7OufIj
 
 It verifies the 2 jsDelivr hero files, the new page route, the unchanged
 Al-Rashed/Cellphone/slide/tools routes, both Behance-like frames, and the
-slideshow.
+slideshow. Result: **54/54**.
 
 ## Rollback
 
