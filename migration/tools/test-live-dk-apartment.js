@@ -51,8 +51,15 @@ const SLIDE_H_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="1024" height
 const LOGO_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect width="200" height="200" fill="#000"/></svg>';
 const VIDEO_HTML = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Vimeo</title></head><body style="margin:0;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;height:100%;font-family:Arial">VIDEO</body></html>';
 
+const ASSET_FILES = [
+  'hero-1920.jpg', 'hero-768.jpg',
+  'images-left-top-1280.jpg', 'images-left-top-768.jpg',
+  'images-left-bottom-1280.jpg', 'images-left-bottom-768.jpg',
+  'images-middle-top-1280.jpg', 'images-middle-top-768.jpg'
+];
+
 async function assetChecks() {
-  for (const name of ['hero-1920.jpg', 'hero-768.jpg']) {
+  for (const name of ASSET_FILES) {
     const assetUrl = data.PRODUCTION_ASSET_BASE + name;
     let last = { name, error: 'not attempted' };
     for (let attempt = 1; attempt <= 3; attempt++) {
@@ -133,10 +140,9 @@ async function routeChecks(context) {
       JSON.stringify(Array.from(page.html.matchAll(
         /player\.vimeo\.com\/video\/(\d+)/g)).map(match => match[1])) ===
         JSON.stringify(VIMEO_IDS));
-  check('route: page has the 2 copied hero files',
-    Boolean(page) &&
-      page.html.includes(data.PRODUCTION_ASSET_BASE + 'hero-1920.jpg') &&
-      page.html.includes(data.PRODUCTION_ASSET_BASE + 'hero-768.jpg'));
+  check('route: page has the 8 copied hero/photo files',
+    Boolean(page) && ASSET_FILES.every(name =>
+      page.html.includes(data.PRODUCTION_ASSET_BASE + name)));
   check('route: page has no Drive, Google Sites, or YouTube chrome',
     Boolean(page) &&
       !/drive\.google\.com|sites\.google\.com|sitesv-images|googleusercontent|youtube\.com/i
@@ -270,8 +276,11 @@ async function runViewport(browser, label, width) {
         slides: document.querySelectorAll('.slide').length,
         dots: document.querySelectorAll('.slide-dot').length,
         videos: Array.from(document.querySelectorAll('.video-frame iframe')).map(iframe => iframe.src),
-        videoColumns: getComputedStyle(document.querySelector('.video-row'))
-          .gridTemplateColumns.trim().split(/\s+/).length,
+        imagesGridDisplay: getComputedStyle(document.querySelector('.images-grid')).display,
+        imageColumns: document.querySelectorAll('.image-column').length,
+        shots: Array.from(document.querySelectorAll('.shot img')).map(image => ({
+          src: image.currentSrc || image.getAttribute('src')
+        })),
         tools: Array.from(document.querySelectorAll('.tools-row img')).map(image => image.src),
         counter: document.getElementById('slideCounter').textContent,
         stageWidth: document.getElementById('slideshowStage').getBoundingClientRect().width,
@@ -316,8 +325,17 @@ async function runViewport(browser, label, width) {
     check(label + ': 2 Vimeo videos are present in order',
       state.videos.length === 2 &&
         state.videos.every((src, index) => src.includes(VIMEO_IDS[index])));
-    check(label + ': video row is 2 columns on desktop and 1 on phone',
-      state.videoColumns === (width <= 700 ? 1 : 2), state.videoColumns);
+    check(label + ': images section is a three-column grid on desktop and stacked on phone',
+      state.imageColumns === 3 &&
+        (width <= 700
+          ? state.imagesGridDisplay === 'block'
+          : state.imagesGridDisplay === 'flex'),
+      state.imagesGridDisplay + ' / ' + state.imageColumns);
+    check(label + ': 3 copied photos use the right source size',
+      state.shots.length === 3 &&
+        state.shots.every(shot => shot.src.includes(
+          width <= 700 ? '-768.jpg' : '-1280.jpg')),
+      state.shots.length + ' / ' + (state.shots[0] && state.shots[0].src));
     check(label + ': 4 tools use the exact Imgur logos',
       state.tools.length === 4 &&
         state.tools.every((src, index) => src === data.toolUrl(data.TOOLS[index].id)));
@@ -372,7 +390,7 @@ async function main() {
         PHONE_WIDTH + 'x' + BEHANCE_HEIGHT],
       slides: data.RENDERS.length,
       videos: data.VIDEOS.length,
-      assets: 2
+      assets: 8
     },
     browser: browser ? 'Chrome ' + browser.version() : null,
     checks: checks.length,

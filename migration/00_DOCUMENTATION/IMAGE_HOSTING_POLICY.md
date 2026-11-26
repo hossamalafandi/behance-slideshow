@@ -163,8 +163,9 @@ Google Sites serves the page hero with cross-site blocking headers, so it
 cannot be loaded inside a Behance iframe. The owner asked for the page to be
 rebuilt as an embed, which authorizes this page-only copy:
 
-- 2 optimized hero JPEG derivatives live in `assets/dk-apartment/`: a 768 px
-  phone version and a 1920 px desktop version.
+- 8 optimized JPEG derivatives live in `assets/dk-apartment/`: 768 px phone
+  versions and 1280 px desktop versions for the 3 on-site photos, plus
+  1920/768 px hero versions.
 - The 38 presentation images and 4 tool logos keep their exact Imgur URLs.
 - The 2 videos use the owner's Vimeo player embeds, not Google Drive.
 - No slideshow image was copied, resized, proxied, or rehosted. The 48

@@ -5,7 +5,7 @@ const DEPLOYMENT_ID =
 
 const PAGE_TITLE = 'DK-Apartment — Hossam Alafandi';
 const PAGE_CODE = 'dk-apartment';
-const EMBED_HEIGHT = 2900;
+const EMBED_HEIGHT = 4400;
 const EMBED_WIDTH = '100%';
 const PRODUCTION_ASSET_BASE =
   'https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/dk-apartment/';
@@ -49,6 +49,12 @@ const VIDEOS = [
 ];
 
 const CAPTION = 'on-site works in progress.';
+
+const IMAGES = [
+  { name: 'images-left-top', alt: 'DK-Apartment on-site photo 1' },
+  { name: 'images-left-bottom', alt: 'DK-Apartment on-site photo 2' },
+  { name: 'images-middle-top', alt: 'DK-Apartment on-site photo 3' }
+];
 
 const TOOLS = [
   { name: '3ds Max', id: 'znQK1ti' },
@@ -106,6 +112,7 @@ module.exports = {
   renderThumbUrl,
   VIDEOS,
   CAPTION,
+  IMAGES,
   TOOLS,
   toolUrl,
   vimeoEmbed,

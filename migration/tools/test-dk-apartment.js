@@ -59,12 +59,22 @@ const SLIDE_H_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="1024" height
 const LOGO_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect width="200" height="200" fill="#000"/></svg>';
 const VIDEO_HTML = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Vimeo</title></head><body style="margin:0;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;height:100%;font-family:Arial">VIDEO</body></html>';
 
+function expectedAssets() {
+  return [
+    'hero-1920.jpg', 'hero-768.jpg',
+    'images-left-top-1280.jpg', 'images-left-top-768.jpg',
+    'images-left-bottom-1280.jpg', 'images-left-bottom-768.jpg',
+    'images-middle-top-1280.jpg', 'images-middle-top-768.jpg'
+  ].sort();
+}
+
 function staticChecks() {
   const production = fs.readFileSync(PRODUCTION_FILE, 'utf8');
   const preview = fs.readFileSync(PREVIEW_FILE, 'utf8');
   const images = imageTags(production);
   const hero = images.filter(tag => attr(tag, 'alt') === data.HERO.alt);
   const slides = images.filter(tag => /^DK-Apartment slide \d+$/.test(attr(tag, 'alt')));
+  const shots = images.filter(tag => /^DK-Apartment on-site photo \d$/.test(attr(tag, 'alt')));
   const tools = images.filter(tag => / Logo$/.test(attr(tag, 'alt')));
 
   check('page title is exact', production.includes('<title>' + data.PAGE_TITLE + '</title>'));
@@ -83,14 +93,19 @@ function staticChecks() {
     JSON.stringify(Array.from(production.matchAll(
       /player\.vimeo\.com\/video\/(\d+)/g)).map(match => match[1])) ===
       JSON.stringify(VIMEO_IDS));
-  check('page has 43 images', images.length === 43, images.length);
-  check('page has one hero, 38 slides, and 4 tools',
-    hero.length === 1 && slides.length === 38 && tools.length === 4,
-    [hero.length, slides.length, tools.length].join('/'));
+  check('page has 46 images', images.length === 46, images.length);
+  check('page has one hero, 38 slides, 3 photos, and 4 tools',
+    hero.length === 1 && slides.length === 38 && shots.length === 3 && tools.length === 4,
+    [hero.length, slides.length, shots.length, tools.length].join('/'));
   check('hero uses the 1920 desktop file and 768 phone source',
     attr(hero[0] || '', 'src') === data.assetUrl(data.PRODUCTION_ASSET_BASE, 'hero', 1920) &&
       production.includes('<source media="(max-width: 700px)" srcset="' +
         data.assetUrl(data.PRODUCTION_ASSET_BASE, 'hero', 768) + '">'));
+  check('copied photos use 1280 desktop files and 768 phone sources',
+    shots.length === 3 &&
+      shots.every(tag => /-1280\.jpg$/.test(attr(tag, 'src'))) &&
+      (production.match(/<source media="\(max-width: 700px\)" srcset="[^"]+images-(?:left-top|left-bottom|middle-top)-768\.jpg">/g) || [])
+        .length === 3);
   check('slides use the full Imgur JPGs on desktop',
     slides.every((tag, index) => attr(tag, 'src') === data.renderUrl(data.RENDERS[index])));
   check('slides provide the h JPGs on phone',
@@ -110,18 +125,17 @@ function staticChecks() {
     !/localStorage|sessionStorage|indexedDB|document\.cookie|postMessage|BroadcastChannel/i
       .test(production));
   check('page has no external scripts', !/<script\b[^>]*\bsrc=/i.test(production));
-  check('page keeps the fixed 2900 px embed height',
-    data.EMBED_HEIGHT === 2900 && data.EMBED_WIDTH === '100%');
+  check('page keeps the fixed 4400 px embed height',
+    data.EMBED_HEIGHT === 4400 && data.EMBED_WIDTH === '100%');
   check('page has the phone breakpoint', /@media \(max-width: 700px\)/.test(production));
-  check('hero assets exist on disk',
-    ['hero-1920.jpg', 'hero-768.jpg'].every(name => fs.existsSync(path.join(ASSET_DIR, name))));
-  check('preview uses local hero assets',
-    preview.includes(data.PREVIEW_ASSET_BASE + 'hero-1920.jpg') &&
-      preview.includes(data.PREVIEW_ASSET_BASE + 'hero-768.jpg'));
-  check('production references exactly the 2 copied hero files',
-    Array.from(new Set(Array.from(production.matchAll(
+  check('preview uses local hero and photo assets',
+    expectedAssets().every(name => preview.includes(data.PREVIEW_ASSET_BASE + name)));
+  check('hero and copied photos exist on disk',
+    expectedAssets().every(name => fs.existsSync(path.join(ASSET_DIR, name))));
+  check('production references exactly the 8 copied files',
+    JSON.stringify(Array.from(new Set(Array.from(production.matchAll(
       /cdn\.jsdelivr\.net\/gh\/hossamalafandi\/behance-slideshow@main\/assets\/dk-apartment\/([A-Za-z0-9._-]+)/g
-    )).map(match => match[1]))).sort().join(',') === 'hero-1920.jpg,hero-768.jpg');
+    )).map(match => match[1]))).sort()) === JSON.stringify(expectedAssets()));
 }
 
 async function blockThirdParty(context) {
@@ -218,9 +232,12 @@ async function runViewport(browser, base, label, width) {
         slides: document.querySelectorAll('.slide').length,
         dots: document.querySelectorAll('.slide-dot').length,
         videos: Array.from(document.querySelectorAll('.video-frame iframe')).map(iframe => iframe.src),
-        videoRowDisplay: getComputedStyle(document.querySelector('.video-row')).display,
-        videoColumns: getComputedStyle(document.querySelector('.video-row'))
-          .gridTemplateColumns.trim().split(/\s+/).length,
+        imagesGridDisplay: getComputedStyle(document.querySelector('.images-grid')).display,
+        imageColumns: document.querySelectorAll('.image-column').length,
+        shots: Array.from(document.querySelectorAll('.shot img')).map(image => ({
+          src: image.currentSrc || image.getAttribute('src'),
+          natural: [image.naturalWidth, image.naturalHeight]
+        })),
         tools: Array.from(document.querySelectorAll('.tools-row img')).map(image => image.src),
         counter: document.getElementById('slideCounter').textContent,
         stageWidth: document.getElementById('slideshowStage').getBoundingClientRect().width,
@@ -266,14 +283,21 @@ async function runViewport(browser, base, label, width) {
       width <= 700
         ? /https:\/\/i\.imgur\.com\/[A-Za-z0-9]+h\.jpg$/.test(state.firstSlide.src)
         : /https:\/\/i\.imgur\.com\/[A-Za-z0-9]+\.jpg$/.test(state.firstSlide.src));
+    check(label + ': images section is a three-column grid on desktop and stacked on phone',
+      state.imageColumns === 3 &&
+        (width <= 700
+          ? state.imagesGridDisplay === 'block'
+          : state.imagesGridDisplay === 'flex'),
+      state.imagesGridDisplay + ' / ' + state.imageColumns);
+    check(label + ': 3 copied photos use the right source size',
+      state.shots.length === 3 &&
+        state.shots.every(shot => shot.src.includes(
+          width <= 700 ? '-768.jpg' : '-1280.jpg')),
+      state.shots.length + ' / ' + (state.shots[0] && state.shots[0].src));
     check(label + ': 2 Vimeo videos are present in order',
       state.videos.length === 2 &&
         state.videos.every((src, index) => src.includes(VIMEO_IDS[index])),
       state.videos.join(', '));
-    check(label + ': video row is 2 columns on desktop and 1 on phone',
-      state.videoRowDisplay === 'grid' &&
-        state.videoColumns === (width <= 700 ? 1 : 2),
-      state.videoRowDisplay + ' / ' + state.videoColumns);
     check(label + ': 4 tools use the exact Imgur logos',
       state.tools.length === 4 &&
         state.tools.every((src, index) => src === data.toolUrl(data.TOOLS[index].id)));
@@ -338,7 +362,7 @@ async function main() {
         PHONE_WIDTH + 'x' + BEHANCE_HEIGHT],
       slides: data.RENDERS.length,
       videos: data.VIDEOS.length,
-      assets: 2
+      assets: 8
     },
     browser: browser ? 'Chrome ' + browser.version() : null,
     checks: checks.length,

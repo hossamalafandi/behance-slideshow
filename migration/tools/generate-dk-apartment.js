@@ -91,6 +91,19 @@ function videoMarkup(video) {
   ].join('\n');
 }
 
+function imageMarkup(image, assetBase) {
+  return [
+    '<figure class="shot">',
+    '  <picture>',
+    '    <source media="(max-width: 700px)" srcset="' +
+      data.assetUrl(assetBase, image.name, 768) + '">',
+    '    <img src="' + data.assetUrl(assetBase, image.name, 1280) + '"',
+    '         alt="' + escapeHtml(image.alt) + '" loading="lazy" decoding="async">',
+    '  </picture>',
+    '</figure>'
+  ].join('\n');
+}
+
 function toolsMarkup() {
   return data.TOOLS.map(tool => [
     '  <img src="' + data.toolUrl(tool.id) + '" alt="' + escapeHtml(tool.name) +
@@ -368,19 +381,53 @@ function buildPage(assetBase) {
     transform: scale(1.12);
   }
 
-  /* ------------------------------------------------------------- videos */
-  .video-row {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+  /* ------------------------------------------------------------- images */
+  .images-grid {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
   }
+
+  .image-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .image-column-wide { flex: 2 1 0; }
+
+  .shot {
+    margin: 0;
+    flex: 1 1 0;
+    min-height: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #0a0a0a;
+  }
+
+  .shot picture,
+  .shot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .shot img { object-fit: cover; }
 
   .video-frame {
     margin: 0;
-    aspect-ratio: 9 / 16;
+    flex: 1 1 0;
+    min-height: 0;
     overflow: hidden;
     border-radius: var(--radius);
     background: #080808;
+  }
+
+  .image-column-wide .video-frame {
+    flex: 0 0 auto;
+    aspect-ratio: 9 / 16;
   }
 
   .video-frame iframe {
@@ -461,13 +508,17 @@ function buildPage(assetBase) {
     .slide-dots { gap: 5px; padding-top: 12px; }
     .slide-dot { width: 5px; height: 5px; }
 
-    .video-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
+    .images-grid { display: block; }
+    .image-column { display: block; }
+    .image-column > * + * { margin-top: 12px; }
+    .shot { width: 100%; }
+    .shot picture, .shot img { height: auto; }
+    .video-frame,
+    .image-column-wide .video-frame {
+      width: 100%;
+      aspect-ratio: 9 / 16;
     }
 
-    .video-row .video-frame { width: 100%; }
     .caption { margin-top: 16px; }
 
     .tools-row { justify-content: center; gap: 18px 24px; }
@@ -518,8 +569,18 @@ function buildPage(assetBase) {
   <section class="section images" aria-labelledby="images-title">
     <div class="wrap">
       <h2 id="images-title">IMAGES</h2>
-      <div class="video-row">
-        ${data.VIDEOS.map(videoMarkup).join('\n')}
+      <div class="images-grid">
+        <div class="image-column">
+          ${imageMarkup(data.IMAGES[0], assetBase)}
+          ${imageMarkup(data.IMAGES[1], assetBase)}
+        </div>
+        <div class="image-column">
+          ${imageMarkup(data.IMAGES[2], assetBase)}
+          ${videoMarkup(data.VIDEOS[0])}
+        </div>
+        <div class="image-column image-column-wide">
+          ${videoMarkup(data.VIDEOS[1])}
+        </div>
       </div>
       <p class="caption">${escapeHtml(data.CAPTION)}</p>
     </div>
