@@ -294,7 +294,7 @@ stage/render-reality photos are copied as 44 optimized derivatives under
 and 4 tool logos stay on Imgur. The page uses a fixed 13320 px Behance iframe
 sized to cover both the desktop and phone layouts. The copy/paste code and
 verification steps are in `05_BEHANCE_OUTPUT/CELLPHONE_STORE_EMBED.md`. The
-local page suite passes 76/76 and the live page suite passes PENDING.
+local page suite passes 76/76 and the live page suite passes 102/102.
 
 ## 10. What was deliberately not done
 

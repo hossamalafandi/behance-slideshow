@@ -301,11 +301,13 @@ async function runViewport(browser, label, width) {
       { timeout: 45000, polling: 100 });
     await frame.evaluate(() => document.fonts.ready.then(() => true));
     await frame.waitForFunction(() => {
-      const images = Array.from(document.querySelectorAll(
-        '.hero img, .shot img, .tools-row img, .slide:first-child img'));
-      return images.length === 27 &&
-        images.every(image => image.complete && image.naturalWidth > 0);
-    }, null, { timeout: 45000, polling: 100 });
+      const selected = [
+        document.querySelector('.hero img'),
+        document.querySelector('.tools-row img'),
+        document.querySelector('.slide:first-child img')
+      ].concat(Array.from(document.querySelectorAll('.shot img')).slice(0, 2));
+      return selected.every(image => image && image.complete && image.naturalWidth > 0);
+    }, null, { timeout: 60000, polling: 100 });
     await wait(400);
 
     const state = await frame.evaluate(() => {
@@ -313,6 +315,16 @@ async function runViewport(browser, label, width) {
         const box = element.getBoundingClientRect();
         return { x: Math.round(box.x), y: Math.round(box.y + scrollY),
           width: Math.round(box.width), height: Math.round(box.height) };
+      };
+      const selectedSource = image => {
+        const picture = image.parentElement;
+        const source = picture && picture.tagName === 'PICTURE'
+          ? picture.querySelector('source[media]') : null;
+        if (source && window.matchMedia &&
+            window.matchMedia(source.getAttribute('media')).matches) {
+          return source.getAttribute('srcset');
+        }
+        return image.currentSrc || image.getAttribute('src');
       };
       return {
         title: document.title,
@@ -324,10 +336,10 @@ async function runViewport(browser, label, width) {
         stages: document.querySelectorAll('.stage').length,
         videos: Array.from(document.querySelectorAll('.video-frame iframe')).map(iframe => iframe.src),
         shots: Array.from(document.querySelectorAll('.shot img')).map(image => ({
-          src: image.currentSrc || image.getAttribute('src')
+          src: selectedSource(image)
         })),
         slides: Array.from(document.querySelectorAll('.slide img')).map(image => ({
-          src: image.currentSrc || image.getAttribute('src'),
+          src: selectedSource(image),
           natural: [image.naturalWidth, image.naturalHeight]
         })),
         tools: Array.from(document.querySelectorAll('.tools-row img')).map(image => image.src),

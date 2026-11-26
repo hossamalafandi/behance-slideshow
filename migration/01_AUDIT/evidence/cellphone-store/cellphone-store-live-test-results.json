@@ -14,7 +14,7 @@
   "checks": 102,
   "passed": 102,
   "failed": 0,
-  "blockedImgurRequests": 46,
+  "blockedImgurRequests": 60,
   "failures": [],
   "results": [
     {
