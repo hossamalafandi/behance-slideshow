@@ -74,7 +74,7 @@ original logo URLs and CSS; the images are not copied or rehosted.
 
 Live verification: the Al-Rashed page suite passes **135/135**, the Cellphone
 Store page suite passes **102/102** (local **76/76**), the DK-Apartment page
-suite passes **57/57** locally (live **PENDING**), the all-slideshow suite passes **339/339**, and the
+suite passes **57/57** locally (live **62/62**), the all-slideshow suite passes **339/339**, and the
 phone fit suite passes **64/64** against version 21.
 
 ## Not included

@@ -266,6 +266,16 @@ async function runViewport(browser, label, width) {
         return { x: Math.round(box.x), y: Math.round(box.y + scrollY),
           width: Math.round(box.width), height: Math.round(box.height) };
       };
+      const selectedSource = image => {
+        const picture = image.parentElement;
+        const source = picture && picture.tagName === 'PICTURE'
+          ? picture.querySelector('source[media]') : null;
+        if (source && window.matchMedia &&
+            window.matchMedia(source.getAttribute('media')).matches) {
+          return source.getAttribute('srcset');
+        }
+        return image.currentSrc || image.getAttribute('src');
+      };
       return {
         title: document.title,
         inner: [innerWidth, innerHeight],
@@ -279,7 +289,7 @@ async function runViewport(browser, label, width) {
         imagesGridDisplay: getComputedStyle(document.querySelector('.images-grid')).display,
         imageColumns: document.querySelectorAll('.image-column').length,
         shots: Array.from(document.querySelectorAll('.shot img')).map(image => ({
-          src: image.currentSrc || image.getAttribute('src')
+          src: selectedSource(image)
         })),
         tools: Array.from(document.querySelectorAll('.tools-row img')).map(image => image.src),
         counter: document.getElementById('slideCounter').textContent,
@@ -288,11 +298,11 @@ async function runViewport(browser, label, width) {
         trackWidth: document.getElementById('slideshowTrack').getBoundingClientRect().width,
         hero: (() => {
           const image = document.querySelector('.hero img');
-          return image.currentSrc || image.getAttribute('src');
+          return selectedSource(image);
         })(),
         firstSlide: (() => {
           const image = document.querySelector('.slide img');
-          return image.currentSrc || image.getAttribute('src');
+          return selectedSource(image);
         })()
       };
     });

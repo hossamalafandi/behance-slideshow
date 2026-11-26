@@ -302,7 +302,7 @@ on-site videos (`IMG_3011` and `IMG_3045`), the red caption, and the 4 tools.
 The 38 presentation images and 4 tool logos stay on Imgur; the hero is copied
 as 8 optimized derivatives (hero + 3 on-site photos) under `assets/dk-apartment/`. The page uses a fixed
 4400 px Behance iframe. The copy/paste code and verification steps are in
-`05_BEHANCE_OUTPUT/DK_APARTMENT_EMBED.md`. The local page suite passes 57/57 and the live page suite passes PENDING.
+`05_BEHANCE_OUTPUT/DK_APARTMENT_EMBED.md`. The local page suite passes 57/57 and the live page suite passes 62/62.
 
 ## 10. What was deliberately not done
 
