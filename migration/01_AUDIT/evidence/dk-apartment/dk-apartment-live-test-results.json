@@ -3,8 +3,8 @@
   "scope": {
     "page": "?page=dk-apartment",
     "behanceFrames": [
-      "987x4400",
-      "390x4400"
+      "987x2900",
+      "390x2900"
     ],
     "slides": 38,
     "videos": 2,
@@ -14,7 +14,7 @@
   "checks": 62,
   "passed": 62,
   "failed": 0,
-  "blockedImgurRequests": 89,
+  "blockedImgurRequests": 90,
   "failures": [],
   "results": [
     {
@@ -158,172 +158,172 @@
       "detail": "neutral"
     },
     {
-      "name": "desktop 987x4400: the live sandboxed page frame loads",
+      "name": "desktop 987x2900: the live sandboxed page frame loads",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x4400: title is exact",
+      "name": "desktop 987x2900: title is exact",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x4400: frame viewport is 987x4400",
+      "name": "desktop 987x2900: frame viewport is 987x2900",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x4400: page fills exactly 4400 px",
+      "name": "desktop 987x2900: page fills exactly 2900 px",
       "passed": true,
-      "detail": "{\"scroll\":[987,4400],\"body\":[987,4400],\"main\":4400}"
+      "detail": "{\"scroll\":[987,2900],\"body\":[987,2900],\"main\":2900}"
     },
     {
-      "name": "desktop 987x4400: no horizontal overflow",
-      "passed": true,
-      "detail": null
-    },
-    {
-      "name": "desktop 987x4400: headings are exact",
+      "name": "desktop 987x2900: no horizontal overflow",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x4400: 38 slides, 38 dots, and the 1 / 38 counter",
+      "name": "desktop 987x2900: headings are exact",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x4400: slideshow track is 38 full frames wide",
+      "name": "desktop 987x2900: 38 slides, 38 dots, and the 1 / 38 counter",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2900: slideshow track is 38 full frames wide",
       "passed": true,
       "detail": "{\"stage\":867,\"slide\":867,\"track\":32946}"
     },
     {
-      "name": "desktop 987x4400: hero uses the right source",
+      "name": "desktop 987x2900: hero uses the right source",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x4400: first slide uses the right Imgur source",
+      "name": "desktop 987x2900: first slide uses the right Imgur source",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x4400: 2 Vimeo videos are present in order",
+      "name": "desktop 987x2900: 2 Vimeo videos are present in order",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x4400: images section is a three-column grid on desktop and stacked on phone",
+      "name": "desktop 987x2900: images section is masonry on desktop and a two-column grid on phone",
       "passed": true,
-      "detail": "flex / 3"
+      "detail": "flex / 1 / 3"
     },
     {
-      "name": "desktop 987x4400: 3 copied photos use the right source size",
+      "name": "desktop 987x2900: 3 copied photos use the right source size",
       "passed": true,
       "detail": "3 / https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/dk-apartment/images-left-top-1280.jpg"
     },
     {
-      "name": "desktop 987x4400: 4 tools use the exact Imgur logos",
+      "name": "desktop 987x2900: 4 tools use the exact Imgur logos",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x4400: live next moves to 2 / 38",
+      "name": "desktop 987x2900: live next moves to 2 / 38",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x4400: live dot 20 jumps to 20 / 38",
+      "name": "desktop 987x2900: live dot 20 jumps to 20 / 38",
       "passed": true,
       "detail": null
     },
     {
-      "name": "desktop 987x4400: no page errors",
+      "name": "desktop 987x2900: no page errors",
       "passed": true,
       "detail": ""
     },
     {
-      "name": "phone 390x4400: the live sandboxed page frame loads",
+      "name": "phone 390x2900: the live sandboxed page frame loads",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x4400: title is exact",
+      "name": "phone 390x2900: title is exact",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x4400: frame viewport is 390x4400",
+      "name": "phone 390x2900: frame viewport is 390x2900",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x4400: page fills exactly 4400 px",
+      "name": "phone 390x2900: page fills exactly 2900 px",
       "passed": true,
-      "detail": "{\"scroll\":[390,4400],\"body\":[390,4400],\"main\":4400}"
+      "detail": "{\"scroll\":[390,2900],\"body\":[390,2900],\"main\":2900}"
     },
     {
-      "name": "phone 390x4400: no horizontal overflow",
-      "passed": true,
-      "detail": null
-    },
-    {
-      "name": "phone 390x4400: headings are exact",
+      "name": "phone 390x2900: no horizontal overflow",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x4400: 38 slides, 38 dots, and the 1 / 38 counter",
+      "name": "phone 390x2900: headings are exact",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x4400: slideshow track is 38 full frames wide",
+      "name": "phone 390x2900: 38 slides, 38 dots, and the 1 / 38 counter",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2900: slideshow track is 38 full frames wide",
       "passed": true,
       "detail": "{\"stage\":342,\"slide\":342,\"track\":12996}"
     },
     {
-      "name": "phone 390x4400: hero uses the right source",
+      "name": "phone 390x2900: hero uses the right source",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x4400: first slide uses the right Imgur source",
+      "name": "phone 390x2900: first slide uses the right Imgur source",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x4400: 2 Vimeo videos are present in order",
+      "name": "phone 390x2900: 2 Vimeo videos are present in order",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x4400: images section is a three-column grid on desktop and stacked on phone",
+      "name": "phone 390x2900: images section is masonry on desktop and a two-column grid on phone",
       "passed": true,
-      "detail": "block / 3"
+      "detail": "grid / 2 / 3"
     },
     {
-      "name": "phone 390x4400: 3 copied photos use the right source size",
+      "name": "phone 390x2900: 3 copied photos use the right source size",
       "passed": true,
       "detail": "3 / https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/dk-apartment/images-left-top-768.jpg"
     },
     {
-      "name": "phone 390x4400: 4 tools use the exact Imgur logos",
+      "name": "phone 390x2900: 4 tools use the exact Imgur logos",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x4400: live next moves to 2 / 38",
+      "name": "phone 390x2900: live next moves to 2 / 38",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x4400: live dot 20 jumps to 20 / 38",
+      "name": "phone 390x2900: live dot 20 jumps to 20 / 38",
       "passed": true,
       "detail": null
     },
     {
-      "name": "phone 390x4400: no page errors",
+      "name": "phone 390x2900: no page errors",
       "passed": true,
       "detail": ""
     }

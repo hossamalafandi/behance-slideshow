@@ -102,7 +102,7 @@ node test-live-dk-apartment.js https://script.google.com/macros/s/AKfycbzV7OufIj
 
 It verifies the 8 jsDelivr hero/photo files, the new page route, the unchanged
 Al-Rashed/Cellphone/slide/tools routes, both Behance-like frames, and the
-slideshow. Result: **PENDING**.
+slideshow. Result: **62/62**.
 
 ## Rollback
 
