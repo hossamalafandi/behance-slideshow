@@ -287,6 +287,8 @@ async function runViewport(browser, label, width) {
         dots: document.querySelectorAll('.slide-dot').length,
         videos: Array.from(document.querySelectorAll('.video-frame iframe')).map(iframe => iframe.src),
         imagesGridDisplay: getComputedStyle(document.querySelector('.images-grid')).display,
+        imageGridColumns: getComputedStyle(document.querySelector('.images-grid'))
+          .gridTemplateColumns.trim().split(/\s+/).length,
         imageColumns: document.querySelectorAll('.image-column').length,
         shots: Array.from(document.querySelectorAll('.shot img')).map(image => ({
           src: selectedSource(image)
@@ -335,12 +337,12 @@ async function runViewport(browser, label, width) {
     check(label + ': 2 Vimeo videos are present in order',
       state.videos.length === 2 &&
         state.videos.every((src, index) => src.includes(VIMEO_IDS[index])));
-    check(label + ': images section is a three-column grid on desktop and stacked on phone',
+    check(label + ': images section is masonry on desktop and a two-column grid on phone',
       state.imageColumns === 3 &&
         (width <= 700
-          ? state.imagesGridDisplay === 'block'
+          ? state.imagesGridDisplay === 'grid' && state.imageGridColumns === 2
           : state.imagesGridDisplay === 'flex'),
-      state.imagesGridDisplay + ' / ' + state.imageColumns);
+      state.imagesGridDisplay + ' / ' + state.imageGridColumns + ' / ' + state.imageColumns);
     check(label + ': 3 copied photos use the right source size',
       state.shots.length === 3 &&
         state.shots.every(shot => shot.src.includes(

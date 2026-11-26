@@ -5,7 +5,7 @@ const DEPLOYMENT_ID =
 
 const PAGE_TITLE = 'DK-Apartment — Hossam Alafandi';
 const PAGE_CODE = 'dk-apartment';
-const EMBED_HEIGHT = 4400;
+const EMBED_HEIGHT = 2900;
 const EMBED_WIDTH = '100%';
 const PRODUCTION_ASSET_BASE =
   'https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/dk-apartment/';

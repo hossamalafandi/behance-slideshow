@@ -125,8 +125,8 @@ function staticChecks() {
     !/localStorage|sessionStorage|indexedDB|document\.cookie|postMessage|BroadcastChannel/i
       .test(production));
   check('page has no external scripts', !/<script\b[^>]*\bsrc=/i.test(production));
-  check('page keeps the fixed 4400 px embed height',
-    data.EMBED_HEIGHT === 4400 && data.EMBED_WIDTH === '100%');
+  check('page keeps the fixed 2900 px embed height',
+    data.EMBED_HEIGHT === 2900 && data.EMBED_WIDTH === '100%');
   check('page has the phone breakpoint', /@media \(max-width: 700px\)/.test(production));
   check('preview uses local hero and photo assets',
     expectedAssets().every(name => preview.includes(data.PREVIEW_ASSET_BASE + name)));
@@ -233,6 +233,8 @@ async function runViewport(browser, base, label, width) {
         dots: document.querySelectorAll('.slide-dot').length,
         videos: Array.from(document.querySelectorAll('.video-frame iframe')).map(iframe => iframe.src),
         imagesGridDisplay: getComputedStyle(document.querySelector('.images-grid')).display,
+        imageGridColumns: getComputedStyle(document.querySelector('.images-grid'))
+          .gridTemplateColumns.trim().split(/\s+/).length,
         imageColumns: document.querySelectorAll('.image-column').length,
         shots: Array.from(document.querySelectorAll('.shot img')).map(image => ({
           src: image.currentSrc || image.getAttribute('src'),
@@ -283,12 +285,12 @@ async function runViewport(browser, base, label, width) {
       width <= 700
         ? /https:\/\/i\.imgur\.com\/[A-Za-z0-9]+h\.jpg$/.test(state.firstSlide.src)
         : /https:\/\/i\.imgur\.com\/[A-Za-z0-9]+\.jpg$/.test(state.firstSlide.src));
-    check(label + ': images section is a three-column grid on desktop and stacked on phone',
+    check(label + ': images section is masonry on desktop and a two-column grid on phone',
       state.imageColumns === 3 &&
         (width <= 700
-          ? state.imagesGridDisplay === 'block'
+          ? state.imagesGridDisplay === 'grid' && state.imageGridColumns === 2
           : state.imagesGridDisplay === 'flex'),
-      state.imagesGridDisplay + ' / ' + state.imageColumns);
+      state.imagesGridDisplay + ' / ' + state.imageGridColumns + ' / ' + state.imageColumns);
     check(label + ': 3 copied photos use the right source size',
       state.shots.length === 3 &&
         state.shots.every(shot => shot.src.includes(

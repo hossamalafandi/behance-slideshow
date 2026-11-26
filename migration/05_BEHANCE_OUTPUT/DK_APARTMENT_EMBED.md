@@ -1,7 +1,7 @@
 # DK-Apartment — standalone Behance embed
 
 Status: **ready for manual copy/paste. Nothing has been published or replaced.**
-Built 2026-11-26 and deployed as version 21 under the existing deployment ID.
+Built 2026-11-26 and deployed as version 22 under the existing deployment ID.
 This page is independent of the 48 slideshow embeds, the 38 TOOLS USED strips,
 the Al-Rashed page, and the Cellphone Store page.
 
@@ -16,7 +16,7 @@ Paste this whole block into the DK-Apartment Behance project as one embed.
 <iframe
   src="https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec?page=dk-apartment"
   width="100%"
-  height="4400"
+  height="2900"
   style="border:0;overflow:hidden"
   loading="lazy"
   allowfullscreen
@@ -24,7 +24,7 @@ Paste this whole block into the DK-Apartment Behance project as one embed.
 </iframe>
 ```
 
-Keep `width="100%"` and `height="4400"`.
+Keep `width="100%"` and `height="2900"`.
 
 ## What is on the page
 
@@ -52,8 +52,8 @@ the 48 slideshows.
   `https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/dk-apartment/`.
 - The IMAGES section keeps the original three-column masonry arrangement on
   desktop: two photos in the left column, one photo and `IMG_3011` in the middle,
-  and `IMG_3045` in the wider right column. On phones the photos and videos
-  stack.
+  and `IMG_3045` in the wider right column. On phones the photos and `IMG_3011`
+  use a compact two-column grid, with `IMG_3045` full width below.
 - The **two videos** use the owner's Vimeo player embeds:
   - `IMG_3011` — Vimeo `1250270804`
   - `IMG_3045` — Vimeo `1250270805`
@@ -64,7 +64,7 @@ the 48 slideshows.
 ## Deployment
 
 The page uses the existing standalone Apps Script deployment under the same
-deployment ID, with the new `?page=dk-apartment` route. It is live as version 21:
+deployment ID, with the new `?page=dk-apartment` route. It is live as version 22:
 
 ```
 https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec?page=dk-apartment
@@ -102,7 +102,7 @@ node test-live-dk-apartment.js https://script.google.com/macros/s/AKfycbzV7OufIj
 
 It verifies the 8 jsDelivr hero/photo files, the new page route, the unchanged
 Al-Rashed/Cellphone/slide/tools routes, both Behance-like frames, and the
-slideshow. Result: **62/62**.
+slideshow. Result: **PENDING**.
 
 ## Rollback
 
@@ -115,8 +115,8 @@ slideshow. Result: **62/62**.
 
 ## Notes
 
-- The two-video row is side by side on desktop and stacked one per row on
-  phones.
+- The IMAGES section is a compact two-column grid on phones, while desktop
+  keeps the original three-column masonry.
 - The videos are Vimeo embeds, so they need normal Vimeo playback access.
 - The page is static HTML served by Apps Script; it uses no cookies, storage,
   messaging, or external scripts of its own. Apps Script injects its standard
