@@ -10,8 +10,8 @@
     "assets": 2
   },
   "browser": "Chrome 158.0.8127.88",
-  "checks": 49,
-  "passed": 49,
+  "checks": 56,
+  "passed": 56,
   "failed": 0,
   "blockedImgurRequests": 65,
   "failures": [],
@@ -37,6 +37,11 @@
       "detail": null
     },
     {
+      "name": "page has 7 fullscreen buttons and the fullscreen viewer",
+      "passed": true,
+      "detail": null
+    },
+    {
       "name": "page has 7 slideshows",
       "passed": true,
       "detail": null
@@ -57,9 +62,9 @@
       "detail": null
     },
     {
-      "name": "page has 42 images",
+      "name": "page has 43 images",
       "passed": true,
-      "detail": "42"
+      "detail": "43"
     },
     {
       "name": "page has one hero and 4 tools",
@@ -182,6 +187,11 @@
       "detail": "center"
     },
     {
+      "name": "desktop 987x2750: each room has a fullscreen button",
+      "passed": true,
+      "detail": "7"
+    },
+    {
       "name": "desktop 987x2750: first room navigation and keyboard work",
       "passed": true,
       "detail": null
@@ -252,7 +262,32 @@
       "detail": "center"
     },
     {
+      "name": "phone 390x2750: each room has a fullscreen button",
+      "passed": true,
+      "detail": "7"
+    },
+    {
       "name": "phone 390x2750: first room navigation and keyboard work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2750: phone fullscreen uses the maximum screen space",
+      "passed": true,
+      "detail": "{\"open\":true,\"height\":844,\"top\":728,\"src\":\"https://i.imgur.com/c4oItQ5h.jpg\",\"natural\":[1024,724],\"counter\":\"1 / 7\",\"backdrop\":\"url(\\\"https://i.imgur.com/c4oItQ5h.jpg\\\")\",\"body\":true}"
+    },
+    {
+      "name": "phone 390x2750: phone fullscreen navigation stays in sync",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2750: phone fullscreen closes cleanly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2750: Escape closes phone fullscreen",
       "passed": true,
       "detail": null
     },

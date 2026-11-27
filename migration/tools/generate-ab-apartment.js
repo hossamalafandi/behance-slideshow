@@ -75,8 +75,12 @@ function slideshowMarkup(slideshow) {
     '    <div class="slideshow-track">',
     slidesMarkup(slideshow),
     '    </div>',
-    '    <span class="slide-counter" aria-live="polite">1 / ' +
+    '    <div class="slide-hud">',
+    '      <span class="slide-counter" aria-live="polite">1 / ' +
       slideshow.images.length + '</span>',
+    '      <button class="slide-fs-button" type="button"',
+    '              aria-label="Fullscreen" title="Fullscreen">⛶</button>',
+    '    </div>',
     '    <button class="slide-arrow prev" type="button" aria-label="Previous image">❮</button>',
     '    <button class="slide-arrow next" type="button" aria-label="Next image">❯</button>',
     '  </div>',
@@ -347,11 +351,18 @@ function buildPage(assetBase) {
   .slide-arrow.prev { left: 10px; }
   .slide-arrow.next { right: 10px; }
 
-  .slide-counter {
+  .slide-hud {
     position: absolute;
     top: 10px;
     right: 10px;
     z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .slide-counter,
+  .slide-fs-button {
     padding: 5px 9px;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 999px;
@@ -361,6 +372,19 @@ function buildPage(assetBase) {
     font-weight: 200;
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
+  }
+
+  .slide-fs-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-color: rgba(255, 255, 255, 0.22);
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
   }
 
   .slide-dots {
@@ -387,6 +411,106 @@ function buildPage(assetBase) {
     background: var(--ink);
     transform: scale(1.12);
   }
+
+  /* --------------------------------------------------- fullscreen viewer */
+  .slide-fs {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2147483647;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .slide-fs.is-open { display: flex; }
+
+  .slide-fs-backdrop {
+    position: absolute;
+    inset: -30px;
+    background-position: center;
+    background-size: cover;
+    filter: blur(28px) brightness(0.32);
+    transform: scale(1.12);
+  }
+
+  .slide-fs-image {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: calc(100% - 20px);
+    max-height: calc(100% - 20px);
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .slide-fs-close,
+  .slide-fs-arrow {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-family: inherit;
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  .slide-fs-close {
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .slide-fs-arrow {
+    top: 50%;
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+    transform: translateY(-50%);
+  }
+
+  .slide-fs-arrow.prev { left: 10px; }
+  .slide-fs-arrow.next { right: 10px; }
+
+  .slide-fs-footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .slide-fs-counter {
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 200;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  body.slide-fs-open { overflow: hidden; }
 
   /* -------------------------------------------------------------- tools */
   .tools-row {
@@ -538,9 +662,36 @@ ${toolsMarkup()}
   <footer class="copyright">${escapeHtml(data.COPYRIGHT_TEXT)}</footer>
 </main>
 
+<div class="slide-fs" id="abSlideFs" hidden role="dialog"
+     aria-modal="true" aria-label="Slideshow fullscreen">
+  <div class="slide-fs-backdrop" id="abSlideFsBackdrop"></div>
+  <img class="slide-fs-image" id="abSlideFsImage" alt="" decoding="async">
+  <button class="slide-fs-close" id="abSlideFsClose" type="button"
+          aria-label="Close fullscreen">×</button>
+  <button class="slide-fs-arrow prev" id="abSlideFsPrev" type="button"
+          aria-label="Previous image">❮</button>
+  <button class="slide-fs-arrow next" id="abSlideFsNext" type="button"
+          aria-label="Next image">❯</button>
+  <div class="slide-fs-footer">
+    <span class="slide-fs-counter" id="abSlideFsCounter" aria-live="polite">1 / 1</span>
+  </div>
+</div>
+
 <script>
 (function () {
   'use strict';
+
+  var fsViewer = document.getElementById('abSlideFs');
+  var fsImage = document.getElementById('abSlideFsImage');
+  var fsBackdrop = document.getElementById('abSlideFsBackdrop');
+  var fsCounter = document.getElementById('abSlideFsCounter');
+  var fsClose = document.getElementById('abSlideFsClose');
+  var fsPrev = document.getElementById('abSlideFsPrev');
+  var fsNext = document.getElementById('abSlideFsNext');
+  var fsActive = false;
+  var fsSlideshow = null;
+  var fsReturnFocus = null;
+  var fsSwiped = false;
 
   function imageSource(image) {
     if (!image) return '';
@@ -569,6 +720,162 @@ ${toolsMarkup()}
     warm.src = src;
   }
 
+  function fsHeight() {
+    var screenHeight = 0;
+    if (window.screen) {
+      screenHeight = window.screen.availHeight || window.screen.height || 0;
+    }
+    var height = window.innerHeight || 0;
+    if (screenHeight > 0) height = Math.min(height || screenHeight, screenHeight);
+    if (!height || !isFinite(height)) height = Math.min(window.innerHeight || 900, 900);
+    return Math.max(300, Math.min(height, 1200));
+  }
+
+  function updateFs() {
+    if (!fsActive || !fsSlideshow) return;
+    var slides = fsSlideshow.querySelectorAll('.slide');
+    var current = fsSlideshow.__current();
+    var image = slides[current] && slides[current].querySelector('img');
+    var src = imageSource(image);
+    if (src) {
+      fsImage.src = src;
+      fsBackdrop.style.backgroundImage = 'url("' + src.replace(/"/g, '%22') + '")';
+    }
+    fsImage.alt = 'AB-Apartment image ' + (current + 1);
+    fsCounter.textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  function layoutFs() {
+    if (!fsActive || !fsViewer) return;
+    var panelHeight = fsHeight();
+    fsViewer.style.height = Math.round(panelHeight) + 'px';
+    var rect = fsSlideshow.getBoundingClientRect();
+    var scrollTop = window.pageYOffset ||
+      document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var pageHeight = document.documentElement.scrollHeight ||
+      document.body.scrollHeight || 0;
+    var top = rect.top + scrollTop - Math.round(panelHeight * 0.08);
+    var maxTop = Math.max(0, pageHeight - panelHeight);
+    top = Math.max(0, Math.min(top, maxTop));
+    fsViewer.style.top = Math.round(top) + 'px';
+  }
+
+  function revealFs() {
+    if (!fsActive || !fsViewer || !fsViewer.scrollIntoView) return;
+    try {
+      fsViewer.scrollIntoView({ block: 'center', inline: 'nearest' });
+    } catch (error) {
+      // Scrolling is a convenience; the viewer still works without it.
+    }
+  }
+
+  function openFs(slideshow) {
+    if (!fsViewer || fsActive) return;
+    fsActive = true;
+    fsSlideshow = slideshow;
+    fsReturnFocus = document.activeElement;
+    fsViewer.hidden = false;
+    fsViewer.classList.add('is-open');
+    document.body.classList.add('slide-fs-open');
+    updateFs();
+    layoutFs();
+    revealFs();
+    if (fsClose) fsClose.focus({ preventScroll: true });
+    setTimeout(function () {
+      if (!fsActive) return;
+      layoutFs();
+      revealFs();
+    }, 60);
+  }
+
+  function closeFs() {
+    if (!fsActive) return;
+    fsActive = false;
+    fsViewer.classList.remove('is-open');
+    fsViewer.hidden = true;
+    document.body.classList.remove('slide-fs-open');
+    if (fsReturnFocus && fsReturnFocus.focus) {
+      fsReturnFocus.focus({ preventScroll: true });
+    }
+    fsSlideshow = null;
+  }
+
+  function stepFs(delta) {
+    if (fsSlideshow) fsSlideshow.__step(delta);
+  }
+
+  if (fsClose) fsClose.addEventListener('click', closeFs);
+  if (fsPrev) fsPrev.addEventListener('click', function () { stepFs(-1); });
+  if (fsNext) fsNext.addEventListener('click', function () { stepFs(1); });
+
+  if (fsViewer) {
+    fsViewer.addEventListener('click', function (event) {
+      if (fsSwiped) {
+        fsSwiped = false;
+        return;
+      }
+      if (event.target === fsViewer) closeFs();
+    });
+    fsViewer.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeFs();
+        event.preventDefault();
+      } else if (event.key === 'ArrowLeft') {
+        stepFs(-1);
+        event.preventDefault();
+      } else if (event.key === 'ArrowRight') {
+        stepFs(1);
+        event.preventDefault();
+      } else if (event.key === 'Home') {
+        if (fsSlideshow) fsSlideshow.__show(0);
+        event.preventDefault();
+      } else if (event.key === 'End') {
+        if (fsSlideshow) {
+          fsSlideshow.__show(fsSlideshow.querySelectorAll('.slide').length - 1);
+        }
+        event.preventDefault();
+      }
+    });
+
+    var fsStartX = 0;
+    var fsStartY = 0;
+    var fsTracking = false;
+    fsViewer.addEventListener('touchstart', function (event) {
+      fsSwiped = false;
+      if (event.touches.length !== 1) {
+        fsTracking = false;
+        return;
+      }
+      fsTracking = true;
+      fsStartX = event.touches[0].clientX;
+      fsStartY = event.touches[0].clientY;
+    }, { passive: true });
+    fsViewer.addEventListener('touchend', function (event) {
+      if (!fsTracking) return;
+      fsTracking = false;
+      var touch = event.changedTouches[0];
+      if (!touch) return;
+      var dx = touch.clientX - fsStartX;
+      var dy = touch.clientY - fsStartY;
+      if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+        fsSwiped = true;
+        stepFs(dx < 0 ? 1 : -1);
+      }
+    }, { passive: true });
+  }
+
+  window.addEventListener('resize', function () {
+    if (fsActive) layoutFs();
+  });
+  window.addEventListener('orientationchange', function () {
+    if (!fsActive) return;
+    layoutFs();
+    revealFs();
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && fsActive) closeFs();
+  });
+
   function initSlideshow(slideshow) {
     var track = slideshow.querySelector('.slideshow-track');
     var slides = Array.prototype.slice.call(track.querySelectorAll('.slide'));
@@ -576,6 +883,7 @@ ${toolsMarkup()}
     var counter = slideshow.querySelector('.slide-counter');
     var prev = slideshow.querySelector('.slide-arrow.prev');
     var next = slideshow.querySelector('.slide-arrow.next');
+    var fsButton = slideshow.querySelector('.slide-fs-button');
     var count = slides.length;
     var index = 0;
     slideshow.style.setProperty('--count', String(count));
@@ -612,9 +920,21 @@ ${toolsMarkup()}
         preload(slides, index + 1);
         preload(slides, index - 1);
       }
+      if (fsActive && fsSlideshow === slideshow) updateFs();
     }
 
     function step(delta) { show(index + delta); }
+
+    slideshow.__show = show;
+    slideshow.__step = step;
+    slideshow.__current = function () { return index; };
+
+    if (fsButton) {
+      fsButton.addEventListener('click', function (event) {
+        event.stopPropagation();
+        openFs(slideshow);
+      });
+    }
 
     if (prev) prev.addEventListener('click', function () { step(-1); });
     if (next) next.addEventListener('click', function () { step(1); });

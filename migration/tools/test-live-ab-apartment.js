@@ -128,6 +128,10 @@ async function routeChecks(context) {
     Boolean(page) && (page.html.match(/class="slideshow"/g) || []).length === 7 &&
       (page.html.match(/class="slide"/g) || []).length === TOTAL_SLIDES,
     page ? (page.html.match(/class="slide"/g) || []).length : null);
+  check('route: page has 7 fullscreen buttons and the viewer',
+    Boolean(page) && (page.html.match(/class="slide-fs-button"/g) || []).length === 7 &&
+      page.html.includes('id="abSlideFs"') &&
+      page.html.includes('id="abSlideFsImage"'));
   check('route: page has the 2 copied hero files',
     Boolean(page) &&
       page.html.includes(data.PRODUCTION_ASSET_BASE + 'hero-1920.jpg') &&
@@ -291,7 +295,8 @@ async function runViewport(browser, label, width) {
         firstSlides: Array.from(document.querySelectorAll('.slideshow .slide:first-child img'))
           .map(sourceOf),
         tools: Array.from(document.querySelectorAll('.tools-row img')).map(image => image.src),
-        toolsTitleAlign: getComputedStyle(document.getElementById('tools-title')).textAlign
+        toolsTitleAlign: getComputedStyle(document.getElementById('tools-title')).textAlign,
+        fsButtons: document.querySelectorAll('.slide-fs-button').length
       };
     });
 
@@ -335,6 +340,8 @@ async function runViewport(browser, label, width) {
         state.tools.every((src, index) => src === data.toolUrl(data.TOOLS[index].id)));
     check(label + ': TOOLS USED is centered',
       state.toolsTitleAlign === 'center', state.toolsTitleAlign);
+    check(label + ': each room has a fullscreen button',
+      state.fsButtons === 7, state.fsButtons);
 
     const first = '#slideshow-p004-s01';
     await frame.click(first + ' .slide-arrow.next');
@@ -346,6 +353,50 @@ async function runViewport(browser, label, width) {
       document.querySelector(selector + ' .slide-counter').textContent === '4 / 7',
       first, { timeout: 15000, polling: 100 });
     check(label + ': live first-room navigation works', true);
+
+    if (width <= 700) {
+      await frame.evaluate(() => {
+        Object.defineProperty(screen, 'width', { configurable: true, get: () => 390 });
+        Object.defineProperty(screen, 'height', { configurable: true, get: () => 844 });
+        Object.defineProperty(screen, 'availWidth', { configurable: true, get: () => 390 });
+        Object.defineProperty(screen, 'availHeight', { configurable: true, get: () => 844 });
+      });
+      await frame.click(first + ' .slide-fs-button');
+      await wait(400);
+      const fs = await frame.evaluate(() => {
+        const viewer = document.getElementById('abSlideFs');
+        const image = document.getElementById('abSlideFsImage');
+        const box = viewer.getBoundingClientRect();
+        return {
+          open: viewer.classList.contains('is-open') && !viewer.hidden,
+          height: box.height,
+          top: box.top,
+          src: image.getAttribute('src'),
+          counter: document.getElementById('abSlideFsCounter').textContent,
+          backdrop: getComputedStyle(document.getElementById('abSlideFsBackdrop'))
+            .backgroundImage,
+          body: document.body.classList.contains('slide-fs-open')
+        };
+      });
+      check(label + ': live phone fullscreen uses the maximum screen space',
+        fs.open && Math.abs(fs.height - 844) <= 1 && fs.top >= 0 &&
+          /https:\/\/i\.imgur\.com\/[A-Za-z0-9]+h\.jpg$/.test(fs.src) &&
+          fs.counter === '1 / 7' && fs.body &&
+          fs.backdrop.includes('i.imgur.com'),
+        JSON.stringify(fs));
+      await frame.click('#abSlideFsNext');
+      await frame.waitForFunction(() =>
+        document.getElementById('abSlideFsCounter').textContent === '2 / 7' &&
+        document.querySelector('#slideshow-p004-s01 .slide-counter').textContent === '2 / 7',
+        null, { timeout: 15000, polling: 100 });
+      check(label + ': live phone fullscreen navigation stays in sync', true);
+      await frame.click('#abSlideFsClose');
+      await wait(300);
+      check(label + ': live phone fullscreen closes cleanly',
+        await frame.evaluate(() =>
+          document.getElementById('abSlideFs').hidden &&
+          !document.body.classList.contains('slide-fs-open')));
+    }
 
     check(label + ': no page errors', pageErrors.length === 0,
       pageErrors.join(' | '));

@@ -1,7 +1,7 @@
 # AB-Apartment — standalone Behance embed
 
 Status: **ready for manual copy/paste. Nothing has been published or replaced.**
-Built 2026-11-27 and deployed as version 24 under the existing deployment ID.
+Built 2026-11-27 and deployed as version 25 under the existing deployment ID.
 This page is independent of the 48 slideshow embeds, the 38 TOOLS USED strips,
 the Al-Rashed page, the Cellphone Store page, and the DK-Apartment page.
 
@@ -54,11 +54,15 @@ The page has no Google Sites header, logo, navigation, cookie banner, or footer.
   BOYS BEDROOM, BATHROOM.
 - Phone: one compact centered column so the seven portrait slideshows fit
   without a large empty space at the page end.
+- Each room has a fullscreen button. On phones the viewer fills the screen,
+  places the current render at the largest size that fits without cropping, and
+  fills the remaining screen with a blurred backdrop. Arrows, counter, swipe,
+  and close work in that viewer.
 
 ## Deployment
 
 The page uses the existing standalone Apps Script deployment under the same
-deployment ID, with the new `?page=ab-apartment` route. It is live as version 24:
+deployment ID, with the new `?page=ab-apartment` route. It is live as version 25:
 
 ```
 https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec?page=ab-apartment
@@ -86,7 +90,7 @@ node test-ab-apartment.js
 `test-ab-apartment.js` loads the page inside Behance-like sandboxed frames at
 987×2750 and 390×2750, checks the 7 room order, all 37 slides, the seven
 slideshow tracks, both hero files, the tools, and navigation. It stubs Imgur
-and the fonts. Result: **49/49**.
+and the fonts. Result: **56/56**.
 
 The live deployment is covered by:
 
@@ -96,7 +100,7 @@ node test-live-ab-apartment.js https://script.google.com/macros/s/AKfycbzV7OufIj
 
 It verifies the 2 jsDelivr hero files, the new page route, the unchanged
 Al-Rashed/Cellphone/DK/slide/tools routes, both Behance-like frames, and the
-seven slideshows. Result: **51/51**.
+seven slideshows. Result: **PENDING**.
 
 ## Rollback
 

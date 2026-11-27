@@ -1,7 +1,7 @@
 # DK-Apartment — standalone Behance embed
 
 Status: **ready for manual copy/paste. Nothing has been published or replaced.**
-Built 2026-11-26 and deployed as version 24 under the existing deployment ID.
+Built 2026-11-26 and deployed as version 25 under the existing deployment ID.
 This page is independent of the 48 slideshow embeds, the 38 TOOLS USED strips,
 the Al-Rashed page, and the Cellphone Store page.
 
@@ -64,7 +64,7 @@ the 48 slideshows.
 ## Deployment
 
 The page uses the existing standalone Apps Script deployment under the same
-deployment ID, with the new `?page=dk-apartment` route. It is live as version 24:
+deployment ID, with the new `?page=dk-apartment` route. It is live as version 25:
 
 ```
 https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec?page=dk-apartment

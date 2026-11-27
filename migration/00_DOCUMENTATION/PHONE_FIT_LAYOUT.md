@@ -106,7 +106,7 @@ Local suites:
   fullscreen fill and restore. Synthetic 16:9 SVG placeholders are used; no
   original image is downloaded or viewed.
 
-Live deployment (version 24; version 10 introduced the fit layout):
+Live deployment (version 25; version 10 introduced the fit layout):
 
 - `node tools/test-live-all.js <deployment-url>` — **339/339**, 48/48
   slideshows; no banner; exact URLs; fullscreen.

@@ -75,6 +75,11 @@ function staticChecks() {
     JSON.stringify(Array.from(production.matchAll(/<h3>([^<]+)<\/h3>/g))
       .map(match => match[1])) ===
       JSON.stringify(data.SLIDESHOWS.map(room => room.title)));
+  check('page has 7 fullscreen buttons and the fullscreen viewer',
+    (production.match(/class="slide-fs-button"/g) || []).length === 7 &&
+      production.includes('id="abSlideFs"') &&
+      production.includes('id="abSlideFsImage"') &&
+      production.includes('slide-fs-open'));
   check('page has 7 slideshows', (production.match(/class="slideshow"/g) || []).length === 7);
   check('page has 37 slides', slides.length === 37, slides.length);
   check('slideshow counts are 7/6/5/5/5/4/5',
@@ -82,7 +87,7 @@ function staticChecks() {
       .map(match => Number(match[1]))) === JSON.stringify(COUNTS));
   check('every slideshow starts at 1 / its count',
     COUNTS.every(count => production.includes('>1 / ' + count + '</span>')));
-  check('page has 42 images', images.length === 42, images.length);
+  check('page has 43 images', images.length === 43, images.length);
   check('page has one hero and 4 tools',
     hero.length === 1 && tools.length === 4, [hero.length, tools.length].join('/'));
   check('hero uses the 1920 desktop file and 768 phone source',
@@ -236,7 +241,8 @@ async function runViewport(browser, base, label, width) {
         firstSlides: Array.from(document.querySelectorAll('.slideshow .slide:first-child img'))
           .map(sourceOf),
         tools: Array.from(document.querySelectorAll('.tools-row img')).map(image => image.src),
-        toolsTitleAlign: getComputedStyle(document.getElementById('tools-title')).textAlign
+        toolsTitleAlign: getComputedStyle(document.getElementById('tools-title')).textAlign,
+        fsButtons: document.querySelectorAll('.slide-fs-button').length
       };
     });
 
@@ -281,6 +287,8 @@ async function runViewport(browser, base, label, width) {
         state.tools.every((src, index) => src === data.toolUrl(data.TOOLS[index].id)));
     check(label + ': TOOLS USED is centered',
       state.toolsTitleAlign === 'center', state.toolsTitleAlign);
+    check(label + ': each room has a fullscreen button',
+      state.fsButtons === 7, state.fsButtons);
 
     const first = '#slideshow-p004-s01';
     await frame.click(first + ' .slide-arrow.next');
@@ -300,6 +308,60 @@ async function runViewport(browser, base, label, width) {
       document.querySelector(selector + ' .slide-counter').textContent === '1 / 7',
       first, { timeout: 10000, polling: 100 });
     check(label + ': first room navigation and keyboard work', true);
+
+    if (width <= 700) {
+      await frame.evaluate(() => {
+        Object.defineProperty(screen, 'width', { configurable: true, get: () => 390 });
+        Object.defineProperty(screen, 'height', { configurable: true, get: () => 844 });
+        Object.defineProperty(screen, 'availWidth', { configurable: true, get: () => 390 });
+        Object.defineProperty(screen, 'availHeight', { configurable: true, get: () => 844 });
+      });
+      await frame.click(first + ' .slide-fs-button');
+      await wait(400);
+      const fs = await frame.evaluate(() => {
+        const viewer = document.getElementById('abSlideFs');
+        const image = document.getElementById('abSlideFsImage');
+        const box = viewer.getBoundingClientRect();
+        return {
+          open: viewer.classList.contains('is-open') && !viewer.hidden,
+          height: box.height,
+          top: box.top,
+          src: image.getAttribute('src'),
+          natural: [image.naturalWidth, image.naturalHeight],
+          counter: document.getElementById('abSlideFsCounter').textContent,
+          backdrop: getComputedStyle(document.getElementById('abSlideFsBackdrop'))
+            .backgroundImage,
+          body: document.body.classList.contains('slide-fs-open')
+        };
+      });
+      check(label + ': phone fullscreen uses the maximum screen space',
+        fs.open && Math.abs(fs.height - 844) <= 1 && fs.top >= 0 &&
+          /https:\/\/i\.imgur\.com\/[A-Za-z0-9]+h\.jpg$/.test(fs.src) &&
+          fs.counter === '1 / 7' && fs.body &&
+          fs.backdrop.includes('i.imgur.com'),
+        JSON.stringify(fs));
+      await frame.click('#abSlideFsNext');
+      await frame.waitForFunction(() =>
+        document.getElementById('abSlideFsCounter').textContent === '2 / 7' &&
+        document.querySelector('#slideshow-p004-s01 .slide-counter').textContent === '2 / 7',
+        null, { timeout: 10000, polling: 100 });
+      check(label + ': phone fullscreen navigation stays in sync', true);
+      await frame.click('#abSlideFsClose');
+      await wait(300);
+      check(label + ': phone fullscreen closes cleanly',
+        await frame.evaluate(() =>
+          document.getElementById('abSlideFs').hidden &&
+          !document.body.classList.contains('slide-fs-open')));
+
+      await frame.click(first + ' .slide-fs-button');
+      await wait(300);
+      await frame.evaluate(() => {
+        document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+      });
+      await wait(300);
+      check(label + ': Escape closes phone fullscreen',
+        await frame.evaluate(() => document.getElementById('abSlideFs').hidden));
+    }
 
     check(label + ': no page errors', pageErrors.length === 0, pageErrors.join(' | '));
   } finally {
