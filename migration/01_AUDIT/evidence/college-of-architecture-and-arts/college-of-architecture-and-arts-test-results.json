@@ -1,0 +1,366 @@
+{
+  "scope": {
+    "page": "?page=college-of-architecture-and-arts",
+    "behanceFrames": [
+      "987x2800",
+      "390x2800"
+    ],
+    "boards": 2,
+    "renders": 7,
+    "tools": 5,
+    "assets": 8
+  },
+  "browser": "Chrome 158.0.8127.88",
+  "checks": 69,
+  "passed": 69,
+  "failed": 0,
+  "blockedImgurRequests": 29,
+  "failures": [],
+  "results": [
+    {
+      "name": "page title is exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no Google Sites chrome",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no Vimeo, Drive or YouTube embeds",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "original overview text is exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "original semester and year are exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has 1 hero, 2 boards, 7 slides, 7 film thumbs and 5 tools",
+      "passed": true,
+      "detail": "1/2/7/7/5"
+    },
+    {
+      "name": "page has 24 images",
+      "passed": true,
+      "detail": "24"
+    },
+    {
+      "name": "hero uses the 1920 desktop file and 768 phone source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "both boards use 1280 desktop files and 768 phone sources",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "board viewer keeps 2048 files for inspection",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all 7 slides use the exact Imgur originals",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all 7 slides provide exact phone h JPG sources",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "film thumbs use the exact phone h JPG sources",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "only the hero and the first slide are eager",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all 5 tool logos use the exact Imgur PNGs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no anchors or popup navigation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page uses no storage, cookies, or messaging",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no external scripts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page keeps the fixed 2800 px embed height",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has the phone breakpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has one render viewer and one board viewer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has seven board and render controls",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page keeps the exact copyright",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all 8 page assets exist on disk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "preview uses local page assets",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2800: the sandboxed page frame loads",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2800: frame viewport is 987x2800",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2800: page fills exactly 2800 px",
+      "passed": true,
+      "detail": "{\"scroll\":[987,2800],\"body\":[987,2800],\"main\":2800}"
+    },
+    {
+      "name": "desktop 987x2800: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2800: hero uses the right source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2800: both boards use the right source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2800: desktop shows two board columns and phone stacks them",
+      "passed": true,
+      "detail": "grid / [{\"x\":59,\"y\":1305,\"width\":423,\"height\":391},{\"x\":505,\"y\":1305,\"width\":423,\"height\":391}]"
+    },
+    {
+      "name": "desktop 987x2800: all seven slides use the right Imgur source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2800: film has seven thumbs and starts at 01 / 07",
+      "passed": true,
+      "detail": "01 / 07 / CA / EXT-01"
+    },
+    {
+      "name": "desktop 987x2800: five tools use the exact Imgur logos",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2800: all reveals are visible without an inner scroll",
+      "passed": true,
+      "detail": "12/12"
+    },
+    {
+      "name": "desktop 987x2800: render arrows, film and keyboard work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2800: render fullscreen uses a 900 px panel",
+      "passed": true,
+      "detail": "{\"open\":true,\"height\":900,\"top\":1827,\"src\":\"https://i.imgur.com/rsQGtCg.jpeg\",\"natural\":[1400,788],\"counter\":\"1 / 7\",\"backdrop\":\"url(\\\"https://i.imgur.com/rsQGtCg.jpeg\\\")\",\"body\":true}"
+    },
+    {
+      "name": "desktop 987x2800: render fullscreen uses the current rendered source",
+      "passed": true,
+      "detail": "https://i.imgur.com/rsQGtCg.jpeg"
+    },
+    {
+      "name": "desktop 987x2800: render fullscreen navigation stays in sync",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2800: render fullscreen closes cleanly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2800: board viewer opens as a 900 px panel",
+      "passed": true,
+      "detail": "{\"open\":true,\"height\":900,\"top\":1287,\"src\":\"/assets/college-of-architecture-and-arts/board-1-2048.jpg\",\"natural\":[2048,1676],\"plate\":\"PLATE 01\",\"title\":\"SITE & PROGRAM\",\"count\":\"01 / 02\",\"zoom\":\"100%\",\"body\":true}"
+    },
+    {
+      "name": "desktop 987x2800: board viewer uses the right inspection file",
+      "passed": true,
+      "detail": "/assets/college-of-architecture-and-arts/board-1-2048.jpg"
+    },
+    {
+      "name": "desktop 987x2800: board zoom works",
+      "passed": true,
+      "detail": "{\"label\":\"135%\",\"transform\":\"translate(-50%, -50%) translate(0px, 0px) scale(1.35)\"}"
+    },
+    {
+      "name": "desktop 987x2800: board viewer steps to plate two and resets zoom",
+      "passed": true,
+      "detail": "{\"plate\":\"PLATE 02\",\"title\":\"SHOTS & CONCEPT\",\"count\":\"02 / 02\",\"zoom\":\"100%\",\"src\":\"/assets/college-of-architecture-and-arts/board-2-2048.jpg\"}"
+    },
+    {
+      "name": "desktop 987x2800: Escape closes the board viewer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2800: no page errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "phone 390x2800: the sandboxed page frame loads",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2800: frame viewport is 390x2800",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2800: page fills exactly 2800 px",
+      "passed": true,
+      "detail": "{\"scroll\":[390,2800],\"body\":[390,2800],\"main\":2800}"
+    },
+    {
+      "name": "phone 390x2800: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2800: hero uses the right source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2800: both boards use the right source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2800: desktop shows two board columns and phone stacks them",
+      "passed": true,
+      "detail": "block / [{\"x\":22,\"y\":1495,\"width\":346,\"height\":322},{\"x\":22,\"y\":1836,\"width\":346,\"height\":322}]"
+    },
+    {
+      "name": "phone 390x2800: all seven slides use the right Imgur source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2800: film has seven thumbs and starts at 01 / 07",
+      "passed": true,
+      "detail": "01 / 07 / CA / EXT-01"
+    },
+    {
+      "name": "phone 390x2800: five tools use the exact Imgur logos",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2800: all reveals are visible without an inner scroll",
+      "passed": true,
+      "detail": "12/12"
+    },
+    {
+      "name": "phone 390x2800: render arrows, film and keyboard work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2800: render fullscreen uses a 900 px panel",
+      "passed": true,
+      "detail": "{\"open\":true,\"height\":900,\"top\":1900,\"src\":\"https://i.imgur.com/rsQGtCgh.jpg\",\"natural\":[1400,788],\"counter\":\"1 / 7\",\"backdrop\":\"url(\\\"https://i.imgur.com/rsQGtCgh.jpg\\\")\",\"body\":true}"
+    },
+    {
+      "name": "phone 390x2800: render fullscreen uses the current rendered source",
+      "passed": true,
+      "detail": "https://i.imgur.com/rsQGtCgh.jpg"
+    },
+    {
+      "name": "phone 390x2800: render fullscreen navigation stays in sync",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2800: render fullscreen closes cleanly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2800: board viewer opens as a 900 px panel",
+      "passed": true,
+      "detail": "{\"open\":true,\"height\":900,\"top\":1477,\"src\":\"/assets/college-of-architecture-and-arts/board-1-1280.jpg\",\"natural\":[1280,1048],\"plate\":\"PLATE 01\",\"title\":\"SITE & PROGRAM\",\"count\":\"01 / 02\",\"zoom\":\"100%\",\"body\":true}"
+    },
+    {
+      "name": "phone 390x2800: board viewer uses the right inspection file",
+      "passed": true,
+      "detail": "/assets/college-of-architecture-and-arts/board-1-1280.jpg"
+    },
+    {
+      "name": "phone 390x2800: board zoom works",
+      "passed": true,
+      "detail": "{\"label\":\"135%\",\"transform\":\"translate(-50%, -50%) translate(0px, 0px) scale(1.35)\"}"
+    },
+    {
+      "name": "phone 390x2800: board viewer steps to plate two and resets zoom",
+      "passed": true,
+      "detail": "{\"plate\":\"PLATE 02\",\"title\":\"SHOTS & CONCEPT\",\"count\":\"02 / 02\",\"zoom\":\"100%\",\"src\":\"/assets/college-of-architecture-and-arts/board-2-1280.jpg\"}"
+    },
+    {
+      "name": "phone 390x2800: Escape closes the board viewer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2800: no page errors",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}

@@ -189,3 +189,23 @@ cannot be loaded inside a Behance iframe:
   slideshows remain governed by sections 1–6.
 - This exception does not authorize copying any other Google Sites image or any
   slideshow image.
+
+## 12. College of Architecture and Arts page exception
+
+Date: 2026-11-27. Owner-approved scope: the standalone College of Architecture
+and Arts project page served at `?page=college-of-architecture-and-arts`, and
+nothing else.
+
+Google Sites serves the page hero and the two presentation boards with
+cross-site blocking headers, so they cannot be loaded inside a Behance iframe:
+
+- 8 optimized JPEG derivatives live in
+  `assets/college-of-architecture-and-arts/`: a 1920/768 px hero, and
+  2048/1280/768 px versions of each of the two presentation boards.
+- They are served through jsDelivr at
+  `https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/college-of-architecture-and-arts/`.
+- The 7 exterior renders and the 5 tool logos keep their exact Imgur URLs.
+- No slideshow image was copied, resized, proxied, or rehosted. The 48
+  slideshows remain governed by sections 1–6.
+- This exception does not authorize copying any other Google Sites image or any
+  slideshow image.

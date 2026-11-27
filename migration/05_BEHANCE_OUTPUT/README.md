@@ -1,7 +1,7 @@
 # Behance Embed Output
 
-All 48 slideshows, all 38 TOOLS USED strips, and the standalone Al-Rashed
-project page are generated and ready for manual copy/paste.
+All 48 slideshows, all 38 TOOLS USED strips, and the five standalone project
+pages are generated and ready for manual copy/paste.
 
 ## Files
 
@@ -12,16 +12,20 @@ project page are generated and ready for manual copy/paste.
 | `TOOLS_USED_EMBEDS.md` | All 38 TOOLS USED codes on their own, grouped by project. |
 | `TOOLS_USED_EMBEDS.csv` | Spreadsheet version of the 38 TOOLS USED codes. |
 | `AL_RASHED_EMBED.md` | **Standalone Al-Rashed project page code**, usage notes, image exception, and rollback. |
+| `CELLPHONE_STORE_EMBED.md` | **Standalone Cellphone Store project page code**, Vimeo notes, image exception, and rollback. |
+| `DK_APARTMENT_EMBED.md` | **Standalone DK-Apartment project page code**, Vimeo notes, image exception, and rollback. |
+| `AB_APARTMENT_EMBED.md` | **Standalone AB-Apartment project page code**, room layout, image exception, and rollback. |
+| `COLLEGE_OF_ARCHITECTURE_AND_ARTS_EMBED.md` | **Standalone College of Architecture and Arts page code**, board and render viewers, image exception, and rollback. |
 | `P001.md` … `P038.md` | Per-project slideshow files. These contain slideshows only; use `ALL_EMBEDS.md` or `TOOLS_USED_EMBEDS.md` for TOOLS USED codes. |
 
 ## Deployment
 
 `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
 
-Deployment version 25. Every slideshow code uses one `?slide=<ID>` value and
+Deployment version 26. Every slideshow code uses one `?slide=<ID>` value and
 loads exactly one slideshow. Every TOOLS USED code uses one `?tools=<ID>`
-value and loads the original logo strip from the same host. The standalone page
-uses one `?page=al-rashed` value. The production Apps Script deployment is
+value and loads the original logo strip from the same host. The standalone pages
+use one `?page=<code>` value. The production Apps Script deployment is
 untouched.
 
 ## How to use
@@ -80,11 +84,20 @@ original logo URLs and CSS; the images are not copied or rehosted.
 4. Keep `width="100%"` and `height="2750"`. Do not combine it with a slideshow
    code.
 
+### College of Architecture and Arts project page
+
+1. Open `COLLEGE_OF_ARCHITECTURE_AND_ARTS_EMBED.md`.
+2. Copy the single `<iframe>…</iframe>` block.
+3. Paste it into the College of Architecture and Arts Behance project as one
+   embed.
+4. Keep `width="100%"` and `height="2800"`. Do not combine it with a slideshow
+   code.
+
 Live verification: the Al-Rashed page suite passes **135/135**, the Cellphone
 Store page suite passes **102/102** (local **76/76**), the DK-Apartment page
 suite passes **57/57** locally (live **62/62**), the AB-Apartment page suite
 passes **56/56** locally (live **57/57**), the all-slideshow suite passes
-**339/339**, and the phone fit suite passes **64/64** against version 25.
+**339/339**, and the phone fit suite passes **64/64** against version 26.
 
 ## Not included
 

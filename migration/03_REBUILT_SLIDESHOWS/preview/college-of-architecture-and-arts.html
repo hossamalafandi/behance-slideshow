@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>College of Architecture and Arts — Hossam Alafandi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Lexend:wght@100;200;300;900&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #05080e;
+    --bg-soft: #080d16;
+    --ink: #f5f7fa;
+    --muted: rgba(245, 247, 250, 0.62);
+    --faint: rgba(245, 247, 250, 0.4);
+    --line: rgba(245, 247, 250, 0.14);
+    --line-soft: rgba(245, 247, 250, 0.07);
+    --blue: #5b9bd5;
+    --amber: #e6a854;
+    --pad: clamp(20px, 6vw, 60px);
+    --section-y: 52px;
+    --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--bg);
+    background-image:
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size: 72px 72px;
+    background-position: -1px -1px;
+    color: var(--ink);
+    font-family: 'Lexend', Arial, sans-serif;
+    font-weight: 100;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  img { max-width: 100%; }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    background:
+      radial-gradient(900px 520px at 88% 6%, rgba(91, 155, 213, 0.08), transparent 62%),
+      radial-gradient(760px 420px at 4% 46%, rgba(230, 168, 84, 0.05), transparent 64%);
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--pad);
+  }
+
+  /* ---------------------------------------------------------------- hero */
+  .hero {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 560px;
+    overflow: hidden;
+    padding: 0 var(--pad);
+    border-bottom: 1px solid var(--line);
+    isolation: isolate;
+  }
+
+  .hero-media,
+  .hero-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-media img {
+    display: block;
+    object-fit: cover;
+    object-position: center 44%;
+    animation: hero-drift 26s ease-in-out infinite alternate;
+  }
+
+  @keyframes hero-drift {
+    from { transform: scale(1.02); }
+    to { transform: scale(1.08); }
+  }
+
+  .hero-shade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg,
+        rgba(5, 8, 14, 0.62) 0%,
+        rgba(5, 8, 14, 0.22) 32%,
+        rgba(5, 8, 14, 0.66) 74%,
+        var(--bg) 100%),
+      linear-gradient(90deg,
+        rgba(5, 8, 14, 0.55) 0%,
+        rgba(5, 8, 14, 0) 34%,
+        rgba(5, 8, 14, 0) 66%,
+        rgba(5, 8, 14, 0.55) 100%);
+  }
+
+  .hero-frame {
+    position: absolute;
+    inset: 16px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.55;
+    background:
+      linear-gradient(var(--faint), var(--faint)) left top / 26px 1px no-repeat,
+      linear-gradient(var(--faint), var(--faint)) left top / 1px 26px no-repeat,
+      linear-gradient(var(--faint), var(--faint)) right top / 26px 1px no-repeat,
+      linear-gradient(var(--faint), var(--faint)) right top / 1px 26px no-repeat,
+      linear-gradient(var(--faint), var(--faint)) left bottom / 26px 1px no-repeat,
+      linear-gradient(var(--faint), var(--faint)) left bottom / 1px 26px no-repeat,
+      linear-gradient(var(--faint), var(--faint)) right bottom / 26px 1px no-repeat,
+      linear-gradient(var(--faint), var(--faint)) right bottom / 1px 26px no-repeat;
+  }
+
+  .hero-top,
+  .hero-bottom {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: rgba(245, 247, 250, 0.62);
+    text-transform: uppercase;
+  }
+
+  .hero-top { padding-top: 24px; }
+  .hero-bottom { padding-bottom: 18px; }
+
+  .hero-top .dot,
+  .hero-bottom .dot {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: var(--amber);
+    vertical-align: middle;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 34px 0 26px;
+    text-align: center;
+  }
+
+  .hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 18px;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    color: var(--amber);
+    text-transform: uppercase;
+    animation: rise 0.8s 0.05s both;
+  }
+
+  .hero-kicker::before,
+  .hero-kicker::after {
+    content: '';
+    display: block;
+    width: 34px;
+    height: 1px;
+    background: rgba(230, 168, 84, 0.5);
+  }
+
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(46px, 8.2vw, 104px);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+    text-transform: uppercase;
+    text-shadow: 0 22px 60px rgba(0, 0, 0, 0.5);
+    animation: rise 0.9s 0.12s both;
+  }
+
+  .hero h1 span { display: block; }
+
+  .hero h1 .title-accent {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(245, 247, 250, 0.68);
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    margin: 22px 0 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: rgba(245, 247, 250, 0.72);
+    text-transform: uppercase;
+    animation: rise 0.9s 0.22s both;
+  }
+
+  .hero-meta .sep {
+    width: 22px;
+    height: 1px;
+    background: rgba(245, 247, 250, 0.35);
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ------------------------------------------------------------- sections */
+  .section {
+    width: 100%;
+    padding: var(--section-y) 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding-top: 13px;
+    border-top: 1px solid var(--line);
+  }
+
+  .sec-index {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: var(--amber);
+  }
+
+  .sec-rule {
+    width: 34px;
+    height: 1px;
+    background: var(--line);
+    transform: translateY(-3px);
+  }
+
+  .sec-head h2 {
+    margin: 0 auto 0 0;
+    font-size: clamp(30px, 4.6vw, 54px);
+    font-weight: 900;
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+  }
+
+  .sec-note {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    color: var(--faint);
+    text-align: right;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .section-lede {
+    max-width: 720px;
+    margin: 22px 0 30px;
+    color: var(--muted);
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 200;
+    line-height: 1.6;
+  }
+
+  /* --------------------------------------------------------------- brief */
+  .brief { flex: 1 0 auto; display: flex; align-items: center; }
+
+  .brief-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    gap: clamp(28px, 5vw, 64px);
+    align-items: start;
+    margin-top: 24px;
+  }
+
+  .brief-copy p {
+    max-width: 660px;
+    margin: 0;
+    color: rgba(245, 247, 250, 0.72);
+    font-size: clamp(16px, 1.7vw, 21px);
+    font-weight: 200;
+    line-height: 1.62;
+  }
+
+  .program h3 {
+    margin: 0 0 10px;
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    color: var(--amber);
+  }
+
+  .program ol {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+    list-style: none;
+  }
+
+  .program li {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .program li span {
+    font-size: 8px;
+    color: var(--blue);
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 32px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 12px 14px 0;
+    border-right: 1px solid var(--line-soft);
+  }
+
+  .stat + .stat { padding-left: 16px; }
+  .stat:last-child { border-right: 0; }
+
+  .stat b {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .stat span {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    color: var(--faint);
+  }
+
+  /* -------------------------------------------------------------- boards */
+  .boards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .plate {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .plate-frame {
+    position: relative;
+    display: block;
+    padding: 9px;
+    border: 1px solid var(--line);
+    background: rgba(245, 247, 250, 0.02);
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+
+  .plate-frame picture,
+  .plate-frame img {
+    display: block;
+    width: 100%;
+  }
+
+  .plate-frame img {
+    aspect-ratio: 2048 / 1676;
+    object-fit: cover;
+    filter: saturate(0.92);
+    transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1), filter 0.4s ease;
+  }
+
+  .plate-frame::before,
+  .plate-frame::after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    width: 14px;
+    height: 14px;
+    border-color: var(--amber);
+    border-style: solid;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .plate-frame::before {
+    top: -1px;
+    left: -1px;
+    border-width: 1px 0 0 1px;
+  }
+
+  .plate-frame::after {
+    right: -1px;
+    bottom: -1px;
+    border-width: 0 1px 1px 0;
+  }
+
+  .plate-hover {
+    position: absolute;
+    inset: 9px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 14px;
+    background: linear-gradient(180deg, rgba(5, 8, 14, 0) 52%, rgba(5, 8, 14, 0.82) 100%);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .plate-hover span:last-child {
+    font-family: 'Lexend', sans-serif;
+    font-size: 22px;
+    font-weight: 200;
+    line-height: 1;
+  }
+
+  .plate:hover .plate-frame,
+  .plate:focus-visible .plate-frame {
+    border-color: rgba(230, 168, 84, 0.6);
+    background: rgba(230, 168, 84, 0.04);
+  }
+
+  .plate:hover .plate-frame img,
+  .plate:focus-visible .plate-frame img {
+    transform: scale(1.014);
+    filter: saturate(1.04);
+  }
+
+  .plate:hover .plate-frame::before,
+  .plate:hover .plate-frame::after,
+  .plate:focus-visible .plate-frame::before,
+  .plate:focus-visible .plate-frame::after { opacity: 1; }
+
+  .plate:hover .plate-hover,
+  .plate:focus-visible .plate-hover { opacity: 1; }
+
+  .plate-caption {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 3px 14px;
+    padding-top: 11px;
+  }
+
+  .plate-no {
+    grid-row: span 2;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--amber);
+    transform: translateY(3px);
+  }
+
+  .plate-title {
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  .plate-meta {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.13em;
+    line-height: 1.5;
+    color: var(--faint);
+    text-transform: uppercase;
+  }
+
+  .boards-hint { display: none; }
+
+  /* ------------------------------------------------------------- renders */
+  .render-shell {
+    outline: none;
+    margin-top: 22px;
+  }
+
+  .render-shell:focus-visible .render-stage {
+    outline: 2px solid rgba(245, 247, 250, 0.7);
+    outline-offset: 5px;
+  }
+
+  .render-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #070b12;
+    cursor: grab;
+    touch-action: pan-y;
+  }
+
+  .render-stage:active { cursor: grabbing; }
+
+  .slideshow-track {
+    display: flex;
+    width: calc(var(--count, 1) * 100%);
+    height: 100%;
+    transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform;
+  }
+
+  .slide {
+    flex: 0 0 calc(100% / var(--count, 1));
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .slide picture,
+  .slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide img {
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+  }
+
+  .render-hud {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 10px;
+    border: 1px solid rgba(245, 247, 250, 0.16);
+    background: rgba(5, 8, 14, 0.58);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  .render-hud i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--amber);
+  }
+
+  .render-fs-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid rgba(245, 247, 250, 0.22);
+    border-radius: 0;
+    background: rgba(5, 8, 14, 0.58);
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+
+  .render-fs-button:hover { border-color: var(--amber); background: rgba(5, 8, 14, 0.82); }
+
+  .render-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid rgba(245, 247, 250, 0.22);
+    border-radius: 50%;
+    background: rgba(5, 8, 14, 0.52);
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(-50%);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    transition: opacity 0.25s ease, border-color 0.25s ease;
+  }
+
+  .render-stage:hover .render-arrow,
+  .render-stage:focus-within .render-arrow { opacity: 1; }
+  .render-arrow:hover { border-color: var(--amber); }
+  .render-arrow.prev { left: 12px; }
+  .render-arrow.next { right: 12px; }
+
+  .render-caption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 1px 0;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    color: var(--faint);
+    text-transform: uppercase;
+  }
+
+  .render-code { color: var(--amber); }
+
+  .film {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .film-thumb {
+    position: relative;
+    display: block;
+    padding: 0;
+    border: 1px solid transparent;
+    background: #070b12;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.25s ease, border-color 0.25s ease;
+  }
+
+  .film-thumb img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .film-thumb span {
+    position: absolute;
+    right: 4px;
+    bottom: 3px;
+    font-family: var(--mono);
+    font-size: 7px;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  .film-thumb:hover { opacity: 0.8; }
+
+  .film-thumb[aria-current="true"] {
+    opacity: 1;
+    border-color: var(--amber);
+  }
+
+  /* --------------------------------------------------------------- tools */
+  .tools { flex: 0 0 auto; padding-bottom: 44px; }
+
+  .tools-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 22px 32px;
+    margin-top: 26px;
+  }
+
+  .tools-row img {
+    display: block;
+    width: auto;
+    height: 52px;
+    object-fit: contain;
+    filter: saturate(0.85);
+    opacity: 0.9;
+    transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  @media (hover: hover) {
+    .tools-row img:hover {
+      filter: none;
+      opacity: 1;
+      transform: translateY(-3px);
+    }
+  }
+
+  /* ------------------------------------------------------------ copyright */
+  .copyright {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px var(--pad) 22px;
+    color: var(--faint);
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* --------------------------------------------------------- board viewer */
+  .board-viewer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2147483647;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    background: #05080e;
+  }
+
+  .board-viewer.is-open { display: flex; }
+
+  .bv-top {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(5, 8, 14, 0.92);
+  }
+
+  .bv-label {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    min-width: 0;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .bv-label span { color: var(--amber); white-space: nowrap; }
+
+  .bv-label b {
+    overflow: hidden;
+    color: var(--ink);
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .bv-actions { display: flex; align-items: center; gap: 6px; }
+
+  .bv-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid rgba(245, 247, 250, 0.2);
+    border-radius: 0;
+    background: rgba(245, 247, 250, 0.04);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .bv-button:hover { border-color: var(--amber); color: var(--amber); }
+  .bv-zoom { min-width: 54px; font-size: 9px; letter-spacing: 0.08em; }
+  .bv-close { font-size: 20px; }
+
+  .bv-stage {
+    position: relative;
+    flex: 1 1 auto;
+    overflow: hidden;
+    cursor: grab;
+    touch-action: none;
+    background:
+      radial-gradient(1000px 620px at 50% 50%, rgba(91, 155, 213, 0.1), transparent 70%),
+      linear-gradient(rgba(245, 247, 250, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245, 247, 250, 0.04) 1px, transparent 1px),
+      #070b12;
+    background-size: auto, 56px 56px, 56px 56px, auto;
+  }
+
+  .bv-stage.is-panning { cursor: grabbing; }
+
+  .bv-image {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    max-width: calc(100% - 24px);
+    max-height: calc(100% - 24px);
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%) translate(0px, 0px) scale(1);
+    transform-origin: center center;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  .bv-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid rgba(245, 247, 250, 0.24);
+    border-radius: 50%;
+    background: rgba(5, 8, 14, 0.55);
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transform: translateY(-50%);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  .bv-arrow:hover { border-color: var(--amber); }
+  .bv-arrow.prev { left: 14px; }
+  .bv-arrow.next { right: 14px; }
+
+  .bv-count,
+  .bv-hint {
+    position: absolute;
+    z-index: 2;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: rgba(245, 247, 250, 0.62);
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+
+  .bv-count {
+    left: 50%;
+    bottom: 12px;
+    padding: 4px 9px;
+    border: 1px solid rgba(245, 247, 250, 0.16);
+    background: rgba(5, 8, 14, 0.6);
+    transform: translateX(-50%);
+  }
+
+  .bv-hint {
+    left: 16px;
+    bottom: 14px;
+    font-size: 8px;
+  }
+
+  .bv-hint-mob { display: none; }
+
+  body.board-open { overflow: hidden; }
+
+  /* -------------------------------------------------------- render viewer */
+  .render-fs {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2147483647;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .render-fs.is-open { display: flex; }
+
+  .render-fs-backdrop {
+    position: absolute;
+    inset: -30px;
+    background-position: center;
+    background-size: cover;
+    filter: blur(30px) brightness(0.28);
+    transform: scale(1.12);
+  }
+
+  .render-fs-image {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: calc(100% - 20px);
+    max-height: calc(100% - 20px);
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .render-fs-close,
+  .render-fs-arrow {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid rgba(245, 247, 250, 0.24);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-family: inherit;
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  .render-fs-close {
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .render-fs-arrow {
+    top: 50%;
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+    transform: translateY(-50%);
+  }
+
+  .render-fs-arrow.prev { left: 10px; }
+  .render-fs-arrow.next { right: 10px; }
+
+  .render-fs-footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .render-fs-counter {
+    padding: 5px 10px;
+    border: 1px solid rgba(245, 247, 250, 0.16);
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  body.render-fs-open { overflow: hidden; }
+
+  /* --------------------------------------------------------------- reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------------------------------------------------------------- phone */
+  @media (max-width: 700px) {
+    :root {
+      --pad: 22px;
+      --section-y: 40px;
+    }
+
+    body { background-size: 56px 56px; }
+
+    .hero { min-height: 460px; }
+    .hero-frame { inset: 10px; }
+    .hero-top { padding-top: 17px; font-size: 8px; letter-spacing: 0.14em; }
+    .hero-bottom { padding-bottom: 14px; font-size: 8px; letter-spacing: 0.14em; }
+    .hero-top .hero-school { display: none; }
+    .hero-content { padding: 26px 0 20px; }
+    .hero-kicker { margin-bottom: 14px; font-size: 8px; }
+    .hero-kicker::before, .hero-kicker::after { width: 18px; }
+    .hero h1 { font-size: clamp(40px, 11.4vw, 52px); line-height: 0.94; }
+    .hero-meta { margin-top: 18px; font-size: 8px; gap: 8px 10px; }
+    .hero-meta .sep { width: 12px; }
+
+    .sec-head { flex-wrap: wrap; gap: 8px; padding-top: 11px; }
+    .sec-rule { width: 18px; }
+    .sec-head h2 { font-size: 32px; }
+    .sec-note { font-size: 7px; }
+
+    .section-lede { display: none; }
+
+    .brief-grid {
+      display: block;
+      margin-top: 20px;
+    }
+
+    .brief-copy p {
+      font-size: 15px;
+      line-height: 1.66;
+    }
+
+    .program { margin-top: 20px; }
+    .program li { padding: 6px 0; font-size: 9px; }
+
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 20px; }
+    .stat { padding: 11px 0; border-bottom: 1px solid var(--line-soft); }
+    .stat + .stat { padding-left: 0; }
+    .stat:nth-child(2n) { border-right: 0; padding-left: 14px; }
+    .stat:nth-child(3),
+    .stat:nth-child(4) { border-bottom: 0; }
+    .stat b { font-size: 26px; }
+    .stat span { font-size: 7px; }
+
+    .boards-grid {
+      display: block;
+      margin-top: 4px;
+    }
+
+    .plate + .plate { margin-top: 20px; }
+    .plate-frame { padding: 7px; }
+    .plate-hover {
+      inset: 7px;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 9px;
+      background: none;
+      opacity: 1;
+    }
+    .plate-hover span:first-child { display: none; }
+    .plate-hover span:last-child {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 27px;
+      height: 27px;
+      border: 1px solid rgba(245, 247, 250, 0.3);
+      background: rgba(5, 8, 14, 0.62);
+      font-size: 15px;
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+    .plate-caption { padding-top: 9px; gap: 2px 10px; }
+    .plate-no { font-size: 8px; }
+    .plate-title { font-size: 13px; }
+    .plate-meta { font-size: 7px; }
+
+    .render-shell { margin-top: 18px; }
+    .render-stage { border-radius: 0; }
+    .render-hud { top: 8px; left: 8px; padding: 4px 7px; font-size: 8px; }
+    .render-fs-button { top: 8px; right: 8px; width: 28px; height: 28px; font-size: 13px; }
+    .render-arrow { opacity: 1; width: 30px; height: 30px; font-size: 11px; }
+    .render-arrow.prev { left: 6px; }
+    .render-arrow.next { right: 6px; }
+    .render-caption { font-size: 7px; letter-spacing: 0.12em; padding-top: 8px; }
+    .film { gap: 4px; margin-top: 10px; }
+    .film-thumb span { display: none; }
+
+    .tools { padding-top: 32px; padding-bottom: 28px; }
+
+    .tools-row { justify-content: space-between; gap: 16px 18px; margin-top: 20px; }
+    .tools-row img { height: 34px; }
+
+    .copyright {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      font-size: 7px;
+      padding-bottom: 14px;
+    }
+
+    .bv-top { padding: 8px 10px; }
+    .bv-label { font-size: 8px; gap: 8px; }
+    .bv-actions { gap: 4px; }
+    .bv-button { min-width: 30px; height: 30px; padding: 0 6px; }
+    .bv-zoom { min-width: 46px; font-size: 8px; }
+    .bv-arrow { width: 34px; height: 34px; font-size: 12px; }
+    .bv-arrow.prev { left: 8px; }
+    .bv-arrow.next { right: 8px; }
+    .bv-hint { left: 10px; bottom: 10px; font-size: 7px; }
+    .bv-count { bottom: 9px; font-size: 8px; }
+    .bv-hint-desk { display: none; }
+    .bv-hint-mob { display: block; }
+  }
+
+  @media (max-width: 380px) {
+    :root { --pad: 18px; }
+    .hero h1 { font-size: 39px; }
+    .sec-head h2 { font-size: 28px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-media img,
+    .hero-kicker,
+    .hero h1,
+    .hero-meta { animation: none; }
+    .slideshow-track,
+    .plate-frame img,
+    .reveal { transition: none; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<main id="page">
+  <header class="hero">
+    <picture class="hero-media">
+        <source media="(max-width: 700px)" srcset="/assets/college-of-architecture-and-arts/hero-768.jpg">
+        <img src="/assets/college-of-architecture-and-arts/hero-1920.jpg"
+             alt="College of Architecture and Arts seen from above at dusk"
+             loading="eager" fetchpriority="high" decoding="async">
+      </picture>
+    <div class="hero-shade"></div>
+    <div class="hero-frame" aria-hidden="true"></div>
+    <div class="hero-top">
+      <span><span class="dot" aria-hidden="true"></span>PORTFOLIO / 05</span>
+      <span class="hero-school">AL-WATANIYA PRIVATE UNIVERSITY</span>
+    </div>
+    <div class="hero-content">
+      <p class="hero-kicker">GRADUATION PROJECT</p>
+      <h1>
+        <span>College of</span>
+        <span>Architecture</span>
+        <span class="title-accent">and Arts</span>
+      </h1>
+      <p class="hero-meta">
+        <span>5TH YEAR, FIRST SEMESTER</span>
+        <span class="sep" aria-hidden="true"></span>
+        <span>- 2024 -</span>
+      </p>
+    </div>
+    <div class="hero-bottom">
+      <span>SCROLL TO EXPLORE</span>
+      <span>DRG. CA-2024 / SHEET 00</span>
+    </div>
+  </header>
+
+<section class="section brief" aria-labelledby="overview-title">
+  <div class="wrap">
+<div class="sec-head reveal">
+  <span class="sec-index">01</span>
+  <span class="sec-rule" aria-hidden="true"></span>
+  <h2>OVERVIEW</h2>
+  <span class="sec-note">BRIEF / PROGRAMME</span>
+</div>
+    <div class="brief-grid">
+      <div class="brief-copy reveal">
+        <p>This architectural project, the College of Architecture and Arts, serves approximately 1,500 students. The project integrates educational, administrative, and social spaces within an efficient campus layout, emphasizing accessibility and inclusivity. Key facilities include lecture halls, studios, laboratories, libraries, exhibition halls, and a central auditorium to support learning and collaboration. The design balances functional needs, spatial organization, and architectural expression, promoting academic excellence and social interaction.</p>
+      </div>
+      <aside class="program reveal" aria-label="Key facilities">
+        <h3>KEY FACILITIES</h3>
+        <ol>
+    <li><span>01</span>LECTURE HALLS</li>
+    <li><span>02</span>DESIGN STUDIOS</li>
+    <li><span>03</span>LABORATORIES</li>
+    <li><span>04</span>LIBRARIES</li>
+    <li><span>05</span>EXHIBITION HALLS</li>
+    <li><span>06</span>AUDITORIUM</li>
+        </ol>
+      </aside>
+    </div>
+    <div class="stats reveal" aria-label="Project facts">
+  <div class="stat">
+    <b>1,500</b>
+    <span>STUDENTS</span>
+  </div>
+  <div class="stat">
+    <b>5TH</b>
+    <span>YEAR</span>
+  </div>
+  <div class="stat">
+    <b>02</b>
+    <span>BOARDS</span>
+  </div>
+  <div class="stat">
+    <b>07</b>
+    <span>RENDERS</span>
+  </div>
+    </div>
+  </div>
+</section>
+
+<section class="section boards" aria-labelledby="boards-title">
+  <div class="wrap">
+<div class="sec-head reveal">
+  <span class="sec-index">02</span>
+  <span class="sec-rule" aria-hidden="true"></span>
+  <h2>PRESENTATION BOARDS</h2>
+  <span class="sec-note">A1 / TWO PLATES</span>
+</div>
+    <p class="section-lede reveal">Two plates document the site strategy, the exploded programme, the concept sketches and the final aerial views. Open a plate to inspect it full screen.</p>
+    <div class="boards-grid">
+<button class="plate reveal" type="button" data-index="0"
+        data-src-1280="/assets/college-of-architecture-and-arts/board-1-1280.jpg"
+        data-src-2048="/assets/college-of-architecture-and-arts/board-1-2048.jpg"
+        data-plate="PLATE 01"
+        data-title="SITE &amp; PROGRAM"
+        aria-label="Open PLATE 01 — SITE &amp; PROGRAM">
+  <span class="plate-frame">
+    <picture>
+      <source media="(max-width: 700px)" srcset="/assets/college-of-architecture-and-arts/board-1-768.jpg">
+      <img src="/assets/college-of-architecture-and-arts/board-1-1280.jpg" alt="Presentation board one: site plan, floor plans, exploded programme diagram and section drawings" loading="lazy" decoding="async">
+    </picture>
+    <span class="plate-hover"><span>INSPECT PLATE</span><span aria-hidden="true">＋</span></span>
+  </span>
+  <span class="plate-caption">
+    <span class="plate-no">PLATE 01</span>
+    <span class="plate-title">SITE &amp; PROGRAM</span>
+    <span class="plate-meta">SITE STRATEGY · EXPLODED PROGRAM · SECTIONS</span>
+  </span>
+</button>
+<button class="plate reveal" type="button" data-index="1"
+        data-src-1280="/assets/college-of-architecture-and-arts/board-2-1280.jpg"
+        data-src-2048="/assets/college-of-architecture-and-arts/board-2-2048.jpg"
+        data-plate="PLATE 02"
+        data-title="SHOTS &amp; CONCEPT"
+        aria-label="Open PLATE 02 — SHOTS &amp; CONCEPT">
+  <span class="plate-frame">
+    <picture>
+      <source media="(max-width: 700px)" srcset="/assets/college-of-architecture-and-arts/board-2-768.jpg">
+      <img src="/assets/college-of-architecture-and-arts/board-2-1280.jpg" alt="Presentation board two: master plan, concept sketches and aerial renders of the college" loading="lazy" decoding="async">
+    </picture>
+    <span class="plate-hover"><span>INSPECT PLATE</span><span aria-hidden="true">＋</span></span>
+  </span>
+  <span class="plate-caption">
+    <span class="plate-no">PLATE 02</span>
+    <span class="plate-title">SHOTS &amp; CONCEPT</span>
+    <span class="plate-meta">MASTER PLAN · CONCEPT SKETCHES · AERIAL SHOTS</span>
+  </span>
+</button>
+    </div>
+    <p class="boards-hint" aria-hidden="true">SWIPE TO MOVE THROUGH PLATES →</p>
+  </div>
+</section>
+
+<section class="section renders" aria-labelledby="renders-title">
+  <div class="wrap">
+<div class="sec-head reveal">
+  <span class="sec-index">03</span>
+  <span class="sec-rule" aria-hidden="true"></span>
+  <h2>RENDERS</h2>
+  <span class="sec-note">07 / EXTERIOR</span>
+</div>
+    <div class="render-shell reveal" id="renderSlideshow" tabindex="0" role="region"
+         aria-roledescription="carousel" aria-label="Exterior renders">
+      <div class="render-stage">
+        <div class="slideshow-track">
+            <figure class="slide" data-code="EXT-01"
+                    aria-roledescription="slide" aria-label="Render 1 of 7">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/rsQGtCgh.jpg">
+                <img src="https://i.imgur.com/rsQGtCg.jpeg" alt="Aerial view of the college at dusk with the illuminated courtyard" loading="eager" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" data-code="EXT-02"
+                    aria-roledescription="slide" aria-label="Render 2 of 7">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/dX7JCC7h.jpg">
+                <img src="https://i.imgur.com/dX7JCC7.jpeg" alt="Close aerial view of the white looping roof and warm-lit courtyard" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" data-code="EXT-03"
+                    aria-roledescription="slide" aria-label="Render 3 of 7">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/KgSoAxJh.jpg">
+                <img src="https://i.imgur.com/KgSoAxJ.jpeg" alt="Elevated view of the campus, landscaped forecourt and parking court" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" data-code="EXT-04"
+                    aria-roledescription="slide" aria-label="Render 4 of 7">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/GoBu1tKh.jpg">
+                <img src="https://i.imgur.com/GoBu1tK.jpeg" alt="Aerial view of the main entrance, canopy and parking court at dusk" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" data-code="EXT-05"
+                    aria-roledescription="slide" aria-label="Render 5 of 7">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/RDsNRTZh.jpg">
+                <img src="https://i.imgur.com/RDsNRTZ.jpeg" alt="Aerial view of the angular wings and inner courtyard" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" data-code="EXT-06"
+                    aria-roledescription="slide" aria-label="Render 6 of 7">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/w2F0hT6h.jpg">
+                <img src="https://i.imgur.com/w2F0hT6.jpeg" alt="Courtyard view looking up at the layered white canopies" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" data-code="EXT-07"
+                    aria-roledescription="slide" aria-label="Render 7 of 7">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/HEELBsDh.jpg">
+                <img src="https://i.imgur.com/HEELBsD.jpeg" alt="Courtyard with planted islands beneath the curved canopy" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+        </div>
+        <span class="render-hud"><i aria-hidden="true"></i><span id="renderCounter">01 / 07</span></span>
+        <button class="render-fs-button" id="renderFsButton" type="button"
+                aria-label="Open renders fullscreen" title="Fullscreen">⛶</button>
+        <button class="render-arrow prev" type="button" aria-label="Previous render">❮</button>
+        <button class="render-arrow next" type="button" aria-label="Next render">❯</button>
+      </div>
+      <div class="render-caption">
+        <span class="render-code" id="renderCode">CA / EXT-01</span>
+        <span class="render-type">EXTERIOR VISUALISATION</span>
+      </div>
+      <div class="film" role="group" aria-label="Choose a render">
+      <button class="film-thumb" type="button" data-index="0"
+              aria-label="Show render 1 of 7" aria-current="true">
+        <img src="https://i.imgur.com/rsQGtCgh.jpg" alt="" loading="lazy" decoding="async">
+        <span>01</span>
+      </button>
+      <button class="film-thumb" type="button" data-index="1"
+              aria-label="Show render 2 of 7">
+        <img src="https://i.imgur.com/dX7JCC7h.jpg" alt="" loading="lazy" decoding="async">
+        <span>02</span>
+      </button>
+      <button class="film-thumb" type="button" data-index="2"
+              aria-label="Show render 3 of 7">
+        <img src="https://i.imgur.com/KgSoAxJh.jpg" alt="" loading="lazy" decoding="async">
+        <span>03</span>
+      </button>
+      <button class="film-thumb" type="button" data-index="3"
+              aria-label="Show render 4 of 7">
+        <img src="https://i.imgur.com/GoBu1tKh.jpg" alt="" loading="lazy" decoding="async">
+        <span>04</span>
+      </button>
+      <button class="film-thumb" type="button" data-index="4"
+              aria-label="Show render 5 of 7">
+        <img src="https://i.imgur.com/RDsNRTZh.jpg" alt="" loading="lazy" decoding="async">
+        <span>05</span>
+      </button>
+      <button class="film-thumb" type="button" data-index="5"
+              aria-label="Show render 6 of 7">
+        <img src="https://i.imgur.com/w2F0hT6h.jpg" alt="" loading="lazy" decoding="async">
+        <span>06</span>
+      </button>
+      <button class="film-thumb" type="button" data-index="6"
+              aria-label="Show render 7 of 7">
+        <img src="https://i.imgur.com/HEELBsDh.jpg" alt="" loading="lazy" decoding="async">
+        <span>07</span>
+      </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tools" aria-labelledby="tools-title">
+  <div class="wrap">
+<div class="sec-head reveal">
+  <span class="sec-index">04</span>
+  <span class="sec-rule" aria-hidden="true"></span>
+  <h2>TOOLS USED</h2>
+  <span class="sec-note">WORKFLOW</span>
+</div>
+    <div class="tools-row reveal" aria-label="Software used">
+    <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo" loading="lazy" decoding="async">
+    <img src="https://i.imgur.com/STZTRZr.png" alt="Revit Logo" loading="lazy" decoding="async">
+    <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo" loading="lazy" decoding="async">
+    <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo" loading="lazy" decoding="async">
+    <img src="https://i.imgur.com/8y2GzCS.png" alt="Lumion Logo" loading="lazy" decoding="async">
+    </div>
+  </div>
+</section>
+
+  <footer class="copyright">
+    <span>© 2025 HOSSAM ALAFANDI. All rights reserved.</span>
+    <span>SHEET 05 · 2024</span>
+  </footer>
+</main>
+
+<div class="board-viewer" id="boardViewer" hidden role="dialog" aria-modal="true"
+     aria-label="Presentation board viewer">
+  <div class="bv-top">
+    <div class="bv-label"><span id="bvPlate">PLATE 01</span><b id="bvTitle">SITE &amp; PROGRAM</b></div>
+    <div class="bv-actions">
+      <button class="bv-button" id="bvZoomOut" type="button" aria-label="Zoom out">−</button>
+      <button class="bv-button bv-zoom" id="bvZoomReset" type="button" aria-label="Reset zoom">100%</button>
+      <button class="bv-button" id="bvZoomIn" type="button" aria-label="Zoom in">＋</button>
+      <button class="bv-button bv-close" id="bvClose" type="button" aria-label="Close board viewer">×</button>
+    </div>
+  </div>
+  <div class="bv-stage" id="bvStage">
+    <img class="bv-image" id="bvImage" alt="" decoding="async">
+    <button class="bv-arrow prev" id="bvPrev" type="button" aria-label="Previous board">❮</button>
+    <button class="bv-arrow next" id="bvNext" type="button" aria-label="Next board">❯</button>
+    <span class="bv-count" id="bvCount">01 / 02</span>
+    <span class="bv-hint bv-hint-desk">DRAG TO PAN · SCROLL TO ZOOM · DOUBLE-CLICK TO RESET</span>
+    <span class="bv-hint bv-hint-mob">PINCH OR DOUBLE-TAP TO ZOOM · DRAG TO PAN</span>
+  </div>
+</div>
+
+<div class="render-fs" id="caRenderFs" hidden role="dialog" aria-modal="true"
+     aria-label="Renders fullscreen">
+  <div class="render-fs-backdrop" id="caRenderFsBackdrop"></div>
+  <img class="render-fs-image" id="caRenderFsImage" alt="" decoding="async">
+  <button class="render-fs-close" id="caRenderFsClose" type="button"
+          aria-label="Close fullscreen">×</button>
+  <button class="render-fs-arrow prev" id="caRenderFsPrev" type="button"
+          aria-label="Previous render">❮</button>
+  <button class="render-fs-arrow next" id="caRenderFsNext" type="button"
+          aria-label="Next render">❯</button>
+  <div class="render-fs-footer">
+    <span class="render-fs-counter" id="caRenderFsCounter" aria-live="polite">1 / 7</span>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var reduceMotion = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ------------------------------------------------------------- reveal */
+  var revealNodes = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px', threshold: 0 });
+    revealNodes.forEach(function (node) { revealObserver.observe(node); });
+    // The page lives inside a fixed-height Behance iframe, so content below
+    // the first viewport may never scroll into the observer. Reveal it anyway.
+    window.setTimeout(function () {
+      revealNodes.forEach(function (node) { node.classList.add('is-visible'); });
+    }, 1200);
+  } else {
+    revealNodes.forEach(function (node) { node.classList.add('is-visible'); });
+  }
+
+  function pad2(number) {
+    return (number < 10 ? '0' : '') + number;
+  }
+
+  function imageSource(image) {
+    if (!image) return '';
+    var src = image.currentSrc || image.getAttribute('src');
+    var picture = image.parentElement;
+    var source = picture && picture.tagName === 'PICTURE'
+      ? picture.querySelector('source[media]') : null;
+    if (source && window.matchMedia &&
+        window.matchMedia(source.getAttribute('media')).matches) {
+      src = source.getAttribute('srcset');
+    }
+    return src;
+  }
+
+  function screenHeight() {
+    var screenHeight = 0;
+    if (window.screen) {
+      screenHeight = window.screen.availHeight || window.screen.height || 0;
+    }
+    var height = window.innerHeight || 0;
+    if (screenHeight > 0) height = Math.min(height || screenHeight, screenHeight);
+    if (!height || !isFinite(height)) height = Math.min(window.innerHeight || 900, 900);
+    return Math.max(300, Math.min(height, 1400));
+  }
+
+  function pageTopOf(element, panelHeight, offsetRatio) {
+    var rect = element.getBoundingClientRect();
+    var scrollTop = window.pageYOffset ||
+      document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var pageHeight = document.documentElement.scrollHeight ||
+      document.body.scrollHeight || 0;
+    var maxTop = Math.max(0, pageHeight - panelHeight);
+    var top = rect.top + scrollTop - Math.round(panelHeight * (offsetRatio || 0));
+    return Math.max(0, Math.min(top, maxTop));
+  }
+
+  function revealPanel(panel) {
+    if (!panel || !panel.scrollIntoView) return;
+    try {
+      panel.scrollIntoView({ block: 'center', inline: 'nearest' });
+    } catch (error) {
+      // Scrolling is a convenience; the panel still works without it.
+    }
+  }
+
+  /* ------------------------------------------------------ renders slider */
+  var renderRoot = document.getElementById('renderSlideshow');
+  var renderFs = document.getElementById('caRenderFs');
+  var renderFsImage = document.getElementById('caRenderFsImage');
+  var renderFsBackdrop = document.getElementById('caRenderFsBackdrop');
+  var renderFsCounter = document.getElementById('caRenderFsCounter');
+  var renderFsClose = document.getElementById('caRenderFsClose');
+  var renderFsPrev = document.getElementById('caRenderFsPrev');
+  var renderFsNext = document.getElementById('caRenderFsNext');
+  var renderIndex = 0;
+  var renderSlides = [];
+  var renderCounter = null;
+  var renderCode = null;
+  var renderFilm = [];
+  var renderCount = 0;
+  var fsActive = false;
+  var fsReturnFocus = null;
+  var fsSwiped = false;
+
+  function showRender(nextIndex, animate) {
+    if (!renderCount) return;
+    renderIndex = ((nextIndex % renderCount) + renderCount) % renderCount;
+    var track = renderRoot.querySelector('.slideshow-track');
+    track.style.transition = animate === false
+      ? 'none' : 'transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1)';
+    track.style.transform = 'translateX(-' + (renderIndex * 100 / renderCount) + '%)';
+
+    renderCounter.textContent = pad2(renderIndex + 1) + ' / ' + pad2(renderCount);
+    var slide = renderSlides[renderIndex];
+    renderCode.textContent = 'CA / ' + slide.getAttribute('data-code');
+
+    renderFilm.forEach(function (button, index) {
+      if (index === renderIndex) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
+    });
+
+    renderSlides.forEach(function (slideNode, index) {
+      slideNode.setAttribute('aria-hidden', index === renderIndex ? 'false' : 'true');
+    });
+
+    var image = slide.querySelector('img');
+    if (image) image.loading = 'eager';
+
+    if (fsActive) updateRenderFs();
+  }
+
+  function preloadRender(at) {
+    if (!renderCount) return;
+    var slide = renderSlides[((at % renderCount) + renderCount) % renderCount];
+    if (!slide) return;
+    var image = slide.querySelector('img');
+    if (!image || image.complete) return;
+    var src = imageSource(image);
+    if (!src) return;
+    var warm = new Image();
+    warm.decoding = 'async';
+    warm.src = src;
+  }
+
+  function stepRender(delta) {
+    showRender(renderIndex + delta);
+  }
+
+  function layoutRenderFs() {
+    if (!fsActive || !renderFs) return;
+    var panelHeight = screenHeight();
+    renderFs.style.height = Math.round(panelHeight) + 'px';
+    renderFs.style.top = Math.round(pageTopOf(renderRoot, panelHeight, 0.06)) + 'px';
+  }
+
+  function updateRenderFs() {
+    if (!fsActive) return;
+    var slide = renderSlides[renderIndex];
+    var image = slide && slide.querySelector('img');
+    var src = imageSource(image);
+    if (src) {
+      renderFsImage.src = src;
+      renderFsBackdrop.style.backgroundImage = 'url("' + src.replace(/"/g, '%22') + '")';
+    }
+    renderFsImage.alt = image ? image.alt : '';
+    renderFsCounter.textContent = (renderIndex + 1) + ' / ' + renderCount;
+  }
+
+  function openRenderFs() {
+    if (!renderFs || fsActive) return;
+    fsActive = true;
+    fsReturnFocus = document.activeElement;
+    renderFs.hidden = false;
+    renderFs.classList.add('is-open');
+    document.body.classList.add('render-fs-open');
+    updateRenderFs();
+    layoutRenderFs();
+    revealPanel(renderFs);
+    if (renderFsClose) renderFsClose.focus({ preventScroll: true });
+    window.setTimeout(function () {
+      if (!fsActive) return;
+      layoutRenderFs();
+      revealPanel(renderFs);
+    }, 60);
+  }
+
+  function closeRenderFs() {
+    if (!fsActive) return;
+    fsActive = false;
+    renderFs.classList.remove('is-open');
+    renderFs.hidden = true;
+    document.body.classList.remove('render-fs-open');
+    if (fsReturnFocus && fsReturnFocus.focus) {
+      fsReturnFocus.focus({ preventScroll: true });
+    }
+  }
+
+  function initRenders() {
+    if (!renderRoot) return;
+    renderSlides = Array.prototype.slice.call(renderRoot.querySelectorAll('.slide'));
+    renderCount = renderSlides.length;
+    renderCounter = document.getElementById('renderCounter');
+    renderCode = document.getElementById('renderCode');
+    renderFilm = Array.prototype.slice.call(document.querySelectorAll('.film-thumb'));
+    renderRoot.style.setProperty('--count', String(renderCount));
+
+    renderFilm.forEach(function (button) {
+      button.addEventListener('click', function () {
+        showRender(Number(button.getAttribute('data-index')));
+      });
+    });
+
+    renderRoot.querySelector('.render-arrow.prev').addEventListener('click', function () {
+      stepRender(-1);
+    });
+    renderRoot.querySelector('.render-arrow.next').addEventListener('click', function () {
+      stepRender(1);
+    });
+
+    document.getElementById('renderFsButton').addEventListener('click', function (event) {
+      event.stopPropagation();
+      openRenderFs();
+    });
+
+    renderRoot.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowLeft') { stepRender(-1); event.preventDefault(); }
+      else if (event.key === 'ArrowRight') { stepRender(1); event.preventDefault(); }
+      else if (event.key === 'Home') { showRender(0); event.preventDefault(); }
+      else if (event.key === 'End') { showRender(renderCount - 1); event.preventDefault(); }
+    });
+
+    var stage = renderRoot.querySelector('.render-stage');
+    stage.addEventListener('click', function (event) {
+      if (event.target.closest('button')) return;
+      renderRoot.focus({ preventScroll: true });
+    });
+
+    var startX = 0;
+    var startY = 0;
+    var tracking = false;
+
+    stage.addEventListener('touchstart', function (event) {
+      if (event.touches.length !== 1) { tracking = false; return; }
+      tracking = true;
+      startX = event.touches[0].clientX;
+      startY = event.touches[0].clientY;
+    }, { passive: true });
+
+    stage.addEventListener('touchend', function (event) {
+      if (!tracking) return;
+      tracking = false;
+      var touch = event.changedTouches[0];
+      if (!touch) return;
+      var dx = touch.clientX - startX;
+      var dy = touch.clientY - startY;
+      if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+        stepRender(dx < 0 ? 1 : -1);
+      }
+    }, { passive: true });
+
+    showRender(0, false);
+    preloadRender(1);
+    preloadRender(-1);
+  }
+
+  if (renderFsClose) renderFsClose.addEventListener('click', closeRenderFs);
+  if (renderFsPrev) renderFsPrev.addEventListener('click', function () { stepRender(-1); });
+  if (renderFsNext) renderFsNext.addEventListener('click', function () { stepRender(1); });
+
+  if (renderFs) {
+    renderFs.addEventListener('click', function (event) {
+      if (fsSwiped) { fsSwiped = false; return; }
+      if (event.target === renderFs) closeRenderFs();
+    });
+    renderFs.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') { closeRenderFs(); event.preventDefault(); }
+      else if (event.key === 'ArrowLeft') { stepRender(-1); event.preventDefault(); }
+      else if (event.key === 'ArrowRight') { stepRender(1); event.preventDefault(); }
+      else if (event.key === 'Home') { showRender(0); event.preventDefault(); }
+      else if (event.key === 'End') { showRender(renderCount - 1); event.preventDefault(); }
+    });
+
+    var fsStartX = 0;
+    var fsStartY = 0;
+    var fsTracking = false;
+    renderFs.addEventListener('touchstart', function (event) {
+      fsSwiped = false;
+      if (event.touches.length !== 1) { fsTracking = false; return; }
+      fsTracking = true;
+      fsStartX = event.touches[0].clientX;
+      fsStartY = event.touches[0].clientY;
+    }, { passive: true });
+    renderFs.addEventListener('touchend', function (event) {
+      if (!fsTracking) return;
+      fsTracking = false;
+      var touch = event.changedTouches[0];
+      if (!touch) return;
+      var dx = touch.clientX - fsStartX;
+      var dy = touch.clientY - fsStartY;
+      if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+        fsSwiped = true;
+        stepRender(dx < 0 ? 1 : -1);
+      }
+    }, { passive: true });
+  }
+
+  window.addEventListener('resize', function () {
+    if (fsActive) layoutRenderFs();
+    if (boardOpen) layoutBoard();
+  });
+  window.addEventListener('orientationchange', function () {
+    if (fsActive) { layoutRenderFs(); revealPanel(renderFs); }
+    if (boardOpen) { layoutBoard(); revealPanel(boardViewer); }
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && fsActive) closeRenderFs();
+  });
+
+  /* --------------------------------------------------------- board viewer */
+  var boardButtons = Array.prototype.slice.call(document.querySelectorAll('.plate'));
+  var boardViewer = document.getElementById('boardViewer');
+  var bvStage = document.getElementById('bvStage');
+  var bvImage = document.getElementById('bvImage');
+  var bvPlate = document.getElementById('bvPlate');
+  var bvTitle = document.getElementById('bvTitle');
+  var bvCount = document.getElementById('bvCount');
+  var bvZoomReset = document.getElementById('bvZoomReset');
+  var bvClose = document.getElementById('bvClose');
+  var boardOpen = false;
+  var boardIndex = 0;
+  var boardReturnFocus = null;
+  var bvScale = 1;
+  var bvX = 0;
+  var bvY = 0;
+  var bvPointers = {};
+  var bvLastPinch = 0;
+  var bvDragging = false;
+  var bvDragStart = null;
+
+  function boardData(index) {
+    var button = boardButtons[index];
+    if (!button) return null;
+    var isPhone = window.matchMedia && window.matchMedia('(max-width: 700px)').matches;
+    return {
+      src: button.getAttribute(isPhone ? 'data-src-1280' : 'data-src-2048'),
+      plate: button.getAttribute('data-plate'),
+      title: button.getAttribute('data-title'),
+      button: button
+    };
+  }
+
+  function applyBoardTransform() {
+    bvImage.style.transform = 'translate(-50%, -50%) translate(' +
+      Math.round(bvX) + 'px, ' + Math.round(bvY) + 'px) scale(' + bvScale.toFixed(3) + ')';
+    bvZoomReset.textContent = Math.round(bvScale * 100) + '%';
+  }
+
+  function clampBoardPan() {
+    if (!bvStage || !bvImage) return;
+    var maxX = Math.max(0, (bvImage.offsetWidth * bvScale - bvStage.clientWidth) / 2);
+    var maxY = Math.max(0, (bvImage.offsetHeight * bvScale - bvStage.clientHeight) / 2);
+    bvX = Math.max(-maxX, Math.min(maxX, bvX));
+    bvY = Math.max(-maxY, Math.min(maxY, bvY));
+  }
+
+  function resetBoardView() {
+    bvScale = 1;
+    bvX = 0;
+    bvY = 0;
+    applyBoardTransform();
+  }
+
+  function setBoardZoom(next) {
+    bvScale = Math.max(1, Math.min(4, next));
+    if (bvScale === 1) { bvX = 0; bvY = 0; }
+    clampBoardPan();
+    applyBoardTransform();
+  }
+
+  function updateBoard() {
+    var item = boardData(boardIndex);
+    if (!item) return;
+    bvImage.src = item.src;
+    bvImage.alt = item.title;
+    bvPlate.textContent = item.plate;
+    bvTitle.textContent = item.title;
+    bvCount.textContent = pad2(boardIndex + 1) + ' / ' + pad2(boardButtons.length);
+    resetBoardView();
+  }
+
+  function layoutBoard() {
+    if (!boardOpen || !boardViewer) return;
+    var panelHeight = screenHeight();
+    boardViewer.style.height = Math.round(panelHeight) + 'px';
+    boardViewer.style.top = Math.round(pageTopOf(boardButtons[boardIndex], panelHeight, 0.02)) + 'px';
+  }
+
+  function openBoard(index) {
+    if (!boardViewer) return;
+    boardIndex = index;
+    if (!boardOpen) {
+      boardReturnFocus = document.activeElement;
+      boardOpen = true;
+      boardViewer.hidden = false;
+      boardViewer.classList.add('is-open');
+      document.body.classList.add('board-open');
+    }
+    updateBoard();
+    layoutBoard();
+    revealPanel(boardViewer);
+    window.setTimeout(function () {
+      if (!boardOpen) return;
+      layoutBoard();
+      revealPanel(boardViewer);
+      resetBoardView();
+    }, 60);
+    if (bvClose) bvClose.focus({ preventScroll: true });
+  }
+
+  function closeBoard() {
+    if (!boardOpen) return;
+    boardOpen = false;
+    boardViewer.classList.remove('is-open');
+    boardViewer.hidden = true;
+    document.body.classList.remove('board-open');
+    resetBoardView();
+    if (boardReturnFocus && boardReturnFocus.focus) {
+      boardReturnFocus.focus({ preventScroll: true });
+    }
+  }
+
+  function stepBoard(delta) {
+    if (!boardButtons.length) return;
+    boardIndex = ((boardIndex + delta) % boardButtons.length + boardButtons.length) %
+      boardButtons.length;
+    updateBoard();
+    layoutBoard();
+  }
+
+  boardButtons.forEach(function (button, index) {
+    button.addEventListener('click', function () { openBoard(index); });
+  });
+
+  if (bvClose) bvClose.addEventListener('click', closeBoard);
+  document.getElementById('bvPrev').addEventListener('click', function () { stepBoard(-1); });
+  document.getElementById('bvNext').addEventListener('click', function () { stepBoard(1); });
+  document.getElementById('bvZoomIn').addEventListener('click', function () { setBoardZoom(bvScale * 1.35); });
+  document.getElementById('bvZoomOut').addEventListener('click', function () { setBoardZoom(bvScale / 1.35); });
+  bvZoomReset.addEventListener('click', resetBoardView);
+
+  if (bvStage) {
+    bvStage.addEventListener('wheel', function (event) {
+      if (!boardOpen) return;
+      event.preventDefault();
+      setBoardZoom(bvScale * (event.deltaY < 0 ? 1.16 : 0.86));
+    }, { passive: false });
+
+    bvStage.addEventListener('dblclick', function () {
+      if (bvScale > 1.02) resetBoardView();
+      else setBoardZoom(2.3);
+    });
+
+    bvStage.addEventListener('pointerdown', function (event) {
+      if (!boardOpen) return;
+      if (event.target.closest('button')) return;
+      bvPointers[event.pointerId] = {
+        x: event.clientX,
+        y: event.clientY
+      };
+      if (Object.keys(bvPointers).length === 1) {
+        bvDragging = true;
+        bvDragStart = { x: event.clientX - bvX, y: event.clientY - bvY };
+        bvStage.classList.add('is-panning');
+      } else if (Object.keys(bvPointers).length === 2) {
+        bvLastPinch = pinchDistance();
+        bvDragging = false;
+      }
+      try { bvStage.setPointerCapture(event.pointerId); } catch (error) { /* ignore */ }
+    });
+
+    bvStage.addEventListener('pointermove', function (event) {
+      if (!boardOpen || !bvPointers[event.pointerId]) return;
+      bvPointers[event.pointerId] = { x: event.clientX, y: event.clientY };
+      var count = Object.keys(bvPointers).length;
+      if (count >= 2) {
+        var distance = pinchDistance();
+        if (bvLastPinch > 0) {
+          setBoardZoom(bvScale * (distance / bvLastPinch));
+        }
+        bvLastPinch = distance;
+        return;
+      }
+      if (!bvDragging || !bvDragStart) return;
+      bvX = event.clientX - bvDragStart.x;
+      bvY = event.clientY - bvDragStart.y;
+      clampBoardPan();
+      applyBoardTransform();
+    });
+
+    function endPointer(event) {
+      delete bvPointers[event.pointerId];
+      if (Object.keys(bvPointers).length < 2) bvLastPinch = 0;
+      if (Object.keys(bvPointers).length === 0) {
+        bvDragging = false;
+        bvDragStart = null;
+        bvStage.classList.remove('is-panning');
+      }
+    }
+
+    bvStage.addEventListener('pointerup', endPointer);
+    bvStage.addEventListener('pointercancel', endPointer);
+    bvStage.addEventListener('pointerleave', function (event) {
+      if (event.pointerType === 'mouse' && !bvDragging) return;
+      endPointer(event);
+    });
+
+    function pinchDistance() {
+      var ids = Object.keys(bvPointers);
+      if (ids.length < 2) return 0;
+      var a = bvPointers[ids[0]];
+      var b = bvPointers[ids[1]];
+      return Math.hypot(a.x - b.x, a.y - b.y);
+    }
+  }
+
+  boardViewer.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') { closeBoard(); event.preventDefault(); }
+    else if (event.key === 'ArrowLeft') { stepBoard(-1); event.preventDefault(); }
+    else if (event.key === 'ArrowRight') { stepBoard(1); event.preventDefault(); }
+    else if (event.key === '+' || event.key === '=') { setBoardZoom(bvScale * 1.35); event.preventDefault(); }
+    else if (event.key === '-') { setBoardZoom(bvScale / 1.35); event.preventDefault(); }
+    else if (event.key === '0') { resetBoardView(); event.preventDefault(); }
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && boardOpen) closeBoard();
+  });
+
+  initRenders();
+})();
+</script>
+</body>
+</html>

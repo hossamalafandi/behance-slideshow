@@ -26,6 +26,10 @@ var PAGE_FILES = {
   'ab-apartment': {
     file: 'ABApartment',
     title: 'AB-Apartment — Hossam Alafandi'
+  },
+  'college-of-architecture-and-arts': {
+    file: 'CollegeOfArchitectureAndArts',
+    title: 'College of Architecture and Arts — Hossam Alafandi'
   }
 };
 

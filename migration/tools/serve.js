@@ -26,18 +26,23 @@ const PAGE_PREVIEWS = {
   'al-rashed': path.join(PREVIEW_DIR, 'al-rashed.html'),
   'cellphone-store': path.join(PREVIEW_DIR, 'cellphone-store.html'),
   'dk-apartment': path.join(PREVIEW_DIR, 'dk-apartment.html'),
-  'ab-apartment': path.join(PREVIEW_DIR, 'ab-apartment.html')
+  'ab-apartment': path.join(PREVIEW_DIR, 'ab-apartment.html'),
+  'college-of-architecture-and-arts': path.join(PREVIEW_DIR,
+    'college-of-architecture-and-arts.html')
 };
 const PAGE_PREVIEW = PAGE_PREVIEWS['al-rashed'];
 const ASSET_DIR = path.resolve(ROOT, '..', 'assets', 'al-rashed');
 const CELLPHONE_ASSET_DIR = path.resolve(ROOT, '..', 'assets', 'cellphone-store');
 const DK_ASSET_DIR = path.resolve(ROOT, '..', 'assets', 'dk-apartment');
 const AB_ASSET_DIR = path.resolve(ROOT, '..', 'assets', 'ab-apartment');
+const COLLEGE_ASSET_DIR = path.resolve(ROOT, '..', 'assets',
+  'college-of-architecture-and-arts');
 const PAGE_CODE = 'al-rashed';
 const ASSET_PREFIX = '/assets/al-rashed/';
 const CELLPHONE_ASSET_PREFIX = '/assets/cellphone-store/';
 const DK_ASSET_PREFIX = '/assets/dk-apartment/';
 const AB_ASSET_PREFIX = '/assets/ab-apartment/';
+const COLLEGE_ASSET_PREFIX = '/assets/college-of-architecture-and-arts/';
 const PORT = Number(process.env.PILOT_PORT || 4173);
 
 const IMAGE_TYPES = {
@@ -141,6 +146,11 @@ function createPilotServer() {
       return;
     }
 
+    if (url.pathname.startsWith(COLLEGE_ASSET_PREFIX)) {
+      serveAsset(response, url.pathname, COLLEGE_ASSET_PREFIX, COLLEGE_ASSET_DIR);
+      return;
+    }
+
     // Only the two single-item endpoints exist. Nothing else is routed, so
     // the server can never expose a gallery or a file listing.
     if (url.pathname !== '/exec') {
@@ -222,7 +232,8 @@ module.exports = {
   ASSET_DIR,
   CELLPHONE_ASSET_DIR,
   DK_ASSET_DIR,
-  AB_ASSET_DIR
+  AB_ASSET_DIR,
+  COLLEGE_ASSET_DIR
 };
 
 if (require.main === module) {

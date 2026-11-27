@@ -14,7 +14,7 @@ original 48 slideshow routes and 38 TOOLS USED strips.
   `AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA`
 - Base URL:
   `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
-- Current deployed version: **25**
+- Current deployed version: **26**
 - Git `main` HEAD: `a564475` at the time of writing.
 - Deployment command (local clasp is in `migration/tools/node_modules/.bin`):
   `..\tools\node_modules\.bin\clasp.cmd push --force`
@@ -28,6 +28,7 @@ original 48 slideshow routes and 38 TOOLS USED strips.
 | `?page=cellphone-store` | `CellphoneStore.html` | 13320 | Complete; 9 Vimeo videos; phone fullscreen |
 | `?page=dk-apartment` | `DKApartment.html` | 2900 | Complete; 2 Vimeo videos; mixed image/video grid |
 | `?page=ab-apartment` | `ABApartment.html` | 2750 | Complete; 7 room slideshows; phone fullscreen |
+| `?page=college-of-architecture-and-arts` | `CollegeOfArchitectureAndArts.html` | 2800 | Complete; 2 board plates + zoom viewer; 7 renders; phone fullscreen |
 
 Every page is independent. The 48 `?slide=` and 38 `?tools=` routes are
 unchanged.
@@ -56,6 +57,7 @@ unchanged.
 | Cellphone local / live | 76/76 / 102/102 |
 | DK-Apartment local / live | 57/57 / 62/62 |
 | AB-Apartment local / live | 56/56 / 57/57 |
+| College of Architecture and Arts local / live | 69/69 / pending |
 | All 48 live slideshows | 339/339 (shared code unchanged) |
 | Live phone fit | 64/64 (shared code unchanged) |
 
@@ -104,6 +106,7 @@ node validate.js
 - `CELLPHONE_STORE_EMBED.md` — height 13320
 - `DK_APARTMENT_EMBED.md` — height 2900
 - `AB_APARTMENT_EMBED.md` — height 2750
+- `COLLEGE_OF_ARCHITECTURE_AND_ARTS_EMBED.md` — height 2800
 
 Nothing has been published or replaced on Behance. All embeds are delivered for
 manual copy/paste.

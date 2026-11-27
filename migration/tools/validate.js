@@ -707,8 +707,9 @@ function main() {
 
   if (fs.existsSync(PAGE_DELIVERABLE)) {
     const deliverable = read(PAGE_DELIVERABLE);
+    const normalizedDeliverable = deliverable.replace(/\r\n/g, '\n');
     check('Al-Rashed deliverable contains the exact iframe snippet',
-      deliverable.includes(pageData.embedSnippet()));
+      normalizedDeliverable.includes(pageData.embedSnippet()));
     check('Al-Rashed deliverable documents the 2980 px height',
       /2980/.test(deliverable));
     check('Al-Rashed deliverable documents phone and desktop behavior',
@@ -722,19 +723,29 @@ function main() {
         /Google Sites/i.test(deliverable) && /9|nine/i.test(deliverable));
   }
 
-  check('router serves the standalone Al-Rashed page',
-    /function alRashedResponse_/.test(router) &&
-      /createHtmlOutputFromFile\('AlRashed'\)/.test(router) &&
+  const PAGE_ROUTES = [
+    ['al-rashed', 'AlRashed'],
+    ['cellphone-store', 'CellphoneStore'],
+    ['dk-apartment', 'DKApartment'],
+    ['ab-apartment', 'ABApartment'],
+    ['college-of-architecture-and-arts', 'CollegeOfArchitectureAndArts']
+  ];
+  check('router serves every standalone project page',
+    /var PAGE_FILES =/.test(router) &&
+      /function pageResponse_\(e\)/.test(router) &&
+      /createHtmlOutputFromFile\(page\.file\)/.test(router) &&
       /setXFrameOptionsMode\(HtmlService\.XFrameOptionsMode\.ALLOWALL\)/.test(router) &&
-      /raw\.trim\(\)\.toLowerCase\(\) !== 'al-rashed'/.test(router));
+      PAGE_ROUTES.every(([key, file]) =>
+        new RegExp("'" + key + "'\\s*:").test(router) &&
+        new RegExp("file:\\s*'" + file + "'").test(router)));
   check('router requires exactly one page parameter and no slide/tools',
     /pageCount === 1 && slideCount === 0 && toolsCount === 0/.test(router) &&
       /slideCount === 1 && toolsCount === 0 && pageCount === 0/.test(router) &&
       /toolsCount === 1 && slideCount === 0 && pageCount === 0/.test(router));
-  const pageRouteBody = /function alRashedResponse_\(e\) \{([\s\S]*?)\n\}/.exec(router);
-  check('Al-Rashed route never serializes the slideshow catalog',
+  const pageRouteBody = /function pageResponse_\(e\) \{([\s\S]*?)\n\}/.exec(router);
+  check('project page route never serializes the slideshow catalog',
     Boolean(pageRouteBody) && !/SLIDES|TOOLS|P\d{3}-S\d{2}/.test(pageRouteBody[1]));
-  check('Al-Rashed route returns the neutral error for other page values',
+  check('project page route returns the neutral error for unknown pages',
     Boolean(pageRouteBody) && /return notFoundResponse_\(\);/.test(pageRouteBody[1]));
 
   const serveSource = read(path.join(__dirname, 'serve.js'));
@@ -756,19 +767,24 @@ function main() {
   const previewNames = previewFiles.map(file => path.basename(file)).sort();
   const dataNames = dataFiles.map(file => path.basename(file)).sort();
   const behanceNames = behanceFiles.map(file => path.basename(file)).sort();
-  const expectedPreviewNames = ids.map(id => id + '.html').concat('al-rashed.html').sort();
+  const expectedPreviewNames = ids.map(id => id + '.html')
+    .concat(PAGE_ROUTES.map(([key]) => key + '.html')).sort();
   const expectedDataNames = ids.map(id => id + '.json').sort();
   const expectedBehanceNames = [
     ...projectIds.map(id => id + '.md'),
     'ALL_EMBEDS.md',
     'ALL_EMBEDS.csv',
     'AL_RASHED_EMBED.md',
+    'CELLPHONE_STORE_EMBED.md',
+    'DK_APARTMENT_EMBED.md',
+    'AB_APARTMENT_EMBED.md',
+    'COLLEGE_OF_ARCHITECTURE_AND_ARTS_EMBED.md',
     'README.md',
     'TOOLS_USED_EMBEDS.md',
     'TOOLS_USED_EMBEDS.csv'
   ].sort();
 
-  check('preview output contains exactly the 48 slideshows and the standalone page',
+  check('preview output contains exactly the 48 slideshows and the standalone pages',
     JSON.stringify(previewNames) === JSON.stringify(expectedPreviewNames),
     previewNames.join(', '));
   check('data output contains exactly the 48 audited slideshows',
