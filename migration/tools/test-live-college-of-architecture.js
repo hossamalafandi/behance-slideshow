@@ -91,6 +91,8 @@ async function loadRoute(context, query) {
             const body = document.body ? document.body.textContent.trim() : '';
             const pageRoot = Boolean(
               document.querySelector('.plate') ||
+              document.querySelector('.slideshow') ||
+              document.getElementById('rendersViewer') ||
               document.getElementById('renderSlideshow'));
             const slides = document.querySelectorAll('.slide').length;
             const logos = document.querySelectorAll('.logo-row').length;

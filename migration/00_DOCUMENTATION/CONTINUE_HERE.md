@@ -57,7 +57,7 @@ unchanged.
 | Cellphone local / live | 76/76 / 102/102 |
 | DK-Apartment local / live | 57/57 / 62/62 |
 | AB-Apartment local / live | 56/56 / 57/57 |
-| College of Architecture and Arts local / live | 69/69 / pending |
+| College of Architecture and Arts local / live | 69/69 / 76/76 |
 | All 48 live slideshows | 339/339 (shared code unchanged) |
 | Live phone fit | 64/64 (shared code unchanged) |
 

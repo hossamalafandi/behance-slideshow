@@ -122,7 +122,7 @@ node test-live-college-of-architecture.js https://script.google.com/macros/s/AKf
 
 It verifies the 8 jsDelivr page assets, the new page route, the unchanged
 Al-Rashed/Cellphone/DK/AB/slide/tools routes, both Behance-like frames, and the
-board and render viewers.
+board and render viewers. Result: **76/76**.
 
 ## Rollback
 
