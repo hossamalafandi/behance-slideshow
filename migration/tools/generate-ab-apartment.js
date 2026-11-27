@@ -399,6 +399,8 @@ function buildPage(assetBase) {
     margin: 0 auto;
   }
 
+  .tools h2 { text-align: center; }
+
   .tools-row img {
     display: block;
     width: auto;

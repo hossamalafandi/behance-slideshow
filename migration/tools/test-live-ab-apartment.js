@@ -290,7 +290,8 @@ async function runViewport(browser, label, width) {
         hero: sourceOf(document.querySelector('.hero img')),
         firstSlides: Array.from(document.querySelectorAll('.slideshow .slide:first-child img'))
           .map(sourceOf),
-        tools: Array.from(document.querySelectorAll('.tools-row img')).map(image => image.src)
+        tools: Array.from(document.querySelectorAll('.tools-row img')).map(image => image.src),
+        toolsTitleAlign: getComputedStyle(document.getElementById('tools-title')).textAlign
       };
     });
 
@@ -332,6 +333,8 @@ async function runViewport(browser, label, width) {
     check(label + ': 4 tools use the exact Imgur logos',
       state.tools.length === 4 &&
         state.tools.every((src, index) => src === data.toolUrl(data.TOOLS[index].id)));
+    check(label + ': TOOLS USED is centered',
+      state.toolsTitleAlign === 'center', state.toolsTitleAlign);
 
     const first = '#slideshow-p004-s01';
     await frame.click(first + ' .slide-arrow.next');
