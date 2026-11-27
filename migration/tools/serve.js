@@ -25,16 +25,19 @@ const PREVIEW_DIR = path.join(ROOT, '03_REBUILT_SLIDESHOWS', 'preview');
 const PAGE_PREVIEWS = {
   'al-rashed': path.join(PREVIEW_DIR, 'al-rashed.html'),
   'cellphone-store': path.join(PREVIEW_DIR, 'cellphone-store.html'),
-  'dk-apartment': path.join(PREVIEW_DIR, 'dk-apartment.html')
+  'dk-apartment': path.join(PREVIEW_DIR, 'dk-apartment.html'),
+  'ab-apartment': path.join(PREVIEW_DIR, 'ab-apartment.html')
 };
 const PAGE_PREVIEW = PAGE_PREVIEWS['al-rashed'];
 const ASSET_DIR = path.resolve(ROOT, '..', 'assets', 'al-rashed');
 const CELLPHONE_ASSET_DIR = path.resolve(ROOT, '..', 'assets', 'cellphone-store');
 const DK_ASSET_DIR = path.resolve(ROOT, '..', 'assets', 'dk-apartment');
+const AB_ASSET_DIR = path.resolve(ROOT, '..', 'assets', 'ab-apartment');
 const PAGE_CODE = 'al-rashed';
 const ASSET_PREFIX = '/assets/al-rashed/';
 const CELLPHONE_ASSET_PREFIX = '/assets/cellphone-store/';
 const DK_ASSET_PREFIX = '/assets/dk-apartment/';
+const AB_ASSET_PREFIX = '/assets/ab-apartment/';
 const PORT = Number(process.env.PILOT_PORT || 4173);
 
 const IMAGE_TYPES = {
@@ -133,6 +136,11 @@ function createPilotServer() {
       return;
     }
 
+    if (url.pathname.startsWith(AB_ASSET_PREFIX)) {
+      serveAsset(response, url.pathname, AB_ASSET_PREFIX, AB_ASSET_DIR);
+      return;
+    }
+
     // Only the two single-item endpoints exist. Nothing else is routed, so
     // the server can never expose a gallery or a file listing.
     if (url.pathname !== '/exec') {
@@ -213,7 +221,8 @@ module.exports = {
   PAGE_PREVIEWS,
   ASSET_DIR,
   CELLPHONE_ASSET_DIR,
-  DK_ASSET_DIR
+  DK_ASSET_DIR,
+  AB_ASSET_DIR
 };
 
 if (require.main === module) {

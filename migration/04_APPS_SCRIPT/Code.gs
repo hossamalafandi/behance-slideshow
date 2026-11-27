@@ -22,6 +22,10 @@ var PAGE_FILES = {
   'dk-apartment': {
     file: 'DKApartment',
     title: 'DK-Apartment — Hossam Alafandi'
+  },
+  'ab-apartment': {
+    file: 'ABApartment',
+    title: 'AB-Apartment — Hossam Alafandi'
   }
 };
 

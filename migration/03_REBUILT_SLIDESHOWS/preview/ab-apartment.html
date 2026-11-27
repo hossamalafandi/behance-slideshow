@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>AB-Apartment — Hossam Alafandi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;900&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #000;
+    --ink: #f9f9f9;
+    --muted: rgba(249, 249, 249, 0.66);
+    --pad: 60px;
+    --section-y: 52px;
+    --radius: 20px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Lexend', Arial, sans-serif;
+    font-weight: 100;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  main {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  img { max-width: 100%; }
+
+  .wrap {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--pad);
+  }
+
+  /* ---------------------------------------------------------------- hero */
+  .hero {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    min-height: 430px;
+    overflow: hidden;
+    padding: 56px 24px;
+    background: #050505;
+    text-align: center;
+    isolation: isolate;
+  }
+
+  .hero-media,
+  .hero-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-media img {
+    display: block;
+    object-fit: cover;
+    object-position: center 38%;
+  }
+
+  .hero-shade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.66) 100%),
+      radial-gradient(circle at 50% 40%, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.7) 78%);
+  }
+
+  .hero-content { position: relative; z-index: 2; width: 100%; }
+
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(54px, 7.4vw, 104px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+  }
+
+  .hero-sub {
+    margin: 16px 0 0;
+    color: rgba(249, 249, 249, 0.78);
+    font-size: clamp(15px, 1.5vw, 22px);
+    font-weight: 200;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .hero-sub + .hero-sub { margin-top: 4px; }
+
+  /* ------------------------------------------------------------- sections */
+  .section { width: 100%; padding: var(--section-y) 0; }
+
+  .section h2 {
+    margin: 0 0 26px;
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 900;
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+
+  .overview p {
+    max-width: 1040px;
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(16px, 1.35vw, 19px);
+    line-height: 1.55;
+  }
+
+  /* --------------------------------------------------------------- rooms */
+  .rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px 28px;
+    align-items: start;
+  }
+
+  .room-column { min-width: 0; }
+
+  .room { min-width: 0; }
+  .room + .room { margin-top: 36px; }
+
+  .room h3 {
+    margin: 0 0 14px;
+    font-size: clamp(24px, 3vw, 40px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  /* ---------------------------------------------------------- slideshow */
+  .slideshow {
+    width: 100%;
+    max-width: 546px;
+    outline: none;
+  }
+
+  .slideshow:focus-visible {
+    outline: 2px solid rgba(249, 249, 249, 0.8);
+    outline-offset: 6px;
+  }
+
+  .slideshow-stage {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: #080808;
+    cursor: grab;
+    touch-action: pan-y;
+  }
+
+  .slideshow-stage:active { cursor: grabbing; }
+
+  .slideshow-track {
+    display: flex;
+    width: calc(var(--count, 1) * 100%);
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform;
+  }
+
+  .slide {
+    flex: 0 0 calc(100% / var(--count, 1));
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .slide picture,
+  .slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide img {
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+  }
+
+  .slide-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    transform: translateY(-50%);
+  }
+
+  .slideshow-stage:hover .slide-arrow,
+  .slideshow-stage:focus-within .slide-arrow { opacity: 1; }
+  .slide-arrow.prev { left: 10px; }
+  .slide-arrow.next { right: 10px; }
+
+  .slide-counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+    padding: 5px 9px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 200;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  .slide-dots {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 14px;
+  }
+
+  .slide-dot {
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #4a4a4a;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .slide-dot:hover { background: #8a8a8a; }
+  .slide-dot[aria-current="true"] {
+    background: var(--ink);
+    transform: scale(1.12);
+  }
+
+  /* -------------------------------------------------------------- tools */
+  .tools-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .tools-row img {
+    display: block;
+    width: auto;
+    height: 60px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.9;
+    transition: filter 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  @media (hover: hover) {
+    .tools-row img:hover {
+      filter: none;
+      opacity: 1;
+      transform: scale(1.06);
+    }
+  }
+
+  .copyright {
+    padding: 20px 24px 26px;
+    color: rgba(249, 249, 249, 0.55);
+    font-size: 11px;
+    font-weight: 200;
+    text-align: center;
+  }
+
+  @media (max-width: 700px) {
+    :root {
+      --pad: 24px;
+      --section-y: 38px;
+    }
+
+    .hero {
+      min-height: 435px;
+      padding: 44px 20px;
+    }
+
+    .hero h1 { font-size: 56px; }
+    .hero-sub { font-size: 15px; margin-top: 14px; }
+
+    .section h2 {
+      margin-bottom: 22px;
+      font-size: 42px;
+    }
+
+    .overview p { font-size: 16px; line-height: 1.6; }
+
+    .rooms-grid { display: block; }
+    .room-column { display: block; }
+    .room {
+      width: 100%;
+      max-width: 230px;
+      margin: 0 auto;
+    }
+    .room + .room { margin-top: 24px; }
+    .room h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .slideshow { max-width: none; }
+    .slide-arrow { opacity: 1; }
+    .slide-arrow.prev { left: 6px; }
+    .slide-arrow.next { right: 6px; }
+    .slide-arrow {
+      width: 30px;
+      height: 30px;
+      font-size: 12px;
+    }
+    .slide-counter { font-size: 10px; padding: 4px 7px; }
+    .slide-dots { gap: 4px; padding-top: 10px; }
+    .slide-dot { width: 5px; height: 5px; }
+
+    .tools-row { justify-content: center; gap: 18px 24px; }
+    .tools-row img { height: 44px; }
+
+    .copyright { font-size: 11px; }
+  }
+
+  @media (max-width: 380px) {
+    :root { --pad: 20px; }
+    .hero h1 { font-size: 50px; }
+    .room { max-width: 210px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slideshow-track,
+    .slide-arrow,
+    .slide-dot,
+    .tools-row img { transition: none; }
+  }
+</style>
+</head>
+<body>
+<main id="page">
+  <header class="hero">
+    <picture class="hero-media">
+        <source media="(max-width: 700px)" srcset="/assets/ab-apartment/hero-768.jpg">
+        <img src="/assets/ab-apartment/hero-1920.jpg"
+             alt="AB-Apartment interior"
+             loading="eager" fetchpriority="high" decoding="async">
+      </picture>
+    <div class="hero-shade"></div>
+    <div class="hero-content">
+      <h1>AB-APARTMENT</h1>
+      <p class="hero-sub">SYRIA, HAMA</p>
+      <p class="hero-sub">- 2026 -</p>
+    </div>
+  </header>
+
+  <section class="section overview" aria-labelledby="overview-title">
+    <div class="wrap">
+      <h2 id="overview-title">OVERVIEW</h2>
+      <p>This 150 m² apartment features a modern interior defined by warm colors, refined materials, and a cohesive contemporary aesthetic. The layout includes three bedrooms, a kitchen, two living rooms, and two bathrooms, combining comfort, and functionality.</p>
+    </div>
+  </section>
+
+  <section class="section rooms" aria-label="Rooms">
+    <div class="wrap">
+      <div class="rooms-grid">
+        <div class="room-column">
+          <article class="room" data-column="left">
+  <h3>LIVING ROOM</h3>
+<div class="slideshow" id="slideshow-p004-s01" tabindex="0" role="region"
+     data-count="7"
+     aria-roledescription="carousel" aria-label="LIVING ROOM">
+  <div class="slideshow-stage" style="aspect-ratio: undefined / undefined">
+    <div class="slideshow-track">
+            <figure class="slide" aria-roledescription="slide" aria-label="LIVING ROOM image 1 of 7">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/c4oItQ5h.jpg">
+                <img src="https://i.imgur.com/c4oItQ5.jpg" alt="LIVING ROOM image 1" loading="eager" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="LIVING ROOM image 2 of 7">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/aWDFyeUh.jpg">
+                <img src="https://i.imgur.com/aWDFyeU.png" alt="LIVING ROOM image 2" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="LIVING ROOM image 3 of 7">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/7NumHIjh.jpg">
+                <img src="https://i.imgur.com/7NumHIj.jpg" alt="LIVING ROOM image 3" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="LIVING ROOM image 4 of 7">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/JiRMJNah.jpg">
+                <img src="https://i.imgur.com/JiRMJNa.png" alt="LIVING ROOM image 4" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="LIVING ROOM image 5 of 7">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/wxlfWc8h.jpg">
+                <img src="https://i.imgur.com/wxlfWc8.jpg" alt="LIVING ROOM image 5" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="LIVING ROOM image 6 of 7">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/1TNqnTxh.jpg">
+                <img src="https://i.imgur.com/1TNqnTx.jpg" alt="LIVING ROOM image 6" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="LIVING ROOM image 7 of 7">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/4TEkx7Kh.jpg">
+                <img src="https://i.imgur.com/4TEkx7K.jpg" alt="LIVING ROOM image 7" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+    </div>
+    <span class="slide-counter" aria-live="polite">1 / 7</span>
+    <button class="slide-arrow prev" type="button" aria-label="Previous image">❮</button>
+    <button class="slide-arrow next" type="button" aria-label="Next image">❯</button>
+  </div>
+  <div class="slide-dots" role="group" aria-label="Choose an image"></div>
+</div>
+</article>
+<article class="room" data-column="left">
+  <h3>RECIPTION</h3>
+<div class="slideshow" id="slideshow-p004-s02" tabindex="0" role="region"
+     data-count="6"
+     aria-roledescription="carousel" aria-label="RECIPTION">
+  <div class="slideshow-stage" style="aspect-ratio: undefined / undefined">
+    <div class="slideshow-track">
+            <figure class="slide" aria-roledescription="slide" aria-label="RECIPTION image 1 of 6">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/2tTqhfyh.jpg">
+                <img src="https://i.imgur.com/2tTqhfy.jpg" alt="RECIPTION image 1" loading="eager" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="RECIPTION image 2 of 6">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/6Du1ZL1h.jpg">
+                <img src="https://i.imgur.com/6Du1ZL1.jpg" alt="RECIPTION image 2" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="RECIPTION image 3 of 6">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/jumQndlh.jpg">
+                <img src="https://i.imgur.com/jumQndl.jpg" alt="RECIPTION image 3" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="RECIPTION image 4 of 6">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/HMfS7mAh.jpg">
+                <img src="https://i.imgur.com/HMfS7mA.jpg" alt="RECIPTION image 4" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="RECIPTION image 5 of 6">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/ULmDHaEh.jpg">
+                <img src="https://i.imgur.com/ULmDHaE.jpg" alt="RECIPTION image 5" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="RECIPTION image 6 of 6">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/Zj0JAWdh.jpg">
+                <img src="https://i.imgur.com/Zj0JAWd.jpg" alt="RECIPTION image 6" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+    </div>
+    <span class="slide-counter" aria-live="polite">1 / 6</span>
+    <button class="slide-arrow prev" type="button" aria-label="Previous image">❮</button>
+    <button class="slide-arrow next" type="button" aria-label="Next image">❯</button>
+  </div>
+  <div class="slide-dots" role="group" aria-label="Choose an image"></div>
+</div>
+</article>
+<article class="room" data-column="left">
+  <h3>GIRLS BEDROOM</h3>
+<div class="slideshow" id="slideshow-p004-s03" tabindex="0" role="region"
+     data-count="5"
+     aria-roledescription="carousel" aria-label="GIRLS BEDROOM">
+  <div class="slideshow-stage" style="aspect-ratio: undefined / undefined">
+    <div class="slideshow-track">
+            <figure class="slide" aria-roledescription="slide" aria-label="GIRLS BEDROOM image 1 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/5Hyq978h.jpg">
+                <img src="https://i.imgur.com/5Hyq978.jpg" alt="GIRLS BEDROOM image 1" loading="eager" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="GIRLS BEDROOM image 2 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/OKMbfPxh.jpg">
+                <img src="https://i.imgur.com/OKMbfPx.jpg" alt="GIRLS BEDROOM image 2" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="GIRLS BEDROOM image 3 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/30GbzLSh.jpg">
+                <img src="https://i.imgur.com/30GbzLS.jpg" alt="GIRLS BEDROOM image 3" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="GIRLS BEDROOM image 4 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/ygONgAsh.jpg">
+                <img src="https://i.imgur.com/ygONgAs.jpg" alt="GIRLS BEDROOM image 4" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="GIRLS BEDROOM image 5 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/y7JdP4Dh.jpg">
+                <img src="https://i.imgur.com/y7JdP4D.jpg" alt="GIRLS BEDROOM image 5" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+    </div>
+    <span class="slide-counter" aria-live="polite">1 / 5</span>
+    <button class="slide-arrow prev" type="button" aria-label="Previous image">❮</button>
+    <button class="slide-arrow next" type="button" aria-label="Next image">❯</button>
+  </div>
+  <div class="slide-dots" role="group" aria-label="Choose an image"></div>
+</div>
+</article>
+        </div>
+        <div class="room-column">
+          <article class="room" data-column="right">
+  <h3>MASTER BEDROOM</h3>
+<div class="slideshow" id="slideshow-p004-s04" tabindex="0" role="region"
+     data-count="5"
+     aria-roledescription="carousel" aria-label="MASTER BEDROOM">
+  <div class="slideshow-stage" style="aspect-ratio: undefined / undefined">
+    <div class="slideshow-track">
+            <figure class="slide" aria-roledescription="slide" aria-label="MASTER BEDROOM image 1 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/05bCWmWh.jpg">
+                <img src="https://i.imgur.com/05bCWmW.jpg" alt="MASTER BEDROOM image 1" loading="eager" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="MASTER BEDROOM image 2 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/i3HdBzmh.jpg">
+                <img src="https://i.imgur.com/i3HdBzm.jpg" alt="MASTER BEDROOM image 2" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="MASTER BEDROOM image 3 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/rq0OH53h.jpg">
+                <img src="https://i.imgur.com/rq0OH53.jpg" alt="MASTER BEDROOM image 3" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="MASTER BEDROOM image 4 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/cF8FeJYh.jpg">
+                <img src="https://i.imgur.com/cF8FeJY.jpg" alt="MASTER BEDROOM image 4" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="MASTER BEDROOM image 5 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/3WjYd8zh.jpg">
+                <img src="https://i.imgur.com/3WjYd8z.jpg" alt="MASTER BEDROOM image 5" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+    </div>
+    <span class="slide-counter" aria-live="polite">1 / 5</span>
+    <button class="slide-arrow prev" type="button" aria-label="Previous image">❮</button>
+    <button class="slide-arrow next" type="button" aria-label="Next image">❯</button>
+  </div>
+  <div class="slide-dots" role="group" aria-label="Choose an image"></div>
+</div>
+</article>
+<article class="room" data-column="right">
+  <h3>KITCHEN</h3>
+<div class="slideshow" id="slideshow-p004-s05" tabindex="0" role="region"
+     data-count="5"
+     aria-roledescription="carousel" aria-label="KITCHEN">
+  <div class="slideshow-stage" style="aspect-ratio: undefined / undefined">
+    <div class="slideshow-track">
+            <figure class="slide" aria-roledescription="slide" aria-label="KITCHEN image 1 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/6h3WOrmh.jpg">
+                <img src="https://i.imgur.com/6h3WOrm.jpg" alt="KITCHEN image 1" loading="eager" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="KITCHEN image 2 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/edn9Ivrh.jpg">
+                <img src="https://i.imgur.com/edn9Ivr.jpg" alt="KITCHEN image 2" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="KITCHEN image 3 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/e3Jdpz8h.jpg">
+                <img src="https://i.imgur.com/e3Jdpz8.jpg" alt="KITCHEN image 3" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="KITCHEN image 4 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/CEj3Gp7h.jpg">
+                <img src="https://i.imgur.com/CEj3Gp7.jpg" alt="KITCHEN image 4" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="KITCHEN image 5 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/fmXbsyUh.jpg">
+                <img src="https://i.imgur.com/fmXbsyU.jpg" alt="KITCHEN image 5" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+    </div>
+    <span class="slide-counter" aria-live="polite">1 / 5</span>
+    <button class="slide-arrow prev" type="button" aria-label="Previous image">❮</button>
+    <button class="slide-arrow next" type="button" aria-label="Next image">❯</button>
+  </div>
+  <div class="slide-dots" role="group" aria-label="Choose an image"></div>
+</div>
+</article>
+<article class="room" data-column="right">
+  <h3>BOYS BEDROOM</h3>
+<div class="slideshow" id="slideshow-p004-s06" tabindex="0" role="region"
+     data-count="4"
+     aria-roledescription="carousel" aria-label="BOYS BEDROOM">
+  <div class="slideshow-stage" style="aspect-ratio: undefined / undefined">
+    <div class="slideshow-track">
+            <figure class="slide" aria-roledescription="slide" aria-label="BOYS BEDROOM image 1 of 4">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/g60Dod4h.jpg">
+                <img src="https://i.imgur.com/g60Dod4.jpg" alt="BOYS BEDROOM image 1" loading="eager" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="BOYS BEDROOM image 2 of 4">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/x2p8Hcsh.jpg">
+                <img src="https://i.imgur.com/x2p8Hcs.jpg" alt="BOYS BEDROOM image 2" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="BOYS BEDROOM image 3 of 4">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/Y7W7S83h.jpg">
+                <img src="https://i.imgur.com/Y7W7S83.jpg" alt="BOYS BEDROOM image 3" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="BOYS BEDROOM image 4 of 4">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/JlwufVmh.jpg">
+                <img src="https://i.imgur.com/JlwufVm.jpg" alt="BOYS BEDROOM image 4" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+    </div>
+    <span class="slide-counter" aria-live="polite">1 / 4</span>
+    <button class="slide-arrow prev" type="button" aria-label="Previous image">❮</button>
+    <button class="slide-arrow next" type="button" aria-label="Next image">❯</button>
+  </div>
+  <div class="slide-dots" role="group" aria-label="Choose an image"></div>
+</div>
+</article>
+<article class="room" data-column="right">
+  <h3>BATHROOM</h3>
+<div class="slideshow" id="slideshow-p004-s07" tabindex="0" role="region"
+     data-count="5"
+     aria-roledescription="carousel" aria-label="BATHROOM">
+  <div class="slideshow-stage" style="aspect-ratio: undefined / undefined">
+    <div class="slideshow-track">
+            <figure class="slide" aria-roledescription="slide" aria-label="BATHROOM image 1 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/LJYRycgh.jpg">
+                <img src="https://i.imgur.com/LJYRycg.jpg" alt="BATHROOM image 1" loading="eager" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="BATHROOM image 2 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/p7Kyt4Dh.jpg">
+                <img src="https://i.imgur.com/p7Kyt4D.jpg" alt="BATHROOM image 2" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="BATHROOM image 3 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/fzaguu1h.jpg">
+                <img src="https://i.imgur.com/fzaguu1.jpg" alt="BATHROOM image 3" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="BATHROOM image 4 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/Ktfeq8Ph.jpg">
+                <img src="https://i.imgur.com/Ktfeq8P.jpg" alt="BATHROOM image 4" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="slide" aria-roledescription="slide" aria-label="BATHROOM image 5 of 5">
+              <picture>
+                <source media="(max-width: 700px)" srcset="https://i.imgur.com/JYf7Ff5h.jpg">
+                <img src="https://i.imgur.com/JYf7Ff5.jpg" alt="BATHROOM image 5" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+    </div>
+    <span class="slide-counter" aria-live="polite">1 / 5</span>
+    <button class="slide-arrow prev" type="button" aria-label="Previous image">❮</button>
+    <button class="slide-arrow next" type="button" aria-label="Next image">❯</button>
+  </div>
+  <div class="slide-dots" role="group" aria-label="Choose an image"></div>
+</div>
+</article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tools" aria-labelledby="tools-title">
+    <div class="wrap">
+      <h2 id="tools-title">TOOLS USED</h2>
+      <div class="tools-row" aria-label="Software used">
+  <img src="https://i.imgur.com/znQK1ti.png" alt="3ds Max Logo" loading="lazy" decoding="async">
+  <img src="https://i.imgur.com/eusbdWx.png" alt="AutoCAD Logo" loading="lazy" decoding="async">
+  <img src="https://i.imgur.com/X4WSOcP.png" alt="Corona Logo" loading="lazy" decoding="async">
+  <img src="https://i.imgur.com/6sW1ghq.png" alt="Photoshop Logo" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <footer class="copyright">© 2025 HOSSAM ALAFANDI. All rights reserved.</footer>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  function imageSource(image) {
+    if (!image) return '';
+    var src = image.currentSrc || image.getAttribute('src');
+    var picture = image.parentElement;
+    var source = picture && picture.tagName === 'PICTURE'
+      ? picture.querySelector('source[media]') : null;
+    if (source && window.matchMedia &&
+        window.matchMedia(source.getAttribute('media')).matches) {
+      src = source.getAttribute('srcset');
+    }
+    return src;
+  }
+
+  function preload(slides, at) {
+    var count = slides.length;
+    if (!count) return;
+    var target = slides[((at % count) + count) % count];
+    if (!target) return;
+    var image = target.querySelector('img');
+    if (!image || image.complete) return;
+    var src = imageSource(image);
+    if (!src) return;
+    var warm = new Image();
+    warm.decoding = 'async';
+    warm.src = src;
+  }
+
+  function initSlideshow(slideshow) {
+    var track = slideshow.querySelector('.slideshow-track');
+    var slides = Array.prototype.slice.call(track.querySelectorAll('.slide'));
+    var dotsBox = slideshow.querySelector('.slide-dots');
+    var counter = slideshow.querySelector('.slide-counter');
+    var prev = slideshow.querySelector('.slide-arrow.prev');
+    var next = slideshow.querySelector('.slide-arrow.next');
+    var count = slides.length;
+    var index = 0;
+    slideshow.style.setProperty('--count', String(count));
+
+    var dots = slides.map(function (_, i) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'slide-dot';
+      dot.setAttribute('aria-label', 'Show image ' + (i + 1) + ' of ' + count);
+      dot.addEventListener('click', function () { show(i); });
+      dotsBox.appendChild(dot);
+      return dot;
+    });
+
+    function show(nextIndex) {
+      if (typeof nextIndex !== 'number' || !isFinite(nextIndex)) return;
+      index = ((nextIndex % count) + count) % count;
+      track.style.transform = 'translateX(-' + (index * 100 / count) + '%)';
+
+      dots.forEach(function (dot, i) {
+        if (i === index) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
+
+      slides.forEach(function (slide, i) {
+        slide.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+      });
+
+      counter.textContent = (index + 1) + ' / ' + count;
+
+      var image = slides[index].querySelector('img');
+      if (image) {
+        image.loading = 'eager';
+        preload(slides, index + 1);
+        preload(slides, index - 1);
+      }
+    }
+
+    function step(delta) { show(index + delta); }
+
+    if (prev) prev.addEventListener('click', function () { step(-1); });
+    if (next) next.addEventListener('click', function () { step(1); });
+
+    slideshow.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowLeft') {
+        step(-1);
+        event.preventDefault();
+      } else if (event.key === 'ArrowRight') {
+        step(1);
+        event.preventDefault();
+      } else if (event.key === 'Home') {
+        show(0);
+        event.preventDefault();
+      } else if (event.key === 'End') {
+        show(count - 1);
+        event.preventDefault();
+      }
+    });
+
+    var stage = slideshow.querySelector('.slideshow-stage');
+    if (stage) {
+      stage.addEventListener('click', function (event) {
+        if (event.target.closest('button')) return;
+        slideshow.focus({ preventScroll: true });
+      });
+
+      var startX = 0;
+      var startY = 0;
+      var tracking = false;
+
+      stage.addEventListener('touchstart', function (event) {
+        if (event.touches.length !== 1) {
+          tracking = false;
+          return;
+        }
+        tracking = true;
+        startX = event.touches[0].clientX;
+        startY = event.touches[0].clientY;
+      }, { passive: true });
+
+      stage.addEventListener('touchend', function (event) {
+        if (!tracking) return;
+        tracking = false;
+        var touch = event.changedTouches[0];
+        if (!touch) return;
+        var dx = touch.clientX - startX;
+        var dy = touch.clientY - startY;
+        if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+          step(dx < 0 ? 1 : -1);
+        }
+      }, { passive: true });
+    }
+
+    show(0);
+  }
+
+  Array.prototype.slice.call(document.querySelectorAll('.slideshow')).forEach(initSlideshow);
+})();
+</script>
+</body>
+</html>

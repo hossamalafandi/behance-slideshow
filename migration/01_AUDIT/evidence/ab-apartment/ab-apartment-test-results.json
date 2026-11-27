@@ -1,0 +1,255 @@
+{
+  "scope": {
+    "page": "?page=ab-apartment",
+    "behanceFrames": [
+      "987x2750",
+      "390x2750"
+    ],
+    "slideshows": 7,
+    "slides": 37,
+    "assets": 2
+  },
+  "browser": "Chrome 158.0.8127.88",
+  "checks": 47,
+  "passed": 47,
+  "failed": 0,
+  "blockedImgurRequests": 65,
+  "failures": [],
+  "results": [
+    {
+      "name": "page title is exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no Google Sites chrome",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no Vimeo or Drive embeds",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "room headings are exact and in order",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has 7 slideshows",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has 37 slides",
+      "passed": true,
+      "detail": "37"
+    },
+    {
+      "name": "slideshow counts are 7/6/5/5/5/4/5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "every slideshow starts at 1 / its count",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has 42 images",
+      "passed": true,
+      "detail": "42"
+    },
+    {
+      "name": "page has one hero and 4 tools",
+      "passed": true,
+      "detail": "1/4"
+    },
+    {
+      "name": "hero uses the 1920 desktop file and 768 phone source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all 37 slides provide phone h JPG sources",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all 37 slides use desktop Imgur images",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "only the first slide in each room is eager",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "tool logos match the exact Imgur PNGs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no anchors or popup navigation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page uses no storage, cookies, or messaging",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no external scripts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page keeps the fixed 2750 px embed height",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has the phone breakpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "hero assets exist on disk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "preview uses local hero assets",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2750: the sandboxed page frame loads",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2750: frame viewport is 987x2750",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2750: page fills exactly 2750 px",
+      "passed": true,
+      "detail": "{\"scroll\":[987,2750],\"body\":[987,2750],\"main\":2750}"
+    },
+    {
+      "name": "desktop 987x2750: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2750: 7 rooms and headings are exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2750: each room has a full-width slideshow track",
+      "passed": true,
+      "detail": "[{\"count\":7,\"stage\":419.5,\"slide\":419.5,\"track\":2936.5,\"counter\":\"1 / 7\",\"dots\":7},{\"count\":6,\"stage\":419.5,\"slide\":419.5,\"track\":2517,\"counter\":\"1 / 6\",\"dots\":6},{\"count\":5,\"stage\":419.5,\"slide\":419.5,\"track\":2097.5,\"counter\":\"1 / 5\",\"dots\":5},{\"count\":5,\"stage\":419.5,\"slide\":419.5,\"track\":2097.5,\"counter\":\"1 / 5\",\"dots\":5},{\"count\":5,\"stage\":419.5,\"slide\":419.5,\"track\":2097.5,\"counter\":\"1 / 5\",\"dots\":5},{\"count\":4,\"stage\":419.5,\"slide\":419.5,\"track\":1678,\"counter\":\"1 / 4\",\"dots\":4},{\"count\":5,\"stage\":419.5,\"slide\":419.5,\"track\":2097.5,\"counter\":\"1 / 5\",\"dots\":5}]"
+    },
+    {
+      "name": "desktop 987x2750: desktop uses two columns and phone uses one",
+      "passed": true,
+      "detail": "grid / 2"
+    },
+    {
+      "name": "desktop 987x2750: hero uses the right source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2750: all first slides use the right Imgur source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2750: 4 tools use the exact Imgur logos",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2750: first room navigation and keyboard work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x2750: no page errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "phone 390x2750: the sandboxed page frame loads",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2750: frame viewport is 390x2750",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2750: page fills exactly 2750 px",
+      "passed": true,
+      "detail": "{\"scroll\":[390,2750],\"body\":[390,2750],\"main\":2750}"
+    },
+    {
+      "name": "phone 390x2750: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2750: 7 rooms and headings are exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2750: each room has a full-width slideshow track",
+      "passed": true,
+      "detail": "[{\"count\":7,\"stage\":230,\"slide\":230,\"track\":1610,\"counter\":\"1 / 7\",\"dots\":7},{\"count\":6,\"stage\":230,\"slide\":230,\"track\":1380,\"counter\":\"1 / 6\",\"dots\":6},{\"count\":5,\"stage\":230,\"slide\":230,\"track\":1150,\"counter\":\"1 / 5\",\"dots\":5},{\"count\":5,\"stage\":230,\"slide\":230,\"track\":1150,\"counter\":\"1 / 5\",\"dots\":5},{\"count\":5,\"stage\":230,\"slide\":230,\"track\":1150,\"counter\":\"1 / 5\",\"dots\":5},{\"count\":4,\"stage\":230,\"slide\":230,\"track\":920,\"counter\":\"1 / 4\",\"dots\":4},{\"count\":5,\"stage\":230,\"slide\":230,\"track\":1150,\"counter\":\"1 / 5\",\"dots\":5}]"
+    },
+    {
+      "name": "phone 390x2750: desktop uses two columns and phone uses one",
+      "passed": true,
+      "detail": "block / 3"
+    },
+    {
+      "name": "phone 390x2750: phone room stays compact enough to avoid page-end space",
+      "passed": true,
+      "detail": "230"
+    },
+    {
+      "name": "phone 390x2750: hero uses the right source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2750: all first slides use the right Imgur source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2750: 4 tools use the exact Imgur logos",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2750: first room navigation and keyboard work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2750: no page errors",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}

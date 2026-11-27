@@ -172,3 +172,20 @@ rebuilt as an embed, which authorizes this page-only copy:
   slideshows remain governed by sections 1–6.
 - This exception does not authorize copying any other Google Sites image or any
   slideshow image.
+
+## 11. AB-Apartment page exception
+
+Date: 2026-11-27. Owner-approved scope: the standalone AB-Apartment project page
+served at `?page=ab-apartment`, and nothing else.
+
+Google Sites serves the page hero with cross-site blocking headers, so it
+cannot be loaded inside a Behance iframe:
+
+- 2 optimized hero JPEG derivatives live in `assets/ab-apartment/`: a 768 px
+  phone version and a 1920 px desktop version.
+- The 37 room images across the 7 slideshows and the 4 tool logos keep their
+  exact Imgur URLs.
+- No slideshow image was copied, resized, proxied, or rehosted. The 48
+  slideshows remain governed by sections 1–6.
+- This exception does not authorize copying any other Google Sites image or any
+  slideshow image.

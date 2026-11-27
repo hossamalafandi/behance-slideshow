@@ -31,8 +31,8 @@ This folder is the migration workspace. It was created without changing,
 deleting, renaming, or redeploying anything in the live portfolio, the existing
 production Apps Script project, or the existing `index.html` prototype. A **new
 standalone** Apps Script project hosts all 48 slideshows, the 38 TOOLS USED
-strips, the standalone Al-Rashed page, the Cellphone Store page, and the
-DK-Apartment page; it is deployed as version 22. One
+strips, the standalone Al-Rashed page, the Cellphone Store page, the
+DK-Apartment page, and the AB-Apartment page; it is deployed as version 23. One
 temporary Behance test project was published. The audit, pilot, and bulk
 rollout commits are pushed to `main`. See
 `01_AUDIT/phase_2_pilot_report.md` and `01_AUDIT/phase_2_bulk_report.md` for the
@@ -88,8 +88,8 @@ migration/
 │   └── evidence/                        pilot and bulk test reports (screenshots gitignored)
 ├── 02_SOURCE_BACKUP/                    untouched original slideshow HTML, one folder per project
 ├── 03_REBUILT_SLIDESHOWS/               generated data and previews for all 48 slideshows
-├── 04_APPS_SCRIPT/                      shared Apps Script project (48-slide map, 38-tool map, AlRashed + CellphoneStore + DKApartment pages, version 22)
-└── 05_BEHANCE_OUTPUT/                   all 48 embed codes plus 38 TOOLS USED codes: ALL_EMBEDS.md, ALL_EMBEDS.csv, TOOLS_USED_EMBEDS.md, TOOLS_USED_EMBEDS.csv, AL_RASHED_EMBED.md, CELLPHONE_STORE_EMBED.md, DK_APARTMENT_EMBED.md, 37 project files
+├── 04_APPS_SCRIPT/                      shared Apps Script project (48-slide map, 38-tool map, AlRashed + CellphoneStore + DKApartment + ABApartment pages, version 23)
+└── 05_BEHANCE_OUTPUT/                   all 48 embed codes plus 38 TOOLS USED codes: ALL_EMBEDS.md, ALL_EMBEDS.csv, TOOLS_USED_EMBEDS.md, TOOLS_USED_EMBEDS.csv, AL_RASHED_EMBED.md, CELLPHONE_STORE_EMBED.md, DK_APARTMENT_EMBED.md, AB_APARTMENT_EMBED.md, 37 project files
 ```
 
 The standalone page also uses the repository-level `assets/al-rashed/` folder
@@ -280,13 +280,14 @@ originals, while phones keep the existing 1024×576 `h` variants through
 phone app blocks native fullscreen, the button opens an in-page viewer that
 keeps the page height stable, rotates the current 16:9 render to use the tall
 screen, and switches to upright when the phone is turned landscape. The
-Al-Rashed and Cellphone Store pages are unchanged in version 22, which adds
-the DK-Apartment page. Static validation passes 3491/3491, the Al-Rashed local
-page suite passes 218/218, and its live page suite passes 135/135. The existing 48-slideshow local, fit, pilot, and live suites remain
+Al-Rashed, Cellphone Store, and DK-Apartment pages are unchanged in version 23,
+which adds the AB-Apartment page. Static validation passes 3491/3491, the
+Al-Rashed local page suite passes 218/218, and its live page suite passes
+135/135. The existing 48-slideshow local, fit, pilot, and live suites remain
 green. The copy/paste code and rollback steps are in
 `05_BEHANCE_OUTPUT/AL_RASHED_EMBED.md`.
 
-version 22 adds the standalone Cellphone Store page at `?page=cellphone-store`.
+version 23 adds the standalone Cellphone Store page at `?page=cellphone-store`.
 It reproduces the 7-stage workflow, 9 Vimeo videos, the original 11-render
 slideshow, the 4 render/reality comparisons, the map, and the 4 tools. The 21
 stage/render-reality photos are copied as 44 optimized derivatives under
@@ -296,13 +297,22 @@ sized to cover both the desktop and phone layouts. The copy/paste code and
 verification steps are in `05_BEHANCE_OUTPUT/CELLPHONE_STORE_EMBED.md`. The
 local page suite passes 76/76 and the live page suite passes 102/102.
 
-version 22 adds the standalone DK-Apartment page at `?page=dk-apartment`. It
+version 23 adds the standalone DK-Apartment page at `?page=dk-apartment`. It
 reproduces the hero, overview, the original 38-image presentation, the two
 on-site videos (`IMG_3011` and `IMG_3045`), the red caption, and the 4 tools.
 The 38 presentation images and 4 tool logos stay on Imgur; the hero is copied
 as 8 optimized derivatives (hero + 3 on-site photos) under `assets/dk-apartment/`. The page uses a fixed
 2900 px Behance iframe. The copy/paste code and verification steps are in
 `05_BEHANCE_OUTPUT/DK_APARTMENT_EMBED.md`. The local page suite passes 57/57 and the live page suite passes 62/62.
+
+Version 23 adds the standalone AB-Apartment page at `?page=ab-apartment`. It
+reproduces the hero, overview, the seven room slideshows (37 images), and the 4
+tools. The 37 room images and 4 tool logos stay on Imgur; the hero is copied as
+2 optimized derivatives under `assets/ab-apartment/`. Desktop keeps the
+original two-column room layout; phone uses one compact centered column. The
+page uses a fixed 2750 px Behance iframe. The copy/paste code and verification
+steps are in `05_BEHANCE_OUTPUT/AB_APARTMENT_EMBED.md`. The local page suite
+passes 47/47.
 
 ## 10. What was deliberately not done
 
@@ -314,6 +324,8 @@ as 8 optimized derivatives (hero + 3 on-site photos) under `assets/dk-apartment/
   Cellphone Store page copies 21 Google Sites stage/render-reality photos as 44
   derivatives for the same reason. The DK-Apartment page copies its hero and 3
   on-site photos as 8 derivatives; its 38 presentation images stay on Imgur.
+  The AB-Apartment page copies its hero as 2 derivatives; its 37 room images
+  stay on Imgur.
 - No edits to the Google Sites portfolio.
 - No deletion or overwrite of existing repository files.
 - No Git commit or push of the audit and pilot files until they were reviewed;
@@ -331,10 +343,12 @@ as 8 optimized derivatives (hero + 3 on-site photos) under `assets/dk-apartment/
   render sources, and their phone fullscreen viewer. The outer Behance codes,
   image order, and all 48 slideshow routes are untouched.
 - No publishing or replacement of the Al-Rashed page embed, the Cellphone Store
-  page embed, or the DK-Apartment page embed. The code is delivered for manual
-  copy/paste in `05_BEHANCE_OUTPUT/AL_RASHED_EMBED.md`,
-  `05_BEHANCE_OUTPUT/CELLPHONE_STORE_EMBED.md`, and
-  `05_BEHANCE_OUTPUT/DK_APARTMENT_EMBED.md`.
+  page embed, the DK-Apartment page embed, or the AB-Apartment page embed. The
+  code is delivered for manual copy/paste in
+  `05_BEHANCE_OUTPUT/AL_RASHED_EMBED.md`,
+  `05_BEHANCE_OUTPUT/CELLPHONE_STORE_EMBED.md`,
+  `05_BEHANCE_OUTPUT/DK_APARTMENT_EMBED.md`, and
+  `05_BEHANCE_OUTPUT/AB_APARTMENT_EMBED.md`.
 
 ## 11. Exception summary
 
