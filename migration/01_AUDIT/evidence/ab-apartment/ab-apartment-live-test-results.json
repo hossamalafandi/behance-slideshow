@@ -11,10 +11,10 @@
     "assets": 2
   },
   "browser": "Chrome 158.0.8127.88",
-  "checks": 49,
-  "passed": 49,
+  "checks": 51,
+  "passed": 51,
   "failed": 0,
-  "blockedImgurRequests": 97,
+  "blockedImgurRequests": 111,
   "failures": [],
   "results": [
     {
@@ -183,6 +183,11 @@
       "detail": null
     },
     {
+      "name": "desktop 987x2750: TOOLS USED is centered",
+      "passed": true,
+      "detail": "center"
+    },
+    {
       "name": "desktop 987x2750: live first-room navigation works",
       "passed": true,
       "detail": null
@@ -251,6 +256,11 @@
       "name": "phone 390x2750: 4 tools use the exact Imgur logos",
       "passed": true,
       "detail": null
+    },
+    {
+      "name": "phone 390x2750: TOOLS USED is centered",
+      "passed": true,
+      "detail": "center"
     },
     {
       "name": "phone 390x2750: live first-room navigation works",

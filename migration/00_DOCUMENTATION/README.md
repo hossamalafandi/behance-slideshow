@@ -312,7 +312,7 @@ tools. The 37 room images and 4 tool logos stay on Imgur; the hero is copied as
 original two-column room layout; phone uses one compact centered column. The
 page uses a fixed 2750 px Behance iframe. The copy/paste code and verification
 steps are in `05_BEHANCE_OUTPUT/AB_APARTMENT_EMBED.md`. The local page suite
-passes 49/49 and the live page suite passes PENDING.
+passes 49/49 and the live page suite passes 51/51.
 
 ## 10. What was deliberately not done
 
