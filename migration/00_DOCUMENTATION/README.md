@@ -313,7 +313,7 @@ original two-column room layout; phone uses one compact centered column. Each
 room has a fullscreen viewer that uses the phone screen at maximum size. The
 page uses a fixed 2750 px Behance iframe. The copy/paste code and verification
 steps are in `05_BEHANCE_OUTPUT/AB_APARTMENT_EMBED.md`. The local page suite
-passes 56/56 and the live page suite passes PENDING.
+passes 56/56 and the live page suite passes 57/57.
 
 ## 10. What was deliberately not done
 

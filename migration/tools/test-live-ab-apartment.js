@@ -355,6 +355,10 @@ async function runViewport(browser, label, width) {
     check(label + ': live first-room navigation works', true);
 
     if (width <= 700) {
+      await frame.press(first, 'Home');
+      await frame.waitForFunction(selector =>
+        document.querySelector(selector + ' .slide-counter').textContent === '1 / 7',
+        first, { timeout: 15000, polling: 100 });
       await frame.evaluate(() => {
         Object.defineProperty(screen, 'width', { configurable: true, get: () => 390 });
         Object.defineProperty(screen, 'height', { configurable: true, get: () => 844 });

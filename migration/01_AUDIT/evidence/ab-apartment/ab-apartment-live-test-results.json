@@ -11,8 +11,8 @@
     "assets": 2
   },
   "browser": "Chrome 158.0.8127.88",
-  "checks": 51,
-  "passed": 51,
+  "checks": 57,
+  "passed": 57,
   "failed": 0,
   "blockedImgurRequests": 111,
   "failures": [],
@@ -46,6 +46,11 @@
       "name": "route: page has 7 slideshows and 37 slides",
       "passed": true,
       "detail": "37"
+    },
+    {
+      "name": "route: page has 7 fullscreen buttons and the viewer",
+      "passed": true,
+      "detail": null
     },
     {
       "name": "route: page has the 2 copied hero files",
@@ -188,6 +193,11 @@
       "detail": "center"
     },
     {
+      "name": "desktop 987x2750: each room has a fullscreen button",
+      "passed": true,
+      "detail": "7"
+    },
+    {
       "name": "desktop 987x2750: live first-room navigation works",
       "passed": true,
       "detail": null
@@ -263,7 +273,27 @@
       "detail": "center"
     },
     {
+      "name": "phone 390x2750: each room has a fullscreen button",
+      "passed": true,
+      "detail": "7"
+    },
+    {
       "name": "phone 390x2750: live first-room navigation works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2750: live phone fullscreen uses the maximum screen space",
+      "passed": true,
+      "detail": "{\"open\":true,\"height\":844,\"top\":728,\"src\":\"https://i.imgur.com/c4oItQ5h.jpg\",\"counter\":\"1 / 7\",\"backdrop\":\"url(\\\"https://i.imgur.com/c4oItQ5h.jpg\\\")\",\"body\":true}"
+    },
+    {
+      "name": "phone 390x2750: live phone fullscreen navigation stays in sync",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x2750: live phone fullscreen closes cleanly",
       "passed": true,
       "detail": null
     },
