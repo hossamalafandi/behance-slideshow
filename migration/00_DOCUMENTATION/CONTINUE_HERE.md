@@ -14,7 +14,7 @@ original 48 slideshow routes and 38 TOOLS USED strips.
   `AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA`
 - Base URL:
   `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
-- Current deployed version: **28**
+- Current deployed version: **29**
 - Git `main` HEAD: `235ee6d` (College page live).
 - Deployment command (local clasp is in `migration/tools/node_modules/.bin`):
   `..\tools\node_modules\.bin\clasp.cmd push --force`
@@ -29,6 +29,7 @@ original 48 slideshow routes and 38 TOOLS USED strips.
 | `?page=dk-apartment` | `DKApartment.html` | 2900 | Complete; 2 Vimeo videos; mixed image/video grid |
 | `?page=ab-apartment` | `ABApartment.html` | 2750 | Complete; 7 room slideshows; phone fullscreen |
 | `?page=college-of-architecture-and-arts` | `CollegeOfArchitectureAndArts.html` | 2800 | Complete; 2 board plates + zoom viewer; 7 renders; phone fullscreen |
+| `?page=african-cafeteria` | `AfricanCafeteria.html` | 3980 | Complete; 5-material rail; 2 board plates + zoom viewer; 8 renders |
 
 Every page is independent. The 48 `?slide=` and 38 `?tools=` routes are
 unchanged.
@@ -58,6 +59,7 @@ unchanged.
 | DK-Apartment local / live | 57/57 / 62/62 |
 | AB-Apartment local / live | 56/56 / 57/57 |
 | College of Architecture and Arts local / live | 69/69 / 76/76 |
+| African Cafeteria local / live | 72/72 / pending |
 | All 48 live slideshows | 339/339 (shared code unchanged) |
 | Live phone fit | 64/64 (shared code unchanged) |
 
@@ -107,6 +109,7 @@ node validate.js
 - `DK_APARTMENT_EMBED.md` — height 2900
 - `AB_APARTMENT_EMBED.md` — height 2750
 - `COLLEGE_OF_ARCHITECTURE_AND_ARTS_EMBED.md` — height 2800
+- `AFRICAN_CAFETERIA_EMBED.md` — height 3980
 
 Nothing has been published or replaced on Behance. All embeds are delivered for
 manual copy/paste.

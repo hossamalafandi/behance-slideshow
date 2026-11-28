@@ -1,0 +1,382 @@
+{
+  "scope": {
+    "page": "?page=african-cafeteria",
+    "behanceFrames": [
+      "987x3980",
+      "390x3980"
+    ],
+    "boards": 2,
+    "renders": 8,
+    "materials": 5,
+    "tools": 4,
+    "assets": 8
+  },
+  "browser": "Chrome 158.0.8127.88",
+  "checks": 72,
+  "passed": 72,
+  "failed": 0,
+  "blockedImgurRequests": 31,
+  "failures": [],
+  "results": [
+    {
+      "name": "page title is exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no Google Sites chrome",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no Vimeo, Drive or YouTube embeds",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all three original overview paragraphs are exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "original semester and year are exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has 1 hero, 2 boards, 8 slides, 8 film thumbs and 4 tools",
+      "passed": true,
+      "detail": "1/2/8/8/4"
+    },
+    {
+      "name": "page has 25 images",
+      "passed": true,
+      "detail": "25"
+    },
+    {
+      "name": "hero uses the 1920 desktop file and 768 phone source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "both boards use 1280 desktop files and 768 phone sources",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "board viewer keeps 2048 files for inspection",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all 8 slides use the exact Imgur originals",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all 8 slides provide exact phone h JPG sources",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "film thumbs use the exact phone h JPG sources",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "only the hero and the first slide are eager",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all 4 tool logos use the exact Imgur PNGs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has 5 material cards",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no anchors or popup navigation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page uses no storage, cookies, or messaging",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has no external scripts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page keeps the fixed 3980 px embed height",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has the phone breakpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has one render viewer and one board viewer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page has eight film buttons and eight slides",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "page keeps the exact copyright",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all 8 page assets exist on disk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "preview uses local page assets",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x3980: the sandboxed page frame loads",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x3980: frame viewport is 987x3980",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x3980: page fills exactly 3980 px",
+      "passed": true,
+      "detail": "{\"scroll\":[987,3980],\"body\":[987,3980],\"main\":3980}"
+    },
+    {
+      "name": "desktop 987x3980: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x3980: hero uses the right source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x3980: both boards use the right source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x3980: desktop shows two board columns and phone stacks them",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x3980: five material cards are present and the phone rail is horizontal",
+      "passed": true,
+      "detail": "grid"
+    },
+    {
+      "name": "desktop 987x3980: all eight renders use the right Imgur source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x3980: film has eight thumbs and starts at 01 / 08",
+      "passed": true,
+      "detail": "01 / 08 / INT / INT-01"
+    },
+    {
+      "name": "desktop 987x3980: four tools use the exact Imgur logos and labels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x3980: all reveals are visible without an inner scroll",
+      "passed": true,
+      "detail": "18/18"
+    },
+    {
+      "name": "desktop 987x3980: render arrows, film and keyboard work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x3980: render fullscreen uses a 900 px panel",
+      "passed": true,
+      "detail": "{\"open\":true,\"height\":900,\"top\":2698,\"src\":\"https://i.imgur.com/mqO7Tux.jpeg\",\"counter\":\"1 / 8\",\"backdrop\":\"url(\\\"https://i.imgur.com/mqO7Tux.jpeg\\\")\",\"body\":true}"
+    },
+    {
+      "name": "desktop 987x3980: render fullscreen uses the current rendered source",
+      "passed": true,
+      "detail": "https://i.imgur.com/mqO7Tux.jpeg"
+    },
+    {
+      "name": "desktop 987x3980: render fullscreen navigation stays in sync",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x3980: render fullscreen closes cleanly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x3980: board viewer opens as a 900 px panel",
+      "passed": true,
+      "detail": "{\"open\":true,\"height\":900,\"top\":2168,\"src\":\"/assets/african-cafeteria/board-1-2048.jpg\",\"plate\":\"PLATE 01\",\"title\":\"PLANS & SECTIONS\",\"count\":\"01 / 02\",\"zoom\":\"100%\",\"body\":true}"
+    },
+    {
+      "name": "desktop 987x3980: board viewer uses the right inspection file",
+      "passed": true,
+      "detail": "/assets/african-cafeteria/board-1-2048.jpg"
+    },
+    {
+      "name": "desktop 987x3980: board zoom works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x3980: board viewer steps to plate two and resets zoom",
+      "passed": true,
+      "detail": "{\"plate\":\"PLATE 02\",\"title\":\"MATERIALS & DETAILS\",\"count\":\"02 / 02\",\"zoom\":\"100%\",\"src\":\"/assets/african-cafeteria/board-2-2048.jpg\"}"
+    },
+    {
+      "name": "desktop 987x3980: Escape closes the board viewer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop 987x3980: no page errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "phone 390x3980: the sandboxed page frame loads",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x3980: frame viewport is 390x3980",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x3980: page fills exactly 3980 px",
+      "passed": true,
+      "detail": "{\"scroll\":[390,3980],\"body\":[390,3980],\"main\":3980}"
+    },
+    {
+      "name": "phone 390x3980: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x3980: hero uses the right source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x3980: both boards use the right source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x3980: desktop shows two board columns and phone stacks them",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x3980: five material cards are present and the phone rail is horizontal",
+      "passed": true,
+      "detail": "flex"
+    },
+    {
+      "name": "phone 390x3980: all eight renders use the right Imgur source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x3980: film has eight thumbs and starts at 01 / 08",
+      "passed": true,
+      "detail": "01 / 08 / INT / INT-01"
+    },
+    {
+      "name": "phone 390x3980: four tools use the exact Imgur logos and labels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x3980: all reveals are visible without an inner scroll",
+      "passed": true,
+      "detail": "18/18"
+    },
+    {
+      "name": "phone 390x3980: render arrows, film and keyboard work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x3980: render fullscreen uses a 900 px panel",
+      "passed": true,
+      "detail": "{\"open\":true,\"height\":900,\"top\":3080,\"src\":\"https://i.imgur.com/mqO7Tuxh.jpg\",\"counter\":\"1 / 8\",\"backdrop\":\"url(\\\"https://i.imgur.com/mqO7Tuxh.jpg\\\")\",\"body\":true}"
+    },
+    {
+      "name": "phone 390x3980: render fullscreen uses the current rendered source",
+      "passed": true,
+      "detail": "https://i.imgur.com/mqO7Tuxh.jpg"
+    },
+    {
+      "name": "phone 390x3980: render fullscreen navigation stays in sync",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x3980: render fullscreen closes cleanly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x3980: board viewer opens as a 900 px panel",
+      "passed": true,
+      "detail": "{\"open\":true,\"height\":900,\"top\":2507,\"src\":\"/assets/african-cafeteria/board-1-1280.jpg\",\"plate\":\"PLATE 01\",\"title\":\"PLANS & SECTIONS\",\"count\":\"01 / 02\",\"zoom\":\"100%\",\"body\":true}"
+    },
+    {
+      "name": "phone 390x3980: board viewer uses the right inspection file",
+      "passed": true,
+      "detail": "/assets/african-cafeteria/board-1-1280.jpg"
+    },
+    {
+      "name": "phone 390x3980: board zoom works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x3980: board viewer steps to plate two and resets zoom",
+      "passed": true,
+      "detail": "{\"plate\":\"PLATE 02\",\"title\":\"MATERIALS & DETAILS\",\"count\":\"02 / 02\",\"zoom\":\"100%\",\"src\":\"/assets/african-cafeteria/board-2-1280.jpg\"}"
+    },
+    {
+      "name": "phone 390x3980: Escape closes the board viewer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phone 390x3980: no page errors",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}

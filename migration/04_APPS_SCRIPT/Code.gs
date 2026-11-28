@@ -30,6 +30,10 @@ var PAGE_FILES = {
   'college-of-architecture-and-arts': {
     file: 'CollegeOfArchitectureAndArts',
     title: 'College of Architecture and Arts — Hossam Alafandi'
+  },
+  'african-cafeteria': {
+    file: 'AfricanCafeteria',
+    title: 'African Cafeteria — Hossam Alafandi'
   }
 };
 

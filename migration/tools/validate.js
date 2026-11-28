@@ -728,7 +728,8 @@ function main() {
     ['cellphone-store', 'CellphoneStore'],
     ['dk-apartment', 'DKApartment'],
     ['ab-apartment', 'ABApartment'],
-    ['college-of-architecture-and-arts', 'CollegeOfArchitectureAndArts']
+    ['college-of-architecture-and-arts', 'CollegeOfArchitectureAndArts'],
+    ['african-cafeteria', 'AfricanCafeteria']
   ];
   check('router serves every standalone project page',
     /var PAGE_FILES =/.test(router) &&
@@ -779,6 +780,7 @@ function main() {
     'DK_APARTMENT_EMBED.md',
     'AB_APARTMENT_EMBED.md',
     'COLLEGE_OF_ARCHITECTURE_AND_ARTS_EMBED.md',
+    'AFRICAN_CAFETERIA_EMBED.md',
     'README.md',
     'TOOLS_USED_EMBEDS.md',
     'TOOLS_USED_EMBEDS.csv'
