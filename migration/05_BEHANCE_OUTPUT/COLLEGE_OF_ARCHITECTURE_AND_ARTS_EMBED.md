@@ -1,7 +1,7 @@
 # College of Architecture and Arts — standalone Behance embed
 
 Status: **ready for manual copy/paste. Nothing has been published or replaced.**
-Built 2026-11-27; updated 2026-11-28 and deployed as version 27 under the
+Built 2026-11-27; updated 2026-11-28 and deployed as version 28 under the
 existing deployment ID.
 This page is independent of the 48 slideshow embeds, the 38 TOOLS USED strips,
 the Al-Rashed page, the Cellphone Store page, the DK-Apartment page, and the
@@ -30,7 +30,7 @@ Keep `width="100%"` and `height="2800"`.
 
 | Section | Content |
 |---|---|
-| Hero | Original Google Sites hero render, `COLLEGE OF ARCHITECTURE AND ARTS`, `5TH YEAR, FIRST SEMESTER`, `- 2024 -` |
+| Hero | Original Google Sites hero render, `ACADEMIC PROJECT`, `COLLEGE OF ARCHITECTURE AND ARTS`, `5TH YEAR, FIRST SEMESTER`, `- 2024 -` |
 | Overview | The original project description plus the six key facilities from it |
 | Presentation boards | The two project boards, side by side on desktop and stacked on phones |
 | Renders | The seven original exterior renders in the original order |
@@ -86,7 +86,7 @@ at the page end.
 
 The page uses the existing standalone Apps Script deployment under the same
 deployment ID, with the new `?page=college-of-architecture-and-arts` route. It
-is live as version 27:
+is live as version 28:
 
 ```
 https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec?page=college-of-architecture-and-arts

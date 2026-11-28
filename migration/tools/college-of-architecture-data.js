@@ -26,7 +26,7 @@ const PREVIEW_ASSET_BASE = '/assets/college-of-architecture-and-arts/';
 const HERO = {
   file: 'hero',
   alt: 'College of Architecture and Arts seen from above at dusk',
-  kicker: 'ARCHITECTURAL DESIGN 8 — PROJECT 02',
+  kicker: 'ACADEMIC PROJECT',
   title: 'COLLEGE OF ARCHITECTURE AND ARTS',
   school: 'AL-WATANIYA PRIVATE UNIVERSITY',
   year: '- 2024 -',
