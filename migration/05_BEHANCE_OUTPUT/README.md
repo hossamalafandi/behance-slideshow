@@ -107,7 +107,7 @@ Store page suite passes **102/102** (local **76/76**), the DK-Apartment page
 suite passes **57/57** locally (live **62/62**), the AB-Apartment page suite
 passes **56/56** locally (live **57/57**), the College of Architecture and Arts
 page suite passes **69/69** locally (live **76/76**), the African Cafeteria page
-suite passes **72/72** locally (live **pending**), the all-slideshow suite
+suite passes **72/72** locally (live **79/79**), the all-slideshow suite
 passes **339/339**, and the phone fit suite passes **64/64** against version 26.
 
 ## Not included

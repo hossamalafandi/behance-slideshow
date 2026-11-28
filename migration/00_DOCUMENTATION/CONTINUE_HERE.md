@@ -59,7 +59,7 @@ unchanged.
 | DK-Apartment local / live | 57/57 / 62/62 |
 | AB-Apartment local / live | 56/56 / 57/57 |
 | College of Architecture and Arts local / live | 69/69 / 76/76 |
-| African Cafeteria local / live | 72/72 / pending |
+| African Cafeteria local / live | 72/72 / 79/79 |
 | All 48 live slideshows | 339/339 (shared code unchanged) |
 | Live phone fit | 64/64 (shared code unchanged) |
 
