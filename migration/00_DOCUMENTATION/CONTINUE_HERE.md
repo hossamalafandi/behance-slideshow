@@ -14,7 +14,7 @@ original 48 slideshow routes and 38 TOOLS USED strips.
   `AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA`
 - Base URL:
   `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
-- Current deployed version: **26**
+- Current deployed version: **27**
 - Git `main` HEAD: `235ee6d` (College page live).
 - Deployment command (local clasp is in `migration/tools/node_modules/.bin`):
   `..\tools\node_modules\.bin\clasp.cmd push --force`

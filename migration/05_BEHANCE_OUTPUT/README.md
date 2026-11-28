@@ -22,7 +22,7 @@ pages are generated and ready for manual copy/paste.
 
 `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
 
-Deployment version 26. Every slideshow code uses one `?slide=<ID>` value and
+Deployment version 27. Every slideshow code uses one `?slide=<ID>` value and
 loads exactly one slideshow. Every TOOLS USED code uses one `?tools=<ID>`
 value and loads the original logo strip from the same host. The standalone pages
 use one `?page=<code>` value. The production Apps Script deployment is
