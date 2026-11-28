@@ -132,7 +132,7 @@ node test-live-african-cafeteria.js https://script.google.com/macros/s/AKfycbzV7
 
 It verifies the 13 jsDelivr page assets, the new page route, the unchanged
 Al-Rashed/Cellphone/DK/AB/College/slide/tools routes, both Behance-like
-frames, and the board and render viewers. Result: **pending**.
+frames, and the board and render viewers. Result: **86/86**.
 
 ## Rollback
 

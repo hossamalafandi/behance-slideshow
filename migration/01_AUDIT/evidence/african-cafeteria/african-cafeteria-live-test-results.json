@@ -10,11 +10,11 @@
     "renders": 8,
     "materials": 5,
     "tools": 4,
-    "assets": 8
+    "assets": 13
   },
   "browser": "Chrome 158.0.8127.88",
-  "checks": 79,
-  "passed": 79,
+  "checks": 86,
+  "passed": 86,
   "failed": 0,
   "blockedImgurRequests": 93,
   "failures": [],
@@ -63,6 +63,31 @@
       "name": "jsDelivr: board-2-768.jpg resolves",
       "passed": true,
       "detail": "{\"name\":\"board-2-768.jpg\",\"status\":200,\"type\":\"image/jpeg\",\"length\":113403}"
+    },
+    {
+      "name": "jsDelivr: material-clay.jpg resolves",
+      "passed": true,
+      "detail": "{\"name\":\"material-clay.jpg\",\"status\":200,\"type\":\"image/jpeg\",\"length\":64082}"
+    },
+    {
+      "name": "jsDelivr: material-wood.jpg resolves",
+      "passed": true,
+      "detail": "{\"name\":\"material-wood.jpg\",\"status\":200,\"type\":\"image/jpeg\",\"length\":71107}"
+    },
+    {
+      "name": "jsDelivr: material-brick.jpg resolves",
+      "passed": true,
+      "detail": "{\"name\":\"material-brick.jpg\",\"status\":200,\"type\":\"image/jpeg\",\"length\":105148}"
+    },
+    {
+      "name": "jsDelivr: material-straw.jpg resolves",
+      "passed": true,
+      "detail": "{\"name\":\"material-straw.jpg\",\"status\":200,\"type\":\"image/jpeg\",\"length\":65787}"
+    },
+    {
+      "name": "jsDelivr: material-plants.jpg resolves",
+      "passed": true,
+      "detail": "{\"name\":\"material-plants.jpg\",\"status\":200,\"type\":\"image/jpeg\",\"length\":78764}"
     },
     {
       "name": "route: ?page=african-cafeteria returns the standalone page",
@@ -220,6 +245,11 @@
       "detail": "grid"
     },
     {
+      "name": "desktop 987x3980: five material crops use the production project images",
+      "passed": true,
+      "detail": "https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/african-cafeteria/material-clay.jpg, https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/african-cafeteria/material-wood.jpg, https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/african-cafeteria/material-brick.jpg, https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/african-cafeteria/material-straw.jpg, https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/african-cafeteria/material-plants.jpg"
+    },
+    {
       "name": "desktop 987x3980: all eight renders use the right Imgur source",
       "passed": true,
       "detail": null
@@ -338,6 +368,11 @@
       "name": "phone 390x3980: five materials and the correct material layout",
       "passed": true,
       "detail": "flex"
+    },
+    {
+      "name": "phone 390x3980: five material crops use the production project images",
+      "passed": true,
+      "detail": "https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/african-cafeteria/material-clay.jpg, https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/african-cafeteria/material-wood.jpg, https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/african-cafeteria/material-brick.jpg, https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/african-cafeteria/material-straw.jpg, https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/african-cafeteria/material-plants.jpg"
     },
     {
       "name": "phone 390x3980: all eight renders use the right Imgur source",
