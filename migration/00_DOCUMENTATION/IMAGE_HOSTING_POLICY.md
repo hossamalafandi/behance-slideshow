@@ -218,9 +218,10 @@ page served at `?page=african-cafeteria`, and nothing else.
 Google Sites serves the page hero and the two presentation boards with
 cross-site blocking headers, so they cannot be loaded inside a Behance iframe:
 
-- 8 optimized JPEG derivatives live in `assets/african-cafeteria/`: a 1920/768
-  px hero, and 2048/1280/768 px versions of each of the two presentation
-  boards.
+- 13 optimized JPEG derivatives live in `assets/african-cafeteria/`: a 1920/768
+  px hero, 2048/1280/768 px versions of each of the two presentation boards,
+  and five 720×560 material crops taken from the project's own renders (clay,
+  wood, brick, straw, plants).
 - They are served through jsDelivr at
   `https://cdn.jsdelivr.net/gh/hossamalafandi/behance-slideshow@main/assets/african-cafeteria/`.
 - The 8 interior renders and the 4 tool logos keep their exact Imgur URLs.

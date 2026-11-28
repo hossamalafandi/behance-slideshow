@@ -68,11 +68,41 @@ const OVERVIEW = {
 };
 
 const MATERIALS = [
-  { name: 'CLAY', note: 'EARTHEN PLASTER & HAND-FORMED VESSELS', key: 'clay' },
-  { name: 'WOOD', note: 'CARVED SCREENS, BEAMS & LIVE-EDGE TABLES', key: 'wood' },
-  { name: 'BRICK', note: 'WARM MASONRY ARCHES & RECLAIMED WALLS', key: 'brick' },
-  { name: 'STRAW', note: 'THATCHED CANOPIES & WOVEN LIGHTING', key: 'straw' },
-  { name: 'PLANTS', note: 'CACTI & AFRICAN GREENERY', key: 'plants' }
+  {
+    name: 'CLAY',
+    note: 'EARTHEN PLASTER & HAND-FORMED VESSELS',
+    key: 'clay',
+    file: 'material-clay',
+    alt: 'Hand-formed clay vessels and a clay planter'
+  },
+  {
+    name: 'WOOD',
+    note: 'CARVED SCREENS, BEAMS & LIVE-EDGE TABLES',
+    key: 'wood',
+    file: 'material-wood',
+    alt: 'Live-edge timber table and carved wooden chairs'
+  },
+  {
+    name: 'BRICK',
+    note: 'WARM MASONRY ARCHES & RECLAIMED WALLS',
+    key: 'brick',
+    file: 'material-brick',
+    alt: 'Warm brick arches in the dining hall'
+  },
+  {
+    name: 'STRAW',
+    note: 'THATCHED CANOPIES & WOVEN LIGHTING',
+    key: 'straw',
+    file: 'material-straw',
+    alt: 'Thatched ceiling and a woven pendant light'
+  },
+  {
+    name: 'PLANTS',
+    note: 'CACTI & AFRICAN GREENERY',
+    key: 'plants',
+    file: 'material-plants',
+    alt: 'Cactus garden beside the lounge seating'
+  }
 ];
 
 const BOARDS = [

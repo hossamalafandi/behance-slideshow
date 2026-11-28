@@ -23,7 +23,7 @@ pages are generated and ready for manual copy/paste.
 
 `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
 
-Deployment version 29. Every slideshow code uses one `?slide=<ID>` value and
+Deployment version 30. Every slideshow code uses one `?slide=<ID>` value and
 loads exactly one slideshow. Every TOOLS USED code uses one `?tools=<ID>`
 value and loads the original logo strip from the same host. The standalone pages
 use one `?page=<code>` value. The production Apps Script deployment is
@@ -107,7 +107,7 @@ Store page suite passes **102/102** (local **76/76**), the DK-Apartment page
 suite passes **57/57** locally (live **62/62**), the AB-Apartment page suite
 passes **56/56** locally (live **57/57**), the College of Architecture and Arts
 page suite passes **69/69** locally (live **76/76**), the African Cafeteria page
-suite passes **72/72** locally (live **79/79**), the all-slideshow suite
+suite passes **75/75** locally (live **pending**), the all-slideshow suite
 passes **339/339**, and the phone fit suite passes **64/64** against version 26.
 
 ## Not included

@@ -24,7 +24,9 @@ const BEHANCE_HEIGHT = data.EMBED_HEIGHT;
 const ASSET_NAMES = [
   'hero-1920.jpg', 'hero-768.jpg',
   'board-1-2048.jpg', 'board-1-1280.jpg', 'board-1-768.jpg',
-  'board-2-2048.jpg', 'board-2-1280.jpg', 'board-2-768.jpg'
+  'board-2-2048.jpg', 'board-2-1280.jpg', 'board-2-768.jpg',
+  'material-clay.jpg', 'material-wood.jpg', 'material-brick.jpg',
+  'material-straw.jpg', 'material-plants.jpg'
 ];
 
 const url = process.argv[2];
@@ -249,8 +251,8 @@ async function runViewport(browser, label, width) {
       { timeout: 60000, polling: 100 });
     await frame.waitForFunction(() => {
       const selected = Array.from(document.querySelectorAll(
-        '.hero img, .plate img, .slide:first-child img, .film-thumb img, .tools-row img'));
-      return selected.length === 16 &&
+        '.hero img, .plate img, .slide:first-child img, .film-thumb img, .tools-row img, .swatch img'));
+      return selected.length === 21 &&
         selected.every(image => image.complete && image.naturalWidth > 0);
     }, null, { timeout: 60000, polling: 100 });
     await wait(1800);
@@ -289,6 +291,7 @@ async function runViewport(browser, label, width) {
         boardGridDisplay: getComputedStyle(document.querySelector('.boards-grid')).display,
         materialsDisplay: getComputedStyle(document.querySelector('.materials-grid')).display,
         materials: document.querySelectorAll('.material').length,
+        materialImgs: Array.from(document.querySelectorAll('.swatch img')).map(image => image.src),
         slides: Array.from(document.querySelectorAll('.slide img')).map(sourceOf),
         filmThumbs: document.querySelectorAll('.film-thumb').length,
         counter: document.getElementById('renderCounter').textContent,
@@ -322,6 +325,11 @@ async function runViewport(browser, label, width) {
       state.materials === 5 &&
         (width <= 700 ? state.materialsDisplay === 'flex' : state.materialsDisplay === 'grid'),
       state.materialsDisplay);
+    check(label + ': five material crops use the production project images',
+      state.materialImgs.length === 5 &&
+        state.materialImgs.every((src, index) =>
+          src === data.PRODUCTION_ASSET_BASE + data.MATERIALS[index].file + '.jpg'),
+      state.materialImgs.join(', '));
     check(label + ': all eight renders use the right Imgur source',
       state.slides.length === 8 &&
         state.slides.every(src => width <= 700

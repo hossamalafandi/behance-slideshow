@@ -14,7 +14,7 @@ original 48 slideshow routes and 38 TOOLS USED strips.
   `AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA`
 - Base URL:
   `https://script.google.com/macros/s/AKfycbzV7OufIj8Q6yLZaKxccF_ETSNJ3l76gMV_s0cvIzkPnxND7ofDwOMn35gdPO_JxlZfHA/exec`
-- Current deployed version: **29**
+- Current deployed version: **30**
 - Git `main` HEAD: `235ee6d` (College page live).
 - Deployment command (local clasp is in `migration/tools/node_modules/.bin`):
   `..\tools\node_modules\.bin\clasp.cmd push --force`
@@ -59,7 +59,7 @@ unchanged.
 | DK-Apartment local / live | 57/57 / 62/62 |
 | AB-Apartment local / live | 56/56 / 57/57 |
 | College of Architecture and Arts local / live | 69/69 / 76/76 |
-| African Cafeteria local / live | 72/72 / 79/79 |
+| African Cafeteria local / live | 75/75 / pending |
 | All 48 live slideshows | 339/339 (shared code unchanged) |
 | Live phone fit | 64/64 (shared code unchanged) |
 

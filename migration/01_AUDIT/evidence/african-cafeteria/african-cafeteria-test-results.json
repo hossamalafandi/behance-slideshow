@@ -9,11 +9,11 @@
     "renders": 8,
     "materials": 5,
     "tools": 4,
-    "assets": 8
+    "assets": 13
   },
   "browser": "Chrome 158.0.8127.88",
-  "checks": 72,
-  "passed": 72,
+  "checks": 75,
+  "passed": 75,
   "failed": 0,
   "blockedImgurRequests": 31,
   "failures": [],
@@ -49,9 +49,9 @@
       "detail": "1/2/8/8/4"
     },
     {
-      "name": "page has 25 images",
+      "name": "page has 30 images",
       "passed": true,
-      "detail": "25"
+      "detail": "30"
     },
     {
       "name": "hero uses the 1920 desktop file and 768 phone source",
@@ -84,7 +84,7 @@
       "detail": null
     },
     {
-      "name": "only the hero and the first slide are eager",
+      "name": "only the hero, first slide and material crops are eager",
       "passed": true,
       "detail": null
     },
@@ -95,6 +95,11 @@
     },
     {
       "name": "page has 5 material cards",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all 5 material cards use project-render crops",
       "passed": true,
       "detail": null
     },
@@ -139,7 +144,7 @@
       "detail": null
     },
     {
-      "name": "all 8 page assets exist on disk",
+      "name": "all 13 page assets exist on disk",
       "passed": true,
       "detail": null
     },
@@ -187,6 +192,11 @@
       "name": "desktop 987x3980: five material cards are present and the phone rail is horizontal",
       "passed": true,
       "detail": "grid"
+    },
+    {
+      "name": "desktop 987x3980: five material crops use the local project images",
+      "passed": true,
+      "detail": "http://127.0.0.1:62667/assets/african-cafeteria/material-clay.jpg, http://127.0.0.1:62667/assets/african-cafeteria/material-wood.jpg, http://127.0.0.1:62667/assets/african-cafeteria/material-brick.jpg, http://127.0.0.1:62667/assets/african-cafeteria/material-straw.jpg, http://127.0.0.1:62667/assets/african-cafeteria/material-plants.jpg"
     },
     {
       "name": "desktop 987x3980: all eight renders use the right Imgur source",
@@ -302,6 +312,11 @@
       "name": "phone 390x3980: five material cards are present and the phone rail is horizontal",
       "passed": true,
       "detail": "flex"
+    },
+    {
+      "name": "phone 390x3980: five material crops use the local project images",
+      "passed": true,
+      "detail": "http://127.0.0.1:62667/assets/african-cafeteria/material-clay.jpg, http://127.0.0.1:62667/assets/african-cafeteria/material-wood.jpg, http://127.0.0.1:62667/assets/african-cafeteria/material-brick.jpg, http://127.0.0.1:62667/assets/african-cafeteria/material-straw.jpg, http://127.0.0.1:62667/assets/african-cafeteria/material-plants.jpg"
     },
     {
       "name": "phone 390x3980: all eight renders use the right Imgur source",

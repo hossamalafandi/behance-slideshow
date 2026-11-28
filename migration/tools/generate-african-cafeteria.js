@@ -88,10 +88,12 @@ function introMarkup() {
   ].join('\n');
 }
 
-function materialsMarkup() {
+function materialsMarkup(assetBase) {
   const cards = data.MATERIALS.map((material, index) => [
     '      <article class="material material--' + material.key + ' reveal">',
-    '        <div class="swatch swatch--' + material.key + '" aria-hidden="true">',
+    '        <div class="swatch">',
+    '          <img src="' + assetBase + material.file + '.jpg" alt="' +
+      escapeHtml(material.alt) + '" loading="eager" decoding="async">',
     '          <span>' + pad2(index + 1) + '</span>',
     '        </div>',
     '        <div class="material-copy">',
@@ -765,68 +767,35 @@ function buildPage(assetBase) {
     position: relative;
     height: 158px;
     overflow: hidden;
-    display: flex;
-    align-items: flex-end;
-    padding: 9px;
-    isolation: isolate;
+    background: #241a12;
   }
 
-  .swatch::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(180deg, transparent 55%, rgba(18, 16, 12, 0.55) 100%);
+  .swatch img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1), filter 0.4s ease;
+  }
+
+  .material:hover .swatch img {
+    transform: scale(1.045);
+    filter: saturate(1.05);
   }
 
   .swatch span {
-    position: relative;
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
     z-index: 2;
+    padding: 2px 5px;
+    background: rgba(18, 16, 12, 0.55);
     font-family: var(--mono);
     font-size: 8px;
     letter-spacing: 0.18em;
-    color: rgba(246, 234, 212, 0.9);
-  }
-
-  .swatch--clay {
-    background:
-      radial-gradient(circle at 28% 24%, rgba(255, 236, 207, 0.3), transparent 34%),
-      radial-gradient(circle at 72% 78%, rgba(64, 30, 18, 0.35), transparent 52%),
-      linear-gradient(145deg, #d7a57f 0%, #b37652 46%, #7d4a30 100%);
-  }
-
-  .swatch--wood {
-    background:
-      repeating-linear-gradient(94deg,
-        #4c2f1b 0 6px, #8a5b33 6px 11px, #5b3a21 11px 16px, #9b6a3d 16px 18px),
-      linear-gradient(180deg, #6a4528, #3a2415);
-  }
-
-  .swatch--brick {
-    background-color: #a85838;
-    background-image:
-      linear-gradient(180deg, rgba(255, 220, 180, 0.12), rgba(60, 20, 10, 0.2)),
-      repeating-linear-gradient(0deg, transparent 0 23px, rgba(43, 19, 11, 0.6) 23px 25px),
-      repeating-linear-gradient(90deg, transparent 0 46px, rgba(43, 19, 11, 0.6) 46px 48px);
-  }
-
-  .swatch--straw {
-    background:
-      repeating-linear-gradient(45deg,
-        #d8ae61 0 4px, #a77b3a 4px 8px, #e9c982 8px 11px, #90682f 11px 13px),
-      linear-gradient(180deg, #c89a4d, #8e642c);
-  }
-
-  .swatch--plants {
-    background:
-      radial-gradient(ellipse 9% 24% at 18% 66%, #7d9460 0 96%, transparent 100%),
-      radial-gradient(ellipse 7% 19% at 31% 42%, #5f754a 0 96%, transparent 100%),
-      radial-gradient(ellipse 10% 27% at 44% 74%, #718758 0 96%, transparent 100%),
-      radial-gradient(ellipse 8% 21% at 57% 48%, #4e633d 0 96%, transparent 100%),
-      radial-gradient(ellipse 11% 29% at 70% 80%, #879c69 0 96%, transparent 100%),
-      radial-gradient(ellipse 7% 18% at 82% 56%, #657b4e 0 96%, transparent 100%),
-      radial-gradient(ellipse 9% 23% at 92% 86%, #556a42 0 96%, transparent 100%),
-      linear-gradient(180deg, #2c3824, #171e13);
+    color: rgba(246, 234, 212, 0.92);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
   }
 
   .material-copy {
@@ -1722,7 +1691,7 @@ function buildPage(assetBase) {
 
 ${introMarkup()}
 
-${materialsMarkup()}
+${materialsMarkup(assetBase)}
 
   <div class="motif motif--rust" aria-hidden="true"></div>
 

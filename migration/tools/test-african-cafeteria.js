@@ -67,6 +67,8 @@ function staticChecks() {
   const film = images.filter(tag => attr(tag, 'alt') === '' &&
     attr(tag, 'loading') === 'lazy');
   const tools = images.filter(tag => / Logo$/.test(attr(tag, 'alt')));
+  const materialImages = data.MATERIALS.map(material =>
+    data.PRODUCTION_ASSET_BASE + material.file + '.jpg');
 
   check('page title is exact',
     production.includes('<title>' + data.PAGE_TITLE + '</title>'));
@@ -83,7 +85,7 @@ function staticChecks() {
     hero.length === 1 && boards.length === 2 && slides.length === 8 &&
       film.length === 8 && tools.length === 4,
     [hero.length, boards.length, slides.length, film.length, tools.length].join('/'));
-  check('page has 25 images', images.length === 25, images.length);
+  check('page has 30 images', images.length === 30, images.length);
   check('hero uses the 1920 desktop file and 768 phone source',
     attr(hero[0] || '', 'src') ===
       data.assetUrl(data.PRODUCTION_ASSET_BASE, 'hero', 1920) &&
@@ -109,14 +111,16 @@ function staticChecks() {
   check('film thumbs use the exact phone h JPG sources',
     data.RENDERS.every(render => production.includes(
       '<img src="' + data.renderThumbUrl(render.id) + '" alt="" loading="lazy"')));
-  check('only the hero and the first slide are eager',
-    (production.match(/loading="eager"/g) || []).length === 2 &&
+  check('only the hero, first slide and material crops are eager',
+    (production.match(/loading="eager"/g) || []).length === 7 &&
       (production.match(/loading="lazy"/g) || []).length === 21);
   check('all 4 tool logos use the exact Imgur PNGs',
     tools.length === 4 &&
       tools.every((tag, index) => attr(tag, 'src') === data.toolUrl(data.TOOLS[index].id)));
   check('page has 5 material cards',
     (production.match(/class="material material--/g) || []).length === 5);
+  check('all 5 material cards use project-render crops',
+    materialImages.every(src => production.includes('src="' + src + '"')));
   check('page has no anchors or popup navigation',
     !/<a\b|window\.open|target="_blank"/i.test(production));
   check('page uses no storage, cookies, or messaging',
@@ -133,10 +137,12 @@ function staticChecks() {
       (production.match(/class="slide"/g) || []).length === 8);
   check('page keeps the exact copyright',
     production.includes(data.COPYRIGHT_TEXT));
-  check('all 8 page assets exist on disk',
+  check('all 13 page assets exist on disk',
     ['hero-1920.jpg', 'hero-768.jpg',
       'board-1-2048.jpg', 'board-1-1280.jpg', 'board-1-768.jpg',
-      'board-2-2048.jpg', 'board-2-1280.jpg', 'board-2-768.jpg']
+      'board-2-2048.jpg', 'board-2-1280.jpg', 'board-2-768.jpg',
+      'material-clay.jpg', 'material-wood.jpg', 'material-brick.jpg',
+      'material-straw.jpg', 'material-plants.jpg']
       .every(name => fs.existsSync(path.join(ASSET_DIR, name))));
   check('preview uses local page assets',
     preview.includes(data.PREVIEW_ASSET_BASE + 'hero-1920.jpg') &&
@@ -217,8 +223,8 @@ async function runViewport(browser, base, label, width) {
       { timeout: 30000, polling: 100 });
     await frame.waitForFunction(() => {
       const selected = Array.from(document.querySelectorAll(
-        '.hero img, .plate img, .slide:first-child img, .film-thumb img, .tools-row img'));
-      return selected.length === 16 &&
+        '.hero img, .plate img, .slide:first-child img, .film-thumb img, .tools-row img, .swatch img'));
+      return selected.length === 21 &&
         selected.every(image => image.complete && image.naturalWidth > 0);
     }, null, { timeout: 30000, polling: 100 });
     await wait(1600);
@@ -256,6 +262,7 @@ async function runViewport(browser, base, label, width) {
         boardGridDisplay: getComputedStyle(document.querySelector('.boards-grid')).display,
         materials: Array.from(document.querySelectorAll('.material')).map(rect),
         materialsDisplay: getComputedStyle(document.querySelector('.materials-grid')).display,
+        materialImgs: Array.from(document.querySelectorAll('.swatch img')).map(image => image.src),
         slides: Array.from(document.querySelectorAll('.slide img')).map(sourceOf),
         filmThumbs: document.querySelectorAll('.film-thumb').length,
         counter: document.getElementById('renderCounter').textContent,
@@ -289,6 +296,11 @@ async function runViewport(browser, base, label, width) {
       state.materials.length === 5 &&
         (width <= 700 ? state.materialsDisplay === 'flex' : state.materialsDisplay === 'grid'),
       state.materialsDisplay);
+    check(label + ': five material crops use the local project images',
+      state.materialImgs.length === 5 &&
+        state.materialImgs.every((src, index) =>
+          src.includes(data.PREVIEW_ASSET_BASE + data.MATERIALS[index].file + '.jpg')),
+      state.materialImgs.join(', '));
     check(label + ': all eight renders use the right Imgur source',
       state.slides.length === 8 &&
         state.slides.every(src => width <= 700
@@ -458,7 +470,7 @@ async function main() {
       renders: data.RENDERS.length,
       materials: data.MATERIALS.length,
       tools: data.TOOLS.length,
-      assets: 8
+      assets: 13
     },
     browser: browser ? 'Chrome ' + browser.version() : null,
     checks: checks.length,
